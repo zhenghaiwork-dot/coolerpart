@@ -86,7 +86,7 @@ export default defineConfig({
     // `domains` only matters for remote URLs that fall through to Astro's
     // native <Image /> (i.e. providers Unpic can't detect, like Pixabay).
     // Listed entries are authorized to be processed by Sharp.
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com', 'cdn.aircoolerparts.com'],
   },
 
   markdown: {
