@@ -2,10 +2,10 @@
 
 @config "../../../tailwind.config.ts";
 
-@source "../../pages/";
-@source "../../components/";
-@source "../../layouts/";
-@source "../../data/";
+@source "./src/pages/";
+@source "./src/components/";
+@source "./src/layouts/";
+@source "./src/data/";
 
 @plugin "@tailwindcss/typography";
 
