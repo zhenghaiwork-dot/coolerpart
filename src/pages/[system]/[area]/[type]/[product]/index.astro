@@ -25,7 +25,11 @@ const relatedProducts = productsData.filter((p) => p.slug !== product.slug && p.
 const crossSell = productsData.filter((p) => p.slug !== product.slug && p.areaSlug === product.areaSlug && p.productTypeSlug !== product.productTypeSlug).slice(0, 4);
 ---
 
-<Layout metadata={{ title: `${product.name} — ${product.category}`, ignoreTitleTemplate: true }}>
+<Layout metadata={{
+  title: `${product.name} | Evaporative Air Cooler Replacement Part`,
+  description: `${product.description} Check compatibility, specifications, MOQ and indicative pricing for this evaporative air cooler replacement part, then request a quote.`,
+  ignoreTitleTemplate: true,
+}}>
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-2.5 text-sm text-muted">
@@ -51,7 +55,7 @@ const crossSell = productsData.filter((p) => p.slug !== product.slug && p.areaSl
           <span class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-400 w-fit">
             {product.category}
           </span>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{product.name}</h1>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{product.name} for Evaporative Air Coolers</h1>
           <p class="mt-3 text-sm leading-relaxed text-muted">{product.longDescription}</p>
 
           <!-- Compatibility snapshot -->
