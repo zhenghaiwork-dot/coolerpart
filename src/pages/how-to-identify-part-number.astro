@@ -1,0 +1,101 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { systemsData } from '~/data/systems';
+
+// Build a flat list of area links grouped by system
+---
+
+<Layout metadata={{ title: 'Find Your Part — EVAPFit', ignoreTitleTemplate: true }}>
+  <!-- Hero -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+        What Part Are You Replacing?
+      </h1>
+      <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
+        Don't know the model number? That's fine. Tell us which area of the cooler your part belongs to, and we'll guide you to the right category.
+      </p>
+    </div>
+  </section>
+
+  <!-- System Selection -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <div class="space-y-8">
+        {systemsData.map((sys) => (
+          <div class="rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <!-- System header -->
+            <a href={`/${sys.slug}`} class="flex items-center gap-3 px-6 py-4 bg-gray-50 hover:bg-gray-100 transition-colors dark:bg-slate-800/50 dark:hover:bg-slate-800">
+              <Icon name={sys.icon} class="h-5 w-5 text-teal-600 dark:text-teal-400 flex-shrink-0"/>
+              <span class="text-base font-semibold text-gray-900 dark:text-white">{sys.name}</span>
+              <span class="text-xs text-muted ml-auto">{sys.areas.length} sub-categories</span>
+              <Icon name="tabler:arrow-right" class="h-4 w-4 text-gray-300 dark:text-slate-600"/>
+            </a>
+            <!-- Sub-area links -->
+            <div class="grid gap-px bg-gray-100 dark:bg-slate-700 sm:grid-cols-2">
+              {sys.areas.map((area) => (
+                <a
+                  href={`/${sys.slug}/${area.slug}`}
+                  class="flex items-start gap-3 bg-white px-6 py-4 hover:bg-teal-50/50 transition-colors dark:bg-slate-900 dark:hover:bg-teal-950/30"
+                >
+                  <Icon name={area.icon} class="h-4 w-4 text-teal-500 mt-0.5 flex-shrink-0"/>
+                  <div>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">{area.name}</span>
+                    <p class="text-xs text-muted mt-0.5">{area.shortDesc}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Measure -->
+  <section class="bg-gray-50 dark:bg-slate-800/30 border-t border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif;">
+        Once You've Found Your Category — What to Check
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:plug" class="h-6 w-6 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Interface Type</h3>
+          <p class="text-xs text-muted mt-1">Threaded? Flanged? Push-fit? Measure thread size or bolt pattern.</p>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:ruler" class="h-6 w-6 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Key Dimensions</h3>
+          <p class="text-xs text-muted mt-1">Shaft diameter, pad size, bolt spacing. Use millimeters.</p>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:bolt" class="h-6 w-6 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Electrical Specs</h3>
+          <p class="text-xs text-muted mt-1">Voltage, power (W), RPM. Check your existing part's label.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fallback -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+        Still Not Sure?
+      </h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+        Take a photo of your part with a ruler for scale. Submit it with your inquiry — we'll identify the correct replacement.
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4"/> Submit Inquiry with Photo
+        </a>
+        <a href="/compatibility" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">
+          Compatibility Guide <Icon name="tabler:arrow-right" class="h-4 w-4"/>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

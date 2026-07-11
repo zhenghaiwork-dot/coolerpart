@@ -1,0 +1,70 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Product } from '~/data/inquiry-types';
+
+export interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article
+  class="product-card group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:border-teal-500 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/50 dark:hover:border-teal-400"
+>
+  <!-- Image placeholder — blueprint dark style -->
+  <a
+    href={`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}
+    class="product-placeholder relative block aspect-[4/3] overflow-hidden"
+  >
+    <div class="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-105">
+      <Icon name="tabler:package" class="h-8 w-8 text-teal-500/40" />
+    </div>
+    <span class="absolute top-2.5 left-2.5 tech-label text-teal-400/80 bg-slate-950/60 px-2 py-0.5 rounded">
+      {product.category}
+    </span>
+  </a>
+
+  <!-- Content -->
+  <div class="flex flex-1 flex-col p-4">
+    <a href={`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}>
+      <h3
+        class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug"
+        style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+      >
+        {product.name}
+      </h3>
+    </a>
+
+    <p class="mt-1.5 text-xs text-muted line-clamp-2 flex-1 leading-relaxed">
+      {product.description}
+    </p>
+
+    <!-- Specs — monospace data table style -->
+    <dl class="mt-3 space-y-1 border-t border-gray-100 pt-3 dark:border-slate-700/50">
+      {product.specs.slice(0, 3).map((spec) => (
+        <div class="flex justify-between text-xs">
+          <dt class="tech-label text-slate-400">{spec.label}</dt>
+          <dd class="font-medium text-gray-800 dark:text-gray-200 tabular-nums" style="font-family: var(--aw-font-mono); font-size: 0.6875rem;">{spec.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <!-- Footer: MOQ + Action -->
+    <div class="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 dark:border-slate-700/50">
+      <span class="tech-label text-slate-400">MOQ <span class="text-gray-600 dark:text-gray-300 ml-1">{product.moq}</span></span>
+      <button
+        data-product-slug={product.slug}
+        data-product-name={product.name}
+        data-product-category={product.category}
+        data-product-moq={product.moq}
+        data-product-price={product.priceRange}
+        data-product-image={product.image}
+        class="add-to-basket-btn inline-flex items-center gap-1 rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500"
+      >
+        <Icon name="tabler:plus" class="h-3 w-3" />
+        Add
+      </button>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,111 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from 'astrowind:config';
+import { getHomePermalink } from '~/utils/permalinks';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface Links {
+  title?: string;
+  links: Array<Link>;
+}
+
+export interface Props {
+  links: Array<Links>;
+  secondaryLinks: Array<Link>;
+  socialLinks: Array<Link>;
+  footNote?: string;
+  theme?: string;
+}
+
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+---
+
+<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-slate-800 not-prose bg-slate-950 text-slate-400']}>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-10 md:py-14">
+      <div class="col-span-12 lg:col-span-4">
+        <div class="mb-3">
+          <a class="inline-flex items-center gap-2.5 font-bold text-lg" href={getHomePermalink()} style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+            <span class="flex h-8 w-8 items-center justify-center rounded-md bg-slate-900 text-teal-400 ring-1 ring-teal-500/30">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 3l4 5h-3v5h-2v-5h-3l4 -5z" />
+                <path d="M6 13c-1.5 1.5 -2 3 -2 5a8 8 0 0 0 16 0c0 -2 -.5 -3.5 -2 -5" />
+              </svg>
+            </span>
+            <span class="text-white">{SITE?.name}</span>
+          </a>
+        </div>
+        <p class="text-sm text-slate-500 mb-4 max-w-xs leading-relaxed">Direct-source replacement parts for evaporative coolers. Interface-matched components — no model number needed.</p>
+        <div class="text-sm text-slate-500 flex gap-1 flex-wrap">
+          {
+            secondaryLinks.map(({ text, href }, index) => (
+              <>
+                {index !== 0 ? <span class="text-slate-700">·</span> : ''}
+                <a
+                  class="text-slate-500 hover:text-teal-400 transition duration-150 ease-in-out"
+                  href={href}
+                  set:html={text}
+                />
+              </>
+            ))
+          }
+        </div>
+      </div>
+      {
+        links.map(({ title, links }) => (
+          <div class="col-span-6 md:col-span-3 lg:col-span-2">
+            <div class="text-slate-300 font-semibold mb-3 text-sm tech-label" style="font-family: var(--aw-font-mono);">{title}</div>
+            {links && Array.isArray(links) && links.length > 0 && (
+              <ul class="text-sm space-y-2">
+                {links.map(({ text, href, ariaLabel }) => (
+                  <li>
+                    <a
+                      class="text-slate-500 hover:text-teal-400 transition duration-150 ease-in-out"
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div class="border-t border-slate-800/50 md:flex md:items-center md:justify-between py-6 md:py-8">
+      {
+        socialLinks?.length ? (
+          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
+            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+              <li>
+                <a
+                  class="text-slate-500 hover:text-teal-400 focus:outline-none focus:ring-4 focus:ring-teal-900/30 rounded-lg text-sm p-2.5 inline-flex items-center transition-colors"
+                  aria-label={ariaLabel}
+                  href={href}
+                >
+                  {icon && <Icon name={icon} class="w-5 h-5" />}
+                  <Fragment set:html={text} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          ''
+        )
+      }
+
+      <div class="text-sm text-slate-600 tech-label">
+        <Fragment set:html={footNote} />
+      </div>
+    </div>
+  </div>
+</footer>

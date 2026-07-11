@@ -1,0 +1,167 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+export async function getStaticPaths() {
+  return [
+    { params: { method: 'interface' }, props: { method: 'interface', title: 'By Interface', icon: 'tabler:plug' } },
+    { params: { method: 'dimensions' }, props: { method: 'dimensions', title: 'By Dimensions', icon: 'tabler:ruler' } },
+    { params: { method: 'electrical' }, props: { method: 'electrical', title: 'By Electrical', icon: 'tabler:chart-bar' } },
+    { params: { method: 'cross-reference' }, props: { method: 'cross-reference', title: 'Cross-reference', icon: 'tabler:books' } },
+  ];
+}
+
+const { method, title, icon } = Astro.props;
+
+const content: Record<string, { heading: string; body: string; tips: string[] }> = {
+  interface: {
+    heading: 'Find Compatible Parts by Interface Type',
+    body: 'The interface is the physical connection point between your component and the cooler. Matching the interface ensures the replacement part will physically fit and connect correctly — without needing a specific model number.',
+    tips: [
+      'Threaded connections — measure thread diameter and pitch (e.g., 1/2" NPT, M12×1.5)',
+      'Flange mounts — measure bolt circle diameter, hole count, and hole diameter',
+      'Push-fit / quick-connect — measure tube OD (outer diameter)',
+      'Hose barb — measure barb OD and hose ID',
+      'Bracket/clamp — measure bracket dimensions, hole spacing, and slot size',
+      'If your part has multiple interfaces, note all of them — we can cross-reference to find matches',
+    ],
+  },
+  dimensions: {
+    heading: 'Find Compatible Parts by Key Dimensions',
+    body: 'Key dimensions like shaft diameter, frame size, bolt patterns, and overall envelope determine whether a replacement part will physically fit in your cooler unit.',
+    tips: [
+      'For pumps: inlet/outlet size, overall length × width × height, mounting hole center distance',
+      'For motors: shaft diameter (mm), shaft length, mounting type (B3/B5/B14), frame size',
+      'For cooling pads: width × height × thickness, flute angle, pad material',
+      'For filters: outer dimensions, frame thickness, pleat count',
+      'For valves: port size, body length, flange dimensions',
+      'Always measure in millimeters for the most accurate matching',
+    ],
+  },
+  electrical: {
+    heading: 'Find Compatible Parts by Electrical Parameters',
+    body: 'Electrical components like motors, capacitors, and control boards must match the voltage, power rating, and other electrical parameters to operate safely and correctly.',
+    tips: [
+      'Voltage (V) — must match exactly (110V, 220V, 230V, 380V, 415V, or Universal)',
+      'Power (W) — within acceptable range; slight variations are usually OK',
+      'RPM — for motors, match the speed rating for proper fan/blower performance',
+      'Frequency (Hz) — 50Hz vs 60Hz affects motor speed; usually auto-adapts within range',
+      'Capacitor — match µF rating and voltage rating',
+      'IP rating — match ingress protection level for outdoor/indoor use',
+    ],
+  },
+  'cross-reference': {
+    heading: 'Cross-reference by Part Function',
+    body: 'If you know what function the part serves but not the exact specifications, use functional cross-reference to find compatible alternatives and substitutes.',
+    tips: [
+      'Pump replacement chain: pump → pump seal → strainer/filter → hose connectors → solenoid valve',
+      'Motor replacement chain: motor → capacitor → wiring → mounting bracket → fan guard',
+      'Evaporation chain: cooling pad → pad frame → distribution bar → spray nozzle → anti-clog mesh',
+      'If you have an OEM part number, provide it — we can cross-reference to our equivalent',
+      'Photos of the part with a ruler for scale are the fastest way to identify a compatible replacement',
+      'Note any symptoms (leak, noise, reduced performance) — this helps identify which part needs replacing',
+    ],
+  },
+};
+
+const c = content[method as string];
+---
+
+<Layout metadata={{ title: `Compatibility ${title} — CoolerParts`, ignoreTitleTemplate: true }}>
+  <!-- Breadcrumb -->
+  <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-3 text-sm text-muted flex items-center breadcrumb-scroll">
+      <a href="/" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a>
+      <span class="mx-1.5 text-gray-300 dark:text-slate-600">/</span>
+      <a href="/compatibility" class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Compatibility</a>
+      <span class="mx-1.5 text-gray-300 dark:text-slate-600">/</span>
+      <span class="text-gray-700 dark:text-gray-300">{title}</span>
+    </div>
+  </div>
+
+  <!-- Header — text-driven, no gradient -->
+  <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div data-reveal>
+        <div class="flex items-center gap-3">
+          <Icon name={icon} class="h-6 w-6 text-teal-600 dark:text-teal-400" />
+          <span class="text-sm font-medium text-teal-600 dark:text-teal-400">{title}</span>
+        </div>
+        <h1
+          class="mt-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+        >
+          {c.heading}
+        </h1>
+        <p class="mt-4 max-w-2xl text-base text-muted leading-relaxed">{c.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips — definition list, no bordered cards -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div data-reveal class="mb-8">
+        <h2
+          class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+        >
+          What to Check
+        </h2>
+        <p class="mt-2 text-sm text-muted">Key parameters to identify and match before ordering.</p>
+      </div>
+
+      <div data-reveal class="max-w-3xl">
+        <div class="divide-y divide-gray-200 dark:divide-slate-700">
+          {c.tips.map((tip, i) => (
+            <div class="flex gap-4 py-4">
+              <span
+                class="text-sm font-bold text-teal-600/40 dark:text-teal-400/30 flex-shrink-0 w-6 pt-0.5"
+                style="font-family: 'Space Grotesk Variable', sans-serif;"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p class="text-sm text-muted leading-relaxed">{tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Reference Links -->
+      <div data-reveal class="mt-10">
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Quick Lookup</h3>
+        <div class="flex flex-wrap gap-2">
+          {method === 'interface' && (<><a href="/compatibility/interface/threaded-connection" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Threaded</a><a href="/compatibility/interface/push-fit" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Push-fit</a><a href="/compatibility/interface/flange-mount" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Flange</a><a href="/compatibility/interface/hose-barb" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Hose Barb</a></>)}
+          {method === 'dimensions' && (<><a href="/compatibility/dimensions/600mm-pad" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">600mm Pad</a><a href="/compatibility/dimensions/12mm-shaft" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">12mm Shaft</a><a href="/compatibility/dimensions/10mm-pipe" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">10mm Pipe</a><a href="/compatibility/dimensions/250mm-wheel" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">250mm Wheel</a></>)}
+          {method === 'electrical' && (<><a href="/compatibility/electrical/110v-250w-1400rpm" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">110V / 250W</a><a href="/compatibility/electrical/220v-550w-1400rpm" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">220V / 550W</a><a href="/compatibility/electrical/220v-750w-1400rpm" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">220V / 750W</a></>)}
+          {method === 'cross-reference' && (<><a href="/compatibility/cross-reference/pump-seal" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Pump Seal</a><a href="/compatibility/cross-reference/motor-capacitor" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Motor Capacitor</a><a href="/compatibility/cross-reference/pad-frame" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Pad Frame</a><a href="/compatibility/cross-reference/fan-guard" class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Fan Guard</a></>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — dark, simple -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-16 text-center lg:py-20">
+      <h2
+        class="text-2xl font-semibold tracking-tight"
+        style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+      >
+        Have your measurements ready?
+      </h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+        Include all interface details, dimensions, and electrical specs in your inquiry for the fastest match.
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4" />
+          Submit Inquiry
+        </a>
+        <a href="/compatibility" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">
+          <Icon name="tabler:arrow-left" class="h-4 w-4" />
+          Back to Guide
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

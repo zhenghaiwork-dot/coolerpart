@@ -1,0 +1,1219 @@
+{
+  ".astro/content-assets.mjs": {
+    "file": "chunks/content-assets_DXqEyLLP.mjs",
+    "name": "content-assets",
+    "src": ".astro/content-assets.mjs",
+    "isDynamicEntry": true
+  },
+  ".astro/content-modules.mjs": {
+    "file": "chunks/content-modules_I7QRxwaA.mjs",
+    "name": "content-modules",
+    "src": ".astro/content-modules.mjs",
+    "isDynamicEntry": true
+  },
+  "D:/Dev/CoolerPartsNew/coolerparts/node_modules/.pnpm/@astro-community+astro-embed-mastodon@0.1.1/node_modules/@astro-community/astro-embed-mastodon/src/GlobalStyles.css": {
+    "file": "_astro/GlobalStyles.qGGGZqmz.css",
+    "src": "D:/Dev/CoolerPartsNew/coolerparts/node_modules/.pnpm/@astro-community+astro-embed-mastodon@0.1.1/node_modules/@astro-community/astro-embed-mastodon/src/GlobalStyles.css"
+  },
+  "_BlogLatestPosts_DN9UAGKo.mjs": {
+    "file": "chunks/BlogLatestPosts_DN9UAGKo.mjs",
+    "name": "BlogLatestPosts",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_blog_bzv07QmT.mjs",
+      "_Grid_X_f9zVqL.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs"
+    ]
+  },
+  "_CallToAction_BEw8wVYY.mjs": {
+    "file": "chunks/CallToAction_BEw8wVYY.mjs",
+    "name": "CallToAction",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Content_D0WaJu5q.mjs": {
+    "file": "chunks/Content_D0WaJu5q.mjs",
+    "name": "Content",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_FAQs_B03MjyKw.mjs": {
+    "file": "chunks/FAQs_B03MjyKw.mjs",
+    "name": "FAQs",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Features2_BMx1aquy.mjs": {
+    "file": "chunks/Features2_BMx1aquy.mjs",
+    "name": "Features2",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Features3_RfAPQg_W.mjs": {
+    "file": "chunks/Features3_RfAPQg_W.mjs",
+    "name": "Features3",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Features_D5QlAq_V.mjs": {
+    "file": "chunks/Features_D5QlAq_V.mjs",
+    "name": "Features",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Footer_BCFP2GBT.mjs": {
+    "file": "chunks/Footer_BCFP2GBT.mjs",
+    "name": "Footer",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs"
+    ]
+  },
+  "_Grid_X_f9zVqL.mjs": {
+    "file": "chunks/Grid_X_f9zVqL.mjs",
+    "name": "Grid",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Image_BRpDfalA.mjs"
+    ]
+  },
+  "_Headline_BwhVh9y6.mjs": {
+    "file": "chunks/Headline_BwhVh9y6.mjs",
+    "name": "Headline",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs"
+    ]
+  },
+  "_Hero2_Coe1wGTV.mjs": {
+    "file": "chunks/Hero2_Coe1wGTV.mjs",
+    "name": "Hero2",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs"
+    ]
+  },
+  "_HeroText_BQ5zLXCQ.mjs": {
+    "file": "chunks/HeroText_BQ5zLXCQ.mjs",
+    "name": "HeroText",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs"
+    ]
+  },
+  "_Hero_BA-e9mQk.mjs": {
+    "file": "chunks/Hero_BA-e9mQk.mjs",
+    "name": "Hero",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs"
+    ]
+  },
+  "_Image_BRpDfalA.mjs": {
+    "file": "chunks/Image_BRpDfalA.mjs",
+    "name": "Image",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs"
+    ]
+  },
+  "_InquiryLayout_CvBfye5u.mjs": {
+    "file": "chunks/InquiryLayout_CvBfye5u.mjs",
+    "name": "InquiryLayout",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs"
+    ]
+  },
+  "_LandingLayout_a0g3yAXz.mjs": {
+    "file": "chunks/LandingLayout_a0g3yAXz.mjs",
+    "name": "LandingLayout",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs"
+    ]
+  },
+  "_Layout.DgbBak3w.css": {
+    "file": "_astro/Layout.DgbBak3w.css",
+    "src": "_Layout.DgbBak3w.css"
+  },
+  "_Layout_DEwJA1GM.mjs": {
+    "file": "chunks/Layout_DEwJA1GM.mjs",
+    "name": "Layout",
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_assets_COd5dEt-.mjs",
+      "_service_DsUCbgrW.mjs"
+    ],
+    "dynamicImports": [
+      "src/assets/images/app-store.png",
+      "src/assets/images/default.png",
+      "src/assets/images/google-play.png",
+      "src/assets/images/hero-image.png"
+    ],
+    "css": [
+      "_astro/Layout.DgbBak3w.css"
+    ],
+    "assets": [
+      "_astro/favicon.CGiRCjPI.ico",
+      "_astro/inter-cyrillic-ext-wght-normal.BOeWTOD4.woff2",
+      "_astro/inter-cyrillic-wght-normal.DqGufNeO.woff2",
+      "_astro/inter-greek-ext-wght-normal.DlzME5K_.woff2",
+      "_astro/inter-greek-wght-normal.CkhJZR-_.woff2",
+      "_astro/inter-vietnamese-wght-normal.CBcvBZtf.woff2",
+      "_astro/inter-latin-ext-wght-normal.DO1Apj_S.woff2",
+      "_astro/inter-latin-wght-normal.Dx4kXJAl.woff2"
+    ]
+  },
+  "_MarkdownLayout_xbGwfMba.mjs": {
+    "file": "chunks/MarkdownLayout_xbGwfMba.mjs",
+    "name": "MarkdownLayout",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs"
+    ]
+  },
+  "_PageLayout_9VhlMFWZ.mjs": {
+    "file": "chunks/PageLayout_9VhlMFWZ.mjs",
+    "name": "PageLayout",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs"
+    ]
+  },
+  "_Pagination_gGjly32X.mjs": {
+    "file": "chunks/Pagination_gGjly32X.mjs",
+    "name": "Pagination",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_Tags_CQRZ0pEF.mjs"
+    ]
+  },
+  "_Pricing_CriPZjqa.mjs": {
+    "file": "chunks/Pricing_CriPZjqa.mjs",
+    "name": "Pricing",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_ProductCard_w5cfumfn.mjs": {
+    "file": "chunks/ProductCard_w5cfumfn.mjs",
+    "name": "ProductCard",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs"
+    ]
+  },
+  "_Stats_BI6mHeK6.mjs": {
+    "file": "chunks/Stats_BI6mHeK6.mjs",
+    "name": "Stats",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Steps2_Ck7v91Yt.mjs": {
+    "file": "chunks/Steps2_Ck7v91Yt.mjs",
+    "name": "Steps2",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Steps_BcUxve8c.mjs": {
+    "file": "chunks/Steps_BcUxve8c.mjs",
+    "name": "Steps",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_Tags_CQRZ0pEF.mjs": {
+    "file": "chunks/Tags_CQRZ0pEF.mjs",
+    "name": "Tags",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs"
+    ]
+  },
+  "_Testimonials_DOCYkoPK.mjs": {
+    "file": "chunks/Testimonials_DOCYkoPK.mjs",
+    "name": "Testimonials",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs"
+    ]
+  },
+  "_WidgetWrapper_iFZDrLVM.mjs": {
+    "file": "chunks/WidgetWrapper_iFZDrLVM.mjs",
+    "name": "WidgetWrapper",
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs"
+    ]
+  },
+  "_app-store.t3tG4Jz3.png": {
+    "file": "_astro/app-store.t3tG4Jz3.png",
+    "src": "_app-store.t3tG4Jz3.png"
+  },
+  "_apple-touch-icon.DHIlG7dp.png": {
+    "file": "_astro/apple-touch-icon.DHIlG7dp.png",
+    "src": "_apple-touch-icon.DHIlG7dp.png"
+  },
+  "_assets_COd5dEt-.mjs": {
+    "file": "chunks/assets_COd5dEt-.mjs",
+    "name": "assets",
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_remote_DDCxf2My.mjs",
+      "_consts_CE4TTeDh.mjs",
+      "_service_DsUCbgrW.mjs"
+    ],
+    "dynamicImports": [
+      "node_modules/.pnpm/astro@7.0.7_@astrojs+markdo_c369546db944dabd34549c51ef4ba606/node_modules/astro/dist/assets/services/sharp.js"
+    ]
+  },
+  "_blog_bzv07QmT.mjs": {
+    "file": "chunks/blog_bzv07QmT.mjs",
+    "name": "blog",
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_consts_CE4TTeDh.mjs"
+    ],
+    "dynamicImports": [
+      "astro:data-layer-content",
+      ".astro/content-assets.mjs",
+      "virtual:astro:get-image",
+      ".astro/content-modules.mjs"
+    ]
+  },
+  "_chrome.f1eQSm4k.svg": {
+    "file": "_astro/chrome.f1eQSm4k.svg",
+    "src": "_chrome.f1eQSm4k.svg"
+  },
+  "_consts_CE4TTeDh.mjs": {
+    "file": "chunks/consts_CE4TTeDh.mjs",
+    "name": "consts"
+  },
+  "_default.CZ816Hke.png": {
+    "file": "_astro/default.CZ816Hke.png",
+    "src": "_default.CZ816Hke.png"
+  },
+  "_edge.B7O1xshw.svg": {
+    "file": "_astro/edge.B7O1xshw.svg",
+    "src": "_edge.B7O1xshw.svg"
+  },
+  "_errors_95H_i_4D.mjs": {
+    "file": "chunks/errors_95H_i_4D.mjs",
+    "name": "errors"
+  },
+  "_favicon.vp_fBu0c.svg": {
+    "file": "_astro/favicon.vp_fBu0c.svg",
+    "src": "_favicon.vp_fBu0c.svg"
+  },
+  "_firefox.CMmddY9p.svg": {
+    "file": "_astro/firefox.CMmddY9p.svg",
+    "src": "_firefox.CMmddY9p.svg"
+  },
+  "_google-play.ISTMcpLO.png": {
+    "file": "_astro/google-play.ISTMcpLO.png",
+    "src": "_google-play.ISTMcpLO.png"
+  },
+  "_hero-image.DwIC_L_T.png": {
+    "file": "_astro/hero-image.DwIC_L_T.png",
+    "src": "_hero-image.DwIC_L_T.png"
+  },
+  "_products_LdiYll85.mjs": {
+    "file": "chunks/products_LdiYll85.mjs",
+    "name": "products"
+  },
+  "_remote_DDCxf2My.mjs": {
+    "file": "chunks/remote_DDCxf2My.mjs",
+    "name": "remote"
+  },
+  "_runtime_CQAp8_Zo.mjs": {
+    "file": "chunks/runtime_CQAp8_Zo.mjs",
+    "name": "runtime",
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_server_DvF4bWil.mjs"
+    ]
+  },
+  "_safari.CdqjFDzc.svg": {
+    "file": "_astro/safari.CdqjFDzc.svg",
+    "src": "_safari.CdqjFDzc.svg"
+  },
+  "_server_DvF4bWil.mjs": {
+    "file": "chunks/server_DvF4bWil.mjs",
+    "name": "server",
+    "imports": [
+      "_errors_95H_i_4D.mjs"
+    ]
+  },
+  "_service_DsUCbgrW.mjs": {
+    "file": "chunks/service_DsUCbgrW.mjs",
+    "name": "service",
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_remote_DDCxf2My.mjs",
+      "_consts_CE4TTeDh.mjs"
+    ]
+  },
+  "_systems_blIFLfkM.mjs": {
+    "file": "chunks/systems_blIFLfkM.mjs",
+    "name": "systems"
+  },
+  "astro:data-layer-content": {
+    "file": "chunks/_astro_data-layer-content_BJ6hR6cQ.mjs",
+    "name": "_astro_data-layer-content",
+    "src": "astro:data-layer-content",
+    "isDynamicEntry": true
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2": {
+    "file": "_astro/inter-cyrillic-ext-wght-normal.BOeWTOD4.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-cyrillic-ext-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2": {
+    "file": "_astro/inter-cyrillic-wght-normal.DqGufNeO.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2": {
+    "file": "_astro/inter-greek-ext-wght-normal.DlzME5K_.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-greek-ext-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2": {
+    "file": "_astro/inter-greek-wght-normal.CkhJZR-_.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-greek-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2": {
+    "file": "_astro/inter-latin-ext-wght-normal.DO1Apj_S.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2": {
+    "file": "_astro/inter-latin-wght-normal.Dx4kXJAl.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2": {
+    "file": "_astro/inter-vietnamese-wght-normal.CBcvBZtf.woff2",
+    "src": "node_modules/.pnpm/@fontsource-variable+inter@5.2.8/node_modules/@fontsource-variable/inter/files/inter-vietnamese-wght-normal.woff2"
+  },
+  "node_modules/.pnpm/astro@7.0.7_@astrojs+markdo_c369546db944dabd34549c51ef4ba606/node_modules/astro/dist/assets/services/sharp.js": {
+    "file": "chunks/sharp_CWPlWsTH.mjs",
+    "name": "sharp",
+    "src": "node_modules/.pnpm/astro@7.0.7_@astrojs+markdo_c369546db944dabd34549c51ef4ba606/node_modules/astro/dist/assets/services/sharp.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_service_DsUCbgrW.mjs"
+    ]
+  },
+  "node_modules/.pnpm/astro@7.0.7_@astrojs+markdo_c369546db944dabd34549c51ef4ba606/node_modules/astro/dist/entrypoints/prerender.js": {
+    "file": "prerender-entry.CbykQXC0.mjs",
+    "name": "prerender",
+    "src": "node_modules/.pnpm/astro@7.0.7_@astrojs+markdo_c369546db944dabd34549c51ef4ba606/node_modules/astro/dist/entrypoints/prerender.js",
+    "isEntry": true,
+    "imports": [
+      "_errors_95H_i_4D.mjs",
+      "_remote_DDCxf2My.mjs",
+      "_server_DvF4bWil.mjs"
+    ],
+    "dynamicImports": [
+      "virtual:astro:page:src/pages/404@_@astro",
+      "virtual:astro:page:src/pages/about@_@astro",
+      "virtual:astro:page:src/pages/compatibility/[method]/index@_@astro",
+      "virtual:astro:page:src/pages/compatibility/index@_@astro",
+      "virtual:astro:page:src/pages/contact@_@astro",
+      "virtual:astro:page:src/pages/guides/replace-water-pump@_@astro",
+      "virtual:astro:page:src/pages/homes/mobile-app@_@astro",
+      "virtual:astro:page:src/pages/homes/personal@_@astro",
+      "virtual:astro:page:src/pages/homes/saas@_@astro",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "virtual:astro:page:src/pages/how-to-identify-part-number@_@astro",
+      "virtual:astro:page:src/pages/inquiry/index@_@astro",
+      "virtual:astro:page:src/pages/landing/click-through@_@astro",
+      "virtual:astro:page:src/pages/landing/lead-generation@_@astro",
+      "virtual:astro:page:src/pages/landing/pre-launch@_@astro",
+      "virtual:astro:page:src/pages/landing/product@_@astro",
+      "virtual:astro:page:src/pages/landing/sales@_@astro",
+      "virtual:astro:page:src/pages/landing/subscription@_@astro",
+      "virtual:astro:page:src/pages/pricing@_@astro",
+      "virtual:astro:page:src/pages/privacy@_@md",
+      "virtual:astro:page:src/pages/products/[slug]/index@_@astro",
+      "virtual:astro:page:src/pages/rss.xml@_@ts",
+      "virtual:astro:page:src/pages/services@_@astro",
+      "virtual:astro:page:src/pages/systems/[system]/[area]/index@_@astro",
+      "virtual:astro:page:src/pages/systems/[system]/index@_@astro",
+      "virtual:astro:page:src/pages/terms@_@md",
+      "virtual:astro:page:src/pages/what-to-include-in-rfq@_@astro",
+      "virtual:astro:page:src/pages/[system]/[area]/[type]/[product]/index@_@astro",
+      "virtual:astro:page:src/pages/[system]/[area]/[product]/index@_@astro",
+      "virtual:astro:page:src/pages/[system]/[area]/[type]/index@_@astro",
+      "virtual:astro:page:src/pages/[system]/[area]/index@_@astro",
+      "virtual:astro:page:src/pages/[system]/index@_@astro",
+      "virtual:astro:page:src/pages/[...blog]/[category]/[...page]@_@astro",
+      "virtual:astro:page:src/pages/[...blog]/[tag]/[...page]@_@astro",
+      "virtual:astro:page:src/pages/[...blog]/[...page]@_@astro",
+      "virtual:astro:page:src/pages/index@_@astro",
+      "virtual:astro:page:src/pages/[...blog]/index@_@astro",
+      "virtual:astro:actions/noop-entrypoint",
+      "noop-middleware",
+      "virtual:astro:session-driver",
+      "virtual:astro:server-island-manifest"
+    ]
+  },
+  "noop-middleware": {
+    "file": "chunks/_noop-middleware_CQ50ikAJ.mjs",
+    "name": "_noop-middleware",
+    "src": "noop-middleware",
+    "isDynamicEntry": true
+  },
+  "src/assets/favicons/favicon.ico": {
+    "file": "_astro/favicon.CGiRCjPI.ico",
+    "src": "src/assets/favicons/favicon.ico"
+  },
+  "src/assets/images/app-store.png": {
+    "file": "chunks/app-store_BsGeECyA.mjs",
+    "name": "app-store",
+    "src": "src/assets/images/app-store.png",
+    "isDynamicEntry": true
+  },
+  "src/assets/images/default.png": {
+    "file": "chunks/default_Bcu7G_8L.mjs",
+    "name": "default",
+    "src": "src/assets/images/default.png",
+    "isDynamicEntry": true
+  },
+  "src/assets/images/google-play.png": {
+    "file": "chunks/google-play_BXS9UEeZ.mjs",
+    "name": "google-play",
+    "src": "src/assets/images/google-play.png",
+    "isDynamicEntry": true
+  },
+  "src/assets/images/hero-image.png": {
+    "file": "chunks/hero-image_Cga1T7LV.mjs",
+    "name": "hero-image",
+    "src": "src/assets/images/hero-image.png",
+    "isDynamicEntry": true
+  },
+  "virtual:astro:actions/noop-entrypoint": {
+    "file": "chunks/noop-entrypoint_Z3zFhrGC.mjs",
+    "name": "noop-entrypoint",
+    "src": "virtual:astro:actions/noop-entrypoint",
+    "isDynamicEntry": true
+  },
+  "virtual:astro:get-image": {
+    "file": "chunks/_virtual_astro_get-image_BuJFnNoZ.mjs",
+    "name": "_virtual_astro_get-image",
+    "src": "virtual:astro:get-image",
+    "isDynamicEntry": true,
+    "imports": [
+      "_assets_COd5dEt-.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/404@_@astro": {
+    "file": "chunks/404_CV52R05W.mjs",
+    "name": "404@_@astro",
+    "src": "virtual:astro:page:src/pages/404@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[...blog]/[...page]@_@astro": {
+    "file": "chunks/_.._DXP_KHZ_.mjs",
+    "name": "_..",
+    "src": "virtual:astro:page:src/pages/[...blog]/[...page]@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Pagination_gGjly32X.mjs",
+      "_blog_bzv07QmT.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[...blog]/[category]/[...page]@_@astro": {
+    "file": "chunks/_.._DwIcMZ13.mjs",
+    "name": "_..",
+    "src": "virtual:astro:page:src/pages/[...blog]/[category]/[...page]@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Pagination_gGjly32X.mjs",
+      "_blog_bzv07QmT.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[...blog]/[tag]/[...page]@_@astro": {
+    "file": "chunks/_.._BnKHOzWI.mjs",
+    "name": "_..",
+    "src": "virtual:astro:page:src/pages/[...blog]/[tag]/[...page]@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Pagination_gGjly32X.mjs",
+      "_blog_bzv07QmT.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[...blog]/index@_@astro": {
+    "file": "chunks/index_DQSBn-P9.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[...blog]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_Tags_CQRZ0pEF.mjs",
+      "_blog_bzv07QmT.mjs",
+      "_Grid_X_f9zVqL.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[system]/[area]/[product]/index@_@astro": {
+    "file": "chunks/index_pa38MSKV.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[system]/[area]/[product]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[system]/[area]/[type]/[product]/index@_@astro": {
+    "file": "chunks/index_DBTVqfFG.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[system]/[area]/[type]/[product]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[system]/[area]/[type]/index@_@astro": {
+    "file": "chunks/index__524qb-J.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[system]/[area]/[type]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "_ProductCard_w5cfumfn.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[system]/[area]/index@_@astro": {
+    "file": "chunks/index_C1Y4DQuA.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[system]/[area]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/[system]/index@_@astro": {
+    "file": "chunks/index_BF6wfB9F.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/[system]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/about@_@astro": {
+    "file": "chunks/about_CzsZI581.mjs",
+    "name": "about@_@astro",
+    "src": "virtual:astro:page:src/pages/about@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Features2_BMx1aquy.mjs",
+      "_Features3_RfAPQg_W.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_Stats_BI6mHeK6.mjs",
+      "_Steps2_Ck7v91Yt.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/compatibility/[method]/index@_@astro": {
+    "file": "chunks/index_C8hLThxc.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/compatibility/[method]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/compatibility/index@_@astro": {
+    "file": "chunks/index_rjVtuiyM.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/compatibility/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/contact@_@astro": {
+    "file": "chunks/contact_BoWCWdzZ.mjs",
+    "name": "contact@_@astro",
+    "src": "virtual:astro:page:src/pages/contact@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs",
+      "_Features2_BMx1aquy.mjs",
+      "_HeroText_BQ5zLXCQ.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/guides/replace-water-pump@_@astro": {
+    "file": "chunks/replace-water-pump_DS8enwBl.mjs",
+    "name": "replace-water-pump@_@astro",
+    "src": "virtual:astro:page:src/pages/guides/replace-water-pump@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/homes/mobile-app@_@astro": {
+    "file": "chunks/mobile-app_BBy5bVkO.mjs",
+    "name": "mobile-app@_@astro",
+    "src": "virtual:astro:page:src/pages/homes/mobile-app@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_Features3_RfAPQg_W.mjs",
+      "_Stats_BI6mHeK6.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "_Content_D0WaJu5q.mjs",
+      "_Testimonials_DOCYkoPK.mjs",
+      "_FAQs_B03MjyKw.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/homes/personal@_@astro": {
+    "file": "chunks/personal_Bra_GGyi.mjs",
+    "name": "personal@_@astro",
+    "src": "virtual:astro:page:src/pages/homes/personal@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Features3_RfAPQg_W.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "_Content_D0WaJu5q.mjs",
+      "_Testimonials_DOCYkoPK.mjs",
+      "_Steps_BcUxve8c.mjs",
+      "_BlogLatestPosts_DN9UAGKo.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/homes/saas@_@astro": {
+    "file": "chunks/saas_BNMY-pSl.mjs",
+    "name": "saas@_@astro",
+    "src": "virtual:astro:page:src/pages/homes/saas@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Steps2_Ck7v91Yt.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_Content_D0WaJu5q.mjs",
+      "_FAQs_B03MjyKw.mjs",
+      "_BlogLatestPosts_DN9UAGKo.mjs",
+      "_Features_D5QlAq_V.mjs",
+      "_Pricing_CriPZjqa.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/homes/startup@_@astro": {
+    "file": "chunks/startup_Be6THNbx.mjs",
+    "name": "startup@_@astro",
+    "src": "virtual:astro:page:src/pages/homes/startup@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Image_BRpDfalA.mjs",
+      "_WidgetWrapper_iFZDrLVM.mjs",
+      "_Headline_BwhVh9y6.mjs",
+      "_Features2_BMx1aquy.mjs",
+      "_Features3_RfAPQg_W.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_Stats_BI6mHeK6.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "_FAQs_B03MjyKw.mjs",
+      "_Features_D5QlAq_V.mjs"
+    ],
+    "css": [
+      "_astro/startup.fGumCHEh.css"
+    ],
+    "assets": [
+      "_astro/GlobalStyles.qGGGZqmz.css"
+    ]
+  },
+  "virtual:astro:page:src/pages/how-to-identify-part-number@_@astro": {
+    "file": "chunks/how-to-identify-part-number_DM1hiVLL.mjs",
+    "name": "how-to-identify-part-number@_@astro",
+    "src": "virtual:astro:page:src/pages/how-to-identify-part-number@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/index@_@astro": {
+    "file": "chunks/index_CcZYTtjI.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/inquiry/index@_@astro": {
+    "file": "chunks/index_B_63uY4L.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/inquiry/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/click-through@_@astro": {
+    "file": "chunks/click-through_C6Bdpb0B.mjs",
+    "name": "click-through@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/click-through@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/lead-generation@_@astro": {
+    "file": "chunks/lead-generation_BjR_67XT.mjs",
+    "name": "lead-generation@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/lead-generation@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/pre-launch@_@astro": {
+    "file": "chunks/pre-launch_CzclirjH.mjs",
+    "name": "pre-launch@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/pre-launch@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/product@_@astro": {
+    "file": "chunks/product_DLtCasRm.mjs",
+    "name": "product@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/product@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/sales@_@astro": {
+    "file": "chunks/sales_DqJqcl-Z.mjs",
+    "name": "sales@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/sales@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/landing/subscription@_@astro": {
+    "file": "chunks/subscription_C0IB967x.mjs",
+    "name": "subscription@_@astro",
+    "src": "virtual:astro:page:src/pages/landing/subscription@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Hero2_Coe1wGTV.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_LandingLayout_a0g3yAXz.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/pricing@_@astro": {
+    "file": "chunks/pricing_BFIaVSS5.mjs",
+    "name": "pricing@_@astro",
+    "src": "virtual:astro:page:src/pages/pricing@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Features3_RfAPQg_W.mjs",
+      "_HeroText_BQ5zLXCQ.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "_FAQs_B03MjyKw.mjs",
+      "_Steps_BcUxve8c.mjs",
+      "_Pricing_CriPZjqa.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/privacy@_@md": {
+    "file": "chunks/privacy_DNavOVsd.mjs",
+    "name": "privacy@_@md",
+    "src": "virtual:astro:page:src/pages/privacy@_@md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_MarkdownLayout_xbGwfMba.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/products/[slug]/index@_@astro": {
+    "file": "chunks/index_cpww_QKh.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/products/[slug]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/rss.xml@_@ts": {
+    "file": "chunks/rss_DC-gcUCa.mjs",
+    "name": "rss",
+    "src": "virtual:astro:page:src/pages/rss.xml@_@ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_runtime_CQAp8_Zo.mjs",
+      "_blog_bzv07QmT.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/services@_@astro": {
+    "file": "chunks/services_CMjX1MAN.mjs",
+    "name": "services@_@astro",
+    "src": "virtual:astro:page:src/pages/services@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_PageLayout_9VhlMFWZ.mjs",
+      "_Features2_BMx1aquy.mjs",
+      "_Hero_BA-e9mQk.mjs",
+      "_CallToAction_BEw8wVYY.mjs",
+      "_Content_D0WaJu5q.mjs",
+      "_Testimonials_DOCYkoPK.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/systems/[system]/[area]/index@_@astro": {
+    "file": "chunks/index_DWDDExwa.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/systems/[system]/[area]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "_ProductCard_w5cfumfn.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/systems/[system]/index@_@astro": {
+    "file": "chunks/index_CXGYSGup.mjs",
+    "name": "index@_@astro",
+    "src": "virtual:astro:page:src/pages/systems/[system]/index@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "_products_LdiYll85.mjs",
+      "_systems_blIFLfkM.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:page:src/pages/terms@_@md": {
+    "file": "chunks/terms_yID7zQdC.mjs",
+    "name": "terms@_@md",
+    "src": "virtual:astro:page:src/pages/terms@_@md",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro",
+      "_MarkdownLayout_xbGwfMba.mjs"
+    ]
+  },
+  "virtual:astro:page:src/pages/what-to-include-in-rfq@_@astro": {
+    "file": "chunks/what-to-include-in-rfq_BkXSmlEO.mjs",
+    "name": "what-to-include-in-rfq@_@astro",
+    "src": "virtual:astro:page:src/pages/what-to-include-in-rfq@_@astro",
+    "isDynamicEntry": true,
+    "imports": [
+      "_server_DvF4bWil.mjs",
+      "_runtime_CQAp8_Zo.mjs",
+      "_Layout_DEwJA1GM.mjs",
+      "_Footer_BCFP2GBT.mjs",
+      "_InquiryLayout_CvBfye5u.mjs",
+      "virtual:astro:page:src/pages/homes/startup@_@astro"
+    ]
+  },
+  "virtual:astro:server-island-manifest": {
+    "file": "chunks/_virtual_astro_server-island-manifest_C1Q2srgE.mjs",
+    "name": "_virtual_astro_server-island-manifest",
+    "src": "virtual:astro:server-island-manifest",
+    "isDynamicEntry": true
+  },
+  "virtual:astro:session-driver": {
+    "file": "chunks/_virtual_astro_session-driver_C-PI1Pas.mjs",
+    "name": "_virtual_astro_session-driver",
+    "src": "virtual:astro:session-driver",
+    "isDynamicEntry": true
+  }
+}

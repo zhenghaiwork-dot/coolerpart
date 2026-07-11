@@ -1,0 +1,106 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { systemsData } from '~/data/systems';
+import { getProductsByType, getProductTypeMeta } from '~/data/products';
+import ProductCard from '~/components/inquiry/ProductCard.astro';
+import type { System, SystemArea } from '~/data/inquiry-types';
+
+export async function getStaticPaths() {
+  const paths: { params: { system: string; area: string; type: string }; props: { system: System; area: SystemArea; typeSlug: string } }[] = [];
+  for (const system of systemsData) {
+    for (const area of system.areas) {
+      const types = getProductTypeMeta(system.slug, area.slug);
+      for (const type of types) {
+        paths.push({ params: { system: system.slug, area: area.slug, type: type.slug }, props: { system, area, typeSlug: type.slug } });
+      }
+    }
+  }
+  return paths;
+}
+
+const { system, area, typeSlug } = Astro.props;
+const products = getProductsByType(system.slug, area.slug, typeSlug);
+const typeMeta = getProductTypeMeta(system.slug, area.slug).find((t) => t.slug === typeSlug);
+const typeName = typeMeta?.name || typeSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const allAreaTypes = getProductTypeMeta(system.slug, area.slug);
+const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4);
+---
+
+<Layout metadata={{ title: `${typeName} — ${area.name} — ${system.name}`, ignoreTitleTemplate: true }}>
+  <!-- Breadcrumb -->
+  <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-2.5 text-sm text-muted">
+      <a href="/" class="hover:text-teal-600">Home</a>
+      <span class="mx-1.5 text-gray-300">/</span>
+      <a href={`/${system.slug}`} class="hover:text-teal-600">{system.name}</a>
+      <span class="mx-1.5 text-gray-300">/</span>
+      <a href={`/${system.slug}/${area.slug}`} class="hover:text-teal-600">{area.name}</a>
+      <span class="mx-1.5 text-gray-300">/</span>
+      <span class="text-gray-700 dark:text-gray-300">{typeName}</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+      <p class="text-xs font-medium uppercase tracking-wide text-teal-600 dark:text-teal-400 mb-1">{system.name} › {area.name}</p>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{typeName}</h1>
+      <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{typeMeta?.description || `Browse compatible ${typeName.toLowerCase()} for evaporative cooler systems.`}</p>
+      <p class="mt-3 text-xs text-muted">{products.length} product{products.length !== 1 ? 's' : ''}</p>
+    </div>
+  </section>
+
+  <!-- SEO text -->
+  <section class="border-b border-gray-100 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/30">
+    <div class="mx-auto max-w-7xl px-6 py-4">
+      <p class="text-sm text-muted leading-relaxed max-w-3xl">
+        Compatible <strong class="text-gray-800 dark:text-gray-200">{typeName.toLowerCase()}</strong> for evaporative coolers. Match by interface type, key dimensions, and electrical parameters. OEM-equivalent quality. <a href="/inquiry" class="text-teal-600 hover:underline">Submit an inquiry for pricing &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{typeName} Products</h2>
+      <p class="text-sm text-muted mb-6">Click any product for detailed specifications and to request a quote.</p>
+      {products.length > 0 ? (
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (<ProductCard product={product} />))}
+        </div>
+      ) : (
+        <p class="text-sm text-muted py-8 text-center">No products listed yet. <a href="/inquiry" class="text-teal-600 hover:underline">Submit an inquiry</a>.</p>
+      )}
+    </div>
+  </section>
+
+  {/* Related Types */}
+  {relatedTypes.length > 0 && (
+    <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
+      <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Related Product Types in {area.name}</h2>
+        <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {relatedTypes.map((rt) => (
+            <a href={`/${system.slug}/${area.slug}/${rt.slug}`} class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:border-teal-300 hover:text-teal-600 transition dark:border-slate-700 dark:bg-slate-800/50 dark:text-gray-300">
+              <Icon name={area.icon} class="h-4 w-4 text-teal-500 flex-shrink-0" />
+              <span class="truncate">{rt.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-12 text-center lg:py-16">
+      <h2 class="text-xl font-semibold">Ready to order {typeName.toLowerCase()}?</h2>
+      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">Get pricing, MOQ, and lead time for any product in this category. Bulk discounts and OEM options available.</p>
+      <div class="mt-6 flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">Request a Quote</a>
+        <a href={`/${system.slug}/${area.slug}`} class="rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/5">Back to {area.name}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

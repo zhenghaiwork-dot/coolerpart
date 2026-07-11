@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+# Sitemap (update domain after deployment)
+Sitemap: https://coolerparts.example.com/sitemap-index.xml

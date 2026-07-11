@@ -1,0 +1,621 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout
+  metadata={{
+    title: 'Request a Quote — Evaporative Cooler Parts',
+    ignoreTitleTemplate: true,
+  }}
+>
+  <!-- Page Header — simple dark, no gradient -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-14 lg:py-16">
+      <div data-reveal class="max-w-3xl">
+        <p class="text-sm font-medium text-teal-400">Submit Your Inquiry</p>
+        <h1
+          class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;"
+        >
+          Request a Quote
+        </h1>
+        <p class="mt-4 text-lg text-gray-400 max-w-2xl leading-relaxed">
+          Fill out the form below and our team will respond within 24 hours with pricing, availability, and lead time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + Sidebar Basket -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
+        <!-- LEFT: Form -->
+        <div class="order-2 lg:order-1">
+          <form
+            id="inquiry-form"
+            method="POST"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            class="space-y-8"
+          >
+            <!--
+              ═══════════════════════════════════════════════════
+              FORMSPREE CONFIG — Replace YOUR_FORM_ID with your
+              real form ID from https://formspree.io/forms
+              Also update _next URL to your deployed domain
+              ═══════════════════════════════════════════════════
+            -->
+            <!-- Formspree: redirect after successful submission -->
+            <input type="hidden" name="_next" value="https://coolerparts.example.com/inquiry?success=1" />
+            <!-- Formspree: email subject line -->
+            <input type="hidden" name="_subject" value="New RFQ Inquiry — EVAPFit" />
+            <!-- Section: Product Requirements -->
+            <fieldset>
+              <legend class="mb-5 text-lg font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                Product Requirements
+              </legend>
+
+              <div class="space-y-5">
+                <!-- Product Name (auto-filled) -->
+                <div>
+                  <label for="product_name" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Product(s) Interested In
+                  </label>
+                  <input
+                    id="product_name"
+                    name="product_name"
+                    type="text"
+                    placeholder="Products from your inquiry list will appear here..."
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <!-- Category -->
+                <div>
+                  <label for="category" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Category
+                  </label>
+                  <select
+                    id="category"
+                    name="category"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+                  >
+                    <option value="">Select a category...</option>
+                    <option value="water-system">Water System</option>
+                    <option value="evaporation-system">Evaporation System</option>
+                    <option value="air-system">Air System</option>
+                    <option value="electrical-controls">Electrical & Controls</option>
+                    <option value="structure-mounting">Structure & Mounting</option>
+                    <option value="maintenance-consumables">Maintenance & Consumables</option>
+                    <option value="other">Other / Not sure</option>
+                  </select>
+                </div>
+
+                <!-- Quantity -->
+                <div>
+                  <label for="quantity" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Estimated Quantity
+                  </label>
+                  <input
+                    id="quantity"
+                    name="quantity"
+                    type="text"
+                    placeholder="e.g. 50-100 pcs per SKU"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <!-- Target Price -->
+                <div>
+                  <label for="target_price" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Target Price (Optional)
+                  </label>
+                  <input
+                    id="target_price"
+                    name="target_price"
+                    type="text"
+                    placeholder="e.g. $10-$20 / pc"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <!-- Detailed Specifications -->
+                <div>
+                  <label for="specifications" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Detailed Specifications
+                  </label>
+                  <textarea
+                    id="specifications"
+                    name="specifications"
+                    rows="5"
+                    placeholder="Include any specific requirements: voltage, dimensions, interface type, materials, etc."
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  ></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Section: Contact Information -->
+            <fieldset class="border-t border-gray-100 pt-8 dark:border-slate-800">
+              <legend class="mb-5 text-lg font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                Contact Information
+              </legend>
+
+              <div class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="name" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Full Name <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                  <div>
+                    <label for="company" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Company Name
+                    </label>
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      placeholder="Your company"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Email <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="your@email.com"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                  <div>
+                    <label for="phone" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Phone / WhatsApp
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+86 123 4567 8900"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="destination" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Destination / Shipping To
+                  </label>
+                  <input
+                    id="destination"
+                    name="destination"
+                    type="text"
+                    placeholder="Country or region for delivery"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <div>
+                  <label for="notes" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Additional Notes
+                  </label>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    rows="3"
+                    placeholder="Any other requirements, delivery timeline, incoterms preference, etc."
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  ></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Hidden field: inquiry_basket -->
+            <input type="hidden" name="inquiry_basket" id="inquiry_basket_hidden" value="" />
+
+            <!-- Anti-spam: honeypot (hidden from humans, bots fill it) -->
+            <div style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <!-- Anti-spam: timestamp token -->
+            <input type="hidden" name="form_token" id="form_token" value="" />
+            <!-- Anti-spam: JS challenge answer -->
+            <input type="hidden" name="challenge" id="challenge_answer" value="" />
+
+            <!-- Submit — simple, consistent with site -->
+            <div class="border-t border-gray-100 pt-6 dark:border-slate-800">
+              <button
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
+              >
+                <Icon name="tabler:send" class="h-4 w-4" />
+                Submit Inquiry
+              </button>
+              <p class="mt-3 text-xs text-muted">
+                <Icon name="tabler:clock" class="inline h-3.5 w-3.5 mr-1" />
+                We'll respond within 24 hours
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Sidebar Basket -->
+        <aside class="lg:sticky lg:top-24 lg:self-start order-1 lg:order-2">
+          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800/50 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+            <!-- Header -->
+            <div class="border-b border-gray-200 px-5 py-4 dark:border-slate-700">
+              <div class="flex items-center justify-between">
+                <h2 class="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                  <Icon name="tabler:clipboard-list" class="h-4 w-4 text-teal-600 dark:text-teal-400" />
+                  Inquiry List
+                </h2>
+                <span id="sidebar-basket-count" class="inline-flex items-center justify-center rounded-md bg-teal-600 px-2 py-0.5 text-xs font-bold text-white min-w-[24px] dark:bg-teal-500">0</span>
+              </div>
+            </div>
+
+            <!-- Items -->
+            <div id="sidebar-basket-items" class="divide-y divide-gray-200 dark:divide-slate-700 max-h-64 lg:max-h-[60vh] overflow-y-auto">
+              <!-- Rendered by JS -->
+              <div class="flex flex-col items-center justify-center py-6 text-center lg:py-8">
+                <Icon name="tabler:clipboard-off" class="mb-2 h-8 w-8 text-gray-300 dark:text-slate-600 lg:h-10 lg:w-10 lg:mb-3" />
+                <p class="text-sm text-muted">Your inquiry list is empty</p>
+                <p class="mt-1 text-xs text-muted">Browse products and add them to your list</p>
+                <a
+                  href="/water-system"
+                  class="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-teal-700"
+                >
+                  <Icon name="tabler:search" class="h-3.5 w-3.5" />
+                  Browse Products
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div id="sidebar-basket-footer" class="hidden border-t border-gray-200 px-5 py-4 dark:border-slate-700">
+              <button
+                id="clear-basket-btn"
+                class="w-full rounded-lg border border-red-200 px-4 py-2 text-xs font-medium text-red-600 transition-colors hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/20"
+              >
+                Clear All Items
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div id="inquiry-toast" class="fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2">
+    <div class="flex items-center gap-2.5 rounded-lg bg-gray-900 px-5 py-3 text-sm text-white shadow-xl dark:bg-slate-700">
+      <Icon name="tabler:circle-check" class="h-4 w-4 text-teal-400" />
+      <span id="inquiry-toast-msg"></span>
+    </div>
+  </div>
+
+  <!-- Inquiry form page script -->
+  <script>
+    import { getBasket, removeFromBasket, clearBasket } from "~/scripts/inquiry-basket";
+
+    interface BasketItem {
+      slug: string;
+      name: string;
+      category: string;
+      moq: string;
+      priceRange: string;
+      image: string;
+      addedAt: number;
+    }
+
+    function renderBasket() {
+      const items = getBasket() as BasketItem[];
+      const container = document.getElementById("sidebar-basket-items") as HTMLElement | null;
+      const countBadge = document.getElementById("sidebar-basket-count");
+      const footer = document.getElementById("sidebar-basket-footer");
+      const hiddenInput = document.getElementById("inquiry_basket_hidden") as HTMLInputElement | null;
+      const productNameInput = document.getElementById("product_name") as HTMLInputElement | null;
+      const categorySelect = document.getElementById("category") as HTMLSelectElement | null;
+      const specsTextarea = document.getElementById("specifications") as HTMLTextAreaElement | null;
+
+      // Update count badge
+      if (countBadge) countBadge.textContent = String(items.length);
+
+      if (!container) return;
+
+      if (items.length === 0) {
+        // Empty state
+        container.innerHTML = `
+          <div class="flex flex-col items-center justify-center py-8 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-10 w-10 text-gray-300 dark:text-slate-600" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" fill="none"/><rect x="9" y="3" width="6" height="4" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+            <p class="text-sm text-muted">Your inquiry list is empty</p>
+            <p class="mt-1 text-xs text-muted">Browse products and add them to your list</p>
+            <a href="/water-system" class="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-xs font-medium text-white hover:bg-teal-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7" stroke="currentColor" fill="none"/><path d="M21 21l-6-6" stroke="currentColor" fill="none"/></svg>
+              Browse Products
+            </a>
+          </div>
+        `;
+        if (footer) footer.classList.add("hidden");
+        if (hiddenInput) hiddenInput.value = "";
+        return;
+      }
+
+      // Render items
+      container.innerHTML = items.map((item) => `
+        <div class="flex items-start gap-3 px-5 py-3">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" fill="none"/><rect x="9" y="3" width="6" height="4" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 dark:text-white truncate">${item.name}</p>
+            <p class="text-xs text-muted truncate">${item.category}</p>
+            <div class="mt-1 flex items-center gap-2 text-xs text-muted">
+              <span>${item.moq}</span>
+              ${item.priceRange ? `<span>·</span><span>${item.priceRange}</span>` : ''}
+            </div>
+          </div>
+          <button
+            class="remove-item-btn flex-shrink-0 rounded-lg p-1.5 text-gray-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+            data-slug="${item.slug}"
+            data-name="${item.name}"
+            title="Remove"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none"/>
+            </svg>
+          </button>
+        </div>
+      `).join("");
+
+      // Show footer
+      if (footer) footer.classList.remove("hidden");
+
+      // Bind remove buttons
+      container.querySelectorAll<HTMLElement>(".remove-item-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const slug = btn.dataset.slug;
+          const name = btn.dataset.name;
+          removeFromBasket(slug);
+          showToast(`${name} removed from inquiry list`);
+        });
+      });
+
+      // Bind clear button
+      const clearBtn = document.getElementById("clear-basket-btn");
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          if (items.length > 0 && confirm("Remove all items from your inquiry list?")) {
+            clearBasket();
+            showToast("All items removed");
+          }
+        };
+      }
+
+      // Auto-fill form fields
+      if (productNameInput && !productNameInput.dataset.userEdited) {
+        if (items.length === 1) {
+          productNameInput.value = items[0].name;
+        } else {
+          productNameInput.value = items.map((i) => i.name).join(", ");
+        }
+      }
+
+      if (categorySelect && items.length === 1) {
+        const systemMap: Record<string, string> = {
+          "Water Pump & Power": "water-system",
+          "Filtration & Anti-clogging": "water-system",
+          "Valves & Water Control": "water-system",
+          "Water Distribution & Level Protection": "water-system",
+          "Piping & Connections": "water-system",
+          "Tank, Sump & Drainage": "water-system",
+          "Cooling Media": "evaporation-system",
+          "Water Feed & Distribution": "evaporation-system",
+          "Anti-clogging & Debris Management": "evaporation-system",
+          "Overflow, Splash & Drain Guidance": "evaporation-system",
+          "Fans & Blower Components": "air-system",
+          "Centrifugal Fan System": "air-system",
+          "Air Outlet & Grilles": "air-system",
+          "Motors & Drive": "electrical-controls",
+          "Control Board & Protection": "electrical-controls",
+          "Sensors & Water Level Detection": "electrical-controls",
+          "Wiring & Connectors": "electrical-controls",
+        };
+        const mapped = systemMap[items[0].category];
+        if (mapped) categorySelect.value = mapped;
+      }
+
+      if (specsTextarea && !specsTextarea.value) {
+        const productLines = items.map(
+          (item) => `• ${item.name} — MOQ: ${item.moq}${item.priceRange ? `, Price: ${item.priceRange}` : ""}`
+        ).join("\n");
+        specsTextarea.value = `Products from inquiry list:\n${productLines}\n\nAdditional requirements:\n`;
+      }
+
+      // Update hidden input
+      if (hiddenInput) {
+        hiddenInput.value = items.map((item) =>
+          `${item.name} (${item.category}) — MOQ: ${item.moq}${item.priceRange ? `, Price: ${item.priceRange}` : ""}`
+        ).join("\n");
+      }
+    }
+
+    // ── Toast ──
+    let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function showToast(message: string) {
+      const toast = document.getElementById("inquiry-toast");
+      const msgEl = document.getElementById("inquiry-toast-msg");
+      if (!toast || !msgEl) return;
+      if (toastTimer) clearTimeout(toastTimer);
+      msgEl.textContent = message;
+      toast.classList.remove("hidden");
+      toastTimer = setTimeout(() => toast.classList.add("hidden"), 3000);
+    }
+
+    // ── Init ──
+    document.addEventListener("astro:page-load", renderBasket);
+    window.addEventListener("inquiry-basket:update", renderBasket);
+    window.addEventListener("pageshow", (e) => { if (e.persisted) renderBasket(); });
+
+    // Track user edits to avoid overwriting
+    document.addEventListener("astro:page-load", () => {
+      const productNameInput = document.getElementById("product_name") as HTMLInputElement | null;
+      if (productNameInput) {
+        productNameInput.addEventListener("input", () => {
+          productNameInput.dataset.userEdited = "true";
+        });
+      }
+    });
+
+    // Pre-fill form from URL params (e.g. from homepage RFQ form)
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const spec = params.get("spec");
+      const name = params.get("name");
+      const email = params.get("email");
+
+      if (spec) {
+        const specsEl = document.getElementById("specifications") as HTMLTextAreaElement | null;
+        if (specsEl && !specsEl.value) {
+          specsEl.value = spec;
+          specsEl.dataset.userEdited = "true";
+        }
+      }
+      if (name) {
+        const nameEl = document.getElementById("name") as HTMLInputElement | null;
+        if (nameEl && !nameEl.value) nameEl.value = name;
+      }
+      if (email) {
+        const emailEl = document.getElementById("email") as HTMLInputElement | null;
+        if (emailEl && !emailEl.value) emailEl.value = email;
+      }
+    } catch {}
+
+    renderBasket();
+  </script>
+
+  <!-- Anti-Spam Protection -->
+  <script>
+    (function () {
+      const form = document.getElementById("inquiry-form") as HTMLFormElement | null;
+      if (!form) return;
+
+      // 0. Set _next to current domain (works on any deployment)
+      const nextInput = form.querySelector('input[name="_next"]') as HTMLInputElement | null;
+      if (nextInput) nextInput.value = window.location.origin + "/inquiry?success=1";
+
+      // 1. Token: form open timestamp for speed check
+      const token = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      const tokenInput = document.getElementById("form_token") as HTMLInputElement | null;
+      if (tokenInput) tokenInput.value = token;
+
+      // 2. Math challenge: simple addition
+      const a = Math.floor(Math.random() * 8) + 2;
+      const b = Math.floor(Math.random() * 8) + 2;
+      const answer = a + b;
+      const challengeInput = document.getElementById("challenge_answer") as HTMLInputElement | null;
+      if (challengeInput) challengeInput.value = String(answer);
+
+      // Show challenge label near submit
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        const label = document.createElement("p");
+        label.className = "mt-2 text-xs text-muted";
+        label.innerHTML = 'Verification: <strong>' + a + ' + ' + b + ' = ?</strong> (auto-verified)';
+        submitBtn.parentNode?.insertBefore(label, submitBtn.nextSibling);
+      }
+
+      form.addEventListener("submit", function (e) {
+        // 3. Honeypot: reject if website field is filled
+        const honeypot = document.getElementById("website") as HTMLInputElement | null;
+        if (honeypot?.value && honeypot.value.trim() !== "") {
+          e.preventDefault();
+          // Silently succeed — don't let bot know it was blocked
+          window.location.href = "/inquiry?success=1";
+          return;
+        }
+
+        // 4. Speed check: reject if submitted within 3 seconds of page load
+        const loadTime = parseInt(token.slice(0, 8), 36);
+        const elapsed = Date.now() - loadTime;
+        if (elapsed < 3000) {
+          e.preventDefault();
+          alert("Please review your inquiry before submitting. If you are human, wait a moment and try again.");
+          return;
+        }
+
+        // 5. Link spam: reject if 4+ URLs in message body
+        const textareas = form.querySelectorAll("textarea");
+        let urlCount = 0;
+        textareas.forEach((ta: HTMLTextAreaElement) => {
+          const urls = ta.value.match(/https?:\/\//gi);
+          if (urls) urlCount += urls.length;
+        });
+        if (urlCount >= 4) {
+          e.preventDefault();
+          alert("Please remove excessive links from your message before submitting.");
+          return;
+        }
+
+        // 6. Rate limit check (client-side, localStorage)
+        const now = Date.now();
+        const key = "inquiry_rl";
+        let rl: { hour: number[]; day: number[] } = { hour: [], day: [] };
+        try {
+          const raw = localStorage.getItem(key);
+          if (raw) rl = JSON.parse(raw);
+        } catch {}
+        // Clean old entries
+        const hourAgo = now - 3600000;
+        const dayAgo = now - 86400000;
+        rl.hour = rl.hour.filter((t) => t > hourAgo);
+        rl.day = rl.day.filter((t) => t > dayAgo);
+        if (rl.hour.length >= 5 || rl.day.length >= 20) {
+          e.preventDefault();
+          alert("You have reached the submission limit. Please try again later or contact us directly via email.");
+          return;
+        }
+        rl.hour.push(now);
+        rl.day.push(now);
+        try { localStorage.setItem(key, JSON.stringify(rl)); } catch {}
+
+        // 7. Verify challenge
+        if (challengeInput?.value !== String(answer)) {
+          e.preventDefault();
+          alert("Verification failed. Please refresh and try again.");
+          return;
+        }
+      });
+
+      // Show success message if redirected back
+      if (window.location.search.includes("success=1")) {
+        const section = document.querySelector("section.bg-white");
+        if (section) {
+          section.innerHTML = '<div class="mx-auto max-w-2xl py-20 text-center"><div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M5 12l5 5l10-10"/></svg></div><h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Inquiry Submitted</h2><p class="text-muted mb-6">Thank you. We will respond within 24 hours.</p><a href="/" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500">Back to Home</a></div>';
+        }
+      }
+    })();
+  </script>
+</Layout>

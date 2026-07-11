@@ -1,0 +1,151 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout metadata={{ title: 'OEM & Custom Manufacturing — CoolerParts', ignoreTitleTemplate: true }}>
+  <!-- Hero -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
+      <p class="text-sm font-medium text-teal-400">Custom Manufacturing</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+        OEM & Custom Manufacturing
+      </h1>
+      <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
+        Your specifications, your brand, your packaging. We manufacture replacement parts to your exact requirements — with your name on them.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why OEM With Us -->
+  <section class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif;">Why Choose Our OEM Service</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="flex gap-3 rounded-xl border border-gray-200 p-5 dark:border-slate-700">
+          <Icon name="tabler:settings" class="h-5 w-5 text-teal-600 mt-0.5 flex-shrink-0"/>
+          <div><h3 class="text-sm font-semibold text-gray-900 dark:text-white">In-House Production</h3><p class="text-xs text-muted mt-1">Injection molding, metal stamping, CNC machining — all under one roof. No subcontracting delays.</p></div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-gray-200 p-5 dark:border-slate-700">
+          <Icon name="tabler:tag" class="h-5 w-5 text-teal-600 mt-0.5 flex-shrink-0"/>
+          <div><h3 class="text-sm font-semibold text-gray-900 dark:text-white">Flexible MOQ</h3><p class="text-xs text-muted mt-1">From 500 to 50,000 units. We scale production to match your volume — no forced overproduction.</p></div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-gray-200 p-5 dark:border-slate-700">
+          <Icon name="tabler:clock" class="h-5 w-5 text-teal-600 mt-0.5 flex-shrink-0"/>
+          <div><h3 class="text-sm font-semibold text-gray-900 dark:text-white">Dedicated Project Manager</h3><p class="text-xs text-muted mt-1">Single point of contact from sampling through production to shipment. No runaround.</p></div>
+        </div>
+        <div class="flex gap-3 rounded-xl border border-gray-200 p-5 dark:border-slate-700">
+          <Icon name="tabler:shield" class="h-5 w-5 text-teal-600 mt-0.5 flex-shrink-0"/>
+          <div><h3 class="text-sm font-semibold text-gray-900 dark:text-white">IP Protection</h3><p class="text-xs text-muted mt-1">Your designs, molds, and specifications are confidential. NDA available on request.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Can Customize -->
+  <section class="bg-gray-50 dark:bg-slate-800/30 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif;">What We Can Customize</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:tool" class="h-7 w-7 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Specifications</h3>
+          <ul class="mt-2 space-y-1 text-xs text-muted">
+            <li>&bull; Voltage & power ratings</li>
+            <li>&bull; RPM & performance curves</li>
+            <li>&bull; Dimensions & tolerances</li>
+            <li>&bull; Materials & coatings</li>
+            <li>&bull; Mounting configurations</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:tag" class="h-7 w-7 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Branding & Labels</h3>
+          <ul class="mt-2 space-y-1 text-xs text-muted">
+            <li>&bull; Your logo & model numbers</li>
+            <li>&bull; Laser engraving / pad print</li>
+            <li>&bull; Custom nameplates & stickers</li>
+            <li>&bull; Barcode & QR code labels</li>
+            <li>&bull; Multi-language markings</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900/50">
+          <Icon name="tabler:package" class="h-7 w-7 text-teal-500 mb-3"/>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Packaging</h3>
+          <ul class="mt-2 space-y-1 text-xs text-muted">
+            <li>&bull; Retail boxes with your design</li>
+            <li>&bull; Blister packs & clamshells</li>
+            <li>&bull; Bulk industrial packaging</li>
+            <li>&bull; Color-printed outer cartons</li>
+            <li>&bull; Eco-friendly options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEM Process -->
+  <section class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif;">How the OEM Process Works</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="relative">
+          <span class="text-2xl font-bold text-teal-600/20">01</span>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mt-1">Inquiry & Specs</h3>
+          <p class="text-xs text-muted mt-1">You provide specifications, drawings, or reference samples. We review and confirm feasibility.</p>
+        </div>
+        <div class="relative">
+          <span class="text-2xl font-bold text-teal-600/20">02</span>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mt-1">Sample Production</h3>
+          <p class="text-xs text-muted mt-1">We produce 5-10 pre-production samples for your approval. Revisions made as needed.</p>
+        </div>
+        <div class="relative">
+          <span class="text-2xl font-bold text-teal-600/20">03</span>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mt-1">Mass Production</h3>
+          <p class="text-xs text-muted mt-1">Full production with in-process QC. Regular progress updates with photos.</p>
+        </div>
+        <div class="relative">
+          <span class="text-2xl font-bold text-teal-600/20">04</span>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mt-1">QC & Shipment</h3>
+          <p class="text-xs text-muted mt-1">Final inspection report provided. Ship by sea, air, or express per your preference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOQ & Timeline -->
+  <section class="bg-gray-50 dark:bg-slate-800/30 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif;">Typical MOQ & Timelines</h2>
+      <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-slate-700">
+        <table class="w-full text-sm">
+          <thead><tr class="bg-gray-50 dark:bg-slate-800"><th class="px-6 py-3 text-left font-medium text-gray-900 dark:text-white">Product Type</th><th class="px-6 py-3 text-left font-medium text-gray-900 dark:text-white">Typical MOQ</th><th class="px-6 py-3 text-left font-medium text-gray-900 dark:text-white">Sample Time</th><th class="px-6 py-3 text-left font-medium text-gray-900 dark:text-white">Production Time</th></tr></thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-slate-700">
+            <tr class="bg-white dark:bg-slate-900/50"><td class="px-6 py-3 text-muted">Water Pumps</td><td class="px-6 py-3">500-1000 pcs</td><td class="px-6 py-3 text-muted">7-10 days</td><td class="px-6 py-3 text-muted">15-25 days</td></tr>
+            <tr class="bg-white dark:bg-slate-900/50"><td class="px-6 py-3 text-muted">Fan Motors</td><td class="px-6 py-3">300-500 pcs</td><td class="px-6 py-3 text-muted">10-15 days</td><td class="px-6 py-3 text-muted">20-30 days</td></tr>
+            <tr class="bg-white dark:bg-slate-900/50"><td class="px-6 py-3 text-muted">Cooling Pads</td><td class="px-6 py-3">1000-2000 pcs</td><td class="px-6 py-3 text-muted">5-7 days</td><td class="px-6 py-3 text-muted">10-20 days</td></tr>
+            <tr class="bg-white dark:bg-slate-900/50"><td class="px-6 py-3 text-muted">Control Boards</td><td class="px-6 py-3">300-500 pcs</td><td class="px-6 py-3 text-muted">15-20 days</td><td class="px-6 py-3 text-muted">25-35 days</td></tr>
+            <tr class="bg-white dark:bg-slate-900/50"><td class="px-6 py-3 text-muted">Structural Parts</td><td class="px-6 py-3">200-500 pcs</td><td class="px-6 py-3 text-muted">10-15 days</td><td class="px-6 py-3 text-muted">20-30 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-muted mt-4">These are general estimates. Actual MOQ and timelines depend on your specific requirements and customization level. Contact us for a project-specific quote.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">Ready to Discuss Your OEM Project?</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">Tell us what you need — specifications, quantities, branding requirements. We'll respond within 24 hours with feasibility, pricing, and timeline.</p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4"/> Start OEM Inquiry
+        </a>
+        <a href="/sample-request" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">
+          Request Samples First <Icon name="tabler:arrow-right" class="h-4 w-4"/>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,43 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+<Layout metadata={{ title: 'Shipping & Delivery — EVAPFit', ignoreTitleTemplate: true }}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Shipping & Delivery</h1>
+      <p class="mt-4 text-lg text-gray-300">Flexible shipping options to get your parts where you need them.</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="prose dark:prose-invert max-w-none space-y-6">
+        <h2>Shipping Methods</h2>
+        <div class="grid gap-4 sm:grid-cols-3 not-prose">
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:ship" class="h-8 w-8"/></div><h3 class="font-semibold">Sea Freight</h3><p class="text-sm text-muted mt-1">FCL & LCL available. 15-45 days depending on destination. Best value for bulk orders.</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:plane" class="h-8 w-8"/></div><h3 class="font-semibold">Air Freight</h3><p class="text-sm text-muted mt-1">5-10 days worldwide. Ideal for urgent orders and samples. DDP available for select destinations.</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:truck" class="h-8 w-8"/></div><h3 class="font-semibold">Express Courier</h3><p class="text-sm text-muted mt-1">DHL, FedEx, UPS. 3-7 days. Best for samples and small quantities under 30kg.</p></div>
+        </div>
+        <h2>Incoterms</h2>
+        <p>We support FOB, CIF, CFR, EXW, and DDP (select destinations). Default is FOB Shanghai/Ningbo. Your account manager will confirm the best option based on your order size and destination.</p>
+        <h2>Packaging</h2>
+        <p>All products are packed in export-grade packaging: individual poly bags, inner boxes, and master cartons. Pallets are stretch-wrapped and corner-protected. Custom packaging available for OEM orders.</p>
+        <h2>Lead Times</h2>
+        <div class="not-prose space-y-3">
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">Sample Orders</span><span class="text-muted">3-5 working days</span></div>
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">Standard Orders (up to 500 pcs)</span><span class="text-muted">7-15 working days</span></div>
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">Bulk / OEM Orders</span><span class="text-muted">15-30 working days (confirmed per order)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold" style="font-family: 'Space Grotesk Variable', sans-serif;">Ready to Place an Order?</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto">We'll quote the best shipping option for your destination. Add products to your inquiry list to get started.</p>
+      <a href="/inquiry" class="mt-6 inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500"><Icon name="tabler:mail" class="h-4 w-4"/> Request a Quote</a>
+    </div>
+  </section>
+</Layout>

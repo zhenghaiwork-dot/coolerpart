@@ -1,0 +1,136 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout metadata={{ title: 'Sample Request — Verify Quality Before Ordering | EVAPFit', ignoreTitleTemplate: true }}>
+  <!-- Hero -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+      <div data-reveal class="max-w-3xl">
+        <p class="text-sm font-medium text-teal-400">Sample Service</p>
+        <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+          Try Before You Commit
+        </h1>
+        <p class="mt-5 text-lg text-gray-400 max-w-2xl leading-relaxed">
+          Request 1-2 sample units to verify quality, compatibility, and specifications before placing a bulk order. Samples ship in 3-5 working days via express courier — the cost is deducted from your first order.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-6 py-14 lg:py-18">
+      <div data-reveal class="mb-10">
+        <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+          How Sample Orders Work
+        </h2>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-reveal data-reveal-delay="1" class="rounded-xl border border-gray-100 p-6 dark:border-slate-800">
+          <span class="text-3xl font-bold text-teal-600/25 dark:text-teal-400/20" style="font-family: 'Space Grotesk Variable', sans-serif;">01</span>
+          <h3 class="mt-3 text-base font-semibold text-gray-900 dark:text-white">Choose Your Product</h3>
+          <p class="mt-2 text-sm text-muted leading-relaxed">Browse our catalog and find the part you need. Add it to your inquiry list on the product detail page.</p>
+        </div>
+        <div data-reveal data-reveal-delay="2" class="rounded-xl border border-gray-100 p-6 dark:border-slate-800">
+          <span class="text-3xl font-bold text-teal-600/25 dark:text-teal-400/20" style="font-family: 'Space Grotesk Variable', sans-serif;">02</span>
+          <h3 class="mt-3 text-base font-semibold text-gray-900 dark:text-white">Submit Inquiry</h3>
+          <p class="mt-2 text-sm text-muted leading-relaxed">Fill out the inquiry form. Mention "Sample Request" in the notes section along with any specific requirements.</p>
+        </div>
+        <div data-reveal data-reveal-delay="3" class="rounded-xl border border-gray-100 p-6 dark:border-slate-800">
+          <span class="text-3xl font-bold text-teal-600/25 dark:text-teal-400/20" style="font-family: 'Space Grotesk Variable', sans-serif;">03</span>
+          <h3 class="mt-3 text-base font-semibold text-gray-900 dark:text-white">Receive Confirmation</h3>
+          <p class="mt-2 text-sm text-muted leading-relaxed">We respond within 24 hours with sample pricing, shipping cost, and payment instructions.</p>
+        </div>
+        <div data-reveal data-reveal-delay="4" class="rounded-xl border border-gray-100 p-6 dark:border-slate-800">
+          <span class="text-3xl font-bold text-teal-600/25 dark:text-teal-400/20" style="font-family: 'Space Grotesk Variable', sans-serif;">04</span>
+          <h3 class="mt-3 text-base font-semibold text-gray-900 dark:text-white">Samples Ship</h3>
+          <p class="mt-2 text-sm text-muted leading-relaxed">Samples dispatch within 3-5 working days. Tracking number provided. Typically arrive in 5-7 days via DHL/FedEx.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="bg-gray-50 dark:bg-slate-800/30 border-b border-gray-100 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-6 py-14 lg:py-18">
+      <div class="grid gap-10 lg:grid-cols-2">
+        <!-- Cost & Refund -->
+        <div data-reveal>
+          <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+            Sample Cost &amp; Refund Policy
+          </h2>
+          <div class="space-y-4">
+            <div class="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900/50">
+              <Icon name="tabler:coin" class="h-5 w-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-gray-900 dark:text-white">Sample Unit Price</p>
+                <p class="text-xs text-muted mt-0.5">Priced at the same unit rate as small-quantity orders. We don't mark up samples — you pay the standard cost.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900/50">
+              <Icon name="tabler:plane" class="h-5 w-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-gray-900 dark:text-white">Express Shipping</p>
+                <p class="text-xs text-muted mt-0.5">DHL, FedEx, or UPS. Shipping cost depends on weight and destination. Typically $25-50 for 1-2 small parts.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 rounded-lg border border-green-200 bg-green-50/50 p-4 dark:border-green-800 dark:bg-green-900/10">
+              <Icon name="tabler:arrow-back-up" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm font-medium text-green-800 dark:text-green-300">Fully Refundable</p>
+                <p class="text-xs text-green-700 dark:text-green-400 mt-0.5">The total sample cost (product + shipping) is deducted from your first bulk order. If you order 500+ units, your sample was effectively free.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ on Samples -->
+        <div data-reveal data-reveal-delay="1">
+          <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+            Common Questions
+          </h2>
+          <div class="space-y-3">
+            <details class="group rounded-lg border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-900/50">
+              <summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">How many samples can I request?</summary>
+              <div class="px-4 pb-3 text-xs text-muted">Typically 1-2 units per product SKU. For larger quantities, this becomes a small trial order — we'll quote accordingly.</div>
+            </details>
+            <details class="group rounded-lg border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-900/50">
+              <summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">Are samples identical to production units?</summary>
+              <div class="px-4 pb-3 text-xs text-muted">Yes. Samples come from the same production line as bulk orders. What you test is exactly what you'll receive.</div>
+            </details>
+            <details class="group rounded-lg border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-900/50">
+              <summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">What if the sample doesn't fit?</summary>
+              <div class="px-4 pb-3 text-xs text-muted">Check our compatibility guide before ordering. If specifications were confirmed and the part still doesn't fit, contact us — we'll help identify the correct replacement.</div>
+            </details>
+            <details class="group rounded-lg border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-900/50">
+              <summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">Can I get a sample with my branding?</summary>
+              <div class="px-4 pb-3 text-xs text-muted">OEM samples with custom branding require a higher MOQ and longer lead time. For standard samples, products come with our standard labeling.</div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-16 text-center lg:py-20">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+        Ready to Test Our Quality?
+      </h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+        Add products to your inquiry list and mention "Sample Request" in the notes. We'll confirm sample availability and pricing within 24 hours.
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4"/> Request a Sample
+        </a>
+        <a href="/all-products" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">
+          Browse Products <Icon name="tabler:arrow-right" class="h-4 w-4"/>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

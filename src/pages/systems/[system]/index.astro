@@ -1,0 +1,15 @@
+---
+import { systemsData } from '~/data/systems';
+
+export async function getStaticPaths() {
+  return systemsData.map((system) => ({
+    params: { system: system.slug },
+  }));
+}
+
+const { system } = Astro.params;
+
+if (system) {
+  return Astro.redirect(`/${system}`, 301);
+}
+---

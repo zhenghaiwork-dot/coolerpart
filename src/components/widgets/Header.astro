@@ -1,0 +1,294 @@
+---
+import { Icon } from 'astro-icon/components';
+import Logo from '~/components/Logo.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import ToggleMenu from '~/components/common/ToggleMenu.astro';
+import Button from '~/components/ui/Button.astro';
+
+import { getHomePermalink } from '~/utils/permalinks';
+import { trimSlash, getAsset } from '~/utils/permalinks';
+import type { CallToAction } from '~/types';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface MenuLink extends Link {
+  links?: Array<MenuLink>;
+}
+
+export interface Props {
+  id?: string;
+  links?: Array<MenuLink>;
+  actions?: Array<CallToAction>;
+  isSticky?: boolean;
+  isDark?: boolean;
+  isFullWidth?: boolean;
+  showToggleTheme?: boolean;
+  showRssFeed?: boolean;
+  position?: string;
+}
+
+const {
+  id = 'header',
+  links = [],
+  actions = [],
+  isSticky = false,
+  isDark = false,
+  isFullWidth = false,
+  showToggleTheme = false,
+  showRssFeed = false,
+  position = 'center',
+} = Astro.props;
+
+const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+---
+
+<header
+  class:list={[
+    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    'top-0 z-40 flex-none mx-auto w-full transition-[opacity] ease-in-out',
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+  {...id ? { id } : {}}
+>
+  <!-- Top utility bar — credentials (desktop only) -->
+  <div class="hidden md:block bg-slate-950 text-slate-400 border-b border-white/5">
+    <div class="mx-auto max-w-7xl px-6 py-1.5 flex items-center justify-between">
+      <div class="flex items-center gap-5 tech-label" style="font-size: 0.625rem;">
+        <span class="flex items-center gap-1.5">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-teal-400"></span>
+          Direct Factory Supply
+        </span>
+        <span class="text-slate-600">|</span>
+        <span>ISO 9001 Certified</span>
+        <span class="text-slate-600">|</span>
+        <span>Exports to 30+ Countries</span>
+      </div>
+      <div class="flex items-center gap-4 tech-label" style="font-size: 0.625rem;">
+        <span class="flex items-center gap-1">
+          <Icon name="tabler:clock" class="h-3 w-3 text-teal-400" />
+          24h Response
+        </span>
+        <span class="text-slate-600">|</span>
+        <span class="flex items-center gap-1">
+          <Icon name="tabler:shield-check" class="h-3 w-3 text-teal-400" />
+          12-Month Warranty
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav bar -->
+  <div class="absolute inset-0 -top-8"></div>
+  <div
+    class:list={[
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full border-b border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-950',
+      {
+        'md:flex md:justify-between': position !== 'center',
+      },
+      {
+        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+      },
+      {
+        'max-w-7xl': !isFullWidth,
+      },
+    ]}
+  >
+    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between items-center']}>
+      <a class="flex items-center" href={getHomePermalink()}>
+        <Logo />
+      </a>
+      <!-- Mobile actions — inquiry list + hamburger -->
+      <div class="flex items-center gap-0.5 md:hidden">
+        <!-- Mobile inquiry list icon -->
+        <a
+          href="/inquiry"
+          class="relative text-muted dark:text-gray-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400 rounded-lg p-2.5 inline-flex items-center transition-colors duration-200"
+          aria-label="Inquiry List"
+          title="Inquiry List"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="1"/>
+          </svg>
+          <span id="header-basket-count-mobile" class="absolute -top-0.5 -right-0.5 inline-flex items-center justify-center rounded-full bg-teal-600 px-1.5 text-[10px] font-bold text-white min-w-[16px] min-h-[16px] dark:bg-teal-500">0</span>
+        </a>
+        <ToggleMenu />
+      </div>
+    </div>
+    <nav
+      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-visible md:justify-self-center"
+      aria-label="Main navigation"
+    >
+      <ul
+        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-sm tracking-tight font-medium md:justify-center"
+      >
+        {
+          links.map(({ text, href, links }) => (
+            <li class={links?.length ? 'dropdown' : ''}>
+              {links?.length ? (
+                <>
+                  <button
+                    type="button"
+                    class="link-underline hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap transition-colors"
+                  >
+                    {text}{' '}
+                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                  </button>
+                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl border border-gray-100 dark:border-slate-700">
+                    {links.map(({ text: text2, href: href2 }) => (
+                      <li>
+                        <a
+                          class:list={[
+                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap text-sm',
+                            { 'aw-link-active': href2 === currentPath },
+                          ]}
+                          href={href2}
+                        >
+                          {text2}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <a
+                  class:list={[
+                    'link-underline hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap transition-colors',
+                    { 'aw-link-active': href === currentPath },
+                  ]}
+                  href={href}
+                >
+                  {text}
+                </a>
+              )}
+            </li>
+          ))
+        }
+        <!-- Mobile menu actions — shown at bottom of expanded mobile nav -->
+        <li class="md:hidden! mt-4 pt-4 border-t border-gray-100 dark:border-slate-700">
+          <div class="flex flex-col gap-3 px-4">
+            {actions?.length ? (
+              actions.map((btnProps) => (
+                <Button {...btnProps} class="w-full justify-center py-2.5 px-5 font-semibold shadow-none text-sm" />
+              ))
+            ) : (
+              <a
+                href="/inquiry"
+                class="inline-flex items-center justify-center gap-2 rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
+              >
+                <Icon name="tabler:mail" class="h-4 w-4" />
+                Request Quote
+              </a>
+            )}
+            {showToggleTheme && (
+              <div class="flex items-center justify-between rounded-lg border border-gray-200 px-4 py-2.5 dark:border-slate-700">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
+                <ToggleTheme iconClass="w-5 h-5" />
+              </div>
+            )}
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class:list={[
+        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
+        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
+      ]}
+    >
+      <div class="items-center flex justify-between w-full md:w-auto">
+        <div class="flex items-center">
+          <!-- Inquiry List Badge (desktop) -->
+          <a
+            href="/inquiry"
+            class="relative text-muted dark:text-gray-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-600 dark:hover:text-teal-400 focus:outline-none focus:ring-4 focus:ring-teal-100 dark:focus:ring-teal-900/30 rounded-lg text-sm p-2.5 inline-flex items-center transition-colors duration-200"
+            aria-label="Inquiry List"
+            title="Inquiry List"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+              <rect x="9" y="3" width="6" height="4" rx="1"/>
+            </svg>
+            <span class="hidden sm:inline ml-1.5 text-sm font-medium">Inquiry List</span>
+            <span id="header-basket-count" class="hidden ml-1 inline-flex items-center justify-center rounded-full bg-teal-600 px-1.5 py-0.5 text-xs font-bold text-white min-w-[20px] min-h-[20px] dark:bg-teal-500">0</span>
+          </a>
+          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
+          {
+            showRssFeed && (
+              <a
+                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                aria-label="RSS Feed"
+                href={getAsset('/rss.xml')}
+              >
+                <Icon name="tabler:rss" class="w-5 h-5" />
+              </a>
+            )
+          }
+        </div>
+        {
+          actions?.length ? (
+            <span class="ml-4 rtl:ml-0 rtl:mr-4">
+              {actions.map((btnProps) => (
+                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+              ))}
+            </span>
+          ) : (
+            ''
+          )
+        }
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Basket badge update for Inquiry List — both desktop and mobile
+  const STORAGE_KEY = "coolerparts_inquiry_basket";
+
+  function getBasketCount() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw).length : 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  function updateBadge() {
+    const count = getBasketCount();
+
+    // Desktop badge
+    const badge = document.getElementById("header-basket-count");
+    if (badge) {
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "inline-flex";
+      } else {
+        badge.style.display = "none";
+      }
+    }
+
+    // Mobile badge
+    const mobileBadge = document.getElementById("header-basket-count-mobile");
+    if (mobileBadge) {
+      if (count > 0) {
+        mobileBadge.textContent = count;
+        mobileBadge.style.display = "inline-flex";
+      } else {
+        mobileBadge.style.display = "none";
+      }
+    }
+  }
+
+  window.addEventListener("inquiry-basket:update", updateBadge);
+  document.addEventListener("astro:page-load", updateBadge);
+  window.addEventListener("pageshow", (e) => { if (e.persisted) updateBadge(); });
+  updateBadge();
+</script>

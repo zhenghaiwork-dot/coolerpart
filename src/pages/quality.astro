@@ -1,0 +1,45 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+<Layout metadata={{ title: 'Quality & Certifications — EVAPFit', ignoreTitleTemplate: true }}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Quality & Certifications</h1>
+      <p class="mt-4 text-lg text-gray-300">Our commitment to quality — from raw material inspection to final shipment.</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="prose dark:prose-invert max-w-none space-y-6">
+        <h2>Quality Management</h2>
+        <p>Our factory is ISO 9001:2015 certified. Every batch undergoes multi-stage quality control: incoming material inspection, in-process QC checks, and 100% final testing on electrical components before packaging and shipment.</p>
+        <div class="grid gap-4 sm:grid-cols-3 not-prose text-center">
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-emerald-600">IQC</div><p class="text-sm text-muted mt-1">Incoming material inspection</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-emerald-600">IPQC</div><p class="text-sm text-muted mt-1">In-process quality control</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-emerald-600">OQC</div><p class="text-sm text-muted mt-1">Outgoing quality check</p></div>
+        </div>
+        <h2>Testing Capabilities</h2>
+        <div class="grid gap-4 sm:grid-cols-2 not-prose">
+          <div class="rounded-xl border p-4"><Icon name="tabler:bolt" class="h-6 w-6 text-emerald-600 mb-2"/><h3 class="font-semibold">Electrical Testing</h3><p class="text-sm text-muted">Hi-pot, insulation resistance, load testing for all motors and electrical components.</p></div>
+          <div class="rounded-xl border p-4"><Icon name="tabler:ruler" class="h-6 w-6 text-emerald-600 mb-2"/><h3 class="font-semibold">Dimensional Inspection</h3><p class="text-sm text-muted">CMM and gauge-based measurement to ensure interface compatibility.</p></div>
+          <div class="rounded-xl border p-4"><Icon name="tabler:droplet" class="h-6 w-6 text-emerald-600 mb-2"/><h3 class="font-semibold">Leak & Flow Testing</h3><p class="text-sm text-muted">Water pressure testing for pumps, valves, and sealed assemblies.</p></div>
+          <div class="rounded-xl border p-4"><Icon name="tabler:clock" class="h-6 w-6 text-emerald-600 mb-2"/><h3 class="font-semibold">Durability Testing</h3><p class="text-sm text-muted">Accelerated life testing for wear parts and moving components.</p></div>
+        </div>
+        <h2>Warranty</h2>
+        <p>Standard 12-month warranty against manufacturing defects on all products. Extended warranty options available for bulk and OEM orders.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold" style="font-family: 'Space Grotesk Variable', sans-serif;">See Our Quality Firsthand</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto">Request samples to verify quality before bulk ordering. Sample cost is refundable against your first order.</p>
+      <div class="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/sample-request" class="rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500">Request Samples</a>
+        <a href="/inquiry" class="rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white hover:bg-white/5">Submit Inquiry</a>
+      </div>
+    </div>
+  </section>
+</Layout>

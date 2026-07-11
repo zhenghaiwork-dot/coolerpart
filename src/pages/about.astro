@@ -1,0 +1,45 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+<Layout metadata={{ title: 'About Us — EVAPFit', ignoreTitleTemplate: true }}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">About EVAPFit</h1>
+      <p class="mt-4 text-lg text-gray-300">Your direct-source partner for evaporative cooler replacement parts.</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="grid gap-8 md:grid-cols-3 text-center mb-12">
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">15+</div><p class="text-sm text-muted">Years Experience</p></div>
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">50+</div><p class="text-sm text-muted">Export Countries</p></div>
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">1000+</div><p class="text-sm text-muted">Active SKUs</p></div>
+      </div>
+      <div class="prose dark:prose-invert max-w-none space-y-6">
+        <h2>Who We Are</h2>
+        <p>We specialize in designing, manufacturing, and exporting replacement parts for evaporative air coolers. Our factory integrates injection molding, metal stamping, CNC machining, and assembly to produce components matching or exceeding OEM specifications.</p>
+        <h2>Our Markets</h2>
+        <p>We serve distributors, wholesalers, and maintenance companies across the Middle East, Southeast Asia, Africa, and South America. Our interface-first compatibility system means buyers find the right part without needing a model number.</p>
+        <div class="grid gap-4 sm:grid-cols-2 not-prose">
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>Factory Direct</strong><p class="text-sm text-muted">Competitive pricing at any quantity.</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>OEM & ODM</strong><p class="text-sm text-muted">Custom specs, branding, packaging.</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>Fast Response</strong><p class="text-sm text-muted">Quotes within 24 hours.</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>QC Assured</strong><p class="text-sm text-muted">100% tested before shipping.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">Ready to Find Your Parts?</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">Browse our catalog of 50+ replacement components — all interface-matched, no model number needed.</p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href="/all-products" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500">Browse All Products</a>
+        <a href="/inquiry" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white hover:bg-white/5">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+</Layout>

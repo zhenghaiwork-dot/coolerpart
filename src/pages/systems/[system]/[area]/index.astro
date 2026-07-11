@@ -1,0 +1,19 @@
+---
+import { systemsData } from '~/data/systems';
+
+export async function getStaticPaths() {
+  const paths: { params: { system: string; area: string } }[] = [];
+  for (const system of systemsData) {
+    for (const area of system.areas) {
+      paths.push({ params: { system: system.slug, area: area.slug } });
+    }
+  }
+  return paths;
+}
+
+const { system, area } = Astro.params;
+
+if (system && area) {
+  return Astro.redirect(`/${system}/${area}`, 301);
+}
+---

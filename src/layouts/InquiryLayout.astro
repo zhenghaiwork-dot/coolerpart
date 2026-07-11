@@ -1,0 +1,100 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { systemsData } from '~/data/systems';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+  title?: string;
+}
+
+const { metadata } = Astro.props;
+
+// Navigation links for the inquiry station
+const headerLinks = [
+  {
+    text: 'Products',
+    links: [
+      { text: 'All Products', href: '/all-products' },
+      ...systemsData.map((sys) => ({
+        text: sys.name,
+        href: `/${sys.slug}`,
+        links: sys.areas.map((area) => ({
+          text: area.name,
+          href: `/${sys.slug}/${area.slug}`,
+        })),
+      })),
+    ],
+  },
+  { text: 'Compatibility', href: '/compatibility' },
+  {
+    text: 'Support',
+    links: [
+      { text: 'Inquiry / Request Quote', href: '/inquiry' },
+      { text: 'How to Identify Parts', href: '/how-to-identify-part-number' },
+      { text: 'RFQ Guide', href: '/what-to-include-in-rfq' },
+      { text: 'Sample Request', href: '/sample-request' },
+      { text: 'All Products', href: '/all-products' },
+      { text: 'FAQ', href: '/faq' },
+      { text: 'Troubleshooting Guides', href: '/guides' },
+    ],
+  },
+  {
+    text: 'Company',
+    links: [
+      { text: 'About Us', href: '/about' },
+      { text: 'OEM & Customization', href: '/oem' },
+      { text: 'Quality & Certifications', href: '/quality' },
+      { text: 'Shipping & Delivery', href: '/shipping' },
+      { text: 'Contact', href: '/contact' },
+    ],
+  },
+];
+
+const headerActions = [{ text: 'Request Quote', href: '/inquiry' }];
+
+const footerLinks = [
+  {
+    title: 'Products',
+    links: [
+      { text: 'Water System', href: '/water-system' },
+      { text: 'Evaporation System', href: '/evaporation-system' },
+      { text: 'Air System', href: '/air-system' },
+      { text: 'Electrical & Controls', href: '/electrical-controls' },
+      { text: 'Structure & Mounting', href: '/structure-mounting' },
+      { text: 'Maintenance & Consumables', href: '/maintenance-consumables' },
+    ],
+  },
+  {
+    title: 'Support',
+    links: [
+      { text: 'Compatibility Guide', href: '/compatibility' },
+      { text: 'How to Identify Parts', href: '/how-to-identify-part-number' },
+      { text: 'RFQ Guide', href: '/what-to-include-in-rfq' },
+      { text: 'FAQ', href: '/faq' },
+      { text: 'Troubleshooting', href: '/guides' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { text: 'About Us', href: '/about' },
+      { text: 'OEM & Customization', href: '/oem' },
+      { text: 'Quality & Certifications', href: '/quality' },
+      { text: 'Shipping & Delivery', href: '/shipping' },
+      { text: 'Contact', href: '/contact' },
+    ],
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme />
+  <main>
+    <slot />
+  </main>
+  <Footer links={footerLinks} secondaryLinks={[{ text: 'Terms', href: '/terms' }, { text: 'Privacy', href: '/privacy' }]} socialLinks={[]} footNote="EVAPFit — Evaporative Air Cooler Components &amp; Parts" />
+</Layout>

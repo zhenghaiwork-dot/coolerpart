@@ -1,0 +1,48 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout metadata={{ title: 'Troubleshooting Guides — EVAPFit', ignoreTitleTemplate: true }}>
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
+      <p class="text-sm font-medium text-teal-400">Troubleshooting & Repair Guides</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Maintenance & Repair Guides</h1>
+      <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
+        Step-by-step instructions for replacing common evaporative cooler parts. Each guide walks you through diagnosis, removal, and installation.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="/guides/replace-water-pump" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
+          <Icon name="tabler:droplet" class="h-8 w-8 text-teal-500 mb-3"/>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Replace a Water Pump</h3>
+          <p class="text-sm text-muted mt-1">Diagnose pump failure and replace it in a cabinet evaporative cooler. Covers threaded and push-fit connections.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
+        </a>
+        <a href="/guides/replace-motor" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
+          <Icon name="tabler:rotate" class="h-8 w-8 text-teal-500 mb-3"/>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Replace a Fan Motor</h3>
+          <p class="text-sm text-muted mt-1">Swap out a faulty fan/blower motor. Includes wiring disconnection, mounting types, and capacitor handling.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
+        </a>
+        <a href="/guides/nozzle-clogging" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
+          <Icon name="tabler:droplet-off" class="h-8 w-8 text-teal-500 mb-3"/>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Fix Nozzle Clogging</h3>
+          <p class="text-sm text-muted mt-1">Identify and resolve spray nozzle clogging from mineral buildup or debris in the distribution system.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
+        </a>
+      </div>
+
+      <div class="mt-10 rounded-xl border border-dashed border-gray-200 p-6 text-center dark:border-slate-700">
+        <Icon name="tabler:book" class="mx-auto h-8 w-8 text-gray-300 dark:text-slate-600 mb-3"/>
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white">More Guides Coming Soon</h3>
+        <p class="text-sm text-muted mt-1">Cooling pad replacement, control board troubleshooting, and valve maintenance guides are in progress.</p>
+        <p class="text-xs text-muted mt-2">Need help now? <a href="/inquiry" class="text-teal-600 hover:underline">Submit an inquiry with your issue</a> — we'll provide guidance directly.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

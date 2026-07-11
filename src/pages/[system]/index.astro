@@ -1,0 +1,102 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { systemsData } from '~/data/systems';
+import { getProductsBySystem } from '~/data/products';
+
+export async function getStaticPaths() {
+  return systemsData.map((system) => ({
+    params: { system: system.slug },
+    props: { system },
+  }));
+}
+
+const { system } = Astro.props;
+const products = getProductsBySystem(system.slug);
+---
+
+<Layout metadata={{ title: `${system.name} — Evaporative Cooler Parts`, ignoreTitleTemplate: true }}>
+  <!-- Header -->
+  <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+      <div class="flex items-center gap-4">
+        <Icon name={system.icon} class="h-8 w-8 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{system.name}</h1>
+          <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{system.description}</p>
+          <p class="mt-3 text-xs text-muted">{system.areas.length} sub-categories · {products.length} products</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-categories -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Browse by Sub-category</h2>
+      <p class="text-sm text-muted mb-6">Select a sub-category to view specific replacement parts.</p>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {system.areas.map((area) => {
+          const count = products.filter((p) => p.areaSlug === area.slug).length;
+          return (
+            <a
+              href={`/${system.slug}/${area.slug}`}
+              class="group flex items-start gap-3 rounded-lg border border-gray-200 bg-white p-4 transition hover:border-gray-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50"
+            >
+              <Icon name={area.icon} class="h-5 w-5 text-teal-500 mt-0.5 flex-shrink-0" />
+              <div class="min-w-0">
+                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{area.name}</span>
+                <p class="text-xs text-muted mt-0.5 line-clamp-2">{area.shortDesc}</p>
+                <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{count} products</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* Product Preview */}
+  {products.length > 0 && (
+    <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
+      <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+        <div class="mb-6 flex items-end justify-between">
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Available Parts</h2>
+            <p class="text-sm text-muted mt-0.5">{products.length} compatible replacement parts</p>
+          </div>
+          {system.areas[0] && (
+            <a href={`/${system.slug}/${system.areas[0].slug}`} class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
+              View all &rarr;
+            </a>
+          )}
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {products.slice(0, 4).map((product) => (
+            <a
+              href={`/${system.slug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}
+              class="group flex flex-col rounded-lg border border-gray-200 bg-white p-4 transition hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50"
+            >
+              <span class="text-xs font-medium text-teal-600 dark:text-teal-400">{product.category}</span>
+              <h3 class="mt-1.5 text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{product.name}</h3>
+              <p class="mt-1 text-xs text-muted line-clamp-2">{product.description}</p>
+              <p class="mt-3 text-xs text-muted border-t border-gray-100 pt-2.5 dark:border-slate-700">{product.moq}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-12 text-center lg:py-16">
+      <h2 class="text-xl font-semibold">Need {system.name} Parts?</h2>
+      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">{products.length}+ compatible replacement parts — interface-matched, no model number needed.</p>
+      <div class="mt-6 flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
+        <a href="/inquiry" class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">Request a Quote</a>
+        <a href="/compatibility" class="rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/5">Compatibility Guide</a>
+      </div>
+    </div>
+  </section>
+</Layout>

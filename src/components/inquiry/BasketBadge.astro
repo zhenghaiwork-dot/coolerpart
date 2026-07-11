@@ -1,0 +1,40 @@
+---
+// BasketBadge — Navigation badge showing current basket count.
+// Include this in any page header to show inquiry basket item count.
+---
+
+<span id="header-basket-count" class="hidden ml-1 inline-flex items-center justify-center rounded-full bg-red-500 px-1.5 py-0.5 text-xs font-bold text-white min-w-[20px] min-h-[20px]" aria-label="Items in inquiry list">
+  0
+</span>
+
+<script>
+  const STORAGE_KEY = "coolerparts_inquiry_basket";
+
+  function getBasketCount() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw).length : 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  function updateBadge() {
+    const badge = document.getElementById("header-basket-count");
+    if (!badge) return;
+    const count = getBasketCount();
+    if (count > 0) {
+      badge.textContent = count;
+      badge.style.display = "inline-flex";
+    } else {
+      badge.style.display = "none";
+    }
+  }
+
+  window.addEventListener("inquiry-basket:update", updateBadge);
+  document.addEventListener("astro:page-load", updateBadge);
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) updateBadge();
+  });
+  updateBadge();
+</script>
