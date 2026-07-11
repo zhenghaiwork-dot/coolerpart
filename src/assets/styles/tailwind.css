@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@source "../../pages/";
+@source "../../components/";
+@source "../../layouts/";
+@source "../../data/";
+
 @plugin "@tailwindcss/typography";
 
 @variant dark (&:where(.dark, .dark *));
