@@ -1,44 +1,92 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const guides = (await getCollection('guide'))
+  .sort((a: CollectionEntry<'guide'>, b: CollectionEntry<'guide'>) =>
+    new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
+  )
+  .filter((g: CollectionEntry<'guide'>) => !g.data.draft);
+
+const metadata = {
+  title: 'Troubleshooting Guides — EVAPFit',
+  description: 'Step-by-step instructions for replacing common evaporative cooler parts. Diagnosis, removal, and installation guides for pumps, motors, and more.',
+  ignoreTitleTemplate: true,
+};
+
+const iconMap: Record<string, string> = {
+  'water-system': 'tabler:droplet',
+  'electrical-controls': 'tabler:bolt',
+  'air-system': 'tabler:wind',
+  'structure-mounting': 'tabler:tool',
+  'maintenance-consumables': 'tabler:refresh',
+};
 ---
 
-<Layout metadata={{ title: 'Troubleshooting Guides — EVAPFit', ignoreTitleTemplate: true }}>
+<Layout {metadata}>
+  <!-- Hero -->
   <section class="bg-slate-950 text-white">
     <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
       <p class="text-sm font-medium text-teal-400">Troubleshooting & Repair Guides</p>
-      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Maintenance & Repair Guides</h1>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+        Maintenance & Repair Guides
+      </h1>
       <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
         Step-by-step instructions for replacing common evaporative cooler parts. Each guide walks you through diagnosis, removal, and installation.
       </p>
     </div>
   </section>
 
+  <!-- Guides Grid -->
   <section class="bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-4xl px-6 py-12 lg:py-16">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <a href="/guides/replace-water-pump" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
-          <Icon name="tabler:droplet" class="h-8 w-8 text-teal-500 mb-3"/>
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Replace a Water Pump</h3>
-          <p class="text-sm text-muted mt-1">Diagnose pump failure and replace it in a cabinet evaporative cooler. Covers threaded and push-fit connections.</p>
-          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
-        </a>
-        <a href="/guides/replace-motor" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
-          <Icon name="tabler:rotate" class="h-8 w-8 text-teal-500 mb-3"/>
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Replace a Fan Motor</h3>
-          <p class="text-sm text-muted mt-1">Swap out a faulty fan/blower motor. Includes wiring disconnection, mounting types, and capacitor handling.</p>
-          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
-        </a>
-        <a href="/guides/nozzle-clogging" class="group rounded-xl border border-gray-200 p-6 hover:border-teal-300 hover:shadow-sm transition-all dark:border-slate-700">
-          <Icon name="tabler:droplet-off" class="h-8 w-8 text-teal-500 mb-3"/>
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600">Fix Nozzle Clogging</h3>
-          <p class="text-sm text-muted mt-1">Identify and resolve spray nozzle clogging from mineral buildup or debris in the distribution system.</p>
-          <span class="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3"/></span>
-        </a>
-      </div>
+      {guides.length === 0 ? (
+        <div class="text-center py-16">
+          <Icon name="tabler:book" class="mx-auto h-12 w-12 text-gray-300 dark:text-slate-600 mb-4" />
+          <p class="text-muted">No guides yet. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.map((guide: CollectionEntry<'guide'>) => {
+            const slug = guide.id.replace(/\.(md|mdx)$/, '');
+            const systemSlug = guide.data.systemSlug || '';
+            const icon = iconMap[systemSlug] || 'tabler:tools';
+            const difficulty = guide.data.difficulty || '';
+            const difficultyColor = difficulty === 'Easy'
+              ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+              : difficulty === 'Medium'
+                ? 'bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400'
+                : 'bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-400';
+            return (
+              <a href={`/guides/${slug}`} class="group flex flex-col rounded-xl border border-gray-200 p-6 transition hover:border-teal-300 hover:shadow-sm dark:border-slate-700 dark:hover:border-teal-600">
+                <div class="mb-3 flex items-center gap-3">
+                  <Icon name={icon} class="h-8 w-8 text-teal-500 flex-shrink-0" />
+                  {difficulty && (
+                    <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${difficultyColor}`}>
+                      {difficulty}
+                    </span>
+                  )}
+                </div>
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 leading-snug">{guide.data.title}</h3>
+                {guide.data.excerpt && (
+                  <p class="mt-2 text-sm text-muted line-clamp-3">{guide.data.excerpt}</p>
+                )}
+                {guide.data.category && (
+                  <span class="mt-3 inline-block text-xs text-muted">{guide.data.category}</span>
+                )}
+                <span class="mt-auto pt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">
+                  Read Guide <Icon name="tabler:arrow-right" class="h-3 w-3" />
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      )}
 
       <div class="mt-10 rounded-xl border border-dashed border-gray-200 p-6 text-center dark:border-slate-700">
-        <Icon name="tabler:book" class="mx-auto h-8 w-8 text-gray-300 dark:text-slate-600 mb-3"/>
+        <Icon name="tabler:book" class="mx-auto h-8 w-8 text-gray-300 dark:text-slate-600 mb-3" />
         <h3 class="text-base font-semibold text-gray-900 dark:text-white">More Guides Coming Soon</h3>
         <p class="text-sm text-muted mt-1">Cooling pad replacement, control board troubleshooting, and valve maintenance guides are in progress.</p>
         <p class="text-xs text-muted mt-2">Need help now? <a href="/inquiry" class="text-teal-600 hover:underline">Submit an inquiry with your issue</a> — we'll provide guidance directly.</p>

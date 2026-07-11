@@ -1,0 +1,84 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allGuides = await getCollection('guide');
+  return allGuides.map((guide) => ({
+    params: { slug: guide.id.replace(/\.(md|mdx)$/, '') },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props as { guide: CollectionEntry<'guide'> };
+const { Content } = await render(guide);
+
+const title = guide.data.title;
+const excerpt = guide.data.excerpt || '';
+const category = guide.data.category || 'Repair Guide';
+const difficulty = guide.data.difficulty || '';
+const systemSlug = guide.data.systemSlug || '';
+const areaSlug = guide.data.areaSlug || '';
+const tags = guide.data.tags || [];
+---
+
+<Layout metadata={{ title: `${title} — EVAPFit Guide`, description: excerpt, ignoreTitleTemplate: true }}>
+  <!-- Breadcrumb -->
+  <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-3xl px-6 py-2.5 text-sm text-muted">
+      <a href="/" class="hover:text-teal-600">Home</a>
+      <span class="mx-1.5 text-gray-300">/</span>
+      <a href="/guides" class="hover:text-teal-600">Guides</a>
+      <span class="mx-1.5 text-gray-300">/</span>
+      <span class="text-gray-700 dark:text-gray-300">{title}</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-4 py-1.5 text-sm text-teal-100 backdrop-blur-sm">
+        <Icon name="tabler:tools" class="h-4 w-4" />
+        {category}
+      </div>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
+      {excerpt && <p class="mt-4 text-lg text-gray-300">{excerpt}</p>}
+      <div class="mt-4 flex justify-center gap-3 text-sm text-gray-400">
+        {difficulty && (
+          <span class="inline-flex items-center gap-1">
+            <Icon name="tabler:gauge" class="h-4 w-4" />
+            {difficulty}
+          </span>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide Content -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="prose dark:prose-invert max-w-none space-y-6 prose-headings:font-bold prose-h2:text-xl prose-h2:mt-10 prose-h3:text-lg prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
+        <Content />
+      </div>
+
+      <!-- Tags -->
+      {tags.length > 0 && (
+        <div class="mt-10 flex flex-wrap gap-2 border-t border-gray-100 pt-6 dark:border-slate-800">
+          {tags.map((tag: string) => (
+            <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-muted dark:bg-slate-800">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <!-- Back to Guides -->
+      <div class="mt-8">
+        <a href="/guides" class="inline-flex items-center gap-2 text-sm font-medium text-teal-600 hover:text-teal-700 dark:text-teal-400">
+          <Icon name="tabler:arrow-left" class="h-4 w-4" />
+          Back to Guides
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

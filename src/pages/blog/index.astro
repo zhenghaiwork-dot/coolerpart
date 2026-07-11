@@ -1,0 +1,91 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const posts = (await getCollection('post'))
+  .sort((a: CollectionEntry<'post'>, b: CollectionEntry<'post'>) =>
+    new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
+  )
+  .filter((p: CollectionEntry<'post'>) => !p.data.draft);
+
+const metadata = {
+  title: 'Blog — Evaporative Cooler Tips, Guides & Industry News | EVAPFit',
+  description: 'Practical tips, buying guides, and maintenance advice for evaporative air coolers. Learn how to choose, install, and maintain replacement parts.',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout {metadata}>
+  <!-- Hero -->
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
+      <p class="text-sm font-medium text-teal-400">EVAPFit Blog</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+        Tips, Guides & Industry Insights
+      </h1>
+      <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
+        Practical advice on choosing, installing, and maintaining evaporative cooler replacement parts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-5xl px-6 py-12 lg:py-16">
+      {posts.length === 0 ? (
+        <div class="text-center py-16">
+          <Icon name="tabler:article" class="mx-auto h-12 w-12 text-gray-300 dark:text-slate-600 mb-4" />
+          <p class="text-muted">No posts yet. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post: CollectionEntry<'post'>) => {
+            const slug = post.id.replace(/\.(md|mdx)$/, '');
+            const date = post.data.publishDate
+              ? new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+              : '';
+            return (
+              <a href={`/blog/${slug}`} class="group flex flex-col overflow-hidden rounded-xl border border-gray-200 transition hover:border-teal-300 hover:shadow-md dark:border-slate-700 dark:hover:border-teal-600">
+                {post.data.image ? (
+                  <div class="aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-slate-800">
+                    <img
+                      src={post.data.image}
+                      alt={post.data.title}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div class="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-teal-50 to-slate-100 dark:from-slate-800 dark:to-slate-700">
+                    <Icon name="tabler:article" class="h-10 w-10 text-teal-400/40" />
+                  </div>
+                )}
+                <div class="flex flex-1 flex-col p-5">
+                  <div class="flex items-center gap-2 text-xs text-muted mb-2">
+                    {date && <time>{date}</time>}
+                    {post.data.category && (
+                      <span class="rounded-full bg-teal-50 px-2 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-900/20 dark:text-teal-400">
+                        {post.data.category}
+                      </span>
+                    )}
+                  </div>
+                  <h2 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 leading-snug line-clamp-2">
+                    {post.data.title}
+                  </h2>
+                  {post.data.excerpt && (
+                    <p class="mt-2 text-sm text-muted line-clamp-3 leading-relaxed">{post.data.excerpt}</p>
+                  )}
+                  <span class="mt-auto pt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">
+                    Read more <Icon name="tabler:arrow-right" class="h-3 w-3" />
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
