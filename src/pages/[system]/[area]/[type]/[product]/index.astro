@@ -45,9 +45,29 @@ const crossSell = productsData.filter((p) => p.slug !== product.slug && p.areaSl
   <section class="bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10 lg:py-12">
       <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
-        <!-- Image placeholder -->
-        <div class="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-          <Icon name="tabler:package" class="h-24 w-24 text-slate-300 dark:text-slate-600" />
+        <!-- Product Image -->
+        <div class="flex flex-col gap-3">
+          <div class="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+            {product.image ? (
+              <img id="product-main-img" src={product.image} alt={product.name} class="h-full w-full object-contain p-4" loading="eager" />
+            ) : (
+              <Icon name="tabler:package" class="h-24 w-24 text-slate-300 dark:text-slate-600" />
+            )}
+          </div>
+          {product.gallery && product.gallery.length > 1 && (
+            <div class="flex gap-2">
+              {product.gallery.map((img, i) => (
+                <button
+                  class={`gallery-thumb aspect-square w-16 overflow-hidden rounded-lg border-2 transition-colors ${i === 0 ? 'border-teal-500' : 'border-transparent hover:border-teal-300'}`}
+                  data-src={img}
+                  data-alt={product.name}
+                  aria-label={`View image ${i + 1}`}
+                >
+                  <img src={img} alt={`${product.name} view ${i + 1}`} class="h-full w-full object-contain p-1" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <!-- Info -->
@@ -301,6 +321,20 @@ const crossSell = productsData.filter((p) => p.slug !== product.slug && p.areaSl
 
     stickyBtns.forEach((btn) => {
       btn.addEventListener("click", () => { addToBasket(getProductData(btn)); window.location.href = "/inquiry"; });
+    });
+
+    // Gallery thumbnails
+    const mainImg = document.getElementById("product-main-img");
+    const thumbs = document.querySelectorAll(".gallery-thumb");
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        if (mainImg && thumb.dataset.src) {
+          mainImg.src = thumb.dataset.src;
+          mainImg.alt = thumb.dataset.alt || "";
+          thumbs.forEach((t) => t.classList.replace("border-teal-500", "border-transparent"));
+          thumb.classList.replace("border-transparent", "border-teal-500");
+        }
+      });
     });
 
     updateAddButtonState();

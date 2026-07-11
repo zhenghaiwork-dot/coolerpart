@@ -11,7 +11,8 @@ export const productsData: Product[] = [
     productTypeSlug: 'replacement-water-pump',
     moq: '10 pcs',
     priceRange: '$12.50 – $28.00 / pc',
-    image: '/images/products/water-pump.jpg',
+    image: '/images/products/water-pump-1.webp',
+    gallery: ['/images/products/water-pump-1.webp', '/images/products/water-pump-2.webp', '/images/products/water-pump-3.webp'],
     description: 'Direct replacement water pump for portable evaporative coolers. Compatible with threaded connection interfaces.',
     longDescription:
       'This replacement water pump is designed for evaporative air cooler units. Features threaded inlet/outlet connections for easy installation. Suitable for portable cabinet coolers with standard sump configurations.',
@@ -44,7 +45,8 @@ export const productsData: Product[] = [
     productTypeSlug: 'replacement-water-pump',
     moq: '10 pcs',
     priceRange: '$13.00 – $30.00 / pc',
-    image: '/images/products/water-pump.jpg',
+    image: '/images/products/water-pump-2.webp',
+    gallery: ['/images/products/water-pump-2.webp', '/images/products/water-pump-1.webp', '/images/products/water-pump-3.webp'],
     description: '220V replacement water pump for evaporative coolers. Threaded interface for universal fitment.',
     longDescription:
       '220V/50Hz replacement water pump designed for international evaporative cooler units. Compatible threaded connections ensure broad compatibility with existing plumbing.',

@@ -53,6 +53,7 @@ export interface Product {
   moq: string;
   priceRange: string;
   image: string;
+  gallery?: string[];
   description: string;
   longDescription: string;
   compatibility: string[];
