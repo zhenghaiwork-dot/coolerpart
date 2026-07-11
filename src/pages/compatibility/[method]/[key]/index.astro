@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { productsData } from '~/data/products';
+import { getAllProducts } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 
 export async function getStaticPaths() {
@@ -40,6 +40,7 @@ export async function getStaticPaths() {
 const { method, key } = Astro.params;
 
 // Filter products by method and key
+const productsData = await getAllProducts();
 const filtered = productsData.filter((p) => {
   const specs = p.specs.map((s) => `${s.label}:${s.value}`.toLowerCase());
   const compat = p.compatibility.map((c) => c.toLowerCase());
@@ -68,7 +69,7 @@ const methodLabels: Record<string, string> = { interface: 'Interface', dimension
 const keyLabel = key!.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 ---
 
-<Layout metadata={{ title: `Compatible by ${methodLabels[method!]}: ${keyLabel} — CoolerParts`, ignoreTitleTemplate: true }}>
+<Layout metadata={{ title: `Compatible by ${methodLabels[method!]}: ${keyLabel} — EVAPFit`, ignoreTitleTemplate: true }}>
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-3 text-sm text-muted flex items-center breadcrumb-scroll">

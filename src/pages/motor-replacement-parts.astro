@@ -1,7 +1,8 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
-import { productsData } from '~/data/products';
-const motors = productsData.filter(p => p.systemSlug === 'electrical-controls' && (p.areaSlug === 'motors-drive' || p.areaSlug === 'control-board-protection'));
+import { getAllProducts } from '~/data/product-helpers';
+const allProducts = await getAllProducts();
+const motors = allProducts.filter(p => p.systemSlug === 'electrical-controls' && (p.areaSlug === 'motors-drive' || p.areaSlug === 'control-board-protection'));
 ---
 <Layout metadata={{ title: 'Replacement Motors for Evaporative Coolers | B3 B5 Mount', ignoreTitleTemplate: true }}>
   <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">

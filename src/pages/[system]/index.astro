@@ -2,7 +2,7 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { getProductsBySystem } from '~/data/products';
+import { getProductsBySystem } from '~/data/product-helpers';
 
 export async function getStaticPaths() {
   return systemsData.map((system) => ({
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { system } = Astro.props;
-const products = getProductsBySystem(system.slug);
+const products = await getProductsBySystem(system.slug);
 ---
 
 <Layout metadata={{

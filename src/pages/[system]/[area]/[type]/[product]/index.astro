@@ -1,13 +1,14 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { productsData } from '~/data/products';
+import { getAllProducts } from '~/data/product-helpers';
 import { systemsData } from '~/data/systems';
 import type { Product } from '~/data/inquiry-types';
 
 export async function getStaticPaths() {
+  const allProducts = await getAllProducts();
   const paths: { params: { system: string; area: string; type: string; product: string }; props: { product: Product } }[] = [];
-  for (const product of productsData) {
+  for (const product of allProducts) {
     paths.push({
       params: { system: product.systemSlug, area: product.areaSlug, type: product.productTypeSlug, product: product.slug },
       props: { product },
@@ -21,8 +22,9 @@ const system = systemsData.find((s) => s.slug === product.systemSlug);
 const area = system?.areas.find((a) => a.slug === product.areaSlug);
 const typeName = product.category;
 
-const relatedProducts = productsData.filter((p) => p.slug !== product.slug && p.productTypeSlug === product.productTypeSlug).slice(0, 4);
-const crossSell = productsData.filter((p) => p.slug !== product.slug && p.areaSlug === product.areaSlug && p.productTypeSlug !== product.productTypeSlug).slice(0, 4);
+const allProducts = await getAllProducts();
+const relatedProducts = allProducts.filter((p) => p.slug !== product.slug && p.productTypeSlug === product.productTypeSlug).slice(0, 4);
+const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlug === product.areaSlug && p.productTypeSlug !== product.productTypeSlug).slice(0, 4);
 ---
 
 <Layout metadata={{

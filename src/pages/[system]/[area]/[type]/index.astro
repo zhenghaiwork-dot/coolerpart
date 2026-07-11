@@ -2,17 +2,18 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { getProductsByType, getProductTypeMeta } from '~/data/products';
+import { getProductsByType, getProductTypeMeta, getAllProducts } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 import type { System, SystemArea } from '~/data/inquiry-types';
 
 export async function getStaticPaths() {
+  const allProducts = await getAllProducts();
   const paths: { params: { system: string; area: string; type: string }; props: { system: System; area: SystemArea; typeSlug: string } }[] = [];
   for (const system of systemsData) {
     for (const area of system.areas) {
-      const types = getProductTypeMeta(system.slug, area.slug);
-      for (const type of types) {
-        paths.push({ params: { system: system.slug, area: area.slug, type: type.slug }, props: { system, area, typeSlug: type.slug } });
+      const types = [...new Set(allProducts.filter(p => p.systemSlug === system.slug && p.areaSlug === area.slug).map(p => p.productTypeSlug))];
+      for (const typeSlug of types) {
+        paths.push({ params: { system: system.slug, area: area.slug, type: typeSlug }, props: { system, area, typeSlug } });
       }
     }
   }
@@ -20,10 +21,10 @@ export async function getStaticPaths() {
 }
 
 const { system, area, typeSlug } = Astro.props;
-const products = getProductsByType(system.slug, area.slug, typeSlug);
-const typeMeta = getProductTypeMeta(system.slug, area.slug).find((t) => t.slug === typeSlug);
+const products = await getProductsByType(system.slug, area.slug, typeSlug);
+const typeMeta = (await getProductTypeMeta(system.slug, area.slug)).find((t) => t.slug === typeSlug);
 const typeName = typeMeta?.name || typeSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-const allAreaTypes = getProductTypeMeta(system.slug, area.slug);
+const allAreaTypes = await getProductTypeMeta(system.slug, area.slug);
 const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4);
 ---
 

@@ -2,7 +2,9 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { productsData } from '~/data/products';
+import { getAllProducts } from '~/data/product-helpers';
+
+const productsData = await getAllProducts();
 
 const metadata = {
   title: 'Evaporative Air Cooler Parts & Replacement Components | EVAPFit',

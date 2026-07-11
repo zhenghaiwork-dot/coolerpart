@@ -2,7 +2,7 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { getProductsByArea, getProductTypeMeta } from '~/data/products';
+import { getProductsByArea, getProductTypeMeta } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 import type { System, SystemArea } from '~/data/inquiry-types';
 
@@ -17,8 +17,8 @@ export async function getStaticPaths() {
 }
 
 const { system, area } = Astro.props;
-const productTypes = getProductTypeMeta(system.slug, area.slug);
-const allProducts = getProductsByArea(system.slug, area.slug);
+const productTypes = await getProductTypeMeta(system.slug, area.slug);
+const allProducts = await getProductsByArea(system.slug, area.slug);
 const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4);
 ---
 

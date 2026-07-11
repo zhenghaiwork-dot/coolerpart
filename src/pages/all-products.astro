@@ -2,8 +2,10 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { productsData } from '~/data/products';
+import { getAllProducts } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
+
+const productsData = await getAllProducts();
 
 // Group products by system, preserving system order
 const systemGroups = systemsData

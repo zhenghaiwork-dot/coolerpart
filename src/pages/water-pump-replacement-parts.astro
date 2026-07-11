@@ -1,7 +1,8 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
-import { productsData } from '~/data/products';
-const pumps = productsData.filter(p => p.systemSlug === 'water-system' && p.areaSlug === 'water-pump-power');
+import { getAllProducts } from '~/data/product-helpers';
+const allProducts = await getAllProducts();
+const pumps = allProducts.filter(p => p.systemSlug === 'water-system' && p.areaSlug === 'water-pump-power');
 ---
 <Layout metadata={{ title: 'Water Pump Replacement Parts for Evaporative Coolers | Compatible by Interface', ignoreTitleTemplate: true }}>
   <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">

@@ -47,6 +47,42 @@ const metadataDefinition = () =>
     })
     .optional();
 
+const specSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+const featureSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+const faqSchema = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
+const productCollection = defineCollection({
+  loader: glob({ pattern: ['*.mdx', '*.md'], base: 'src/content/products' }),
+  schema: z.object({
+    slug: z.string(),
+    name: z.string(),
+    category: z.string(),
+    systemSlug: z.string(),
+    areaSlug: z.string(),
+    productTypeSlug: z.string(),
+    moq: z.string(),
+    priceRange: z.string(),
+    image: z.string(),
+    gallery: z.array(z.string()).optional(),
+    description: z.string(),
+    compatibility: z.array(z.string()).default([]),
+    specs: z.array(specSchema).default([]),
+    features: z.array(featureSchema).default([]),
+    faqs: z.array(faqSchema).default([]),
+  }),
+});
+
 const postCollection = defineCollection({
   loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
   schema: z.object({
@@ -66,6 +102,25 @@ const postCollection = defineCollection({
   }),
 });
 
+const guideCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/content/guides' }),
+  schema: z.object({
+    publishDate: z.date().optional(),
+    draft: z.boolean().optional(),
+    title: z.string(),
+    excerpt: z.string().optional(),
+    image: z.string().optional(),
+    category: z.string().optional(),
+    difficulty: z.string().optional(),
+    systemSlug: z.string().optional(),
+    areaSlug: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    metadata: metadataDefinition(),
+  }),
+});
+
 export const collections = {
+  products: productCollection,
   post: postCollection,
+  guide: guideCollection,
 };
