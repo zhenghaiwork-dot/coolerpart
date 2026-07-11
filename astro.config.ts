@@ -53,7 +53,12 @@ export default defineConfig({
     ),
 
     compress({
-      CSS: true,
+      // Tailwind CSS v4 emits modern range media queries (for example,
+      // `@media (width >= 48rem)`). The CSS optimizer used by
+      // astro-compress currently drops those queries in production, which
+      // removes every responsive utility and leaves the site in its
+      // mobile-first layout. Vite already minifies the generated CSS.
+      CSS: false,
       HTML: {
         'html-minifier-terser': {
           removeAttributeQuotes: false,
