@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@config "../../../tailwind.config.ts";
+
 @source "../../pages/";
 @source "../../components/";
 @source "../../layouts/";
