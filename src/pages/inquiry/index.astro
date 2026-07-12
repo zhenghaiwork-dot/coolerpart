@@ -36,20 +36,10 @@ import { Icon } from 'astro-icon/components';
           <form
             id="inquiry-form"
             method="POST"
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="/api/submit-inquiry.php"
             class="space-y-8"
           >
-            <!--
-              ═══════════════════════════════════════════════════
-              FORMSPREE CONFIG — Replace YOUR_FORM_ID with your
-              real form ID from https://formspree.io/forms
-              Also update _next URL to your deployed domain
-              ═══════════════════════════════════════════════════
-            -->
-            <!-- Formspree: redirect after successful submission -->
-            <input type="hidden" name="_next" value="https://coolerparts.example.com/inquiry?success=1" />
-            <!-- Formspree: email subject line -->
-            <input type="hidden" name="_subject" value="New RFQ Inquiry — EVAPFit" />
+            <!-- Spam protection: client-side JS sets challenge + token before submit -->
             <!-- Section: Product Requirements -->
             <fieldset>
               <legend class="mb-5 text-lg font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">
@@ -522,9 +512,7 @@ import { Icon } from 'astro-icon/components';
       const form = document.getElementById("inquiry-form") as HTMLFormElement | null;
       if (!form) return;
 
-      // 0. Set _next to current domain (works on any deployment)
-      const nextInput = form.querySelector('input[name="_next"]') as HTMLInputElement | null;
-      if (nextInput) nextInput.value = window.location.origin + "/inquiry?success=1";
+      // 0. No external form service needed — PHP endpoint handles everything
 
       // 1. Token: form open timestamp for speed check
       const token = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);

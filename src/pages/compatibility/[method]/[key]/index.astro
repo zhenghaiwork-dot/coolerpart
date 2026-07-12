@@ -56,7 +56,13 @@ const filtered = productsData.filter((p) => {
   }
   if (method === 'electrical') {
     const [v, p, r] = key!.split('-');
-    return specs.some((s) => s.includes(v)) || specs.some((s) => s.includes(p)) || specs.some((s) => s.includes(r));
+    // Normalize: remove spaces from spec strings so "1400 rpm" matches "1400rpm"
+    const norm = specs.map((s) => s.replace(/\s+/g, ''));
+    const hasV = norm.some((s) => s.includes(v));
+    const hasP = norm.some((s) => s.includes(p));
+    const hasR = norm.some((s) => s.includes(r));
+    // Match any one of the three, but favor products that match more dimensions
+    return hasV || hasP || hasR;
   }
   if (method === 'cross-reference') {
     const term = key!.replace(/-/g, ' ');

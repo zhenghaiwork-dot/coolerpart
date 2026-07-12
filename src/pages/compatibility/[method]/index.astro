@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
+import { getAllProducts } from '~/data/product-helpers';
+import ProductCard from '~/components/inquiry/ProductCard.astro';
 
 export async function getStaticPaths() {
   return [
@@ -65,6 +67,29 @@ const content: Record<string, { heading: string; body: string; tips: string[] }>
 };
 
 const c = content[method as string];
+
+// Filter products by method — broad match on specs/compatibility for this page
+const allProducts = await getAllProducts();
+const matchingProducts = allProducts.filter((p) => {
+  const specs = p.specs.map((s) => `${s.label}:${s.value}`.toLowerCase().replace(/\s+/g, ''));
+  const compat = p.compatibility.map((c) => c.toLowerCase());
+  const all = [...specs, ...compat, p.name.toLowerCase(), p.description.toLowerCase()];
+
+  if (method === 'electrical') {
+    return all.some((s) => /(?:110v|220v|380v|watt|rpm|hz|capacitor|volt)/i.test(s));
+  }
+  if (method === 'interface') {
+    return all.some((s) => /(?:thread|flange|push.fit|hose.barb|clamp|mount|connect)/i.test(s));
+  }
+  if (method === 'dimensions') {
+    return all.some((s) => /(?:\d+mm|mm\b|shaft|diameter|width|height|thickness)/i.test(s));
+  }
+  if (method === 'cross-reference') {
+    return all.some((s) => /(?:pump|motor|pad|fan|valve|filter|seal)/i.test(s));
+  }
+  return false;
+}).slice(0, 12);
+
 ---
 
 <Layout metadata={{ title: `Compatibility ${title} — EVAPFit`, ignoreTitleTemplate: true }}>
@@ -139,6 +164,21 @@ const c = content[method as string];
       </div>
     </div>
   </section>
+
+  <!-- Matching Products -->
+  {matchingProducts.length > 0 && (
+    <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
+      <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Matching Products</h2>
+        <p class="text-sm text-muted mb-6">{matchingProducts.length} product{matchingProducts.length !== 1 ? 's' : ''} with matching {method === 'electrical' ? 'electrical specs' : method === 'interface' ? 'interface types' : method === 'dimensions' ? 'dimensions' : 'compatibility data'}</p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {matchingProducts.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- CTA — dark, simple -->
   <section class="bg-slate-950 text-white">
