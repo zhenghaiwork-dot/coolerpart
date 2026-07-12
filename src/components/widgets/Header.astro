@@ -135,7 +135,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <>
                   <button
                     type="button"
-                    class="link-underline hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap transition-colors"
+                    class="link-underline hover:text-link dark:hover:text-white px-2.5 xl:px-4 py-3 flex items-center whitespace-nowrap transition-colors"
                   >
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
@@ -159,7 +159,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'link-underline hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap transition-colors',
+                    'link-underline hover:text-link dark:hover:text-white px-2.5 xl:px-4 py-3 flex items-center whitespace-nowrap transition-colors',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
@@ -216,7 +216,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
               <rect x="9" y="3" width="6" height="4" rx="1"/>
             </svg>
-            <span class="hidden sm:inline ml-1.5 text-sm font-medium">Inquiry List</span>
+            <span class="hidden lg:inline ml-1.5 text-sm font-medium">Inquiry List</span>
             <span id="header-basket-count" class="hidden ml-1 inline-flex items-center justify-center rounded-full bg-teal-600 px-1.5 py-0.5 text-xs font-bold text-white min-w-[20px] min-h-[20px] dark:bg-teal-500">0</span>
           </a>
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}

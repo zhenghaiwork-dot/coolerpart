@@ -24,6 +24,7 @@ export interface System {
   description: string;
   icon: string;
   color: string; // Tailwind color class for accent
+  heroImage?: string; // CDN URL for hero banner composite image
   areas: SystemArea[];
   priority: number; // for ordering
 }

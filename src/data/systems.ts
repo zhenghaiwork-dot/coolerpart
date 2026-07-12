@@ -4,6 +4,7 @@ export const systemsData: System[] = [
   {
     slug: 'water-system',
     name: 'Water System',
+    heroImage: 'https://cdn.aircoolerparts.com/gallery/cooler%20water%20system%20banner.webp',
     shortDesc: 'Pumps, Valves, Filtration & Distribution',
     description:
       'Complete water system components including pumps, motors, filtration, valves, distribution manifolds, and piping connections. Core products for water circulation and management in evaporative cooling units.',

@@ -3,6 +3,7 @@ import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
 import { getProductsBySystem } from '~/data/product-helpers';
+import ProductCard from '~/components/inquiry/ProductCard.astro';
 
 export async function getStaticPaths() {
   return systemsData.map((system) => ({
@@ -20,15 +21,51 @@ const products = await getProductsBySystem(system.slug);
   description: `${system.description} Browse ${products.length} compatible evaporative air cooler replacement parts and request a bulk RFQ.`,
   ignoreTitleTemplate: true,
 }}>
-  <!-- Header -->
-  <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
-    <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-      <div class="flex items-center gap-4">
-        <Icon name={system.icon} class="h-8 w-8 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+  <!-- Hero Banner with image — desktop only (sm+) -->
+  {system.heroImage && (
+    <section class="relative hidden xl:block">
+      <img
+        src={system.heroImage}
+        alt=""
+        class="w-full h-auto block"
+        loading="eager"
+      />
+      <div class="absolute inset-0 flex items-center">
+        <div class="mx-auto max-w-7xl px-6 w-full">
+          <div class="max-w-xl">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="flex h-7 w-7 items-center justify-center rounded-md bg-teal-500/30 ring-1 ring-teal-400/30">
+                <Icon name={system.icon} class="h-3.5 w-3.5 text-teal-300" />
+              </span>
+              <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-teal-300">{system.name}</p>
+            </div>
+            <h1 class="text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+              {system.name} Parts for Evaporative Air Coolers
+            </h1>
+            <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{system.description}</p>
+            <div class="mt-3 flex items-center gap-2.5 text-xs">
+              <span class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-0.5 text-slate-300 ring-1 ring-white/10">
+                <span class="font-semibold tabular-nums">{system.areas.length}</span> sub-categories
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-0.5 text-slate-500 ring-1 ring-white/5">
+                <span class="font-semibold tabular-nums">{products.length}</span> products
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* Text-only header — mobile always, desktop only when no banner */}
+  <section class:list={['border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900', { 'xl:hidden': !!system.heroImage }]}>
+    <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
+      <div class="flex items-center gap-3">
+        <Icon name={system.icon} class="h-7 w-7 text-teal-600 dark:text-teal-400 flex-shrink-0" />
         <div>
-          <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{system.name} Parts for Evaporative Air Coolers</h1>
-          <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{system.description}</p>
-          <p class="mt-3 text-xs text-muted">{system.areas.length} sub-categories · {products.length} products</p>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{system.name} Parts for Evaporative Air Coolers</h1>
+          <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{system.description}</p>
+          <p class="mt-2 text-xs text-muted">{system.areas.length} sub-categories · {products.length} products</p>
         </div>
       </div>
     </div>
@@ -60,32 +97,17 @@ const products = await getProductsBySystem(system.slug);
     </div>
   </section>
 
-  {/* Product Preview */}
+  {/* All Products */}
   {products.length > 0 && (
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-        <div class="mb-6 flex items-end justify-between">
-          <div>
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Available Parts</h2>
-            <p class="text-sm text-muted mt-0.5">{products.length} compatible replacement parts</p>
-          </div>
-          {system.areas[0] && (
-            <a href={`/${system.slug}/${system.areas[0].slug}`} class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
-              View all &rarr;
-            </a>
-          )}
+        <div class="mb-6">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">All {system.name} Products</h2>
+          <p class="text-sm text-muted mt-0.5">{products.length} compatible replacement parts — click any product for full specs</p>
         </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {products.slice(0, 4).map((product) => (
-            <a
-              href={`/${system.slug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}
-              class="group flex flex-col rounded-lg border border-gray-200 bg-white p-4 transition hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50"
-            >
-              <span class="text-xs font-medium text-teal-600 dark:text-teal-400">{product.category}</span>
-              <h3 class="mt-1.5 text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{product.name}</h3>
-              <p class="mt-1 text-xs text-muted line-clamp-2">{product.description}</p>
-              <p class="mt-3 text-xs text-muted border-t border-gray-100 pt-2.5 dark:border-slate-700">{product.moq}</p>
-            </a>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard product={product} />
           ))}
         </div>
       </div>
