@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getAllProducts } from '~/data/product-helpers';
 import { systemsData } from '~/data/systems';
 import type { Product } from '~/data/inquiry-types';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 export async function getStaticPaths() {
   const allProducts = await getAllProducts();
@@ -32,6 +33,20 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   description: `${product.description} Check compatibility, specifications, MOQ and indicative pricing for this evaporative air cooler replacement part, then request a quote.`,
   ignoreTitleTemplate: true,
 }}>
+  <StructuredData type="BreadcrumbList" items={[
+    { name: 'Home', url: '/' },
+    ...(system ? [{ name: system.name, url: `/${system.slug}` }] : []),
+    ...(area ? [{ name: area.name, url: `/${system.slug}/${area.slug}` }] : []),
+    { name: typeName, url: `/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}` },
+    { name: product.name, url: `/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}` },
+  ]} />
+  <StructuredData type="Product" product={{
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    category: product.category,
+    sku: product.slug,
+  }} />
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-2.5 text-sm text-muted">

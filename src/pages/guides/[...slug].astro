@@ -3,6 +3,7 @@ import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 export async function getStaticPaths() {
   const allGuides = await getCollection('guide');
@@ -17,14 +18,27 @@ const { Content } = await render(guide);
 
 const title = guide.data.title;
 const excerpt = guide.data.excerpt || '';
+const isoDate = guide.data.publishDate ? new Date(guide.data.publishDate).toISOString() : '';
 const category = guide.data.category || 'Repair Guide';
 const difficulty = guide.data.difficulty || '';
 const systemSlug = guide.data.systemSlug || '';
 const areaSlug = guide.data.areaSlug || '';
 const tags = guide.data.tags || [];
+const image = guide.data.image || '';
 ---
 
 <Layout metadata={{ title: `${title} — EVAPFit Guide`, description: excerpt, ignoreTitleTemplate: true }}>
+  <StructuredData type="BreadcrumbList" items={[
+    { name: 'Home', url: '/' },
+    { name: 'Guides', url: '/guides' },
+    { name: title, url: `/guides/${guide.id.replace(/\.(md|mdx)$/, '')}` },
+  ]} />
+  {isoDate && (<StructuredData type="Article" article={{
+    title,
+    description: excerpt,
+    image: image || undefined,
+    datePublished: isoDate,
+  }} />)}
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-3xl px-6 py-2.5 text-sm text-muted">

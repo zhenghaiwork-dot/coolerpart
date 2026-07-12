@@ -1,0 +1,99 @@
+---
+/**
+ * StructuredData.astro — JSON-LD schemas for SEO
+ *
+ * Usage:
+ *   <StructuredData type="Organization" />
+ *   <StructuredData type="BreadcrumbList" items={[...]} />
+ *   <StructuredData type="Product" product={...} />
+ *   <StructuredData type="Article" article={...} />
+ */
+export interface Props {
+  type: 'Organization' | 'BreadcrumbList' | 'Product' | 'Article';
+  items?: { name: string; url: string }[];
+  product?: {
+    name: string;
+    description: string;
+    image: string;
+    category: string;
+    sku: string;
+    brand?: string;
+  };
+  article?: {
+    title: string;
+    description: string;
+    image?: string;
+    datePublished: string;
+    dateModified?: string;
+    author?: string;
+  };
+}
+
+const { type, items, product, article } = Astro.props;
+
+let jsonLd = '';
+
+if (type === 'Organization') {
+  jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'EVAPFit',
+    url: 'https://aircoolerparts.com',
+    logo: 'https://aircoolerparts.com/logo.svg',
+    description: 'Evaporative air cooler replacement parts — interface-matched components for portable and cabinet coolers.',
+    email: 'rfq@aircoolerparts.com',
+    sameAs: [],
+  });
+}
+
+if (type === 'BreadcrumbList' && items) {
+  jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `https://aircoolerparts.com${item.url}`,
+    })),
+  });
+}
+
+if (type === 'Product' && product) {
+  jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    sku: product.sku,
+    category: product.category,
+    brand: product.brand ? { '@type': 'Brand', name: product.brand } : undefined,
+    offers: {
+      '@type': 'AggregateOffer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+    },
+  });
+}
+
+if (type === 'Article' && article) {
+  jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    image: article.image || undefined,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    author: article.author ? { '@type': 'Organization', name: article.author } : { '@type': 'Organization', name: 'EVAPFit' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EVAPFit',
+      logo: { '@type': 'ImageObject', url: 'https://aircoolerparts.com/logo.svg' },
+    },
+  });
+}
+---
+
+{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}

@@ -3,6 +3,7 @@ import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('post');
@@ -20,12 +21,33 @@ const excerpt = post.data.excerpt || '';
 const publishDate = post.data.publishDate
   ? new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   : '';
+const isoPublishDate = post.data.publishDate ? new Date(post.data.publishDate).toISOString() : '';
+const isoModifiedDate = (post.data as any).updateDate
+  ? new Date((post.data as any).updateDate).toISOString()
+  : isoPublishDate;
+const modifiedDateDisplay = (post.data as any).updateDate
+  ? new Date((post.data as any).updateDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  : '';
 const category = post.data.category || '';
 const tags = post.data.tags || [];
 const image = post.data.image || '';
+const author = (post.data as any).author || 'EVAPFit';
 ---
 
 <Layout metadata={{ title: `${title} | EVAPFit Blog`, description: excerpt, ignoreTitleTemplate: true }}>
+  <StructuredData type="BreadcrumbList" items={[
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: title, url: `/blog/${post.id.replace(/\.(md|mdx)$/, '')}` },
+  ]} />
+  <StructuredData type="Article" article={{
+    title,
+    description: excerpt,
+    image: image || undefined,
+    datePublished: isoPublishDate,
+    dateModified: isoModifiedDate,
+    author,
+  }} />
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-3xl px-6 py-2.5 text-sm text-muted">
@@ -45,6 +67,12 @@ const image = post.data.image || '';
           <span class="inline-flex items-center gap-1.5">
             <Icon name="tabler:calendar" class="h-4 w-4" />
             {publishDate}
+          </span>
+        )}
+        {modifiedDateDisplay && modifiedDateDisplay !== publishDate && (
+          <span class="inline-flex items-center gap-1.5 text-xs text-muted">
+            <Icon name="tabler:pencil" class="h-3.5 w-3.5" />
+            Updated {modifiedDateDisplay}
           </span>
         )}
         {category && (

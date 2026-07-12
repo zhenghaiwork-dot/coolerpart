@@ -1,5 +1,4 @@
 User-agent: *
 Disallow:
 
-# Sitemap (update domain after deployment)
-Sitemap: https://coolerparts.example.com/sitemap-index.xml
+Sitemap: https://aircoolerparts.com/sitemap-index.xml
