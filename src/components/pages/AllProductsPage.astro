@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
 import { getAllProducts } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName } from '~/i18n/utils';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -110,7 +110,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
                   class="text-lg font-bold text-gray-900 dark:text-white"
                   style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
                 >
-                  {system.name}
+                  {getSystemName(system.slug, locale)}
                 </h2>
               </div>
               <a
@@ -126,7 +126,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {products.map((product) => (
-                <ProductCard product={product} />
+                <ProductCard product={product} locale={locale} />
               ))}
             </div>
           </div>

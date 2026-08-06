@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 import { type System } from '~/data/inquiry-types';
 import { getProductsBySystem } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
-import { useTranslations, localeLink } from '~/i18n/utils';
+import { useTranslations, localeLink, getSystemName, getSystemDesc, getAreaName, getAreaShortDesc } from '~/i18n/utils';
 
 export interface Props {
   system: System;
@@ -16,11 +16,13 @@ const { system, locale = 'en' } = Astro.props;
 const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 const products = await getProductsBySystem(system.slug);
+const sysName = getSystemName(system.slug, locale);
+const sysDesc = getSystemDesc(system.slug, locale);
 ---
 
 <Layout metadata={{
-  title: `${system.name} Parts for Evaporative Air Coolers | EVAPFit`,
-  description: `${system.description} Browse ${products.length} compatible evaporative air cooler replacement parts and request a bulk RFQ.`,
+  title: `${sysName} Parts for Evaporative Air Coolers | EVAPFit`,
+  description: `${sysDesc} Browse ${products.length} compatible evaporative air cooler replacement parts and request a bulk RFQ.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
   <!-- Hero Banner -->
@@ -39,12 +41,12 @@ const products = await getProductsBySystem(system.slug);
               <span class="flex h-7 w-7 items-center justify-center rounded-md bg-teal-500/30 ring-1 ring-teal-400/30">
                 <Icon name={system.icon} class="h-3.5 w-3.5 text-teal-300" />
               </span>
-              <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-teal-300">{system.name}</p>
+              <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-teal-300">{sysName}</p>
             </div>
             <h1 class="text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
-              {system.name} Parts for Evaporative Air Coolers
+              {sysName} Parts for Evaporative Air Coolers
             </h1>
-            <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{system.description}</p>
+            <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{sysDesc}</p>
             <div class="mt-3 flex items-center gap-2.5 text-xs">
               <span class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-0.5 text-slate-300 ring-1 ring-white/10">
                 <span class="font-semibold tabular-nums">{system.areas.length}</span> sub-categories
@@ -65,8 +67,8 @@ const products = await getProductsBySystem(system.slug);
       <div class="flex items-center gap-3">
         <Icon name={system.icon} class="h-7 w-7 text-teal-600 dark:text-teal-400 flex-shrink-0" />
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{system.name} Parts for Evaporative Air Coolers</h1>
-          <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{system.description}</p>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{sysName} Parts for Evaporative Air Coolers</h1>
+          <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{sysDesc}</p>
           <p class="mt-2 text-xs text-muted">{system.areas.length} sub-categories · {products.length} products</p>
         </div>
       </div>
@@ -88,8 +90,8 @@ const products = await getProductsBySystem(system.slug);
             >
               <Icon name={area.icon} class="h-5 w-5 text-teal-500 mt-0.5 flex-shrink-0" />
               <div class="min-w-0">
-                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{area.name}</span>
-                <p class="text-xs text-muted mt-0.5 line-clamp-2">{area.shortDesc}</p>
+                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{getAreaName(area.slug, locale)}</span>
+                <p class="text-xs text-muted mt-0.5 line-clamp-2">{getAreaShortDesc(area.slug, locale)}</p>
                 <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{count} products</p>
               </div>
             </a>
@@ -104,12 +106,12 @@ const products = await getProductsBySystem(system.slug);
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
         <div class="mb-6">
-          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">All {system.name} Products</h2>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">All {sysName} Products</h2>
           <p class="text-sm text-muted mt-0.5">{products.length} compatible replacement parts — click any product for full specs</p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} locale={locale} />
           ))}
         </div>
       </div>
@@ -119,7 +121,7 @@ const products = await getProductsBySystem(system.slug);
   {/* CTA */}
   <section class="bg-slate-950 text-white">
     <div class="mx-auto max-w-3xl px-6 py-12 text-center lg:py-16">
-      <h2 class="text-xl font-semibold">Need {system.name} Parts?</h2>
+      <h2 class="text-xl font-semibold">Need {sysName} Parts?</h2>
       <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">{products.length}+ compatible replacement parts — interface-matched, no model number needed.</p>
       <div class="mt-6 flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
         <a href={L('/inquiry')} class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">{__('cta.request_quote')}</a>

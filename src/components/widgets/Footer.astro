@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
+import { useTranslations, defaultLang } from '~/i18n/utils';
 
 interface Link {
   text?: string;
@@ -21,9 +22,11 @@ export interface Props {
   socialLinks: Array<Link>;
   footNote?: string;
   theme?: string;
+  locale?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light', locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-slate-800 not-prose bg-slate-950 text-slate-400']}>
@@ -42,7 +45,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             <span class="text-white">{SITE?.name}</span>
           </a>
         </div>
-        <p class="text-sm text-slate-500 mb-4 max-w-xs leading-relaxed">Direct-source replacement parts for evaporative coolers. Interface-matched components — no model number needed.</p>
+        <p class="text-sm text-slate-500 mb-4 max-w-xs leading-relaxed">{__('footer.tagline')}</p>
         <div class="text-sm text-slate-500 flex gap-1 flex-wrap">
           {
             secondaryLinks.map(({ text, href }, index) => (

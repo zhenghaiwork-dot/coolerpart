@@ -1,12 +1,14 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Product } from '~/data/inquiry-types';
+import { getAreaName, defaultLang } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
+  locale?: string;
 }
 
-const { product } = Astro.props;
+const { product, locale = defaultLang } = Astro.props;
 ---
 
 <article
@@ -25,7 +27,7 @@ const { product } = Astro.props;
       )}
     </div>
     <span class="absolute top-2.5 left-2.5 tech-label text-teal-400/80 bg-slate-950/60 px-2 py-0.5 rounded">
-      {product.category}
+      {getAreaName(product.areaSlug, locale)}
     </span>
   </a>
 

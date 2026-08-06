@@ -78,3 +78,28 @@ export function localeLink(path: string, locale: string): string {
   if (locale === defaultLang) return cleanPath;
   return `/${locale}${cleanPath}`;
 }
+
+/** Get translated system name by slug. */
+export function getSystemName(slug: string, locale: string = defaultLang): string {
+  return t(`sys.${slug}`, locale);
+}
+
+/** Get translated system short description by slug. */
+export function getSystemShortDesc(slug: string, locale: string = defaultLang): string {
+  return t(`sys.${slug}.short`, locale);
+}
+
+/** Get translated system description by slug. */
+export function getSystemDesc(slug: string, locale: string = defaultLang): string {
+  return t(`sys.${slug}.desc`, locale);
+}
+
+/** Get translated area name by slug. */
+export function getAreaName(slug: string, locale: string = defaultLang): string {
+  return t(`area.${slug}`, locale);
+}
+
+/** Get translated area short description by slug. */
+export function getAreaShortDesc(slug: string, locale: string = defaultLang): string {
+  return t(`area.${slug}.short`, locale);
+}

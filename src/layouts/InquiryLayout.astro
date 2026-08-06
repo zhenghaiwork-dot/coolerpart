@@ -4,7 +4,7 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import LanguageSwitcher from '~/components/common/LanguageSwitcher.astro';
 import { systemsData } from '~/data/systems';
-import { useTranslations, defaultLang, type Locale, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, type Locale, localeLink, getSystemName, getAreaName } from '~/i18n/utils';
 import type { MetaData } from '~/types';
 
 export interface Props {
@@ -24,10 +24,10 @@ const headerLinks = [
     links: [
       { text: __('nav.all_products'), href: L('/all-products') },
       ...systemsData.map((sys) => ({
-        text: sys.name,
+        text: getSystemName(sys.slug, locale),
         href: L(`/${sys.slug}`),
         links: sys.areas.map((area) => ({
-          text: area.name,
+          text: getAreaName(area.slug, locale),
           href: L(`/${sys.slug}/${area.slug}`),
         })),
       })),
@@ -97,11 +97,11 @@ const footerLinks = [
 ---
 
 <Layout metadata={metadata}>
-  <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme>
+  <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme locale={locale}>
     <LanguageSwitcher currentLocale={locale} class="ml-3" />
   </Header>
   <main>
     <slot />
   </main>
-  <Footer links={footerLinks} secondaryLinks={[{ text: __('nav.terms'), href: L('/terms') }, { text: __('nav.privacy'), href: L('/privacy') }]} socialLinks={[]} footNote={__('footer.copyright')} />
+  <Footer links={footerLinks} secondaryLinks={[{ text: __('nav.terms'), href: L('/terms') }, { text: __('nav.privacy'), href: L('/privacy') }]} socialLinks={[]} footNote={__('footer.copyright')} locale={locale} />
 </Layout>

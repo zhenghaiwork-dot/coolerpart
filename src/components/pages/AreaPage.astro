@@ -5,7 +5,7 @@ import { systemsData } from '~/data/systems';
 import { getProductsByArea, getProductTypeMeta } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 import type { System, SystemArea } from '~/data/inquiry-types';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getAreaShortDesc } from '~/i18n/utils';
 
 export interface Props {
   system: System;
@@ -17,32 +17,36 @@ const { system, area, locale = defaultLang } = Astro.props;
 const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 
+const sysName = getSystemName(system.slug, locale);
+const areaName = getAreaName(area.slug, locale);
+const areaShortDesc = getAreaShortDesc(area.slug, locale);
+
 const productTypes = await getProductTypeMeta(system.slug, area.slug);
 const allProducts = await getProductsByArea(system.slug, area.slug);
 const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4);
 ---
 
 <Layout metadata={{
-  title: `${area.name} Replacement Parts for Evaporative Air Coolers`,
-  description: `Find compatible ${area.name.toLowerCase()} replacement parts for evaporative air coolers. ${area.description} Match specifications and request a bulk quote.`,
+  title: `${areaName} Replacement Parts for Evaporative Air Coolers`,
+  description: `Find compatible ${areaName.toLowerCase()} replacement parts for evaporative air coolers. ${area.description} Match specifications and request a bulk quote.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-2.5 text-sm text-muted">
-      <a href={L('/')} class="hover:text-teal-600">Home</a>
+      <a href={L('/')} class="hover:text-teal-600">{__('breadcrumb.home')}</a>
       <span class="mx-1.5 text-gray-300">/</span>
-      <a href={L(`/${system.slug}`)} class="hover:text-teal-600">{system.name}</a>
+      <a href={L(`/${system.slug}`)} class="hover:text-teal-600">{sysName}</a>
       <span class="mx-1.5 text-gray-300">/</span>
-      <span class="text-gray-700 dark:text-gray-300">{area.name}</span>
+      <span class="text-gray-700 dark:text-gray-300">{areaName}</span>
     </div>
   </div>
 
   <!-- Header -->
   <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-      <p class="text-xs font-medium uppercase tracking-wide text-teal-600 dark:text-teal-400 mb-1">{system.name}</p>
-      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{area.name} Replacement Parts for Evaporative Air Coolers</h1>
+      <p class="text-xs font-medium uppercase tracking-wide text-teal-600 dark:text-teal-400 mb-1">{sysName}</p>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{areaName} Replacement Parts for Evaporative Air Coolers</h1>
       <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{area.description}</p>
       <p class="mt-3 text-xs text-muted">{allProducts.length} products in {productTypes.length} types</p>
     </div>
@@ -52,7 +56,7 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   <section class="border-b border-gray-100 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/30">
     <div class="mx-auto max-w-7xl px-6 py-4">
       <p class="text-sm text-muted leading-relaxed max-w-3xl">
-        Find compatible <strong class="text-gray-800 dark:text-gray-200">{area.name.toLowerCase()}</strong> for portable and cabinet evaporative coolers. Match by connection type, key dimensions, or electrical parameters without needing a model number. <a href={L('/compatibility')} class="text-teal-600 hover:underline">Learn about our compatibility system &rarr;</a>
+        Find compatible <strong class="text-gray-800 dark:text-gray-200">{areaName.toLowerCase()}</strong> for portable and cabinet evaporative coolers. Match by connection type, key dimensions, or electrical parameters without needing a model number. <a href={L('/compatibility')} class="text-teal-600 hover:underline">Learn about our compatibility system &rarr;</a>
       </p>
     </div>
   </section>
@@ -88,10 +92,10 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   {allProducts.length > 0 && (
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">All {area.name} Products</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">All {areaName} Products</h2>
         <p class="text-sm text-muted mb-6">{allProducts.length} compatible replacement part{allProducts.length !== 1 ? 's' : ''}. Click any product for detailed specs and to request a quote.</p>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {allProducts.map((product) => (<ProductCard product={product} />))}
+          {allProducts.map((product) => (<ProductCard product={product} locale={locale} />))}
         </div>
       </div>
     </section>
@@ -101,12 +105,12 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   {relatedAreas.length > 0 && (
     <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Related Categories in {system.name}</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Related Categories in {sysName}</h2>
         <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {relatedAreas.map((ra) => (
             <a href={L(`/${system.slug}/${ra.slug}`)} class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:border-teal-300 hover:text-teal-600 transition dark:border-slate-700 dark:bg-slate-800/50 dark:text-gray-300">
               <Icon name={ra.icon} class="h-4 w-4 text-teal-500 flex-shrink-0" />
-              <span class="truncate">{ra.name}</span>
+              <span class="truncate">{getAreaName(ra.slug, locale)}</span>
             </a>
           ))}
         </div>
