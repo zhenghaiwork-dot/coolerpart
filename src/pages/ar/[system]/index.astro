@@ -1,0 +1,14 @@
+---
+import SystemPage from '~/components/pages/SystemPage.astro';
+import { systemsData } from '~/data/systems';
+
+export async function getStaticPaths() {
+  return systemsData.map((system) => ({
+    params: { system: system.slug },
+    props: { system },
+  }));
+}
+
+const { system } = Astro.props;
+---
+<SystemPage system={system} locale="ar" />

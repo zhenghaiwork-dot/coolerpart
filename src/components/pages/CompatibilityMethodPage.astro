@@ -1,0 +1,174 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { getAllProducts } from '~/data/product-helpers';
+import ProductCard from '~/components/inquiry/ProductCard.astro';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+  params: { method: string };
+  props: { method: string; title: string; icon: string };
+}
+
+const { locale = defaultLang, params, props } = Astro.props;
+const { method, title, icon } = props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+
+const headingKey = `compat_method_heading.${method}`;
+const bodyKey = `compat_method_body.${method}`;
+
+const tips = (() => {
+  const tipsMap: Record<string, string[]> = {};
+  for (const m of ['interface', 'dimensions', 'electrical', 'cross_reference']) {
+    tipsMap[m] = [];
+    for (let i = 1; i <= 6; i++) {
+      const tip = __(`compat_tips.${m}_${i}`);
+      if (tip !== `compat_tips.${m}_${i}`) {
+        tipsMap[m].push(tip);
+      }
+    }
+  }
+  return tipsMap[method] || [];
+})();
+
+const specTypeLabels: Record<string, string> = {
+  interface: __('compatibility_method.interface_specs'),
+  dimensions: __('compatibility_method.dimension_specs'),
+  electrical: __('compatibility_method.electrical_specs'),
+  'cross-reference': __('compatibility_method.compat_data'),
+};
+
+const allProducts = await getAllProducts();
+const matchingProducts = allProducts.filter((p) => {
+  const specs = p.specs.map((s) => `${s.label}:${s.value}`.toLowerCase().replace(/\s+/g, ''));
+  const compat = p.compatibility.map((c) => c.toLowerCase());
+  const all = [...specs, ...compat, p.name.toLowerCase(), p.description.toLowerCase()];
+
+  if (method === 'electrical') {
+    return all.some((s) => /(?:110v|220v|380v|watt|rpm|hz|capacitor|volt)/i.test(s));
+  }
+  if (method === 'interface') {
+    return all.some((s) => /(?:thread|flange|push.fit|hose.barb|clamp|mount|connect)/i.test(s));
+  }
+  if (method === 'dimensions') {
+    return all.some((s) => /(?:\d+mm|mm\b|shaft|diameter|width|height|thickness)/i.test(s));
+  }
+  if (method === 'cross-reference') {
+    return all.some((s) => /(?:pump|motor|pad|fan|valve|filter|seal)/i.test(s));
+  }
+  return false;
+}).slice(0, 12);
+
+const heading = __(headingKey);
+const body = __(bodyKey);
+---
+
+<Layout metadata={{ title: `Compatibility ${title} — EVAPFit`, ignoreTitleTemplate: true }} locale={locale}>
+  <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-3 text-sm text-muted flex items-center breadcrumb-scroll">
+      <a href={L('/')} class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{__('compatibility_method.home')}</a>
+      <span class="mx-1.5 text-gray-300 dark:text-slate-600">/</span>
+      <a href={L('/compatibility')} class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{__('compatibility_method.compatibility')}</a>
+      <span class="mx-1.5 text-gray-300 dark:text-slate-600">/</span>
+      <span class="text-gray-700 dark:text-gray-300">{title}</span>
+    </div>
+  </div>
+
+  <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div data-reveal>
+        <div class="flex items-center gap-3">
+          <Icon name={icon} class="h-6 w-6 text-teal-600 dark:text-teal-400" />
+          <span class="text-sm font-medium text-teal-600 dark:text-teal-400">{title}</span>
+        </div>
+        <h1
+          class="mt-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+        >
+          {heading}
+        </h1>
+        <p class="mt-4 max-w-2xl text-base text-muted leading-relaxed">{body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div data-reveal class="mb-8">
+        <h2
+          class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+        >
+          {__('compatibility_method.what_to_check')}
+        </h2>
+        <p class="mt-2 text-sm text-muted">{__('compatibility_method.key_params')}</p>
+      </div>
+
+      <div data-reveal class="max-w-3xl">
+        <div class="divide-y divide-gray-200 dark:divide-slate-700">
+          {tips.map((tip, i) => (
+            <div class="flex gap-4 py-4">
+              <span
+                class="text-sm font-bold text-teal-600/40 dark:text-teal-400/30 flex-shrink-0 w-6 pt-0.5"
+                style="font-family: 'Space Grotesk Variable', sans-serif;"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p class="text-sm text-muted leading-relaxed">{tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div data-reveal class="mt-10">
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">{__('compatibility_method.quick_lookup')}</h3>
+        <div class="flex flex-wrap gap-2">
+          {method === 'interface' && (<><a href={L('/compatibility/interface/threaded-connection')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Threaded</a><a href={L('/compatibility/interface/push-fit')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Push-fit</a><a href={L('/compatibility/interface/flange-mount')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Flange</a><a href={L('/compatibility/interface/hose-barb')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Hose Barb</a></>)}
+          {method === 'dimensions' && (<><a href={L('/compatibility/dimensions/600mm-pad')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">600mm Pad</a><a href={L('/compatibility/dimensions/12mm-shaft')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">12mm Shaft</a><a href={L('/compatibility/dimensions/10mm-pipe')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">10mm Pipe</a><a href={L('/compatibility/dimensions/250mm-wheel')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">250mm Wheel</a></>)}
+          {method === 'electrical' && (<><a href={L('/compatibility/electrical/110v-250w-1400rpm')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">110V / 250W</a><a href={L('/compatibility/electrical/220v-550w-1400rpm')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">220V / 550W</a><a href={L('/compatibility/electrical/220v-750w-1400rpm')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">220V / 750W</a></>)}
+          {method === 'cross-reference' && (<><a href={L('/compatibility/cross-reference/pump-seal')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Pump Seal</a><a href={L('/compatibility/cross-reference/motor-capacitor')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Motor Capacitor</a><a href={L('/compatibility/cross-reference/pad-frame')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Pad Frame</a><a href={L('/compatibility/cross-reference/fan-guard')} class="rounded-md border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-slate-600 dark:text-gray-400 dark:hover:border-teal-700 transition-colors">Fan Guard</a></>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {matchingProducts.length > 0 && (
+    <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
+      <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{__('compatibility_method.matching_products')}</h2>
+        <p class="text-sm text-muted mb-6">{matchingProducts.length} {__('compatibility_method.products_with')} {specTypeLabels[method] || specTypeLabels['cross-reference']}</p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {matchingProducts.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-16 text-center lg:py-20">
+      <h2
+        class="text-2xl font-semibold tracking-tight"
+        style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
+      >
+        {__('compatibility_method.cta_title')}
+      </h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+        {__('compatibility_method.cta_desc')}
+      </p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href={L('/inquiry')} class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4" />
+          {__('compatibility_method.submit_inquiry')}
+        </a>
+        <a href={L('/compatibility')} class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">
+          <Icon name="tabler:arrow-left" class="h-4 w-4" />
+          {__('compatibility_method.back_to_guide')}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,54 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+}
+
+const { locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+---
+
+<Layout metadata={{ title: __('about.title'), ignoreTitleTemplate: true }} locale={locale}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{__('about.heading')}</h1>
+      <p class="mt-4 text-lg text-gray-300">{__('about.subtitle')}</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="grid gap-8 md:grid-cols-3 text-center mb-12">
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">15+</div><p class="text-sm text-muted">{__('about.years_experience')}</p></div>
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">50+</div><p class="text-sm text-muted">{__('about.export_countries')}</p></div>
+        <div class="rounded-xl border border-gray-200 p-6 dark:border-slate-700"><div class="text-3xl font-bold text-teal-600">1000+</div><p class="text-sm text-muted">{__('about.active_skus')}</p></div>
+      </div>
+      <div class="prose dark:prose-invert max-w-none space-y-6">
+        <h2>{__('about.who_we_are')}</h2>
+        <p>{__('about.who_we_are_text')}</p>
+        <h2>{__('about.our_markets')}</h2>
+        <p>{__('about.our_markets_text')}</p>
+        <div class="grid gap-4 sm:grid-cols-2 not-prose">
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>{__('about.factory_direct')}</strong><p class="text-sm text-muted">{__('about.factory_direct_text')}</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>{__('about.oem_odm')}</strong><p class="text-sm text-muted">{__('about.oem_odm_text')}</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>{__('about.fast_response')}</strong><p class="text-sm text-muted">{__('about.fast_response_text')}</p></div></div>
+          <div class="flex gap-3 rounded-xl border p-4"><Icon name="tabler:check" class="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5"/><div><strong>{__('about.qc_assured')}</strong><p class="text-sm text-muted">{__('about.qc_assured_text')}</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">{__('about.cta_heading')}</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">{__('about.cta_text')}</p>
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a href={L('/all-products')} class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500">{__('about.browse_all_products')}</a>
+        <a href={L('/inquiry')} class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-white hover:bg-white/5">{__('cta.request_quote')}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

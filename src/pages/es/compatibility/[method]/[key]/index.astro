@@ -1,0 +1,15 @@
+---
+import CompatSpecPage from '~/components/pages/CompatSpecPage.astro';
+
+export async function getStaticPaths() {
+  const paths: { params: { method: string; key: string } }[] = [];
+  for (const key of ['threaded-connection', 'push-fit', 'flange-mount', 'hose-barb', 'clamp-mount']) paths.push({ params: { method: 'interface', key } });
+  for (const key of ['600mm-pad', '12mm-shaft', '10mm-pipe', '1-2-inch-port', '250mm-wheel']) paths.push({ params: { method: 'dimensions', key } });
+  for (const v of ['110v', '220v', '380v']) for (const p of ['250w', '550w', '750w']) for (const r of ['900rpm', '1400rpm', '2800rpm']) paths.push({ params: { method: 'electrical', key: `${v}-${p}-${r}` } });
+  for (const key of ['pump-seal', 'motor-capacitor', 'pad-frame', 'fan-guard']) paths.push({ params: { method: 'cross-reference', key } });
+  return paths;
+}
+
+const { method, key } = Astro.params as { method: string; key: string };
+---
+<CompatSpecPage method={method!} key={key!} locale="es" />

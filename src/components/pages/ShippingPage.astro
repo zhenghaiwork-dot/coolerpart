@@ -1,0 +1,52 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+}
+
+const { locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+---
+
+<Layout metadata={{ title: __('shipping.title'), ignoreTitleTemplate: true }} locale={locale}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{__('shipping.heading')}</h1>
+      <p class="mt-4 text-lg text-gray-300">{__('shipping.subtitle')}</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="prose dark:prose-invert max-w-none space-y-6">
+        <h2>{__('shipping.methods')}</h2>
+        <div class="grid gap-4 sm:grid-cols-3 not-prose">
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:ship" class="h-8 w-8"/></div><h3 class="font-semibold">{__('shipping.sea_freight')}</h3><p class="text-sm text-muted mt-1">{__('shipping.sea_freight_text')}</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:plane" class="h-8 w-8"/></div><h3 class="font-semibold">{__('shipping.air_freight')}</h3><p class="text-sm text-muted mt-1">{__('shipping.air_freight_text')}</p></div>
+          <div class="rounded-xl border p-5"><div class="text-2xl font-bold text-cyan-600 mb-2"><Icon name="tabler:truck" class="h-8 w-8"/></div><h3 class="font-semibold">{__('shipping.express_courier')}</h3><p class="text-sm text-muted mt-1">{__('shipping.express_courier_text')}</p></div>
+        </div>
+        <h2>{__('shipping.incoterms')}</h2>
+        <p>{__('shipping.incoterms_text')}</p>
+        <h2>{__('shipping.packaging')}</h2>
+        <p>{__('shipping.packaging_text')}</p>
+        <h2>{__('shipping.lead_times')}</h2>
+        <div class="not-prose space-y-3">
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">{__('shipping.sample_orders')}</span><span class="text-muted">{__('shipping.sample_orders_time')}</span></div>
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">{__('shipping.standard_orders')}</span><span class="text-muted">{__('shipping.standard_orders_time')}</span></div>
+          <div class="flex justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-800"><span class="font-medium">{__('shipping.bulk_orders')}</span><span class="text-muted">{__('shipping.bulk_orders_time')}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold" style="font-family: 'Space Grotesk Variable', sans-serif;">{__('shipping.cta_heading')}</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto">{__('shipping.cta_text')}</p>
+      <a href={L('/inquiry')} class="mt-6 inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500"><Icon name="tabler:mail" class="h-4 w-4"/> {__('cta.request_quote')}</a>
+    </div>
+  </section>
+</Layout>

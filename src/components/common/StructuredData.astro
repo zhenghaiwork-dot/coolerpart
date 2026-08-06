@@ -1,13 +1,9 @@
 ---
 /**
- * StructuredData.astro — JSON-LD schemas for SEO
- *
- * Usage:
- *   <StructuredData type="Organization" />
- *   <StructuredData type="BreadcrumbList" items={[...]} />
- *   <StructuredData type="Product" product={...} />
- *   <StructuredData type="Article" article={...} />
+ * StructuredData.astro — JSON-LD schemas for SEO (i18n-aware)
  */
+import { defaultLang, siteUrl } from '~/i18n/utils';
+
 export interface Props {
   type: 'Organization' | 'BreadcrumbList' | 'Product' | 'Article';
   items?: { name: string; url: string }[];
@@ -30,19 +26,32 @@ export interface Props {
 }
 
 const { type, items, product, article } = Astro.props;
+const locale = (Astro.currentLocale as string) || defaultLang;
+const baseUrl = siteUrl(Astro.site);
 
 let jsonLd = '';
 
 if (type === 'Organization') {
+  const orgNames: Record<string, string> = {
+    en: 'EVAPFit',
+    ar: 'إيفاب فيت',
+    es: 'EVAPFit',
+  };
+  const orgDescs: Record<string, string> = {
+    en: 'Evaporative air cooler replacement parts — interface-matched components for portable and cabinet coolers.',
+    ar: 'قطع غيار مبردات الهواء التبخيرية — مكونات متوافقة حسب المقاييس للمبردات المحمولة والخزائنية.',
+    es: 'Refacciones para enfriadores de aire evaporativos — componentes compatibles por interfaz para enfriadores portátiles y de gabinete.',
+  };
   jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'EVAPFit',
-    url: 'https://aircoolerparts.com',
-    logo: 'https://aircoolerparts.com/logo.svg',
-    description: 'Evaporative air cooler replacement parts — interface-matched components for portable and cabinet coolers.',
+    name: orgNames[locale] || orgNames.en,
+    url: `${baseUrl}${locale !== defaultLang ? '/' + locale : ''}`,
+    logo: `${baseUrl}/logo.svg`,
+    description: orgDescs[locale] || orgDescs.en,
     email: 'rfq@aircoolerparts.com',
     sameAs: [],
+    inLanguage: locale === 'en' ? 'en-US' : locale === 'ar' ? 'ar-SA' : 'es-MX',
   });
 }
 
@@ -54,7 +63,7 @@ if (type === 'BreadcrumbList' && items) {
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: `https://aircoolerparts.com${item.url}`,
+      item: `${baseUrl}${item.url}`,
     })),
   });
 }
@@ -74,6 +83,7 @@ if (type === 'Product' && product) {
       availability: 'https://schema.org/InStock',
       priceCurrency: 'USD',
     },
+    inLanguage: locale === 'en' ? 'en-US' : locale === 'ar' ? 'ar-SA' : 'es-MX',
   });
 }
 
@@ -90,8 +100,9 @@ if (type === 'Article' && article) {
     publisher: {
       '@type': 'Organization',
       name: 'EVAPFit',
-      logo: { '@type': 'ImageObject', url: 'https://aircoolerparts.com/logo.svg' },
+      logo: { '@type': 'ImageObject', url: `${baseUrl}/logo.svg` },
     },
+    inLanguage: locale === 'en' ? 'en-US' : locale === 'ar' ? 'ar-SA' : 'es-MX',
   });
 }
 ---

@@ -1,0 +1,585 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+  params?: Record<string, string>;
+}
+
+const { locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+---
+
+<Layout
+  metadata={{
+    title: __('inquiry.page_title'),
+    ignoreTitleTemplate: true,
+  }}
+  locale={locale}
+>
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-14 lg:py-16">
+      <div data-reveal class="max-w-3xl">
+        <p class="text-sm font-medium text-teal-400">{__('inquiry.subtitle')}</p>
+        <h1
+          class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl"
+          style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;"
+        >
+          {__('inquiry.heading')}
+        </h1>
+        <p class="mt-4 text-lg text-gray-400 max-w-2xl leading-relaxed">
+          {__('inquiry.header_desc')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+      <div class="grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div class="order-2 lg:order-1">
+          <form
+            id="inquiry-form"
+            method="POST"
+            action="/api/submit-inquiry.php"
+            class="space-y-8"
+          >
+            <fieldset>
+              <legend class="mb-5 text-lg font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                {__('inquiry.product_requirements')}
+              </legend>
+
+              <div class="space-y-5">
+                <div>
+                  <label for="product_name" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.product_interested')}
+                  </label>
+                  <input
+                    id="product_name"
+                    name="product_name"
+                    type="text"
+                    placeholder={__('inquiry.product_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <div>
+                  <label for="category" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.category_label')}
+                  </label>
+                  <select
+                    id="category"
+                    name="category"
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+                  >
+                    <option value="">{__('inquiry.select_category')}</option>
+                    <option value="water-system">{__('inquiry.category_water')}</option>
+                    <option value="evaporation-system">{__('inquiry.category_evaporation')}</option>
+                    <option value="air-system">{__('inquiry.category_air')}</option>
+                    <option value="electrical-controls">{__('inquiry.category_electrical')}</option>
+                    <option value="structure-mounting">{__('inquiry.category_structure')}</option>
+                    <option value="maintenance-consumables">{__('inquiry.category_maintenance')}</option>
+                    <option value="other">{__('inquiry.category_other')}</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="quantity" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.estimated_quantity')}
+                  </label>
+                  <input
+                    id="quantity"
+                    name="quantity"
+                    type="text"
+                    placeholder={__('inquiry.quantity_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <div>
+                  <label for="target_price" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.target_price')}
+                  </label>
+                  <input
+                    id="target_price"
+                    name="target_price"
+                    type="text"
+                    placeholder={__('inquiry.price_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <div>
+                  <label for="specifications" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.detailed_specs')}
+                  </label>
+                  <textarea
+                    id="specifications"
+                    name="specifications"
+                    rows="5"
+                    placeholder={__('inquiry.specs_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  ></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="border-t border-gray-100 pt-8 dark:border-slate-800">
+              <legend class="mb-5 text-lg font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                {__('inquiry.contact_info')}
+              </legend>
+
+              <div class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="name" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {__('inquiry.full_name')} <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder={__('home.form_name_placeholder')}
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                  <div>
+                    <label for="company" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {__('inquiry.company')}
+                    </label>
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      placeholder="Your company"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="email" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {__('inquiry.email')} <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder={__('home.form_email_placeholder')}
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                  <div>
+                    <label for="phone" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {__('inquiry.phone')}
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+86 123 4567 8900"
+                      class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="destination" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.destination')}
+                  </label>
+                  <input
+                    id="destination"
+                    name="destination"
+                    type="text"
+                    placeholder={__('inquiry.destination_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  />
+                </div>
+
+                <div>
+                  <label for="notes" class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {__('inquiry.additional_notes')}
+                  </label>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    rows="3"
+                    placeholder={__('inquiry.notes_placeholder')}
+                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
+                  ></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <input type="hidden" name="inquiry_basket" id="inquiry_basket_hidden" value="" />
+
+            <div style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <input type="hidden" name="form_token" id="form_token" value="" />
+            <input type="hidden" name="challenge" id="challenge_answer" value="" />
+
+            <div class="border-t border-gray-100 pt-6 dark:border-slate-800">
+              <button
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
+              >
+                <Icon name="tabler:send" class="h-4 w-4" />
+                {__('inquiry.submit')}
+              </button>
+              <p class="mt-3 text-xs text-muted">
+                <Icon name="tabler:clock" class="inline h-3.5 w-3.5 mr-1" />
+                {__('inquiry.response_time')}
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <aside class="lg:sticky lg:top-24 lg:self-start order-1 lg:order-2">
+          <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800/50 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+            <div class="border-b border-gray-200 px-5 py-4 dark:border-slate-700">
+              <div class="flex items-center justify-between">
+                <h2 class="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2" style="font-family: 'Space Grotesk Variable', sans-serif;">
+                  <Icon name="tabler:clipboard-list" class="h-4 w-4 text-teal-600 dark:text-teal-400" />
+                  {__('inquiry.basket_heading')}
+                </h2>
+                <span id="sidebar-basket-count" class="inline-flex items-center justify-center rounded-md bg-teal-600 px-2 py-0.5 text-xs font-bold text-white min-w-[24px] dark:bg-teal-500">0</span>
+              </div>
+            </div>
+
+            <div id="sidebar-basket-items" class="divide-y divide-gray-200 dark:divide-slate-700 max-h-64 lg:max-h-[60vh] overflow-y-auto">
+            </div>
+
+            <div id="sidebar-basket-footer" class="hidden border-t border-gray-200 px-5 py-4 dark:border-slate-700">
+              <button
+                id="clear-basket-btn"
+                class="w-full rounded-lg border border-red-200 px-4 py-2 text-xs font-medium text-red-600 transition-colors hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-900/20"
+              >
+                {__('inquiry.clear_all')}
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div id="inquiry-toast" class="fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2">
+    <div class="flex items-center gap-2.5 rounded-lg bg-gray-900 px-5 py-3 text-sm text-white shadow-xl dark:bg-slate-700">
+      <Icon name="tabler:circle-check" class="h-4 w-4 text-teal-400" />
+      <span id="inquiry-toast-msg"></span>
+    </div>
+  </div>
+
+  <!-- Pass translations to client-side JS -->
+  <script>
+    window.__i18n = {
+      basket_empty_title: "{__('inquiry.basket_empty_title')}",
+      basket_empty_desc: "{__('inquiry.basket_empty_desc')}",
+      browse_products: "{__('inquiry.browse_products')}",
+      remove_label: "{__('inquiry.remove')}",
+      removed_toast: "{__('inquiry.removed_toast')}",
+      clear_confirm: "{__('inquiry.clear_confirm')}",
+      all_removed: "{__('inquiry.all_removed')}",
+      spam_wait: "{__('inquiry.spam_wait')}",
+      spam_links: "{__('inquiry.spam_links')}",
+      spam_limit: "{__('inquiry.spam_limit')}",
+      spam_verify: "{__('inquiry.spam_verify')}",
+      success_title: "{__('inquiry.success_title')}",
+      success_msg: "{__('inquiry.success_msg')}",
+      back_home: "{__('inquiry.back_home')}",
+      verification: "{__('inquiry.verification')}",
+      auto_verified: "{__('inquiry.auto_verified')}",
+    };
+    window.__cpLocale = "{locale}";
+    window.__cpLink = function(p) { return window.__cpLocale === 'en' ? p : '/' + window.__cpLocale + p; };
+  </script>
+
+  <script>
+    import { getBasket, removeFromBasket, clearBasket } from "~/scripts/inquiry-basket";
+
+    interface BasketItem {
+      slug: string;
+      name: string;
+      category: string;
+      moq: string;
+      priceRange: string;
+      image: string;
+      addedAt: number;
+    }
+
+    const t = (window as any).__i18n || {};
+
+    function renderBasket() {
+      const items = getBasket() as BasketItem[];
+      const container = document.getElementById("sidebar-basket-items") as HTMLElement | null;
+      const countBadge = document.getElementById("sidebar-basket-count");
+      const footer = document.getElementById("sidebar-basket-footer");
+      const hiddenInput = document.getElementById("inquiry_basket_hidden") as HTMLInputElement | null;
+      const productNameInput = document.getElementById("product_name") as HTMLInputElement | null;
+      const categorySelect = document.getElementById("category") as HTMLSelectElement | null;
+      const specsTextarea = document.getElementById("specifications") as HTMLTextAreaElement | null;
+
+      if (countBadge) countBadge.textContent = String(items.length);
+
+      if (!container) return;
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="flex flex-col items-center justify-center py-8 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-3 h-10 w-10 text-gray-300 dark:text-slate-600" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" fill="none"/><rect x="9" y="3" width="6" height="4" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+            <p class="text-sm text-muted">${t.basket_empty_title || "Your inquiry list is empty"}</p>
+            <p class="mt-1 text-xs text-muted">${t.basket_empty_desc || "Browse products and add them to your list"}</p>
+            <a href="/${window.__cpLocale === 'en' ? '' : window.__cpLocale + '/'}water-system" class="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-xs font-medium text-white hover:bg-teal-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7" stroke="currentColor" fill="none"/><path d="M21 21l-6-6" stroke="currentColor" fill="none"/></svg>
+              ${t.browse_products || "Browse Products"}
+            </a>
+          </div>
+        `;
+        if (footer) footer.classList.add("hidden");
+        if (hiddenInput) hiddenInput.value = "";
+        return;
+      }
+
+      container.innerHTML = items.map((item) => `
+        <div class="flex items-start gap-3 px-5 py-3">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" fill="none"/><rect x="9" y="3" width="6" height="4" rx="2" stroke="currentColor" fill="none"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 dark:text-white truncate">${item.name}</p>
+            <p class="text-xs text-muted truncate">${item.category}</p>
+            <div class="mt-1 flex items-center gap-2 text-xs text-muted">
+              <span>${item.moq}</span>
+              ${item.priceRange ? `<span>·</span><span>${item.priceRange}</span>` : ''}
+            </div>
+          </div>
+          <button
+            class="remove-item-btn flex-shrink-0 rounded-lg p-1.5 text-gray-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+            data-slug="${item.slug}"
+            data-name="${item.name}"
+            title="${t.remove_label || "Remove"}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z"/><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none"/>
+            </svg>
+          </button>
+        </div>
+      `).join("");
+
+      if (footer) footer.classList.remove("hidden");
+
+      container.querySelectorAll<HTMLElement>(".remove-item-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const slug = btn.dataset.slug;
+          const name = btn.dataset.name;
+          removeFromBasket(slug);
+          showToast(`${name} ${t.removed_toast || "removed from inquiry list"}`);
+        });
+      });
+
+      const clearBtn = document.getElementById("clear-basket-btn");
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          if (items.length > 0 && confirm(t.clear_confirm || "Remove all items from your inquiry list?")) {
+            clearBasket();
+            showToast(t.all_removed || "All items removed");
+          }
+        };
+      }
+
+      if (productNameInput && !productNameInput.dataset.userEdited) {
+        if (items.length === 1) {
+          productNameInput.value = items[0].name;
+        } else {
+          productNameInput.value = items.map((i) => i.name).join(", ");
+        }
+      }
+
+      if (categorySelect && items.length === 1) {
+        const systemMap: Record<string, string> = {
+          "Water Pump & Power": "water-system",
+          "Filtration & Anti-clogging": "water-system",
+          "Valves & Water Control": "water-system",
+          "Water Distribution & Level Protection": "water-system",
+          "Piping & Connections": "water-system",
+          "Tank, Sump & Drainage": "water-system",
+          "Cooling Media": "evaporation-system",
+          "Water Feed & Distribution": "evaporation-system",
+          "Anti-clogging & Debris Management": "evaporation-system",
+          "Overflow, Splash & Drain Guidance": "evaporation-system",
+          "Fans & Blower Components": "air-system",
+          "Centrifugal Fan System": "air-system",
+          "Air Outlet & Grilles": "air-system",
+          "Motors & Drive": "electrical-controls",
+          "Control Board & Protection": "electrical-controls",
+          "Sensors & Water Level Detection": "electrical-controls",
+          "Wiring & Connectors": "electrical-controls",
+        };
+        const mapped = systemMap[items[0].category];
+        if (mapped) categorySelect.value = mapped;
+      }
+
+      if (specsTextarea && !specsTextarea.value) {
+        const productLines = items.map(
+          (item) => `\u2022 ${item.name} \u2014 MOQ: ${item.moq}${item.priceRange ? `, Price: ${item.priceRange}` : ""}`
+        ).join("\n");
+        specsTextarea.value = `Products from inquiry list:\n${productLines}\n\nAdditional requirements:\n`;
+      }
+
+      if (hiddenInput) {
+        hiddenInput.value = items.map((item) =>
+          `${item.name} (${item.category}) \u2014 MOQ: ${item.moq}${item.priceRange ? `, Price: ${item.priceRange}` : ""}`
+        ).join("\n");
+      }
+    }
+
+    let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function showToast(message: string) {
+      const toast = document.getElementById("inquiry-toast");
+      const msgEl = document.getElementById("inquiry-toast-msg");
+      if (!toast || !msgEl) return;
+      if (toastTimer) clearTimeout(toastTimer);
+      msgEl.textContent = message;
+      toast.classList.remove("hidden");
+      toastTimer = setTimeout(() => toast.classList.add("hidden"), 3000);
+    }
+
+    document.addEventListener("astro:page-load", renderBasket);
+    window.addEventListener("inquiry-basket:update", renderBasket);
+    window.addEventListener("pageshow", (e) => { if (e.persisted) renderBasket(); });
+
+    document.addEventListener("astro:page-load", () => {
+      const productNameInput = document.getElementById("product_name") as HTMLInputElement | null;
+      if (productNameInput) {
+        productNameInput.addEventListener("input", () => {
+          productNameInput.dataset.userEdited = "true";
+        });
+      }
+    });
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const spec = params.get("spec");
+      const name = params.get("name");
+      const email = params.get("email");
+
+      if (spec) {
+        const specsEl = document.getElementById("specifications") as HTMLTextAreaElement | null;
+        if (specsEl && !specsEl.value) {
+          specsEl.value = spec;
+          specsEl.dataset.userEdited = "true";
+        }
+      }
+      if (name) {
+        const nameEl = document.getElementById("name") as HTMLInputElement | null;
+        if (nameEl && !nameEl.value) nameEl.value = name;
+      }
+      if (email) {
+        const emailEl = document.getElementById("email") as HTMLInputElement | null;
+        if (emailEl && !emailEl.value) emailEl.value = email;
+      }
+    } catch {}
+
+    renderBasket();
+  </script>
+
+  <script>
+    (function () {
+      const form = document.getElementById("inquiry-form") as HTMLFormElement | null;
+      if (!form) return;
+
+      const token = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      const tokenInput = document.getElementById("form_token") as HTMLInputElement | null;
+      if (tokenInput) tokenInput.value = token;
+
+      const a = Math.floor(Math.random() * 8) + 2;
+      const b = Math.floor(Math.random() * 8) + 2;
+      const answer = a + b;
+      const challengeInput = document.getElementById("challenge_answer") as HTMLInputElement | null;
+      if (challengeInput) challengeInput.value = String(answer);
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        const label = document.createElement("p");
+        label.className = "mt-2 text-xs text-muted";
+        label.innerHTML = (window.__i18n as any).verification + ': <strong>' + a + ' + ' + b + ' = ?</strong> ' + (window.__i18n as any).auto_verified;
+        submitBtn.parentNode?.insertBefore(label, submitBtn.nextSibling);
+      }
+
+      form.addEventListener("submit", function (e) {
+        const honeypot = document.getElementById("website") as HTMLInputElement | null;
+        if (honeypot?.value && honeypot.value.trim() !== "") {
+          e.preventDefault();
+          window.location.href = window.__cpLink ? window.__cpLink('/inquiry?success=1') : '/inquiry?success=1';
+          return;
+        }
+
+        const loadTime = parseInt(token.slice(0, 8), 36);
+        const elapsed = Date.now() - loadTime;
+        if (elapsed < 3000) {
+          e.preventDefault();
+          alert((window.__i18n as any).spam_wait || "Please review your inquiry before submitting.");
+          return;
+        }
+
+        const textareas = form.querySelectorAll("textarea");
+        let urlCount = 0;
+        textareas.forEach((ta: HTMLTextAreaElement) => {
+          const urls = ta.value.match(/https?:\/\//gi);
+          if (urls) urlCount += urls.length;
+        });
+        if (urlCount >= 4) {
+          e.preventDefault();
+          alert((window.__i18n as any).spam_links || "Please remove excessive links.");
+          return;
+        }
+
+        const now = Date.now();
+        const key = "inquiry_rl";
+        let rl: { hour: number[]; day: number[] } = { hour: [], day: [] };
+        try {
+          const raw = localStorage.getItem(key);
+          if (raw) rl = JSON.parse(raw);
+        } catch {}
+        const hourAgo = now - 3600000;
+        const dayAgo = now - 86400000;
+        rl.hour = rl.hour.filter((t) => t > hourAgo);
+        rl.day = rl.day.filter((t) => t > dayAgo);
+        if (rl.hour.length >= 5 || rl.day.length >= 20) {
+          e.preventDefault();
+          alert((window.__i18n as any).spam_limit || "You have reached the submission limit.");
+          return;
+        }
+        rl.hour.push(now);
+        rl.day.push(now);
+        try { localStorage.setItem(key, JSON.stringify(rl)); } catch {}
+
+        if (challengeInput?.value !== String(answer)) {
+          e.preventDefault();
+          alert((window.__i18n as any).spam_verify || "Verification failed.");
+          return;
+        }
+      });
+
+      if (window.location.search.includes("success=1")) {
+        const section = document.querySelector("section.bg-white");
+        if (section) {
+          section.innerHTML = '<div class="mx-auto max-w-2xl py-20 text-center"><div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M5 12l5 5l10-10"/></svg></div><h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">' + ((window.__i18n as any).success_title || "Inquiry Submitted") + '</h2><p class="text-muted mb-6">' + ((window.__i18n as any).success_msg || "Thank you.") + '</p><a href="' + (window.__cpLink ? window.__cpLink('/') : '/') + '" class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500">' + ((window.__i18n as any).back_home || "Back to Home") + '</a></div>';
+        }
+      }
+    })();
+  </script>
+</Layout>

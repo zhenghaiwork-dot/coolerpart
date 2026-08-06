@@ -219,6 +219,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             <span class="hidden lg:inline ml-1.5 text-sm font-medium">Inquiry List</span>
             <span id="header-basket-count" class="hidden ml-1 inline-flex items-center justify-center rounded-full bg-teal-600 px-1.5 py-0.5 text-xs font-bold text-white min-w-[20px] min-h-[20px] dark:bg-teal-500">0</span>
           </a>
+          <slot />
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
           {
             showRssFeed && (

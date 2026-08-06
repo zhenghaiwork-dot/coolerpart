@@ -1,0 +1,15 @@
+---
+import CompatibilityMethodPage from '~/components/pages/CompatibilityMethodPage.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { method: 'interface' }, props: { method: 'interface', title: 'By Interface', icon: 'tabler:plug' } },
+    { params: { method: 'dimensions' }, props: { method: 'dimensions', title: 'By Dimensions', icon: 'tabler:ruler' } },
+    { params: { method: 'electrical' }, props: { method: 'electrical', title: 'By Electrical', icon: 'tabler:chart-bar' } },
+    { params: { method: 'cross-reference' }, props: { method: 'cross-reference', title: 'Cross-reference', icon: 'tabler:books' } },
+  ];
+}
+
+const data = Astro.props as { method: string; title: string; icon: string };
+---
+<CompatibilityMethodPage locale="ar" params={Astro.params as { method: string }} props={data} />

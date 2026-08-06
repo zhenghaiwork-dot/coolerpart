@@ -2,100 +2,106 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
+import LanguageSwitcher from '~/components/common/LanguageSwitcher.astro';
 import { systemsData } from '~/data/systems';
-
+import { useTranslations, defaultLang, type Locale, localeLink } from '~/i18n/utils';
 import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
   title?: string;
+  locale?: Locale;
 }
 
-const { metadata } = Astro.props;
+const { metadata, locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
 
 // Navigation links for the inquiry station
 const headerLinks = [
   {
-    text: 'Products',
+    text: __('nav.products'),
     links: [
-      { text: 'All Products', href: '/all-products' },
+      { text: __('nav.all_products'), href: L('/all-products') },
       ...systemsData.map((sys) => ({
         text: sys.name,
-        href: `/${sys.slug}`,
+        href: L(`/${sys.slug}`),
         links: sys.areas.map((area) => ({
           text: area.name,
-          href: `/${sys.slug}/${area.slug}`,
+          href: L(`/${sys.slug}/${area.slug}`),
         })),
       })),
     ],
   },
-  { text: 'Compatibility', href: '/compatibility' },
+  { text: __('nav.compatibility'), href: L('/compatibility') },
   {
-    text: 'Support',
+    text: __('nav.support'),
     links: [
-      { text: 'Inquiry / Request Quote', href: '/inquiry' },
-      { text: 'How to Identify Parts', href: '/how-to-identify-part-number' },
-      { text: 'RFQ Guide', href: '/what-to-include-in-rfq' },
-      { text: 'Sample Request', href: '/sample-request' },
-      { text: 'All Products', href: '/all-products' },
-      { text: 'FAQ', href: '/faq' },
-      { text: 'Troubleshooting Guides', href: '/guides' },
+      { text: __('nav.inquiry'), href: L('/inquiry') },
+      { text: __('nav.how_to_identify'), href: L('/how-to-identify-part-number') },
+      { text: __('nav.rfq_guide'), href: L('/what-to-include-in-rfq') },
+      { text: __('nav.sample_request'), href: L('/sample-request') },
+      { text: __('nav.all_products'), href: L('/all-products') },
+      { text: __('nav.faq'), href: L('/faq') },
+      { text: __('nav.guides'), href: L('/guides') },
     ],
   },
   {
-    text: 'Company',
+    text: __('nav.company'),
     links: [
-      { text: 'About Us', href: '/about' },
-      { text: 'OEM & Customization', href: '/oem' },
-      { text: 'Quality & Certifications', href: '/quality' },
-      { text: 'Shipping & Delivery', href: '/shipping' },
-      { text: 'Contact', href: '/contact' },
+      { text: __('nav.about'), href: L('/about') },
+      { text: __('nav.oem'), href: L('/oem') },
+      { text: __('nav.quality'), href: L('/quality') },
+      { text: __('nav.shipping'), href: L('/shipping') },
+      { text: __('nav.contact'), href: L('/contact') },
     ],
   },
 ];
 
-const headerActions = [{ text: 'Request Quote', href: '/inquiry' }];
+const headerActions = [{ text: __('cta.request_quote'), href: L('/inquiry') }];
 
 const footerLinks = [
   {
-    title: 'Products',
+    title: __('footer.products'),
     links: [
-      { text: 'Water System', href: '/water-system' },
-      { text: 'Evaporation System', href: '/evaporation-system' },
-      { text: 'Air System', href: '/air-system' },
-      { text: 'Electrical & Controls', href: '/electrical-controls' },
-      { text: 'Structure & Mounting', href: '/structure-mounting' },
-      { text: 'Maintenance & Consumables', href: '/maintenance-consumables' },
+      { text: __('nav.water_system'), href: L('/water-system') },
+      { text: __('nav.evaporation_system'), href: L('/evaporation-system') },
+      { text: __('nav.air_system'), href: L('/air-system') },
+      { text: __('nav.electrical_controls'), href: L('/electrical-controls') },
+      { text: __('nav.structure_mounting'), href: L('/structure-mounting') },
+      { text: __('nav.maintenance_consumables'), href: L('/maintenance-consumables') },
     ],
   },
   {
-    title: 'Support',
+    title: __('footer.support'),
     links: [
-      { text: 'Compatibility Guide', href: '/compatibility' },
-      { text: 'How to Identify Parts', href: '/how-to-identify-part-number' },
-      { text: 'RFQ Guide', href: '/what-to-include-in-rfq' },
-      { text: 'FAQ', href: '/faq' },
-      { text: 'Troubleshooting', href: '/guides' },
-      { text: 'Blog', href: '/blog' },
+      { text: __('nav.compatibility'), href: L('/compatibility') },
+      { text: __('nav.how_to_identify'), href: L('/how-to-identify-part-number') },
+      { text: __('nav.rfq_guide'), href: L('/what-to-include-in-rfq') },
+      { text: __('nav.faq'), href: L('/faq') },
+      { text: __('nav.guides'), href: L('/guides') },
+      { text: __('nav.blog'), href: L('/blog') },
     ],
   },
   {
-    title: 'Company',
+    title: __('footer.company'),
     links: [
-      { text: 'About Us', href: '/about' },
-      { text: 'OEM & Customization', href: '/oem' },
-      { text: 'Quality & Certifications', href: '/quality' },
-      { text: 'Shipping & Delivery', href: '/shipping' },
-      { text: 'Contact', href: '/contact' },
+      { text: __('nav.about'), href: L('/about') },
+      { text: __('nav.oem'), href: L('/oem') },
+      { text: __('nav.quality'), href: L('/quality') },
+      { text: __('nav.shipping'), href: L('/shipping') },
+      { text: __('nav.contact'), href: L('/contact') },
     ],
   },
 ];
 ---
 
 <Layout metadata={metadata}>
-  <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme />
+  <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme>
+    <LanguageSwitcher currentLocale={locale} class="ml-3" />
+  </Header>
   <main>
     <slot />
   </main>
-  <Footer links={footerLinks} secondaryLinks={[{ text: 'Terms', href: '/terms' }, { text: 'Privacy', href: '/privacy' }]} socialLinks={[]} footNote="EVAPFit — Evaporative Air Cooler Components &amp; Parts" />
+  <Footer links={footerLinks} secondaryLinks={[{ text: __('nav.terms'), href: L('/terms') }, { text: __('nav.privacy'), href: L('/privacy') }]} socialLinks={[]} footNote={__('footer.copyright')} />
 </Layout>

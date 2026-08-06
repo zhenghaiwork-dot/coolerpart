@@ -1,0 +1,52 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+}
+
+const { locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+
+const faqKeys = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
+  { q: 'faq.q5', a: 'faq.a5' },
+  { q: 'faq.q6', a: 'faq.a6' },
+  { q: 'faq.q7', a: 'faq.a7' },
+  { q: 'faq.q8', a: 'faq.a8' },
+];
+---
+
+<Layout metadata={{ title: __('faq.title'), ignoreTitleTemplate: true }} locale={locale}>
+  <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{__('faq.heading')}</h1>
+      <p class="mt-4 text-lg text-gray-300">{__('faq.subtitle')}</p>
+    </div>
+  </section>
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <div class="space-y-4">
+        {faqKeys.map((faq) => (
+          <details class="group rounded-xl border border-gray-200 dark:border-slate-700">
+            <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white">{__(faq.q)}<Icon name="tabler:chevron-down" class="h-4 w-4 flex-shrink-0 transition-transform group-open:rotate-180"/></summary>
+            <div class="px-6 pb-4 text-sm text-muted">{__(faq.a)}</div>
+          </details>
+        ))}
+      </div>
+      <div class="mt-10 rounded-xl bg-teal-50 p-6 text-center dark:bg-teal-900/20">
+        <p class="font-semibold text-teal-800 dark:text-teal-200">{__('faq.ready_cta')}</p>
+        <div class="mt-3 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <a href={L('/all-products')} class="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-700">{__('faq.browse_products')}</a>
+          <a href={L('/inquiry')} class="inline-flex items-center gap-2 rounded-xl border border-teal-300 px-6 py-3 text-sm font-semibold text-teal-700 hover:bg-teal-100 dark:border-teal-700 dark:text-teal-400 dark:hover:bg-teal-900/20"><Icon name="tabler:mail" class="h-4 w-4"/> {__('faq.contact_us')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

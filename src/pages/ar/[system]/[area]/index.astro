@@ -1,0 +1,18 @@
+---
+import AreaPage from '~/components/pages/AreaPage.astro';
+import { systemsData } from '~/data/systems';
+import type { System, SystemArea } from '~/data/inquiry-types';
+
+export async function getStaticPaths() {
+  const paths: { params: { system: string; area: string }; props: { system: System; area: SystemArea } }[] = [];
+  for (const system of systemsData) {
+    for (const area of system.areas) {
+      paths.push({ params: { system: system.slug, area: area.slug }, props: { system, area } });
+    }
+  }
+  return paths;
+}
+
+const { system, area } = Astro.props;
+---
+<AreaPage system={system} area={area} locale="ar" />

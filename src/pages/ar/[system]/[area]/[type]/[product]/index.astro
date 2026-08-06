@@ -1,0 +1,20 @@
+---
+import ProductDetailPage from '~/components/pages/ProductDetailPage.astro';
+import { getAllProducts } from '~/data/product-helpers';
+import type { Product } from '~/data/inquiry-types';
+
+export async function getStaticPaths() {
+  const allProducts = await getAllProducts();
+  const paths: { params: { system: string; area: string; type: string; product: string }; props: { product: Product } }[] = [];
+  for (const product of allProducts) {
+    paths.push({
+      params: { system: product.systemSlug, area: product.areaSlug, type: product.productTypeSlug, product: product.slug },
+      props: { product },
+    });
+  }
+  return paths;
+}
+
+const { product } = Astro.props;
+---
+<ProductDetailPage product={product} locale="ar" />

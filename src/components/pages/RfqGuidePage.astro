@@ -1,0 +1,150 @@
+---
+import Layout from '~/layouts/InquiryLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+
+export interface Props {
+  locale?: 'en' | 'ar' | 'es';
+}
+
+const { locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
+---
+
+<Layout metadata={{ title: __('rfq_guide.title'), ignoreTitleTemplate: true }} locale={locale}>
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 lg:py-18 text-center">
+      <p class="text-sm font-medium text-teal-400">{__('rfq_guide.subtitle')}</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
+        {__('rfq_guide.heading')}
+      </h1>
+      <p class="mt-4 text-lg text-gray-400 leading-relaxed max-w-xl mx-auto">
+        {__('rfq_guide.desc')}
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white dark:bg-slate-900">
+    <div class="mx-auto max-w-3xl px-6 py-12 lg:py-16">
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">1</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section1_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section1_text')}</p>
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+            <p class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">{__('rfq_guide.good_example')}</p>
+            <p class="text-xs text-muted italic">{__('rfq_guide.example1')}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">2</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section2_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section2_text')}</p>
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800/50">
+            <p class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">{__('rfq_guide.good_example')}</p>
+            <p class="text-xs text-muted italic">{__('rfq_guide.example2')}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">3</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section3_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section3_text')}</p>
+          <div class="grid gap-2 sm:grid-cols-2">
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-slate-700"><span class="text-xs font-medium text-gray-700 dark:text-gray-300">{__('rfq_guide.for_pumps')}</span><p class="text-xs text-muted mt-0.5">{__('rfq_guide.for_pumps_desc')}</p></div>
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-slate-700"><span class="text-xs font-medium text-gray-700 dark:text-gray-300">{__('rfq_guide.for_motors')}</span><p class="text-xs text-muted mt-0.5">{__('rfq_guide.for_motors_desc')}</p></div>
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-slate-700"><span class="text-xs font-medium text-gray-700 dark:text-gray-300">{__('rfq_guide.for_pads')}</span><p class="text-xs text-muted mt-0.5">{__('rfq_guide.for_pads_desc')}</p></div>
+            <div class="rounded-lg border border-gray-200 p-3 dark:border-slate-700"><span class="text-xs font-medium text-gray-700 dark:text-gray-300">{__('rfq_guide.for_valves')}</span><p class="text-xs text-muted mt-0.5">{__('rfq_guide.for_valves_desc')}</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">4</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section4_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section4_text')}</p>
+          <div class="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-900/10">
+            <p class="text-xs text-amber-800 dark:text-amber-300"><strong>{__('rfq_guide.critical_warning')}</strong></p>
+          </div>
+          <ul class="space-y-1">
+            <li>&bull; {__('rfq_guide.voltage_freq')}</li>
+            <li>&bull; {__('rfq_guide.power')}</li>
+            <li>&bull; {__('rfq_guide.rpm')}</li>
+            <li>&bull; {__('rfq_guide.capacitor')}</li>
+            <li>&bull; {__('rfq_guide.ip_rating')}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">5</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section5_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section5_text')}</p>
+          <ul class="space-y-1">
+            <li>&bull; {__('rfq_guide.photo_front')}</li>
+            <li>&bull; {__('rfq_guide.photo_closeup')}</li>
+            <li>&bull; {__('rfq_guide.photo_labels')}</li>
+            <li>&bull; {__('rfq_guide.photo_scale')}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">6</span>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('rfq_guide.section6_title')}</h2>
+        </div>
+        <div class="ml-11 space-y-3 text-sm text-muted">
+          <p>{__('rfq_guide.section6_text')}</p>
+          <ul class="space-y-1">
+            <li>&bull; {__('rfq_guide.shipping_dest')}</li>
+            <li>&bull; {__('rfq_guide.shipping_incoterms')}</li>
+            <li>&bull; {__('rfq_guide.shipping_packaging')}</li>
+            <li>&bull; {__('rfq_guide.shipping_deadline')}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-teal-200 bg-teal-50/50 p-6 dark:border-teal-800 dark:bg-teal-900/10">
+        <h3 class="text-base font-semibold text-teal-800 dark:text-teal-300 flex items-center gap-2">
+          <Icon name="tabler:clock" class="h-5 w-5"/> {__('rfq_guide.next_title')}
+        </h3>
+        <div class="mt-4 grid gap-3 sm:grid-cols-3 text-sm">
+          <div><span class="font-medium text-gray-900 dark:text-white">{__('rfq_guide.next_step1')}</span><p class="text-xs text-muted mt-1">{__('rfq_guide.next_step1_desc')}</p></div>
+          <div><span class="font-medium text-gray-900 dark:text-white">{__('rfq_guide.next_step2')}</span><p class="text-xs text-muted mt-1">{__('rfq_guide.next_step2_desc')}</p></div>
+          <div><span class="font-medium text-gray-900 dark:text-white">{__('rfq_guide.next_step3')}</span><p class="text-xs text-muted mt-1">{__('rfq_guide.next_step3_desc')}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-3xl px-6 py-14 text-center lg:py-18">
+      <h2 class="text-2xl font-semibold tracking-tight" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">{__('rfq_guide.cta_title')}</h2>
+      <p class="mt-4 text-base text-gray-400 max-w-xl mx-auto leading-relaxed">{__('rfq_guide.cta_desc')}</p>
+      <div class="mt-8">
+        <a href={L('/inquiry')} class="inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
+          <Icon name="tabler:mail" class="h-4 w-4"/> {__('rfq_guide.submit_cta')}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
