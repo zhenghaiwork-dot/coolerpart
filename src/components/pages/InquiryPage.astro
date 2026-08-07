@@ -279,28 +279,28 @@ const L = (path: string) => localeLink(path, locale);
   </div>
 
   <!-- Pass translations to client-side JS -->
-  <script>
-    window.__i18n = {
-      basket_empty_title: "{__('inquiry.basket_empty_title')}",
-      basket_empty_desc: "{__('inquiry.basket_empty_desc')}",
-      browse_products: "{__('inquiry.browse_products')}",
-      remove_label: "{__('inquiry.remove')}",
-      removed_toast: "{__('inquiry.removed_toast')}",
-      clear_confirm: "{__('inquiry.clear_confirm')}",
-      all_removed: "{__('inquiry.all_removed')}",
-      spam_wait: "{__('inquiry.spam_wait')}",
-      spam_links: "{__('inquiry.spam_links')}",
-      spam_limit: "{__('inquiry.spam_limit')}",
-      spam_verify: "{__('inquiry.spam_verify')}",
-      success_title: "{__('inquiry.success_title')}",
-      success_msg: "{__('inquiry.success_msg')}",
-      back_home: "{__('inquiry.back_home')}",
-      verification: "{__('inquiry.verification')}",
-      auto_verified: "{__('inquiry.auto_verified')}",
-    };
-    window.__cpLocale = "{locale}";
+  <script set:html={`
+    window.__i18n = ${JSON.stringify({
+      basket_empty_title: __('inquiry.basket_empty_title'),
+      basket_empty_desc: __('inquiry.basket_empty_desc'),
+      browse_products: __('inquiry.browse_products'),
+      remove_label: __('inquiry.remove'),
+      removed_toast: __('inquiry.removed_toast'),
+      clear_confirm: __('inquiry.clear_confirm'),
+      all_removed: __('inquiry.all_removed'),
+      spam_wait: __('inquiry.spam_wait'),
+      spam_links: __('inquiry.spam_links'),
+      spam_limit: __('inquiry.spam_limit'),
+      spam_verify: __('inquiry.spam_verify'),
+      success_title: __('inquiry.success_title'),
+      success_msg: __('inquiry.success_msg'),
+      back_home: __('inquiry.back_home'),
+      verification: __('inquiry.verification'),
+      auto_verified: __('inquiry.auto_verified'),
+    })};
+    window.__cpLocale = "${locale}";
     window.__cpLink = function(p) { return window.__cpLocale === 'en' ? p : '/' + window.__cpLocale + p; };
-  </script>
+  `} />
 
   <script>
     import { getBasket, removeFromBasket, clearBasket } from "~/scripts/inquiry-basket";

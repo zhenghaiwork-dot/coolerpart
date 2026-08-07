@@ -305,10 +305,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   </div>
 </Layout>
 
-<script>
-  window.__cpLocale = "{locale}";
-  window.__cpLink = function(p: string) { return window.__cpLocale === 'en' ? p : '/' + window.__cpLocale + p; };
-</script>
+<script set:html={`window.__cpLocale="${locale}";window.__cpLink=function(p){return window.__cpLocale==='en'?p:'/'+window.__cpLocale+p;};`} />
 
 <script>
   import { addToBasket, getProductData, isInBasket } from "~/scripts/inquiry-basket";

@@ -3169,6 +3169,25 @@ const ui: TranslationDict = {
   'system.view_all': { en: 'View all {name} products', ar: 'عرض جميع منتجات {name}', es: 'Ver todos los productos de {name}' },
   'system.cta_compat': { en: 'Compatibility Guide', ar: 'دليل التوافق', es: 'Guía de Compatibilidad' },
 
+  // ── Compat spec page ──
+  'compat.no_matches': { en: 'No exact matches found', ar: 'لم يتم العثور على تطابقات دقيقة', es: 'No se encontraron coincidencias exactas' },
+  'compat.try_broader': { en: 'Try a broader search or submit a general inquiry with your specifications.', ar: 'جرب بحثًا أوسع أو أرسل استفسارًا عامًا بمواصفاتك.', es: 'Intente una búsqueda más amplia o envíe una consulta general con sus especificaciones.' },
+
+  // ── Area page ──
+  'area.no_product_types': { en: 'No product types listed yet.', ar: 'لا توجد أنواع منتجات مدرجة بعد.', es: 'Aún no hay tipos de productos listados.' },
+  'area.submit_inquiry': { en: 'Submit an inquiry', ar: 'أرسل استفسارًا', es: 'Enviar una consulta' },
+
+  // ── Type page ──
+  'type.seo_text': { en: 'Compatible {name} for evaporative coolers. Match by interface type, key dimensions, and electrical parameters. OEM-equivalent quality.', ar: '{name} متوافقة لمبردات الهواء التبخيرية. طابق حسب نوع الواجهة والأبعاد الرئيسية والمعايير الكهربائية. جودة مكافئة للتصنيع الأصلي.', es: '{name} compatibles para enfriadores evaporativos. Coincida por tipo de interfaz, dimensiones clave y parámetros eléctricos. Calidad equivalente a OEM.' },
+  'type.submit_inquiry_pricing': { en: 'Submit an inquiry for pricing →', ar: 'أرسل استفسارًا للتسعير ←', es: 'Envíe una consulta para precios →' },
+  'type.no_products': { en: 'No products listed yet.', ar: 'لا توجد منتجات مدرجة بعد.', es: 'Aún no hay productos listados.' },
+  'type.related_types': { en: 'Related Product Types in {name}', ar: 'أنواع منتجات ذات صلة في {name}', es: 'Tipos de Productos Relacionados en {name}' },
+  'type.ready_to_order': { en: 'Ready to order {name}?', ar: 'هل أنت مستعد لطلب {name}؟', es: '¿Listo para pedir {name}?' },
+  'type.get_pricing': { en: 'Get pricing, MOQ, and lead time for any product in this category. Bulk discounts and OEM options available.', ar: 'احصل على التسعير والحد الأدنى للطلب والمهلة الزمنية لأي منتج في هذه الفئة. خصومات الكمية وخيارات OEM متاحة.', es: 'Obtenga precios, MOQ y tiempo de entrega para cualquier producto en esta categoría. Descuentos por volumen y opciones OEM disponibles.' },
+  'type.back_to': { en: 'Back to {name}', ar: 'العودة إلى {name}', es: 'Volver a {name}' },
+  'type.products_title': { en: '{name} Products', ar: 'منتجات {name}', es: 'Productos {name}' },
+  'type.click_for_specs': { en: 'Click any product for detailed specifications and to request a quote.', ar: 'انقر على أي منتج للمواصفات التفصيلية ولطلب عرض سعر.', es: 'Haga clic en cualquier producto para especificaciones detalladas y solicitar una cotización.' },
+
   // ── Footer inline text ──
   'footer.tagline': {
     en: 'Direct-source replacement parts for evaporative coolers. Interface-matched components — no model number needed.',

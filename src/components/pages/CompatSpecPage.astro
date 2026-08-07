@@ -87,8 +87,8 @@ const keyLabel = key.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUppe
       ) : (
         <div class="flex flex-col items-center py-16 text-center">
           <Icon name="tabler:search-off" class="h-12 w-12 text-gray-300 dark:text-slate-600" />
-          <h3 class="mt-4 text-base font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">No exact matches found</h3>
-          <p class="mt-2 text-sm text-muted">Try a broader search or submit a general inquiry with your specifications.</p>
+          <h3 class="mt-4 text-base font-semibold text-gray-900 dark:text-white" style="font-family: 'Space Grotesk Variable', sans-serif;">{__('compat.no_matches')}</h3>
+          <p class="mt-2 text-sm text-muted">{__('compat.try_broader')}</p>
           <a href={L('/inquiry')} class="mt-4 inline-flex items-center gap-2 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500">
             <Icon name="tabler:mail" class="h-4 w-4" />
             {__('all_products.send_rfq')}
