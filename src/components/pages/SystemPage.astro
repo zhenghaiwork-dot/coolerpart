@@ -49,7 +49,7 @@ const sysDesc = getSystemDesc(system.slug, locale);
             <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{sysDesc}</p>
             <div class="mt-3 flex items-center gap-2.5 text-xs">
               <span class="inline-flex items-center gap-1 rounded-md bg-white/10 px-2 py-0.5 text-slate-300 ring-1 ring-white/10">
-                <span class="font-semibold tabular-nums">{system.areas.length}</span> sub-categories
+                <span class="font-semibold tabular-nums">{system.areas.length}</span> {__('system.sub_categories')}
               </span>
               <span class="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-0.5 text-slate-500 ring-1 ring-white/5">
                 <span class="font-semibold tabular-nums">{products.length}</span> products
@@ -69,7 +69,7 @@ const sysDesc = getSystemDesc(system.slug, locale);
         <div>
           <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{sysName} Parts for Evaporative Air Coolers</h1>
           <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{sysDesc}</p>
-          <p class="mt-2 text-xs text-muted">{system.areas.length} sub-categories · {products.length} products</p>
+          <p class="mt-2 text-xs text-muted">{system.areas.length} {__('system.sub_categories')} · {products.length} {__('system.products_count')}</p>
         </div>
       </div>
     </div>
@@ -78,8 +78,8 @@ const sysDesc = getSystemDesc(system.slug, locale);
   {/* Sub-categories */}
   <section class="bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Browse by Sub-category</h2>
-      <p class="text-sm text-muted mb-6">Select a sub-category to view specific replacement parts.</p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{__('system.browse_sub')}</h2>
+      <p class="text-sm text-muted mb-6">{__('system.select_sub')}</p>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {system.areas.map((area) => {
           const count = products.filter((p) => p.areaSlug === area.slug).length;
@@ -106,8 +106,8 @@ const sysDesc = getSystemDesc(system.slug, locale);
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
         <div class="mb-6">
-          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">All {sysName} Products</h2>
-          <p class="text-sm text-muted mt-0.5">{products.length} compatible replacement parts — click any product for full specs</p>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{__('system.all_products_title').replace('{name}', sysName)}</h2>
+          <p class="text-sm text-muted mt-0.5">{products.length} {__('system.compatible_parts')} — {__('system.click_for_specs')}</p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
@@ -121,8 +121,8 @@ const sysDesc = getSystemDesc(system.slug, locale);
   {/* CTA */}
   <section class="bg-slate-950 text-white">
     <div class="mx-auto max-w-3xl px-6 py-12 text-center lg:py-16">
-      <h2 class="text-xl font-semibold">Need {sysName} Parts?</h2>
-      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">{products.length}+ compatible replacement parts — interface-matched, no model number needed.</p>
+      <h2 class="text-xl font-semibold">{__('system.need_parts').replace('{name}', sysName)}</h2>
+      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">{__('system.cta_desc').replace('{count}', String(products.length))}</p>
       <div class="mt-6 flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
         <a href={L('/inquiry')} class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">{__('cta.request_quote')}</a>
         <a href={L('/compatibility')} class="rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/5">{__('cta.compatibility_guide')}</a>

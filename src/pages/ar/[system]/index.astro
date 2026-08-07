@@ -3,10 +3,16 @@ import SystemPage from '~/components/pages/SystemPage.astro';
 import { systemsData } from '~/data/systems';
 
 export async function getStaticPaths() {
-  return systemsData.map((system) => ({
-    params: { system: system.slug },
-    props: { system },
-  }));
+  // The 'compatibility' system has a dedicated static route at
+  // /compatibility (CompatibilityPage) that takes priority over this
+  // dynamic route. Skip it here so the two routes don't emit the same
+  // path and trigger a build-time priority-conflict warning.
+  return systemsData
+    .filter((system) => system.slug !== 'compatibility')
+    .map((system) => ({
+      params: { system: system.slug },
+      props: { system },
+    }));
 }
 
 const { system } = Astro.props;

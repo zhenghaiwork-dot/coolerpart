@@ -35,7 +35,43 @@ export default defineConfig({
   },
 
   integrations: [
-    sitemap(),
+    sitemap({
+      // Generate hreflang alternate links so search engines know that
+      // /about, /ar/about and /es/about are the same page in three
+      // languages. Locale keys must match the Astro i18n routing config
+      // (locales above). Values are BCP 47 language tags emitted as hreflang.
+      // Language-only tags (`ar`, `es`) are used because the site ships a
+      // single version per language — no regional differentiation to express.
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          ar: 'ar',
+          es: 'es',
+        },
+      },
+      // The i18n option above emits hreflang alternate links for en/ar/es
+      // but does NOT add an `x-default` entry. For a global B2B audience
+      // the default-language (English) page should be the fallback served
+      // to visitors whose locale matches none of the localized versions.
+      // Google explicitly recommends `x-default` for exactly this case.
+      // Here we append one `x-default` link per URL group, pointing to the
+      // English (default, non-prefixed) version of that page.
+      serialize(item) {
+        if (item.links && item.links.length > 0) {
+          const enLink = item.links.find((l) => l.lang === 'en');
+          if (enLink) {
+            const hasXDefault = item.links.some(
+              (l) => l.lang === 'x-default' || l.hreflang === 'x-default'
+            );
+            if (!hasXDefault) {
+              item.links.push({ lang: 'x-default', url: enLink.url });
+            }
+          }
+        }
+        return item;
+      },
+    }),
     mdx(),
     icon({
       include: {

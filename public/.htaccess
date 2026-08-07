@@ -4,10 +4,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Force HTTPS (uncomment after SSL is active)
-  # RewriteCond %{HTTPS} off
-  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # C4 fix: Force HTTPS (active — SSL must be deployed before going live)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # C1 defense: Block direct access to /data/ directory (belt-and-suspenders;
+  # data dir is also moved outside web root in submit-inquiry.php)
+  RewriteRule ^data/ - [F,L]
 
   # Clean URLs: /water-system → /water-system/index.html
   # If request is not a file and not a directory,
@@ -24,6 +28,20 @@
 
 # ── Directory index ──
 DirectoryIndex index.html
+
+# C1 defense: Prevent directory listing
+Options -Indexes
+
+# C1 defense: Deny access to JSON data files (defense-in-depth)
+<FilesMatch "\.json$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
 
 # ── Gzip compression ──
 <IfModule mod_deflate.c>

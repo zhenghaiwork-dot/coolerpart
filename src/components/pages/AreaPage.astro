@@ -92,8 +92,8 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   {allProducts.length > 0 && (
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">All {areaName} Products</h2>
-        <p class="text-sm text-muted mb-6">{allProducts.length} compatible replacement part{allProducts.length !== 1 ? 's' : ''}. Click any product for detailed specs and to request a quote.</p>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{__('system.all_products_title').replace('{name}', areaName)}</h2>
+        <p class="text-sm text-muted mb-6">{allProducts.length} {__('system.compatible_parts')}{allProducts.length !== 1 ? 's' : ''}. {__('system.click_for_specs')}</p>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {allProducts.map((product) => (<ProductCard product={product} locale={locale} />))}
         </div>
@@ -105,7 +105,7 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   {relatedAreas.length > 0 && (
     <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
       <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Related Categories in {sysName}</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('system.related_categories').replace('{name}', sysName)}</h2>
         <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {relatedAreas.map((ra) => (
             <a href={L(`/${system.slug}/${ra.slug}`)} class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:border-teal-300 hover:text-teal-600 transition dark:border-slate-700 dark:bg-slate-800/50 dark:text-gray-300">

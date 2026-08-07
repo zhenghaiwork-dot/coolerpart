@@ -7,6 +7,12 @@ export async function getStaticPaths() {
   const paths: { params: { system: string; area: string }; props: { system: System; area: SystemArea } }[] = [];
   for (const system of systemsData) {
     for (const area of system.areas) {
+      // /compatibility/cross-reference has a dedicated static route
+      // (compatibility/[method]) that takes priority over this dynamic
+      // route. Skip the conflicting path to avoid a build-time warning.
+      if (system.slug === 'compatibility' && area.slug === 'cross-reference') {
+        continue;
+      }
       paths.push({ params: { system: system.slug, area: area.slug }, props: { system, area } });
     }
   }

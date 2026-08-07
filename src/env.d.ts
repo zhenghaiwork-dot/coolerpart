@@ -8,3 +8,15 @@
 // side-effect imports type-check under TypeScript 6 strict (ts2882).
 declare module '@fontsource-variable/*';
 declare module '@fontsource/*';
+
+// H1 fix: Window globals used by client-side i18n + locale-aware navigation
+// in InquiryPage, AllProductsPage, ProductDetailPage components.
+declare global {
+  interface Window {
+    __cpLocale?: string;
+    __cpLink?: (p: string) => string;
+    __i18n?: Record<string, string>;
+  }
+}
+
+export {};

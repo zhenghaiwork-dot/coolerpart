@@ -9,12 +9,12 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - Astro 7 (SSG static output) + Tailwind CSS v4 + TypeScript
 - 基于 AstroWind 模板（vendor/integration）
 - astro-icon (Tabler icons) · astro-seo · @astrojs/sitemap · astro-compress
-- 询盘篮：纯前端 localStorage + CustomEvent，无需后端
-- 表单提交：Formspree（需配置真实 form ID）
-- 部署：纯静态，兼容 PHP/Apache/HTML 主机（.htaccess 已创建）
+- 询盘篮：纯前端 localStorage + CustomEvent
+- 表单提交：自建 PHP 后端 `public/api/submit-inquiry.php`（存 data/inquiries.json + PHP mail() 发邮件）。**非 Formspree**——overview.md 旧描述过时。
+- 部署：纯静态 + PHP，兼容 PHP/Apache 主机（.htaccess 已配 clean URL + Gzip + 缓存 + 安全头）
 
 ## 关键文件
-- `src/config.yaml` — 站点全局配置（site 域名 + site_name 需更新为真实值）
+- `src/config.yaml` — 站点全局配置（site=aircoolerparts.com 已配，GA id 仍为 null）
 - `src/data/systems.ts` — 7 系统 × 29 子分类
 - `src/data/products.ts` — 64 个产品 + 查询函数
 - `src/layouts/InquiryLayout.astro` — 询盘站专用布局（Header/Footer 导航）
@@ -25,11 +25,24 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - `public/robots.txt` — 含 sitemap 引用
 - Content Map 文档 v3.4 — 完整内容规划蓝图
 
-## 部署待办
-- 替换 Formspree `YOUR_FORM_ID`（src/pages/inquiry/index.astro）
-- 更新 config.yaml `site` 为真实域名
-- 更新 robots.txt sitemap URL 为真实域名
-- 替换 favicon SVG 为 CoolerParts 品牌图标（当前是 AstroWind 默认）
+## 上线待办（2026-08-06 审计，详见 SITE_AUDIT.md）
+- ✅ config.yaml site=aircoolerparts.com 已配（域名确认最终）
+- ✅ robots.txt sitemap URL 已配
+- ✅ favicon 已是自定义品牌图标（teal 齿轮+水滴，非 AstroWind 默认）
+- ✅ Twitter handle 已改 @EVAPFit
+- ✅ sitemap hreflang 已加（en/ar/es 语言通用码 + x-default 兜底）
+- ✅ C1 data 目录已移出 web root（DATA_DIR → __DIR__/../../data）+ .htaccess 三层拦截
+- ✅ C2 inquiries.json/ratelimit.json 已加 flock(LOCK_EX) 防竞态
+- ✅ C3 email 已加 filter_var 校验 + header 值 strip \r\n 防注入
+- ✅ C4 .htaccess force HTTPS 已取消注释（部署 SSL 后生效）
+- ✅ H1 env.d.ts 已声明 Window.__cpLocale/__cpLink/__i18n（TS 错误 57→22，剩余为预存无关）
+- ✅ H2 i18n/ui.ts 三键重复已删（ts(1117) 清零）
+- ✅ H3 compatibility 路由冲突已修（getStaticPaths 跳过冲突路径）
+- ✅ H4 i18n 25 个缺失翻译 key 已补
+- ✅ M5 邮件引用不存在的 view-inquiries.php 已删
+- 🟠 仅 3 张真实产品图（water-pump 1/2/3），64 产品其余全占位 icon
+- ❌ M1 表单 placeholder 硬编码英文 / M2 GA 未配 / M3 无 Schema.org / M4 模板残留
+- ❌ L1 假CAPTCHA / L2 ratelimit 无清理 / L3 Content Map 功能未实现 / L4 dist_old 残留
 
 ## 品牌设计系统
 - Primary: Teal `rgb(13 148 136)` (teal-600) — 冷却/水/专业感

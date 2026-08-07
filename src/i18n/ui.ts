@@ -1809,11 +1809,6 @@ const ui: TranslationDict = {
     ar: 'أي متطلبات أخرى، الجدول الزمني للتسليم، تفضيلات شروط التجارة الدولية، إلخ.',
     es: 'Cualquier otro requisito, plazo de entrega, preferencia de incoterms, etc.',
   },
-  'inquiry.submit': {
-    en: 'Submit Inquiry',
-    ar: 'إرسال الاستفسار',
-    es: 'Enviar Consulta',
-  },
   'inquiry.response_time': {
     en: "We'll respond within 24 hours",
     ar: 'سنرد خلال 24 ساعة',
@@ -1843,11 +1838,6 @@ const ui: TranslationDict = {
     en: 'Clear All Items',
     ar: 'مسح جميع العناصر',
     es: 'Limpiar Todos',
-  },
-  'inquiry.remove': {
-    en: 'Remove',
-    ar: 'إزالة',
-    es: 'Quitar',
   },
   'inquiry.verification': {
     en: 'Verification',
@@ -1888,11 +1878,6 @@ const ui: TranslationDict = {
     en: 'Verification failed. Please refresh and try again.',
     ar: 'فشل التحقق. يرجى تحديث الصفحة والمحاولة مرة أخرى.',
     es: 'Verificación fallida. Actualice e intente de nuevo.',
-  },
-  'inquiry.success_title': {
-    en: 'Inquiry Submitted',
-    ar: 'تم إرسال الاستفسار',
-    es: 'Consulta Enviada',
   },
   'inquiry.success_msg': {
     en: 'Thank you. We will respond within 24 hours.',
@@ -3170,12 +3155,59 @@ const ui: TranslationDict = {
   'header.toggle_menu': { en: 'Toggle Menu', ar: 'القائمة', es: 'Menú' },
   'header.theme': { en: 'Theme', ar: 'المظهر', es: 'Tema' },
 
+  // ── System page labels ──
+  'system.sub_categories': { en: 'sub-categories', ar: 'فئات فرعية', es: 'subcategorías' },
+  'system.browse_sub': { en: 'Browse by Sub-category', ar: 'تصفح حسب الفئة الفرعية', es: 'Explorar por Subcategoría' },
+  'system.select_sub': { en: 'Select a sub-category to view specific replacement parts.', ar: 'اختر فئة فرعية لعرض قطع الغيار المحددة.', es: 'Seleccione una subcategoría para ver piezas de repuesto específicas.' },
+  'system.products_count': { en: 'products', ar: 'منتج', es: 'productos' },
+  'system.all_products_title': { en: 'All {name} Products', ar: 'جميع منتجات {name}', es: 'Todos los Productos de {name}' },
+  'system.compatible_parts': { en: 'compatible replacement parts', ar: 'قطع غيار بديلة متوافقة', es: 'piezas de repuesto compatibles' },
+  'system.click_for_specs': { en: 'Click any product for full specs', ar: 'انقر على أي منتج للمواصفات الكاملة', es: 'Haga clic en cualquier producto para especificaciones completas' },
+  'system.need_parts': { en: 'Need {name} Parts?', ar: 'هل تحتاج قطع {name}؟', es: '¿Necesita Piezas de {name}?' },
+  'system.cta_desc': { en: '{count}+ compatible replacement parts — interface-matched, no model number needed.', ar: 'أكثر من {count} قطعة بديلة متوافقة — مطابقة بالواجهة، لا حاجة لرقم الموديل.', es: 'Más de {count} piezas de repuesto compatibles — coincidencia por interfaz, sin número de modelo.' },
+  'system.related_categories': { en: 'Related Categories in {name}', ar: 'فئات ذات صلة في {name}', es: 'Categorías Relacionadas en {name}' },
+  'system.view_all': { en: 'View all {name} products', ar: 'عرض جميع منتجات {name}', es: 'Ver todos los productos de {name}' },
+  'system.cta_compat': { en: 'Compatibility Guide', ar: 'دليل التوافق', es: 'Guía de Compatibilidad' },
+
   // ── Footer inline text ──
   'footer.tagline': {
     en: 'Direct-source replacement parts for evaporative coolers. Interface-matched components — no model number needed.',
     ar: 'قطع غيار مباشرة من المصدر لمبردات الهواء التبخيرية. مكونات متوافقة بالمقاييس — بدون الحاجة لرقم الموديل.',
     es: 'Refacciones de fuente directa para enfriadores evaporativos. Componentes compatibles por interfaz — sin número de modelo.',
   },
+
+  // ── 404 / NotFound page ──
+  '404.title': { en: 'Error 404', ar: 'خطأ 404', es: 'Error 404' },
+  '404.not_found': { en: "Sorry, we couldn't find this page.", ar: 'عذرًا، لم نتمكن من العثور على هذه الصفحة.', es: 'Lo sentimos, no pudimos encontrar esta página.' },
+  '404.message': { en: "But don't worry, you can find plenty of other things on our homepage.", ar: 'لكن لا تقلق، يمكنك العثور على الكثير من الأشياء الأخرى على صفحتنا الرئيسية.', es: 'Pero no te preocupes, puedes encontrar muchas otras cosas en nuestra página de inicio.' },
+  '404.back_home': { en: 'Back to homepage', ar: 'العودة إلى الصفحة الرئيسية', es: 'Volver al inicio' },
+
+  // ── Blog listing & posts ──
+  'blog.title': { en: 'Blog — Evaporative Cooler Tips, Guides & Industry News | EVAPFit', ar: 'المدونة — نصائح وأدلة وأخبار الصناعة لمبردات الهواء التبخيرية | EVAPFit', es: 'Blog — Consejos, Guías y Noticias de la Industria para Enfriadores Evaporativos | EVAPFit' },
+  'blog.description': { en: 'Practical tips, buying guides, and maintenance advice for evaporative air coolers. Learn how to choose, install, and maintain replacement parts.', ar: 'نصائح عملية وأدلة شراء ونصائح صيانة لمبردات الهواء التبخيرية. تعرّف على كيفية اختيار وتركيب وصيانة قطع الغيار.', es: 'Consejos prácticos, guías de compra y consejos de mantenimiento para enfriadores de aire evaporativos. Aprende a elegir, instalar y mantener refacciones.' },
+  'blog.label': { en: 'EVAPFit Blog', ar: 'مدونة EVAPFit', es: 'Blog de EVAPFit' },
+  'blog.heading': { en: 'Tips, Guides & Industry Insights', ar: 'نصائح وأدلة ورؤى الصناعة', es: 'Consejos, Guías y Perspectivas de la Industria' },
+  'blog.subheading': { en: 'Practical advice on choosing, installing, and maintaining evaporative cooler replacement parts.', ar: 'نصائح عملية حول اختيار وتركيب وصيانة قطع غيار مبردات الهواء التبخيرية.', es: 'Consejos prácticos sobre cómo elegir, instalar y mantener refacciones para enfriadores de aire evaporativos.' },
+  'blog.read_more': { en: 'Read more', ar: 'اقرأ المزيد', es: 'Leer más' },
+  'blog.back_to_blog': { en: 'Back to Blog', ar: 'العودة إلى المدونة', es: 'Volver al Blog' },
+
+  // ── Guides listing & posts ──
+  'guides.title': { en: 'Troubleshooting Guides — EVAPFit', ar: 'أدلة استكشاف الأخطاء — EVAPFit', es: 'Guías de Solución de Problemas — EVAPFit' },
+  'guides.description': { en: 'Step-by-step instructions for replacing common evaporative cooler parts. Diagnosis, removal, and installation guides for pumps, motors, and more.', ar: 'تعليمات خطوة بخطوة لاستبدال قطع غيار مبردات الهواء الشائعة. أدلة للتشخيص والإزالة والتركيب للمضخات والمحركات والمزيد.', es: 'Instrucciones paso a paso para reemplazar refacciones comunes de enfriadores evaporativos. Guías de diagnóstico, desmontaje e instalación para bombas, motores y más.' },
+  'guides.label': { en: 'Troubleshooting & Repair Guides', ar: 'أدلة استكشاف الأخطاء والإصلاح', es: 'Guías de Solución de Problemas y Reparación' },
+  'guides.heading': { en: 'Maintenance & Repair Guides', ar: 'أدلة الصيانة والإصلاح', es: 'Guías de Mantenimiento y Reparación' },
+  'guides.subheading': { en: 'Step-by-step instructions for replacing common evaporative cooler parts. Each guide walks you through diagnosis, removal, and installation.', ar: 'تعليمات خطوة بخطوة لاستبدال قطع غيار مبردات الهواء الشائعة. يرشدك كل دليل خلال التشخيص والإزالة والتركيب.', es: 'Instrucciones paso a paso para reemplazar refacciones comunes de enfriadores evaporativos. Cada guía te lleva a través del diagnóstico, desmontaje e instalación.' },
+  'guides.read_guide': { en: 'Read Guide', ar: 'اقرأ الدليل', es: 'Leer Guía' },
+  'guides.coming_soon': { en: 'More Guides Coming Soon', ar: 'المزيد من الأدلة قريبًا', es: 'Más Guías Próximamente' },
+  'guides.coming_soon_desc': { en: 'Cooling pad replacement, control board troubleshooting, and valve maintenance guides are in progress.', ar: 'أدلة استبدال وسائد التبريد واستكشاف أخطاء لوحة التحكم وصيانة الصمامات قيد الإعداد.', es: 'Las guías de reemplazo de almohadillas de enfriamiento, solución de problemas de la placa de control y mantenimiento de válvulas están en progreso.' },
+  'guides.need_help': { en: 'Need help now?', ar: 'تحتاج إلى مساعدة الآن؟', es: '¿Necesitas ayuda ahora?' },
+  'guides.submit_inquiry': { en: 'Submit an inquiry with your issue', ar: 'أرسل استفسارًا بمشكلتك', es: 'Envía una consulta con tu problema' },
+  'guides.we_help': { en: "we'll provide guidance directly.", ar: 'سنقدم لك الإرشاد مباشرة.', es: 'te brindaremos orientación directamente.' },
+  'guides.back_to_guides': { en: 'Back to Guides', ar: 'العودة إلى الأدلة', es: 'Volver a las Guías' },
+
+  // ── Legal pages ──
+  'privacy.title': { en: 'Privacy Policy', ar: 'سياسة الخصوصية', es: 'Política de Privacidad' },
+  'terms.title': { en: 'Terms and Conditions', ar: 'الشروط والأحكام', es: 'Términos y Condiciones' },
 };
 
 export default ui;

@@ -15,7 +15,8 @@
 
 // ── Config ──
 $NOTIFY_EMAIL = 'rfq@aircoolerparts.com';
-$DATA_DIR = __DIR__ . '/../data';
+// C1 fix: data dir OUTSIDE web root (public/) so inquiries.json is never publicly accessible
+$DATA_DIR = __DIR__ . '/../../data';
 $DATA_FILE = $DATA_DIR . '/inquiries.json';
 
 // ── CORS (allows form submission from any page on the site) ──
@@ -74,16 +75,25 @@ if ($challengeVal < 4 || $challengeVal > 18 || empty($challenge)) {
     exit;
 }
 
-// ── 5. Rate limit (file-based, per IP) ──
+// ── 5. Rate limit (file-based, per IP, flock-protected) ──
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $rateFile = $DATA_DIR . '/ratelimit.json';
+$now = time();
+$hourAgo = $now - 3600;
+$dayAgo = $now - 86400;
+
+// C2 fix: flock prevents concurrent submissions from overwriting each other
+$rateLock = fopen($rateFile . '.lock', 'c');
+if (!flock($rateLock, LOCK_EX)) {
+    http_response_code(503);
+    echo json_encode(['error' => 'Server busy. Please try again.']);
+    exit;
+}
+
 $rateData = [];
 if (file_exists($rateFile)) {
     $rateData = json_decode(file_get_contents($rateFile), true) ?: [];
 }
-$now = time();
-$hourAgo = $now - 3600;
-$dayAgo = $now - 86400;
 
 // Clean old entries
 $rateData[$ip] = $rateData[$ip] ?? ['hour' => [], 'day' => []];
@@ -91,6 +101,8 @@ $rateData[$ip]['hour'] = array_values(array_filter($rateData[$ip]['hour'], fn($t
 $rateData[$ip]['day'] = array_values(array_filter($rateData[$ip]['day'], fn($t) => $t > $dayAgo));
 
 if (count($rateData[$ip]['hour']) >= 5 || count($rateData[$ip]['day']) >= 20) {
+    flock($rateLock, LOCK_UN);
+    fclose($rateLock);
     http_response_code(429);
     echo json_encode(['error' => 'Submission limit reached. Please try again later.']);
     exit;
@@ -99,6 +111,8 @@ if (count($rateData[$ip]['hour']) >= 5 || count($rateData[$ip]['day']) >= 20) {
 $rateData[$ip]['hour'][] = $now;
 $rateData[$ip]['day'][] = $now;
 file_put_contents($rateFile, json_encode($rateData, JSON_PRETTY_PRINT));
+flock($rateLock, LOCK_UN);
+fclose($rateLock);
 
 // ── Build inquiry record ──
 $inquiry = [
@@ -119,21 +133,40 @@ $inquiry = [
     'inquiry_basket' => $_POST['inquiry_basket'] ?? '',
 ];
 
-// ── Save to JSON ──
+// ── C3 fix: Validate email before saving ──
+$email = trim($inquiry['email']);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Please provide a valid email address.']);
+    exit;
+}
+
+// ── Save to JSON (C2 fix: flock-protected) ──
 if (!is_dir($DATA_DIR)) mkdir($DATA_DIR, 0755, true);
+$inqLock = fopen($DATA_FILE . '.lock', 'c');
+if (!flock($inqLock, LOCK_EX)) {
+    http_response_code(503);
+    echo json_encode(['error' => 'Server busy. Please try again.']);
+    exit;
+}
 $inquiries = [];
 if (file_exists($DATA_FILE)) {
     $inquiries = json_decode(file_get_contents($DATA_FILE), true) ?: [];
 }
 $inquiries[] = $inquiry;
 file_put_contents($DATA_FILE, json_encode($inquiries, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+flock($inqLock, LOCK_UN);
+fclose($inqLock);
 
-// ── Send email notification ──
-$subject = "New Inquiry: " . ($inquiry['company'] ?: $inquiry['name']) . " — EVAPFit";
+// ── Send email notification (C3 fix: sanitized headers) ──
+// C3 fix: strip \r \n \0 from values entering email headers to prevent header injection
+$sanitize = static fn(string $v): string => str_replace(["\r", "\n", "\0"], '', $v);
+$display = $sanitize($inquiry['company'] ?: $inquiry['name']);
+$subject = "New Inquiry: " . $display . " — EVAPFit";
 $body = buildEmailBody($inquiry);
 $headers = [
     'From: EVAPFit Inquiry <rfq@aircoolerparts.com>',
-    'Reply-To: ' . $inquiry['email'],
+    'Reply-To: ' . $email, // already validated by filter_var above
     'Content-Type: text/plain; charset=UTF-8',
 ];
 
@@ -174,7 +207,6 @@ function buildEmailBody(array $inquiry): string {
         "",
         "── Admin ──",
         "Inquiry ID: {$inquiry['id']}",
-        "View all: /api/view-inquiries.php",
     ];
     return implode("\n", $lines);
 }
