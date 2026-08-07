@@ -24,6 +24,11 @@
   # Remove .html extension (clean URLs)
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
+
+  # Sitemap: @astrojs/sitemap generates sitemap-index.xml, not sitemap.xml.
+  # Redirect the conventional /sitemap.xml to the actual file so that
+  # Google Search Console and other tools that guess the URL find it.
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
 </IfModule>
 
 # ── Directory index ──
