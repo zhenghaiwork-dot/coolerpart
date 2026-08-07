@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getProductsByType, getProductTypeMeta } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 import type { System, SystemArea } from '~/data/inquiry-types';
-import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductTypeName } from '~/i18n/utils';
 
 export interface Props {
   system: System;
@@ -21,7 +21,7 @@ const areaName = getAreaName(area.slug, locale);
 
 const products = await getProductsByType(system.slug, area.slug, typeSlug);
 const typeMeta = (await getProductTypeMeta(system.slug, area.slug)).find((t) => t.slug === typeSlug);
-const typeName = typeMeta?.name || typeSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+const typeName = getProductTypeName(typeSlug, locale) || typeMeta?.name || typeSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 const allAreaTypes = await getProductTypeMeta(system.slug, area.slug);
 const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4);
 ---

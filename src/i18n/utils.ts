@@ -99,17 +99,36 @@ export function getAreaName(slug: string, locale: string = defaultLang): string 
   return t(`area.${slug}`, locale);
 }
 
-/**
- * Get a product's display name for the given locale.
- * Falls back to English `name` if the localized version is missing.
- */
-export function getProductName(product: { name: string; nameAr?: string; nameEs?: string }, locale: string = defaultLang): string {
-  if (locale === 'ar' && product.nameAr) return product.nameAr;
-  if (locale === 'es' && product.nameEs) return product.nameEs;
-  return product.name;
-}
-
 /** Get translated area short description by slug. */
 export function getAreaShortDesc(slug: string, locale: string = defaultLang): string {
   return t(`area.${slug}.short`, locale);
+}
+
+/** Get product name in the given locale (falls back to English). */
+export function getProductName(product: { slug: string; name: string }, locale: string = defaultLang): string {
+  const key = `product.name.${product.slug}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return product.name;
+}
+
+/** Get product description in the given locale (falls back to English). */
+export function getProductDescription(product: { slug: string; description: string }, locale: string = defaultLang): string {
+  const key = `product.desc.${product.slug}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return product.description;
+}
+
+/** Get product spec value in the given locale (falls back to English). */
+export function getProductSpec(slug: string, label: string, value: string, locale: string = defaultLang): string {
+  const key = `product.spec.${slug}.${label.replace(/[\s\/]+/g, '_').toLowerCase()}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return value;
+}
+
+/** Get product type display name for locale. */
+export function getProductTypeName(typeSlug: string, locale: string = defaultLang): string {
+  return t(`product.type.${typeSlug}`, locale);
 }

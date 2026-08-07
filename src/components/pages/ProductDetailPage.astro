@@ -5,7 +5,7 @@ import { getAllProducts } from '~/data/product-helpers';
 import { systemsData } from '~/data/systems';
 import type { Product } from '~/data/inquiry-types';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductName } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductName, getProductDescription } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -22,6 +22,7 @@ const sysName = system ? getSystemName(system.slug, locale) : '';
 const areaName = area ? getAreaName(area.slug, locale) : '';
 const typeName = product.category;
 const displayName = getProductName(product, locale);
+const displayDesc = getProductDescription(product, locale);
 
 const allProducts = await getAllProducts();
 const relatedProducts = allProducts.filter((p) => p.slug !== product.slug && p.productTypeSlug === product.productTypeSlug).slice(0, 4);
@@ -92,13 +93,13 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
           <span class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-400 w-fit">
             {areaName}
           </span>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{displayName} for Evaporative Air Coolers</h1>
-          <p class="mt-3 text-sm leading-relaxed text-muted">{product.longDescription}</p>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{displayName} {__('product.for_evap_coolers')}</h1>
+          <p class="mt-3 text-sm leading-relaxed text-muted">{displayDesc}</p>
 
           <!-- Compatibility snapshot -->
           {product.compatibility.length > 0 && (
             <div class="mt-5 rounded-xl border border-teal-200 bg-teal-50/50 p-4 dark:border-teal-800 dark:bg-teal-900/10">
-              <p class="text-xs font-semibold text-teal-800 dark:text-teal-300 mb-2">Quick Compatibility Snapshot</p>
+              <p class="text-xs font-semibold text-teal-800 dark:text-teal-300 mb-2">{__('product.quick_compat')}</p>
               <div class="flex flex-wrap gap-1.5">
                 {product.compatibility.map((item) => (
                   <span class="inline-flex items-center gap-1 rounded-md border border-teal-300 bg-white px-2 py-0.5 text-xs font-medium text-teal-700 dark:border-teal-700 dark:bg-teal-900/20 dark:text-teal-300">&#x2713; {item}</span>
@@ -133,14 +134,14 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
             </button>
           </div>
           <div id="added-feedback" class="mt-2.5 hidden items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-            <Icon name="tabler:circle-check" class="h-3.5 w-3.5" /> Added to your inquiry list
+             <Icon name="tabler:circle-check" class="h-3.5 w-3.5" /> {__('product.added_toast')}
           </div>
 
           <!-- MOQ / Price / Lead Time -->
           <div class="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-gray-200 bg-gray-200 dark:border-slate-700 dark:bg-slate-700">
             <div class="bg-white p-3.5 dark:bg-slate-800"><span class="text-xs text-muted">{__('product.moq')}</span><p class="text-sm font-semibold text-gray-900 dark:text-white mt-0.5">{product.moq}</p></div>
-            <div class="bg-white p-3.5 dark:bg-slate-800"><span class="text-xs text-muted">Price</span><p class="text-sm font-semibold text-gray-900 dark:text-white mt-0.5">{product.priceRange}</p></div>
-            <div class="bg-white p-3.5 dark:bg-slate-800"><span class="text-xs text-muted">Lead Time</span><p class="text-sm font-semibold text-gray-900 dark:text-white mt-0.5">7-15 Days</p></div>
+            <div class="bg-white p-3.5 dark:bg-slate-800"><span class="text-xs text-muted">{__('product.price')}</span><p class="text-sm font-semibold text-gray-900 dark:text-white mt-0.5">{product.priceRange}</p></div>
+            <div class="bg-white p-3.5 dark:bg-slate-800"><span class="text-xs text-muted">{__('product.lead_time')}</span><p class="text-sm font-semibold text-gray-900 dark:text-white mt-0.5">{__('product.lead_time_val')}</p></div>
           </div>
         </div>
       </div>
@@ -151,7 +152,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   {product.specs.length > 0 && (
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Key Specifications</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('product.key_specs')}</h2>
         <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {product.specs.map((spec) => (
             <div class="rounded-lg border border-gray-200 bg-white p-3.5 dark:border-slate-700 dark:bg-slate-800">
@@ -168,7 +169,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   {product.features.length > 0 && (
     <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
       <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Features & Benefits</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('product.features_benefits')}</h2>
         <div class="grid gap-4 sm:grid-cols-2">
           {product.features.map((feature) => (
             <div class="flex gap-3 rounded-lg border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-700 dark:bg-slate-800/30">
@@ -189,20 +190,20 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   <!-- Typical Applications -->
   <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Typical Applications</h2>
-      <p class="text-sm text-muted leading-relaxed max-w-2xl">Portable evaporative air coolers (cabinet type) &middot; Fixed installation cooling units &middot; Replacement and maintenance service applications</p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{__('product.typical_apps')}</h2>
+      <p class="text-sm text-muted leading-relaxed max-w-2xl">{__('product.typical_apps_desc')}</p>
     </div>
   </section>
 
   <!-- Dimensions & Interface -->
   <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Dimensions & Interface</h2>
-      <p class="text-sm text-muted leading-relaxed max-w-2xl mb-3">Verify your existing component's interface type, mounting pattern, and connection size match before ordering. Refer to the specification table above for key mating dimensions.</p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{__('product.dimensions_interface')}</h2>
+      <p class="text-sm text-muted leading-relaxed max-w-2xl mb-3">{__('product.dimensions_desc')}</p>
       <ul class="text-sm text-muted space-y-1">
-        <li>&bull; Confirm interface type: threaded / flange / push-fit / bracket</li>
-        <li>&bull; Check mounting dimensions and bolt patterns</li>
-        <li>&bull; Contact us with photos if unsure about fitment</li>
+        <li>&bull; {__('product.interface_confirm')}</li>
+        <li>&bull; {__('product.interface_check')}</li>
+        <li>&bull; {__('product.interface_contact')}</li>
       </ul>
     </div>
   </section>
@@ -210,38 +211,38 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   <!-- Materials -->
   <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Materials & Construction</h2>
-      <p class="text-sm text-muted leading-relaxed max-w-2xl">Industrial-grade materials selected for wet, continuous-duty environments. Corrosion-resistant treatment and QC inspection before assembly.</p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{__('product.materials')}</h2>
+      <p class="text-sm text-muted leading-relaxed max-w-2xl">{__('product.materials_desc')}</p>
     </div>
   </section>
 
   <!-- Installation -->
   <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Installation & Replacement Notes</h2>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('product.installation')}</h2>
       <div class="max-w-2xl space-y-3">
-        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">1</span><p class="text-muted pt-0.5">Disconnect power and water supply before beginning replacement.</p></div>
-        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">2</span><p class="text-muted pt-0.5">Check interface type and dimensions match. Refer to specifications above.</p></div>
-        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">3</span><p class="text-muted pt-0.5">Install using same mounting method. Ensure seals and gaskets are properly seated.</p></div>
-        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">4</span><p class="text-muted pt-0.5">Test operation before returning to full service. Check for leaks and proper function.</p></div>
+        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">1</span><p class="text-muted pt-0.5">{__('product.install_step1')}</p></div>
+        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">2</span><p class="text-muted pt-0.5">{__('product.install_step2')}</p></div>
+        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">3</span><p class="text-muted pt-0.5">{__('product.install_step3')}</p></div>
+        <div class="flex gap-3 text-sm"><span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded bg-teal-600 text-xs font-bold text-white">4</span><p class="text-muted pt-0.5">{__('product.install_step4')}</p></div>
       </div>
-      <p class="mt-4 text-xs text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10 rounded-lg p-3 max-w-2xl"><strong>Note:</strong> Differences in interface or mounting may require adapter components. Confirm measurements before ordering.</p>
+      <p class="mt-4 text-xs text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/10 rounded-lg p-3 max-w-2xl"><strong>{__('product.install_note_prefix')}</strong> {__('product.install_note')}</p>
     </div>
   </section>
 
   <!-- OEM -->
   <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">OEM & Customization</h2>
-      <p class="text-sm text-muted max-w-2xl">Custom specs, private labeling, and packaging available for qualifying order volumes. <a href={L('/oem')} class="text-teal-600 hover:underline">Learn more about OEM options &rarr;</a></p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{__('product.oem_title')}</h2>
+      <p class="text-sm text-muted max-w-2xl">{__('product.oem_desc')} <a href={L('/oem')} class="text-teal-600 hover:underline">{__('product.oem_learn')}</a></p>
     </div>
   </section>
 
   <!-- Warranty -->
   <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Warranty & Quality</h2>
-      <p class="text-sm text-muted max-w-2xl">12-month standard warranty against manufacturing defects. OEM-equivalent specifications. 100% tested before shipment. Extended warranty available for bulk orders.</p>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">{__('product.warranty_title')}</h2>
+      <p class="text-sm text-muted max-w-2xl">{__('product.warranty_desc')}</p>
     </div>
   </section>
 
@@ -249,7 +250,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   {relatedProducts.length > 0 && (
     <section class="border-t border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-800/30">
       <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Similar Products</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('product.similar')}</h2>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {relatedProducts.map((rp) => (
             <a href={L(`/${rp.systemSlug}/${rp.areaSlug}/${rp.productTypeSlug}/${rp.slug}`)} class="group rounded-lg border border-gray-200 bg-white p-4 transition hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50">
@@ -257,8 +258,8 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
                 <Icon name="tabler:components" class="h-5 w-5 text-gray-400" />
               </div>
               <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{getProductName(rp, locale)}</h3>
-              <p class="mt-1 text-xs text-muted line-clamp-2">{rp.description}</p>
-              <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">View Details &rarr;</span>
+              <p class="mt-1 text-xs text-muted line-clamp-2">{getProductDescription(rp, locale)}</p>
+              <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">{__('product.view_details')}</span>
             </a>
           ))}
         </div>
@@ -270,7 +271,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   {crossSell.length > 0 && (
     <section class="border-t border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
       <div class="mx-auto max-w-7xl px-6 py-8 sm:py-10">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">You May Also Need</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{__('product.you_may_need')}</h2>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {crossSell.map((item) => (
             <a href={L(`/${item.systemSlug}/${item.areaSlug}/${item.productTypeSlug}/${item.slug}`)} class="group rounded-lg border border-gray-200 bg-white p-4 transition hover:shadow-sm dark:border-slate-700 dark:bg-slate-800/50">
@@ -278,8 +279,8 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
                 <Icon name="tabler:components" class="h-5 w-5 text-gray-400" />
               </div>
               <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{getProductName(item, locale)}</h3>
-              <p class="mt-1 text-xs text-muted line-clamp-2">{item.description}</p>
-              <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">View Details &rarr;</span>
+              <p class="mt-1 text-xs text-muted line-clamp-2">{getProductDescription(item, locale)}</p>
+              <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">{__('product.view_details')}</span>
             </a>
           ))}
         </div>
@@ -304,6 +305,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
       </button>
     </div>
   </div>
+  <span id="inquiry-list-label" hidden>{__('product.in_your_inquiry')}</span>
 </Layout>
 
 <script set:html={`window.__cpLocale="${locale}";window.__cpLink=function(p){return window.__cpLocale==='en'?p:'/'+window.__cpLocale+p;};`} />
@@ -321,7 +323,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
       if (!addBtn) return;
       const slug = addBtn.dataset.productSlug;
       if (slug && isInBasket(slug)) {
-        addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M5 12l5 5l10-10"/></svg> In Your Inquiry List';
+        addBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path d="M5 12l5 5l10-10"/></svg> ' + (document.getElementById('inquiry-list-label')?.textContent || 'In Your Inquiry List');
         addBtn.classList.add("opacity-70", "cursor-default", "border-emerald-300", "bg-emerald-50", "text-emerald-700");
         addBtn.classList.remove("border-gray-200", "bg-white", "text-gray-700", "hover:border-gray-300", "hover:bg-gray-50");
       }

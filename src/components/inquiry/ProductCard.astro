@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Product } from '~/data/inquiry-types';
-import { getAreaName, getProductName, defaultLang } from '~/i18n/utils';
+import { getAreaName, getProductName, getProductDescription, localeLink, useTranslations, defaultLang } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -9,6 +9,8 @@ export interface Props {
 }
 
 const { product, locale = defaultLang } = Astro.props;
+const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
 ---
 
 <article
@@ -16,7 +18,7 @@ const { product, locale = defaultLang } = Astro.props;
 >
   <!-- Product image -->
   <a
-    href={`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}
+    href={L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`)}
     class="product-placeholder relative block aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700"
   >
     <div class="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-105">
@@ -33,7 +35,7 @@ const { product, locale = defaultLang } = Astro.props;
 
   <!-- Content -->
   <div class="flex flex-1 flex-col p-4">
-    <a href={`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`}>
+    <a href={L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`)}>
       <h3
         class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug"
         style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
@@ -43,7 +45,7 @@ const { product, locale = defaultLang } = Astro.props;
     </a>
 
     <p class="mt-1.5 text-xs text-muted line-clamp-2 flex-1 leading-relaxed">
-      {product.description}
+      {getProductDescription(product, locale)}
     </p>
 
     <!-- Specs — monospace data table style -->
@@ -58,7 +60,7 @@ const { product, locale = defaultLang } = Astro.props;
 
     <!-- Footer: MOQ + Action -->
     <div class="mt-3 flex items-center justify-between border-t border-gray-100 pt-3 dark:border-slate-700/50">
-      <span class="tech-label text-slate-400">MOQ <span class="text-gray-600 dark:text-gray-300 ml-1">{product.moq}</span></span>
+      <span class="tech-label text-slate-400">{__('product.moq')} <span class="text-gray-600 dark:text-gray-300 ml-1">{product.moq}</span></span>
       <button
         data-product-slug={product.slug}
         data-product-name={getProductName(product, locale)}
@@ -69,7 +71,7 @@ const { product, locale = defaultLang } = Astro.props;
         class="add-to-basket-btn inline-flex items-center gap-1 rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500"
       >
         <Icon name="tabler:plus" class="h-3 w-3" />
-        Add
+        {__('inquiry.add_to_inquiry')}
       </button>
     </div>
   </div>
