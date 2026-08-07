@@ -901,6 +901,11 @@ const ui: TranslationDict = {
     ar: 'من نحن — إيفاب فيت',
     es: 'Quiénes Somos — EVAPFit',
   },
+  'about.desc': {
+    en: 'Learn about EVAPFit — your direct-source partner for evaporative air cooler replacement parts with 15+ years of factory direct export experience.',
+    ar: 'تعرف على إيفاب فيت — شريكك المباشر لقطع غيار مبردات الهواء التبخيرية مع أكثر من 15 عامًا من الخبرة في التصدير المباشر من المصنع.',
+    es: 'Conozca EVAPFit — su socio directo para refacciones de enfriadores de aire evaporativos con más de 15 años de experiencia en exportación directa de fábrica.',
+  },
   'about.heading': {
     en: 'About EVAPFit',
     ar: 'عن إيفاب فيت',
@@ -1008,6 +1013,11 @@ const ui: TranslationDict = {
     ar: 'اتصل بنا — إيفاب فيت',
     es: 'Contacto — EVAPFit',
   },
+  'contact.desc': {
+    en: 'Contact EVAPFit for evaporative air cooler spare parts inquiries. Email, phone, or request a quote — we respond within 24 hours.',
+    ar: 'اتصل بـ EVAPFit لاستفسارات قطع غيار مبردات الهواء التبخيرية. بريد إلكتروني أو هاتف أو طلب عرض سعر — نرد خلال 24 ساعة.',
+    es: 'Contacte a EVAPFit para consultas sobre refacciones de enfriadores de aire evaporativos. Correo, teléfono o solicite una cotización — respondemos en 24 horas.',
+  },
   'contact.heading': {
     en: 'Contact Us',
     ar: 'اتصل بنا',
@@ -1049,6 +1059,11 @@ const ui: TranslationDict = {
     en: 'FAQ — EVAPFit',
     ar: 'الأسئلة الشائعة — إيفاب فيت',
     es: 'Preguntas Frecuentes — EVAPFit',
+  },
+  'faq.desc': {
+    en: 'Frequently asked questions about evaporative cooler replacement parts — ordering, MOQ, samples, shipping, payment methods, warranty, and technical support.',
+    ar: 'أسئلة شائعة حول قطع غيار مبردات الهواء التبخيرية — الطلب والحد الأدنى للطلب والعينات والشحن وطرق الدفع والضمان والدعم الفني.',
+    es: 'Preguntas frecuentes sobre refacciones para enfriadores evaporativos — pedidos, MOQ, muestras, envíos, métodos de pago, garantía y soporte técnico.',
   },
   'faq.heading': {
     en: 'Frequently Asked Questions',
@@ -1161,6 +1176,11 @@ const ui: TranslationDict = {
     en: 'OEM & Custom Manufacturing — EVAPFit',
     ar: 'تصنيع حسب الطلب (OEM) — إيفاب فيت',
     es: 'OEM y Fabricación Personalizada — EVAPFit',
+  },
+  'oem.desc': {
+    en: 'Custom OEM evaporative cooler parts manufacturing — your specifications, your brand, your packaging. Flexible MOQ from 500 to 50,000 units.',
+    ar: 'تصنيع قطع غيار مخصصة (OEM) لمبردات الهواء التبخيرية — مواصفاتك، علامتك التجارية، تغليفك. حد أدنى مرن للطلب من 500 إلى 50,000 وحدة.',
+    es: 'Fabricación personalizada OEM de piezas para enfriadores evaporativos — sus especificaciones, su marca, su empaque. MOQ flexible de 500 a 50,000 unidades.',
   },
   'oem.custom_manufacturing': {
     en: 'Custom Manufacturing',
@@ -1419,6 +1439,11 @@ const ui: TranslationDict = {
     ar: 'الجودة والشهادات — إيفاب فيت',
     es: 'Calidad y Certificaciones — EVAPFit',
   },
+  'quality.desc': {
+    en: 'ISO 9001 certified quality management for evaporative cooler parts — 100% testing, 12-month warranty, and multi-stage quality control.',
+    ar: 'إدارة جودة حاصلة على شهادة ISO 9001 لقطع غيار مبردات الهواء التبخيرية — اختبار 100٪ وضمان 12 شهرًا ومراقبة جودة متعددة المراحل.',
+    es: 'Gestión de calidad certificada ISO 9001 para piezas de enfriadores evaporativos — pruebas al 100%, garantía de 12 meses y control de calidad de múltiples etapas.',
+  },
   'quality.heading': {
     en: 'Quality & Certifications',
     ar: 'الجودة والشهادات',
@@ -1535,6 +1560,11 @@ const ui: TranslationDict = {
     en: 'Shipping & Delivery — EVAPFit',
     ar: 'الشحن والتوصيل — إيفاب فيت',
     es: 'Envíos y Entregas — EVAPFit',
+  },
+  'shipping.desc': {
+    en: 'Flexible shipping options for evaporative cooler parts — sea freight, air freight, and express courier with FOB, CIF, CFR, and DDP incoterms.',
+    ar: 'خيارات شحن مرنة لقطع غيار مبردات الهواء التبخيرية — شحن بحري وجوي وبريد سريع مع شروط FOB و CIF و CFR و DDP.',
+    es: 'Opciones de envío flexibles para piezas de enfriadores evaporativos — carga marítima, aérea y mensajería exprés con incoterms FOB, CIF, CFR y DDP.',
   },
   'shipping.heading': {
     en: 'Shipping & Delivery',
@@ -3261,7 +3291,17 @@ const ui: TranslationDict = {
 
   // ── Legal pages ──
   'privacy.title': { en: 'Privacy Policy', ar: 'سياسة الخصوصية', es: 'Política de Privacidad' },
+  'privacy.desc': {
+    en: 'Privacy policy for EVAPFit — how we collect, use, and protect your personal information when you use our evaporative cooler parts website.',
+    ar: 'سياسة الخصوصية لـ EVAPFit — كيف نجمع ونستخدم ونحمي معلوماتك الشخصية عند استخدامك لموقع قطع غيار مبردات الهواء التبخيرية.',
+    es: 'Política de privacidad de EVAPFit — cómo recopilamos, usamos y protegemos su información personal cuando utiliza nuestro sitio web de refacciones para enfriadores evaporativos.',
+  },
   'terms.title': { en: 'Terms and Conditions', ar: 'الشروط والأحكام', es: 'Términos y Condiciones' },
+  'terms.desc': {
+    en: 'Terms and conditions for using the EVAPFit website and services for evaporative air cooler replacement parts procurement.',
+    ar: 'الشروط والأحكام لاستخدام موقع وخدمات EVAPFit لشراء قطع غيار مبردات الهواء التبخيرية.',
+    es: 'Términos y condiciones para el uso del sitio web y servicios de EVAPFit para la adquisición de refacciones para enfriadores de aire evaporativos.',
+  },
 
   // ── Product Name Translations (64 products) ──
   'product.name.air-outlet-louver-standard': { en: 'Air Outlet Louver Adjustable', ar: 'فتحة تهوية مخرج هواء قابلة للتعديل', es: 'Persiana de Salida de Aire Ajustable' },

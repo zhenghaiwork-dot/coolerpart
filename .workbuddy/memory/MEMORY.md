@@ -61,7 +61,12 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - `getAreaName(slug, locale)` → 查 `area.{slug}` in ui.ts
 - 所有 64 产品名称+描述已翻译为 en/ar/es ✅
 - 模板文字全部用 `__()` 翻译 ✅
-- 仍为英文: spec.label、features title/desc、typeNameMap description、product.category（子分类名）
+- 规格标签/值已翻译: getSpecLabel/getSpecValue + 78 spec_label + 69 spec_value 条目 ✅
+- 兼容性项已翻译: getCompatItem + 69 compat 条目 ✅
+- Features (27条) 已翻译: getProductFeatureTitle/getProductFeatureDesc ✅
+- 面包屑产品类型名: getProductTypeName(productTypeSlug) 替代 product.category ✅
+- 标题后缀/meta描述/产品数量等均已本地化 ✅
+- 询盘篮 category 显示: data-product-type-slug + 客户端翻译映射 ✅
 - MDX frontmatter 的 `nameAr`/`nameEs` 字段为 vestigial（getter 函数不读它们）
 
 ## 待实现功能（按 Content Map 文档）
@@ -71,4 +76,3 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - SEO landing pages（系统落地页 / 接口兼容落地页）
 - 产品页增强：差异点说明模板、Schema.org 结构化数据
 - 真实产品图片（当前全部为 placeholder icon）
-- 规格标签(spec.label)多语言、子分类名(category)多语言、features 多语言

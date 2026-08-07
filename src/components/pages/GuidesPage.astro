@@ -19,18 +19,35 @@ const guides = (await getCollection('guide'))
   )
   .filter((g: CollectionEntry<'guide'>) => !g.data.draft);
 
-const metadata = {
-  title: __('guides.title') || 'Troubleshooting Guides — EVAPFit',
-  description: __('guides.description') || 'Step-by-step instructions for replacing common evaporative cooler parts. Diagnosis, removal, and installation guides for pumps, motors, and more.',
-  ignoreTitleTemplate: true,
-};
-
 const iconMap: Record<string, string> = {
   'water-system': 'tabler:droplet',
   'electrical-controls': 'tabler:bolt',
   'air-system': 'tabler:wind',
   'structure-mounting': 'tabler:tool',
   'maintenance-consumables': 'tabler:refresh',
+};
+
+const guidesWithMeta = guides.map((guide: CollectionEntry<'guide'>) => {
+  const systemSlug = guide.data.systemSlug || '';
+  const difficulty = guide.data.difficulty || '';
+  const difficultyColor = difficulty === 'Easy'
+    ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+    : difficulty === 'Medium'
+      ? 'bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400'
+      : 'bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-400';
+  return {
+    guide,
+    slug: guide.id.replace(/\.(md|mdx)$/, ''),
+    icon: iconMap[systemSlug] || 'tabler:tools',
+    difficulty,
+    difficultyColor,
+  };
+});
+
+const metadata = {
+  title: __('guides.title') || 'Troubleshooting Guides — EVAPFit',
+  description: __('guides.description') || 'Step-by-step instructions for replacing common evaporative cooler parts. Diagnosis, removal, and installation guides for pumps, motors, and more.',
+  ignoreTitleTemplate: true,
 };
 ---
 
@@ -58,17 +75,7 @@ const iconMap: Record<string, string> = {
         </div>
       ) : (
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((guide: CollectionEntry<'guide'>) => {
-            const slug = guide.id.replace(/\.(md|mdx)$/, '');
-            const systemSlug = guide.data.systemSlug || '';
-            const icon = iconMap[systemSlug] || 'tabler:tools';
-            const difficulty = guide.data.difficulty || '';
-            const difficultyColor = difficulty === 'Easy'
-              ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
-              : difficulty === 'Medium'
-                ? 'bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400'
-                : 'bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-400';
-            return (
+          {guidesWithMeta.map(({ guide, slug, icon, difficulty, difficultyColor }) => (
               <a href={L(`/guides/${slug}`)} class="group flex flex-col rounded-xl border border-gray-200 p-6 transition hover:border-teal-300 hover:shadow-sm dark:border-slate-700 dark:hover:border-teal-600">
                 <div class="mb-3 flex items-center gap-3">
                   <Icon name={icon} class="h-8 w-8 text-teal-500 flex-shrink-0" />
@@ -89,8 +96,7 @@ const iconMap: Record<string, string> = {
                   {__('guides.read_guide') || 'Read Guide'} <Icon name="tabler:arrow-right" class="h-3 w-3" />
                 </span>
               </a>
-            );
-          })}
+            ))}
         </div>
       )}
 

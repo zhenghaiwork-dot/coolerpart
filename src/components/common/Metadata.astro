@@ -4,7 +4,7 @@ import { SEO } from 'astro-seo';
 
 import type { SEOProps } from 'astro-seo';
 
-import { SITE, METADATA, I18N } from 'astrowind:config';
+import { SITE, METADATA } from 'astrowind:config';
 import type { MetaData, MetaDataOpenGraph } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
@@ -12,6 +12,7 @@ import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+  locale?: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  locale = 'en',
 } = Astro.props;
 
 const mergedOg: MetaDataOpenGraph = merge(
@@ -29,7 +31,7 @@ const mergedOg: MetaDataOpenGraph = merge(
     url: canonical,
     siteName: SITE?.name,
     images: [],
-    locale: I18N?.language || 'en',
+    locale: locale,
     type: 'website',
   },
   METADATA?.openGraph,
@@ -44,26 +46,26 @@ function buildOpenGraph(og: MetaDataOpenGraph): SEOProps['openGraph'] | undefine
   if (!og) return undefined;
 
   const imageUrl = firstImage?.url || '';
-  if (!imageUrl) return undefined;
 
   return {
     basic: {
       title: title || METADATA?.title?.default || '',
       type: og.type || 'website',
-      image: imageUrl,
+      image: imageUrl || undefined,
       url: og.url,
     },
     optional: {
       description: description || METADATA?.description,
-      locale: og.locale,
       siteName: og.siteName,
     },
-    image: {
-      url: imageUrl,
-      width: firstImage?.width,
-      height: firstImage?.height,
-      alt: title || METADATA?.title?.default || '',
-    },
+    ...(imageUrl ? {
+      image: {
+        url: imageUrl,
+        width: firstImage?.width,
+        height: firstImage?.height,
+        alt: title || METADATA?.title?.default || '',
+      },
+    } : {}),
   };
 }
 

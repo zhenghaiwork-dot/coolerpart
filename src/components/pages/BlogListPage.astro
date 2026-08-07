@@ -19,6 +19,14 @@ const posts = (await getCollection('post'))
   )
   .filter((p: CollectionEntry<'post'>) => !p.data.draft);
 
+const postsWithMeta = posts.map((post: CollectionEntry<'post'>) => ({
+  post,
+  slug: post.id.replace(/\.(md|mdx)$/, ''),
+  date: post.data.publishDate
+    ? new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    : '',
+}));
+
 const metadata = {
   title: __('blog.title') || 'Blog — Evaporative Cooler Tips, Guides & Industry News | EVAPFit',
   description: __('blog.description') || 'Practical tips, buying guides, and maintenance advice for evaporative air coolers. Learn how to choose, install, and maintain replacement parts.',
@@ -50,12 +58,8 @@ const metadata = {
         </div>
       ) : (
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post: CollectionEntry<'post'>) => {
-            const slug = post.id.replace(/\.(md|mdx)$/, '');
-            const date = post.data.publishDate
-              ? new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-              : '';
-            return (
+          {postsWithMeta.map(({ post, slug, date }) => (
+            
               <a href={L(`/blog/${slug}`)} class="group flex flex-col overflow-hidden rounded-xl border border-gray-200 transition hover:border-teal-300 hover:shadow-md dark:border-slate-700 dark:hover:border-teal-600">
                 {post.data.image ? (
                   <div class="aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-slate-800">
@@ -91,8 +95,7 @@ const metadata = {
                   </span>
                 </div>
               </a>
-            );
-          })}
+            ))}
         </div>
       )}
     </div>

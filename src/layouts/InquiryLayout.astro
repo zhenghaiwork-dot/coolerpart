@@ -100,7 +100,7 @@ const footerLinks = [
   <Header links={headerLinks} actions={headerActions} isSticky showToggleTheme locale={locale}>
     <LanguageSwitcher currentLocale={locale} class="ml-3" />
   </Header>
-  <main>
+  <main id="main-content">
     <slot />
   </main>
   <Footer links={footerLinks} secondaryLinks={[{ text: __('nav.terms'), href: L('/terms') }, { text: __('nav.privacy'), href: L('/privacy') }]} socialLinks={[]} footNote={__('footer.copyright')} locale={locale} />

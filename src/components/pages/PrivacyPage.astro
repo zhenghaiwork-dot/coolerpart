@@ -11,7 +11,7 @@ const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 ---
 
-<Layout metadata={{ title: __('privacy.title') || 'Privacy Policy' }} locale={locale}>
+<Layout metadata={{ title: __('privacy.title') || 'Privacy Policy', description: __('privacy.desc') }} locale={locale}>
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{__('privacy.title') || 'Privacy Policy'}</h1>
     <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8">

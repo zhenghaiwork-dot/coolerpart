@@ -12,7 +12,7 @@ const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 ---
 
-<Layout metadata={{ title: __('contact.title'), ignoreTitleTemplate: true }} locale={locale}>
+<Layout metadata={{ title: __('contact.title'), description: __('contact.desc'), ignoreTitleTemplate: true }} locale={locale}>
   <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
     <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{__('contact.heading')}</h1>

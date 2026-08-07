@@ -1,8 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
-import { useTranslations, defaultLang } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
 
 interface Link {
   text?: string;
@@ -27,6 +26,7 @@ export interface Props {
 
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light', locale = defaultLang } = Astro.props;
 const __ = useTranslations(locale);
+const L = (path: string) => localeLink(path, locale);
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-slate-800 not-prose bg-slate-950 text-slate-400']}>
@@ -34,7 +34,7 @@ const __ = useTranslations(locale);
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-10 md:py-14">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-3">
-          <a class="inline-flex items-center gap-2.5 font-bold text-lg" href={getHomePermalink()} style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
+          <a class="inline-flex items-center gap-2.5 font-bold text-lg" href={L('/')} style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;">
             <span class="flex h-8 w-8 items-center justify-center rounded-md bg-slate-900 text-teal-400 ring-1 ring-teal-500/30">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
