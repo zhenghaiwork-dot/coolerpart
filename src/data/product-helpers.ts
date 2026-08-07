@@ -89,6 +89,8 @@ function toProduct(entry: { data: Record<string, unknown>; body?: string }): Pro
   return {
     slug: d.slug as string,
     name: d.name as string,
+    nameAr: d.nameAr as string | undefined,
+    nameEs: d.nameEs as string | undefined,
     category: d.category as string,
     systemSlug: d.systemSlug as string,
     areaSlug: d.areaSlug as string,

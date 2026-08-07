@@ -67,6 +67,8 @@ const productCollection = defineCollection({
   schema: z.object({
     slug: z.string(),
     name: z.string(),
+    nameAr: z.string().optional(),
+    nameEs: z.string().optional(),
     category: z.string(),
     systemSlug: z.string(),
     areaSlug: z.string(),

@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Product } from '~/data/inquiry-types';
-import { getAreaName, defaultLang } from '~/i18n/utils';
+import { getAreaName, getProductName, defaultLang } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -21,7 +21,7 @@ const { product, locale = defaultLang } = Astro.props;
   >
     <div class="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-105">
       {product.image ? (
-        <img src={product.image} alt={product.name} class="h-full w-full object-contain p-3" loading="lazy" />
+        <img src={product.image} alt={getProductName(product, locale)} class="h-full w-full object-contain p-3" loading="lazy" />
       ) : (
         <Icon name="tabler:package" class="h-8 w-8 text-teal-500/40" />
       )}
@@ -38,7 +38,7 @@ const { product, locale = defaultLang } = Astro.props;
         class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug"
         style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
       >
-        {product.name}
+        {getProductName(product, locale)}
       </h3>
     </a>
 
@@ -61,7 +61,7 @@ const { product, locale = defaultLang } = Astro.props;
       <span class="tech-label text-slate-400">MOQ <span class="text-gray-600 dark:text-gray-300 ml-1">{product.moq}</span></span>
       <button
         data-product-slug={product.slug}
-        data-product-name={product.name}
+        data-product-name={getProductName(product, locale)}
         data-product-category={product.category}
         data-product-moq={product.moq}
         data-product-price={product.priceRange}

@@ -46,7 +46,9 @@ export interface BasketItem {
 
 export interface Product {
   slug: string;
-  name: string;
+  name: string; // English — fallback for all locales
+  nameAr?: string; // Arabic localized name
+  nameEs?: string; // Spanish localized name
   category: string;
   areaSlug: string;
   systemSlug: string;

@@ -5,6 +5,8 @@ export const productsData: Product[] = [
   {
     slug: 'replacement-water-pump-110v',
     name: 'Replacement Water Pump 110V',
+    nameAr: 'مضخة مياه بديلة 110 فولت',
+    nameEs: 'Bomba de Agua de Reemplazo 110V',
     category: 'Water Pump & Power',
     areaSlug: 'water-pump-power',
     systemSlug: 'water-system',
@@ -39,6 +41,8 @@ export const productsData: Product[] = [
   {
     slug: 'replacement-water-pump-220v',
     name: 'Replacement Water Pump 220V',
+    nameAr: 'مضخة مياه بديلة 220 فولت',
+    nameEs: 'Bomba de Agua de Reemplazo 220V',
     category: 'Water Pump & Power',
     areaSlug: 'water-pump-power',
     systemSlug: 'water-system',
@@ -70,6 +74,8 @@ export const productsData: Product[] = [
   {
     slug: 'pump-seal-kit',
     name: 'Pump Seal / Shaft Seal Kit',
+    nameAr: 'طقم ختم المضخة / ختم العمود',
+    nameEs: 'Kit de Sello de Bomba / Sello de Eje',
     category: 'Water Pump & Power',
     areaSlug: 'water-pump-power',
     systemSlug: 'water-system',
@@ -94,6 +100,8 @@ export const productsData: Product[] = [
   {
     slug: 'water-strainer-filter',
     name: 'Water Strainer / Filter Screen',
+    nameAr: 'مصفى مياه / شاشة فلتر',
+    nameEs: 'Filtro de Agua / Malla de Filtración',
     category: 'Filtration & Anti-clogging',
     areaSlug: 'filtration-anti-clogging',
     systemSlug: 'water-system',
@@ -118,6 +126,8 @@ export const productsData: Product[] = [
   {
     slug: 'solenoid-valve-110v',
     name: 'Solenoid Valve 110V',
+    nameAr: 'صمام كهربائي 110 فولت',
+    nameEs: 'Válvula Solenoide 110V',
     category: 'Valves & Water Control',
     areaSlug: 'valves-water-control',
     systemSlug: 'water-system',
@@ -142,6 +152,8 @@ export const productsData: Product[] = [
   {
     slug: 'cooling-pad-standard',
     name: 'Standard Cooling Pad 600x300x50mm',
+    nameAr: 'وسادة تبريد قياسية 600×300×50 ملم',
+    nameEs: 'Panel de Enfriamiento Estándar 600x300x50mm',
     category: 'Cooling Media',
     areaSlug: 'cooling-media',
     systemSlug: 'evaporation-system',
@@ -165,6 +177,8 @@ export const productsData: Product[] = [
   {
     slug: 'cooling-pad-frame',
     name: 'Cooling Pad Frame / Holder',
+    nameAr: 'إطار وسادة التبريد / حامل',
+    nameEs: 'Marco / Soporte para Panel de Enfriamiento',
     category: 'Cooling Media',
     areaSlug: 'cooling-media',
     systemSlug: 'evaporation-system',
@@ -186,6 +200,8 @@ export const productsData: Product[] = [
   {
     slug: 'replacement-motor-110v',
     name: 'Replacement Motor 110V 550W',
+    nameAr: 'محرك بديل 110 فولت 550 واط',
+    nameEs: 'Motor de Reemplazo 110V 550W',
     category: 'Motors & Drive',
     areaSlug: 'motors-drive',
     systemSlug: 'electrical-controls',
@@ -215,6 +231,8 @@ export const productsData: Product[] = [
   {
     slug: 'replacement-motor-220v',
     name: 'Replacement Motor 220V 750W',
+    nameAr: 'محرك بديل 220 فولت 750 واط',
+    nameEs: 'Motor de Reemplazo 220V 750W',
     category: 'Motors & Drive',
     areaSlug: 'motors-drive',
     systemSlug: 'electrical-controls',
@@ -241,6 +259,8 @@ export const productsData: Product[] = [
   {
     slug: 'motor-capacitor-6uf',
     name: 'Motor Capacitor 6 µF',
+    nameAr: 'مكثف المحرك 6 ميكروفاراد',
+    nameEs: 'Capacitor de Motor 6 µF',
     category: 'Motors & Drive',
     areaSlug: 'motors-drive',
     systemSlug: 'electrical-controls',
@@ -263,6 +283,8 @@ export const productsData: Product[] = [
   {
     slug: 'fan-mounting-bracket',
     name: 'Fan Mounting Bracket Universal',
+    nameAr: 'حامل تثبيت مروحة عالمي',
+    nameEs: 'Soporte Universal para Ventilador',
     category: 'Brackets & Reinforcement',
     areaSlug: 'brackets-reinforcement',
     systemSlug: 'structure-mounting',
@@ -287,6 +309,8 @@ export const productsData: Product[] = [
   {
     slug: 'filter-replacement-element',
     name: 'Filter Replacement Element',
+    nameAr: 'عنصر فلتر بديل',
+    nameEs: 'Elemento de Filtro de Reemplazo',
     category: 'Filters & Replacement Elements',
     areaSlug: 'filters-replacement-elements',
     systemSlug: 'maintenance-consumables',
@@ -309,6 +333,8 @@ export const productsData: Product[] = [
   {
     slug: 'caster-wheel-kit',
     name: 'Caster Wheel Kit (4 pcs)',
+    nameAr: 'طقم عجلات دوارة (4 قطع)',
+    nameEs: 'Kit de Ruedas Giratorias (4 pzs)',
     category: 'Mobile Hardware',
     areaSlug: 'mobile-hardware',
     systemSlug: 'structure-mounting',
@@ -335,6 +361,8 @@ export const productsData: Product[] = [
   {
     slug: 'float-valve-universal',
     name: 'Float Valve Universal',
+    nameAr: 'صمام عوّام عالمي',
+    nameEs: 'Válvula de Flotador Universal',
     category: 'Valves & Water Control',
     areaSlug: 'valves-water-control',
     systemSlug: 'water-system',
@@ -356,6 +384,8 @@ export const productsData: Product[] = [
   {
     slug: 'drain-valve-ball',
     name: 'Drain Valve Ball Type',
+    nameAr: 'صمام تصريف نوع كروي',
+    nameEs: 'Válvula de Drenaje Tipo Bola',
     category: 'Valves & Water Control',
     areaSlug: 'valves-water-control',
     systemSlug: 'water-system',
@@ -377,6 +407,8 @@ export const productsData: Product[] = [
   {
     slug: 'nozzle-spray-jet-standard',
     name: 'Spray Nozzle Standard',
+    nameAr: 'فوهة رذاذ قياسية',
+    nameEs: 'Boquilla de Rociado Estándar',
     category: 'Water Distribution & Level Protection',
     areaSlug: 'water-distribution-level',
     systemSlug: 'water-system',
@@ -399,6 +431,8 @@ export const productsData: Product[] = [
   {
     slug: 'pad-water-distributor-standard',
     name: 'Pad Water Distributor Bar',
+    nameAr: 'قضيب توزيع المياه للوسادة',
+    nameEs: 'Barra Distribuidora de Agua para Panel',
     category: 'Water Feed & Distribution',
     areaSlug: 'water-feed-distribution',
     systemSlug: 'evaporation-system',
@@ -421,6 +455,8 @@ export const productsData: Product[] = [
   {
     slug: 'centrifugal-fan-wheel-standard',
     name: 'Centrifugal Fan Wheel 250mm',
+    nameAr: 'عجلة مروحة طرد مركزي 250 ملم',
+    nameEs: 'Rueda de Ventilador Centrífugo 250mm',
     category: 'Centrifugal Fan System',
     areaSlug: 'centrifugal-fan-system',
     systemSlug: 'air-system',
@@ -444,6 +480,8 @@ export const productsData: Product[] = [
   {
     slug: 'control-board-universal',
     name: 'Control Board Universal 110V',
+    nameAr: 'لوحة تحكم عالمية 110 فولت',
+    nameEs: 'Placa de Control Universal 110V',
     category: 'Control Board & Protection',
     areaSlug: 'control-board-protection',
     systemSlug: 'electrical-controls',
@@ -468,6 +506,8 @@ export const productsData: Product[] = [
   {
     slug: 'water-level-sensor-float',
     name: 'Water Level Sensor Float Switch',
+    nameAr: 'مستشعر مستوى المياه مفتاح عوّام',
+    nameEs: 'Sensor de Nivel de Agua Tipo Flotador',
     category: 'Sensors & Water Level Detection',
     areaSlug: 'sensors-level-detection',
     systemSlug: 'electrical-controls',
@@ -490,6 +530,8 @@ export const productsData: Product[] = [
   {
     slug: 'cabinet-side-panel-standard',
     name: 'Cabinet Side Panel Standard',
+    nameAr: 'لوحة جانبية للخزانة قياسية',
+    nameEs: 'Panel Lateral Estándar para Gabinete',
     category: 'Cabinet / Housing Replacement',
     areaSlug: 'cabinet-housing',
     systemSlug: 'structure-mounting',
@@ -511,6 +553,8 @@ export const productsData: Product[] = [
   {
     slug: 'anti-vibration-mount-standard',
     name: 'Anti-Vibration Mount Set (4 pcs)',
+    nameAr: 'طقم قواعد عزل اهتزاز (4 قطع)',
+    nameEs: 'Kit de Soportes Anti-Vibración (4 pzs)',
     category: 'Brackets & Reinforcement',
     areaSlug: 'brackets-reinforcement',
     systemSlug: 'structure-mounting',
@@ -533,6 +577,8 @@ export const productsData: Product[] = [
   {
     slug: 'cooling-pad-replacement-set',
     name: 'Cooling Pad Replacement Set 600x300',
+    nameAr: 'طقم استبدال وسادة التبريد 600×300',
+    nameEs: 'Kit de Reemplazo de Panel de Enfriamiento 600x300',
     category: 'Wear Parts',
     areaSlug: 'wear-parts',
     systemSlug: 'maintenance-consumables',
@@ -558,6 +604,8 @@ export const productsData: Product[] = [
   {
     slug: 'pump-impeller-standard',
     name: 'Pump Impeller Standard 6-Blade',
+    nameAr: 'دوّار مضخة قياسي 6 شفرات',
+    nameEs: 'Impelador Estándar de Bomba 6 Aspas',
     category: 'Water Pump & Power',
     areaSlug: 'water-pump-power', systemSlug: 'water-system', productTypeSlug: 'pump-impeller-rotor',
     moq: '50 pcs', priceRange: '$2.00 – $4.00 / pc', image: '',
@@ -571,6 +619,8 @@ export const productsData: Product[] = [
   {
     slug: 'pump-housing-volute-standard',
     name: 'Pump Housing Volute Standard',
+    nameAr: 'جسم مضخة حلزوني قياسي',
+    nameEs: 'Carcasa Voluta Estándar para Bomba',
     category: 'Water Pump & Power', areaSlug: 'water-pump-power', systemSlug: 'water-system', productTypeSlug: 'pump-housing-volute',
     moq: '20 pcs', priceRange: '$3.00 – $6.00 / pc', image: '',
     description: 'Replacement pump housing volute for water pump assembly.',
@@ -583,6 +633,8 @@ export const productsData: Product[] = [
   {
     slug: 'filter-cartridge-standard',
     name: 'Filter Cartridge Replaceable',
+    nameAr: 'خرطوشة فلتر قابلة للاستبدال',
+    nameEs: 'Cartucho de Filtro Reemplazable',
     category: 'Filtration & Anti-clogging', areaSlug: 'filtration-anti-clogging', systemSlug: 'water-system', productTypeSlug: 'filter-element-cartridge',
     moq: '100 pcs', priceRange: '$1.00 – $2.00 / pc', image: '',
     description: 'Replaceable water filter cartridge for inline filtration systems.',
@@ -595,6 +647,8 @@ export const productsData: Product[] = [
   {
     slug: 'check-valve-standard',
     name: 'Check Valve Inline',
+    nameAr: 'صمام عدم رجعي خطي',
+    nameEs: 'Válvula de Retención en Línea',
     category: 'Valves & Water Control', areaSlug: 'valves-water-control', systemSlug: 'water-system', productTypeSlug: 'check-valve',
     moq: '100 pcs', priceRange: '$1.00 – $2.50 / pc', image: '',
     description: 'Inline check valve to prevent water backflow in supply lines.',
@@ -607,6 +661,8 @@ export const productsData: Product[] = [
   {
     slug: 'water-distribution-manifold-600mm',
     name: 'Distribution Manifold 600mm',
+    nameAr: 'مانيفولد توزيع 600 ملم',
+    nameEs: 'Manifold de Distribución 600mm',
     category: 'Water Distribution & Level Protection', areaSlug: 'water-distribution-level', systemSlug: 'water-system', productTypeSlug: 'water-distribution-manifold',
     moq: '20 pcs', priceRange: '$4.00 – $8.00 / pc', image: '',
     description: 'Water distribution manifold header for multi-point water delivery.',
@@ -619,6 +675,8 @@ export const productsData: Product[] = [
   {
     slug: 'distribution-tube-standard',
     name: 'Distribution Tube 10mm',
+    nameAr: 'أنبوب توزيع 10 ملم',
+    nameEs: 'Tubo de Distribución 10mm',
     category: 'Water Distribution & Level Protection', areaSlug: 'water-distribution-level', systemSlug: 'water-system', productTypeSlug: 'distribution-tube-pipe',
     moq: '200m', priceRange: '$0.50 – $1.00 / m', image: '',
     description: 'Replacement water distribution tube for cooler plumbing.',
@@ -631,6 +689,8 @@ export const productsData: Product[] = [
   {
     slug: 'hose-flexible-standard',
     name: 'Flexible Hose 12mm',
+    nameAr: 'خرطوم مرن 12 ملم',
+    nameEs: 'Manguera Flexible 12mm',
     category: 'Piping & Connections', areaSlug: 'piping-connections', systemSlug: 'water-system', productTypeSlug: 'hoses-pipes',
     moq: '100m', priceRange: '$0.80 – $1.50 / m', image: '',
     description: 'Flexible water hose for evaporative cooler plumbing connections.',
@@ -643,6 +703,8 @@ export const productsData: Product[] = [
   {
     slug: 'coupling-connector-set',
     name: 'Coupling Connector Set',
+    nameAr: 'طقم وصلات أنابيب',
+    nameEs: 'Kit de Conectores y Acoples',
     category: 'Piping & Connections', areaSlug: 'piping-connections', systemSlug: 'water-system', productTypeSlug: 'couplings-connectors',
     moq: '200 pcs', priceRange: '$0.30 – $0.80 / pc', image: '',
     description: 'Universal pipe coupling connectors for water system assembly.',
@@ -655,6 +717,8 @@ export const productsData: Product[] = [
   {
     slug: 'sealing-gasket-ring-set',
     name: 'Gasket Sealing Ring Set',
+    nameAr: 'طقم حلقات وأطواق مانعة للتسرب',
+    nameEs: 'Kit de Empaquetaduras y Anillos de Sellado',
     category: 'Piping & Connections', areaSlug: 'piping-connections', systemSlug: 'water-system', productTypeSlug: 'gaskets-sealing-rings',
     moq: '500 pcs', priceRange: '$0.10 – $0.30 / pc', image: '',
     description: 'Replacement O-ring and gasket set for leak-proof plumbing.',
@@ -667,6 +731,8 @@ export const productsData: Product[] = [
   {
     slug: 'water-tank-sump-standard',
     name: 'Water Tank Sump Standard',
+    nameAr: 'خزان مياه قياسي',
+    nameEs: 'Tanque de Agua Estándar',
     category: 'Tank, Sump & Drainage', areaSlug: 'tank-sump-drainage', systemSlug: 'water-system', productTypeSlug: 'water-tank-sump',
     moq: '10 pcs', priceRange: '$15.00 – $30.00 / pc', image: '',
     description: 'Replacement water tank sump for evaporative cooler water storage.',
@@ -679,6 +745,8 @@ export const productsData: Product[] = [
   {
     slug: 'drain-plug-standard',
     name: 'Drain Plug Standard',
+    nameAr: 'سدادة تصريف قياسية',
+    nameEs: 'Tapón de Drenaje Estándar',
     category: 'Tank, Sump & Drainage', areaSlug: 'tank-sump-drainage', systemSlug: 'water-system', productTypeSlug: 'drain-plug-outlet',
     moq: '200 pcs', priceRange: '$0.30 – $0.60 / pc', image: '',
     description: 'Replacement drain plug for water tank drainage outlet.',
@@ -691,6 +759,8 @@ export const productsData: Product[] = [
   {
     slug: 'anti-clogging-mesh-standard',
     name: 'Anti-Clogging Mesh Screen',
+    nameAr: 'شبكة مانعة للانسداد',
+    nameEs: 'Malla Anti-Obstrucción',
     category: 'Anti-clogging & Debris Management', areaSlug: 'anti-clogging-debris', systemSlug: 'evaporation-system', productTypeSlug: 'anti-clogging-mesh',
     moq: '200 pcs', priceRange: '$0.50 – $1.00 / pc', image: '',
     description: 'Protective mesh screen to prevent debris on cooling pads.',
@@ -703,6 +773,8 @@ export const productsData: Product[] = [
   {
     slug: 'water-eliminator-standard',
     name: 'Water Drift Eliminator',
+    nameAr: 'مانع حمل رذاذ المياه',
+    nameEs: 'Eliminador de Arrastre de Agua',
     category: 'Anti-clogging & Debris Management', areaSlug: 'anti-clogging-debris', systemSlug: 'evaporation-system', productTypeSlug: 'water-eliminator',
     moq: '30 pcs', priceRange: '$3.00 – $6.00 / pc', image: '',
     description: 'Drift eliminator to prevent water droplet carryover in air stream.',
@@ -715,6 +787,8 @@ export const productsData: Product[] = [
   {
     slug: 'overflow-baffle-standard',
     name: 'Overflow Baffle Standard',
+    nameAr: 'حاجز فيضان قياسي',
+    nameEs: 'Deflector de Rebosamiento Estándar',
     category: 'Overflow, Splash & Drain Guidance', areaSlug: 'overflow-splash-drain', systemSlug: 'evaporation-system', productTypeSlug: 'overflow-baffle',
     moq: '50 pcs', priceRange: '$1.50 – $3.00 / pc', image: '',
     description: 'Overflow baffle to direct excess water safely away from the cooler.',
@@ -727,6 +801,8 @@ export const productsData: Product[] = [
   {
     slug: 'splash-curtain-standard',
     name: 'Anti-Splash Curtain Sheet',
+    nameAr: 'ستارة مانعة للرذاذ',
+    nameEs: 'Cortina Anti-Salpicaduras',
     category: 'Overflow, Splash & Drain Guidance', areaSlug: 'overflow-splash-drain', systemSlug: 'evaporation-system', productTypeSlug: 'splash-curtain',
     moq: '50 pcs', priceRange: '$2.00 – $4.00 / pc', image: '',
     description: 'Anti-splash curtain to contain water within the evaporation section.',
@@ -739,6 +815,8 @@ export const productsData: Product[] = [
   {
     slug: 'fan-guard-standard',
     name: 'Fan Guard Protection Grille',
+    nameAr: 'شبكة حماية المروحة',
+    nameEs: 'Rejilla de Protección para Ventilador',
     category: 'Fans & Blower Components', areaSlug: 'fans-blowers', systemSlug: 'air-system', productTypeSlug: 'fan-guard-grille',
     moq: '30 pcs', priceRange: '$3.00 – $6.00 / pc', image: '',
     description: 'Safety protection grille for evaporative cooler fans.',
@@ -751,6 +829,8 @@ export const productsData: Product[] = [
   {
     slug: 'centrifugal-fan-housing-standard',
     name: 'Fan Housing Volute Standard',
+    nameAr: 'جسم مروحة حلزوني قياسي',
+    nameEs: 'Carcasa Voluta Estándar para Ventilador',
     category: 'Centrifugal Fan System', areaSlug: 'centrifugal-fan-system', systemSlug: 'air-system', productTypeSlug: 'centrifugal-housing',
     moq: '10 pcs', priceRange: '$20.00 – $40.00 / pc', image: '',
     description: 'Replacement volute housing for centrifugal blower assembly.',
@@ -763,6 +843,8 @@ export const productsData: Product[] = [
   {
     slug: 'bearing-block-standard',
     name: 'Bearing Block Unit Standard',
+    nameAr: 'وحدة محامل قياسية',
+    nameEs: 'Unidad de Rodamiento Estándar',
     category: 'Centrifugal Fan System', areaSlug: 'centrifugal-fan-system', systemSlug: 'air-system', productTypeSlug: 'bearing-block',
     moq: '30 pcs', priceRange: '$8.00 – $15.00 / pc', image: '',
     description: 'Replaceable bearing block for centrifugal fan shaft support.',
@@ -775,6 +857,8 @@ export const productsData: Product[] = [
   {
     slug: 'air-outlet-louver-standard',
     name: 'Air Outlet Louver Adjustable',
+    nameAr: 'مخفض هواء قابل للتعديل',
+    nameEs: 'Louver de Salida de Aire Ajustable',
     category: 'Air Outlet & Grilles', areaSlug: 'air-outlet-grilles', systemSlug: 'air-system', productTypeSlug: 'air-outlet-grille',
     moq: '20 pcs', priceRange: '$5.00 – $10.00 / pc', image: '',
     description: 'Adjustable outlet louver for air flow direction control.',
@@ -786,29 +870,29 @@ export const productsData: Product[] = [
   },
 
   // ── Final batch: remaining Content Map types ──
-  { slug: 'pump-motor-drive-110v', name: 'Pump Drive Motor 110V', category: 'Water Pump & Power', areaSlug: 'water-pump-power', systemSlug: 'water-system', productTypeSlug: 'pump-motor-drive', moq: '10 pcs', priceRange: '$10.00 – $20.00 / pc', image: '', description: 'Replacement drive motor for water pump assembly.', longDescription: 'Compact drive motor for centrifugal water pump in evaporative coolers. 110V/60Hz with thermal overload protection.', compatibility: ['Standard Pump Housing', '4-Bolt Mount'], specs: [{ label: 'Voltage', value: '110V/60Hz' }, { label: 'Power', value: '15W' }, { label: 'Mount', value: '4-Bolt Flange' }], features: [], faqs: [] },
-  { slug: 'splash-guard-baffle', name: 'Splash Guard Baffle', category: 'Tank, Sump & Drainage', areaSlug: 'tank-sump-drainage', systemSlug: 'water-system', productTypeSlug: 'splash-guard', moq: '50 pcs', priceRange: '$1.50 – $3.00 / pc', image: '', description: 'Splash guard baffle for water sump area.', longDescription: 'Plastic baffle to prevent water splashing from sump during operation. Snap-fit installation in standard tank designs.', compatibility: ['Standard Sump', 'Snap-fit Mount'], specs: [{ label: 'Material', value: 'ABS' }, { label: 'Type', value: 'Snap-fit' }], features: [], faqs: [] },
-  { slug: 'nozzle-evap-side', name: 'Spray Nozzle Evap Side', category: 'Water Feed & Distribution', areaSlug: 'water-feed-distribution', systemSlug: 'evaporation-system', productTypeSlug: 'nozzle-spray-jet-evap', moq: '200 pcs', priceRange: '$0.30 – $0.70 / pc', image: '', description: 'Spray nozzle for evaporation side water distribution.', longDescription: 'Wide-angle spray nozzle specifically designed for evaporative cooling pad water distribution. Anti-drip valve integrated.', compatibility: ['Standard Distribution Bar', 'Push-fit 8mm'], specs: [{ label: 'Spray Angle', value: '150°' }, { label: 'Flow', value: '1.5 L/min' }, { label: 'Material', value: 'PP' }], features: [], faqs: [] },
-  { slug: 'fan-blower-motor-110v', name: 'Fan Blower Motor 110V 250W', category: 'Fans & Blower Components', areaSlug: 'fans-blowers', systemSlug: 'air-system', productTypeSlug: 'fan-blower-motor', moq: '10 pcs', priceRange: '$18.00 – $35.00 / pc', image: '', description: 'Replacement fan/blower motor for air circulation.', longDescription: 'Single-speed fan motor for evaporative cooler blower assembly. 110V/60Hz, 250W, 900 RPM with B3 foot mount.', compatibility: ['B3 Foot Mount', 'Standard Fan Frame'], specs: [{ label: 'Voltage', value: '110V/60Hz' }, { label: 'Power', value: '250W' }, { label: 'RPM', value: '900' }, { label: 'Mount', value: 'B3 Foot' }], features: [{ title: 'Low Noise', description: 'Precision-balanced for quiet operation.' }], faqs: [] },
-  { slug: 'motor-speed-controller-universal', name: 'Motor Speed Controller Universal', category: 'Motors & Drive', areaSlug: 'motors-drive', systemSlug: 'electrical-controls', productTypeSlug: 'motor-speed-controller', moq: '20 pcs', priceRange: '$12.00 – $22.00 / pc', image: '', description: 'Variable speed controller for evaporative cooler fan motors.', longDescription: 'Triac-based variable speed controller for single-phase fan motors. Rotary knob with 0-100% speed range. Compatible with up to 750W motors.', compatibility: ['Up to 750W', 'Single Phase'], specs: [{ label: 'Max Load', value: '750W' }, { label: 'Voltage', value: '110V-240V' }, { label: 'Control', value: 'Rotary Knob' }], features: [], faqs: [] },
-  { slug: 'contactor-relay-110v', name: 'Contactor Relay 110V 30A', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'contactor-relay', moq: '30 pcs', priceRange: '$5.00 – $10.00 / pc', image: '', description: 'Power contactor relay for motor and pump switching.', longDescription: '30A power contactor for switching fan motors and water pumps. 110V coil with auxiliary contact for control circuits.', compatibility: ['Standard DIN Rail', '30A Load'], specs: [{ label: 'Coil', value: '110V AC' }, { label: 'Contacts', value: '30A / 3P' }, { label: 'Aux', value: '1NO+1NC' }], features: [], faqs: [] },
-  { slug: 'fuse-holder-standard', name: 'Fuse Holder with Fuse 10A', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'fuse-holder', moq: '100 pcs', priceRange: '$0.80 – $1.50 / pc', image: '', description: 'Panel-mount fuse holder with 10A fuse for circuit protection.', longDescription: 'Standard 5x20mm fuse holder with included 10A fast-blow fuse. Panel mount with screw cap for easy fuse replacement.', compatibility: ['Standard Panel Cutout', '5x20mm Fuse'], specs: [{ label: 'Fuse Size', value: '5x20mm' }, { label: 'Rating', value: '10A/250V' }, { label: 'Mount', value: 'Panel Screw' }], features: [], faqs: [] },
-  { slug: 'wiring-harness-standard', name: 'Wiring Harness Standard', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'wiring-harness', moq: '50 pcs', priceRange: '$3.00 – $6.00 / pc', image: '', description: 'Pre-assembled wiring harness for cooler electrical connections.', longDescription: 'Standard wiring harness with color-coded wires and pre-crimped terminals. Includes pump power, fan power, and control board connectors.', compatibility: ['Standard Control Board', 'Universal Cooler Fit'], specs: [{ label: 'Wires', value: '6-wire set' }, { label: 'Terminals', value: 'Pre-crimped' }, { label: 'Length', value: '600mm' }], features: [], faqs: [] },
-  { slug: 'terminal-block-standard', name: 'Terminal Block 12-Position', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'terminal-block', moq: '100 pcs', priceRange: '$0.80 – $1.50 / pc', image: '', description: '12-position screw terminal block for wire termination.', longDescription: '12-position barrier terminal block for electrical wire connections. Screw terminals accept 14-22 AWG wire. DIN rail or panel mount.', compatibility: ['DIN Rail', 'Panel Mount'], specs: [{ label: 'Positions', value: '12' }, { label: 'Wire Size', value: '14-22 AWG' }, { label: 'Rating', value: '15A/300V' }], features: [], faqs: [] },
-  { slug: 'service-cover-standard', name: 'Service Cover Access Door', category: 'Cabinet / Housing Replacement', areaSlug: 'cabinet-housing', systemSlug: 'structure-mounting', productTypeSlug: 'service-cover', moq: '15 pcs', priceRange: '$8.00 – $15.00 / pc', image: '', description: 'Replacement service cover for maintenance access.', longDescription: 'Factory-spec service access door with hinges and latch. Provides easy access to internal components for maintenance and inspection.', compatibility: ['Standard Cabinet', 'Hinged Mount'], specs: [{ label: 'Material', value: 'Galvanized Steel' }, { label: 'Finish', value: 'Powder Coated' }, { label: 'Type', value: 'Hinged with Latch' }], features: [], faqs: [] },
-  { slug: 'gasket-sealing-strip-5m', name: 'Door Seal Rubber Gasket 5m', category: 'Seals, Gaskets & Water Tightness', areaSlug: 'seals-gaskets', systemSlug: 'structure-mounting', productTypeSlug: 'gasket-sealing-strip', moq: '50 rolls', priceRange: '$3.00 – $6.00 / roll', image: '', description: 'Self-adhesive rubber sealing strip for cabinet doors and panels.', longDescription: '5-meter roll of EPDM rubber sealing strip with self-adhesive backing. 10mm x 5mm profile for water-tight sealing around access doors and panels.', compatibility: ['Universal Fit', 'Self-adhesive'], specs: [{ label: 'Material', value: 'EPDM Rubber' }, { label: 'Profile', value: '10x5mm' }, { label: 'Length', value: '5m roll' }], features: [], faqs: [] },
-  { slug: 'fasteners-kit-standard', name: 'Fasteners Kit (Assorted)', category: 'Fasteners & Installation', areaSlug: 'fasteners-installation', systemSlug: 'structure-mounting', productTypeSlug: 'fasteners-screws', moq: '100 kits', priceRange: '$2.00 – $4.00 / kit', image: '', description: 'Assorted fasteners kit for cooler assembly and repair.', longDescription: 'Assorted stainless steel fastener kit including M4, M5, M6 screws, nuts, washers, and self-tapping screws for cabinet assembly and component mounting.', compatibility: ['Universal', 'Stainless Steel'], specs: [{ label: 'Material', value: 'Stainless Steel' }, { label: 'Contents', value: 'M4/M5/M6 Assorted' }, { label: 'Quantity', value: '50 pcs per kit' }], features: [], faqs: [] },
-  { slug: 'cleaning-kit-standard', name: 'Maintenance Cleaning Kit', category: 'Cleaning & Maintenance Replacements', areaSlug: 'cleaning-maintenance', systemSlug: 'maintenance-consumables', productTypeSlug: 'cleaning-kit-parts', moq: '50 kits', priceRange: '$5.00 – $10.00 / kit', image: '', description: 'Complete maintenance cleaning kit for evaporative cooler servicing.', longDescription: 'Maintenance kit including descaling solution, cleaning brush set, microfiber cloths, and protective gloves. Suitable for quarterly cooler maintenance.', compatibility: ['Universal', 'All Cooler Types'], specs: [{ label: 'Contents', value: 'Cleaner + Brushes + Cloths' }, { label: 'Frequency', value: 'Quarterly Use' }], features: [], faqs: [] },
-  { slug: 'sealing-strip-replacement-3m', name: 'Panel Sealing Strip Replacement 3m', category: 'Wear Parts', areaSlug: 'wear-parts', systemSlug: 'maintenance-consumables', productTypeSlug: 'sealing-strip-replacement', moq: '50 rolls', priceRange: '$2.00 – $4.00 / roll', image: '', description: 'Replacement panel sealing strip for water-tight integrity.', longDescription: 'Standard replacement sealing strip for cooler door and panel edges. 3-meter roll. Prevents water leaks and maintains cooling efficiency.', compatibility: ['Standard Panel Edge', 'Self-adhesive'], specs: [{ label: 'Material', value: 'EPDM Rubber' }, { label: 'Length', value: '3m roll' }], features: [], faqs: [] },
-  { slug: 'drain-plug-replacement-pack', name: 'Drain Plug Replacement Pack (5 pcs)', category: 'Wear Parts', areaSlug: 'wear-parts', systemSlug: 'maintenance-consumables', productTypeSlug: 'drain-plug-replacement', moq: '100 packs', priceRange: '$1.50 – $3.00 / pack', image: '', description: 'Common replacement drain plug pack for routine maintenance.', longDescription: 'Pack of 5 standard drain plugs with O-ring seals. Fits most portable and cabinet evaporative cooler drain outlets. Regular replacement prevents leaks.', compatibility: ['1/2" Thread', 'Standard Drain Port'], specs: [{ label: 'Thread', value: '1/2" NPT' }, { label: 'Pack', value: '5 pcs' }, { label: 'Material', value: 'PP + O-ring' }], features: [], faqs: [] },
+  { slug: 'pump-motor-drive-110v', name: 'Pump Drive Motor 110V', nameAr: 'محرك مضخة 110 فولت', nameEs: 'Motor de Bomba 110V', category: 'Water Pump & Power', areaSlug: 'water-pump-power', systemSlug: 'water-system', productTypeSlug: 'pump-motor-drive', moq: '10 pcs', priceRange: '$10.00 – $20.00 / pc', image: '', description: 'Replacement drive motor for water pump assembly.', longDescription: 'Compact drive motor for centrifugal water pump in evaporative coolers. 110V/60Hz with thermal overload protection.', compatibility: ['Standard Pump Housing', '4-Bolt Mount'], specs: [{ label: 'Voltage', value: '110V/60Hz' }, { label: 'Power', value: '15W' }, { label: 'Mount', value: '4-Bolt Flange' }], features: [], faqs: [] },
+  { slug: 'splash-guard-baffle', name: 'Splash Guard Baffle', nameAr: 'حاجز حماية من الرذاذ', nameEs: 'Deflector Anti-Salpicaduras', category: 'Tank, Sump & Drainage', areaSlug: 'tank-sump-drainage', systemSlug: 'water-system', productTypeSlug: 'splash-guard', moq: '50 pcs', priceRange: '$1.50 – $3.00 / pc', image: '', description: 'Splash guard baffle for water sump area.', longDescription: 'Plastic baffle to prevent water splashing from sump during operation. Snap-fit installation in standard tank designs.', compatibility: ['Standard Sump', 'Snap-fit Mount'], specs: [{ label: 'Material', value: 'ABS' }, { label: 'Type', value: 'Snap-fit' }], features: [], faqs: [] },
+  { slug: 'nozzle-evap-side', name: 'Spray Nozzle Evap Side', nameAr: 'فوهة رذاذ جانب التبخير', nameEs: 'Boquilla de Rociado Lado de Evaporación', category: 'Water Feed & Distribution', areaSlug: 'water-feed-distribution', systemSlug: 'evaporation-system', productTypeSlug: 'nozzle-spray-jet-evap', moq: '200 pcs', priceRange: '$0.30 – $0.70 / pc', image: '', description: 'Spray nozzle for evaporation side water distribution.', longDescription: 'Wide-angle spray nozzle specifically designed for evaporative cooling pad water distribution. Anti-drip valve integrated.', compatibility: ['Standard Distribution Bar', 'Push-fit 8mm'], specs: [{ label: 'Spray Angle', value: '150°' }, { label: 'Flow', value: '1.5 L/min' }, { label: 'Material', value: 'PP' }], features: [], faqs: [] },
+  { slug: 'fan-blower-motor-110v', name: 'Fan Blower Motor 110V 250W', nameAr: 'محرك مروحة 110 فولت 250 واط', nameEs: 'Motor de Ventilador 110V 250W', category: 'Fans & Blower Components', areaSlug: 'fans-blowers', systemSlug: 'air-system', productTypeSlug: 'fan-blower-motor', moq: '10 pcs', priceRange: '$18.00 – $35.00 / pc', image: '', description: 'Replacement fan/blower motor for air circulation.', longDescription: 'Single-speed fan motor for evaporative cooler blower assembly. 110V/60Hz, 250W, 900 RPM with B3 foot mount.', compatibility: ['B3 Foot Mount', 'Standard Fan Frame'], specs: [{ label: 'Voltage', value: '110V/60Hz' }, { label: 'Power', value: '250W' }, { label: 'RPM', value: '900' }, { label: 'Mount', value: 'B3 Foot' }], features: [{ title: 'Low Noise', description: 'Precision-balanced for quiet operation.' }], faqs: [] },
+  { slug: 'motor-speed-controller-universal', name: 'Motor Speed Controller Universal', nameAr: 'متحكم سرعة محرك عالمي', nameEs: 'Controlador de Velocidad Universal para Motor', category: 'Motors & Drive', areaSlug: 'motors-drive', systemSlug: 'electrical-controls', productTypeSlug: 'motor-speed-controller', moq: '20 pcs', priceRange: '$12.00 – $22.00 / pc', image: '', description: 'Variable speed controller for evaporative cooler fan motors.', longDescription: 'Triac-based variable speed controller for single-phase fan motors. Rotary knob with 0-100% speed range. Compatible with up to 750W motors.', compatibility: ['Up to 750W', 'Single Phase'], specs: [{ label: 'Max Load', value: '750W' }, { label: 'Voltage', value: '110V-240V' }, { label: 'Control', value: 'Rotary Knob' }], features: [], faqs: [] },
+  { slug: 'contactor-relay-110v', name: 'Contactor Relay 110V 30A', nameAr: 'كونتاكتور 110 فولت 30 أمبير', nameEs: 'Contactor 110V 30A', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'contactor-relay', moq: '30 pcs', priceRange: '$5.00 – $10.00 / pc', image: '', description: 'Power contactor relay for motor and pump switching.', longDescription: '30A power contactor for switching fan motors and water pumps. 110V coil with auxiliary contact for control circuits.', compatibility: ['Standard DIN Rail', '30A Load'], specs: [{ label: 'Coil', value: '110V AC' }, { label: 'Contacts', value: '30A / 3P' }, { label: 'Aux', value: '1NO+1NC' }], features: [], faqs: [] },
+  { slug: 'fuse-holder-standard', name: 'Fuse Holder with Fuse 10A', nameAr: 'حامل فيوز مع فيوز 10 أمبير', nameEs: 'Portafusible con Fusible 10A', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'fuse-holder', moq: '100 pcs', priceRange: '$0.80 – $1.50 / pc', image: '', description: 'Panel-mount fuse holder with 10A fuse for circuit protection.', longDescription: 'Standard 5x20mm fuse holder with included 10A fast-blow fuse. Panel mount with screw cap for easy fuse replacement.', compatibility: ['Standard Panel Cutout', '5x20mm Fuse'], specs: [{ label: 'Fuse Size', value: '5x20mm' }, { label: 'Rating', value: '10A/250V' }, { label: 'Mount', value: 'Panel Screw' }], features: [], faqs: [] },
+  { slug: 'wiring-harness-standard', name: 'Wiring Harness Standard', nameAr: 'ضفيرة أسلاك قياسية', nameEs: 'Arnés de Cableado Estándar', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'wiring-harness', moq: '50 pcs', priceRange: '$3.00 – $6.00 / pc', image: '', description: 'Pre-assembled wiring harness for cooler electrical connections.', longDescription: 'Standard wiring harness with color-coded wires and pre-crimped terminals. Includes pump power, fan power, and control board connectors.', compatibility: ['Standard Control Board', 'Universal Cooler Fit'], specs: [{ label: 'Wires', value: '6-wire set' }, { label: 'Terminals', value: 'Pre-crimped' }, { label: 'Length', value: '600mm' }], features: [], faqs: [] },
+  { slug: 'terminal-block-standard', name: 'Terminal Block 12-Position', nameAr: 'كتلة أطراف 12 موضع', nameEs: 'Bloque de Terminales 12 Posiciones', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'terminal-block', moq: '100 pcs', priceRange: '$0.80 – $1.50 / pc', image: '', description: '12-position screw terminal block for wire termination.', longDescription: '12-position barrier terminal block for electrical wire connections. Screw terminals accept 14-22 AWG wire. DIN rail or panel mount.', compatibility: ['DIN Rail', 'Panel Mount'], specs: [{ label: 'Positions', value: '12' }, { label: 'Wire Size', value: '14-22 AWG' }, { label: 'Rating', value: '15A/300V' }], features: [], faqs: [] },
+  { slug: 'service-cover-standard', name: 'Service Cover Access Door', nameAr: 'باب وصول للصيانة', nameEs: 'Puerta de Acceso para Servicio', category: 'Cabinet / Housing Replacement', areaSlug: 'cabinet-housing', systemSlug: 'structure-mounting', productTypeSlug: 'service-cover', moq: '15 pcs', priceRange: '$8.00 – $15.00 / pc', image: '', description: 'Replacement service cover for maintenance access.', longDescription: 'Factory-spec service access door with hinges and latch. Provides easy access to internal components for maintenance and inspection.', compatibility: ['Standard Cabinet', 'Hinged Mount'], specs: [{ label: 'Material', value: 'Galvanized Steel' }, { label: 'Finish', value: 'Powder Coated' }, { label: 'Type', value: 'Hinged with Latch' }], features: [], faqs: [] },
+  { slug: 'gasket-sealing-strip-5m', name: 'Door Seal Rubber Gasket 5m', nameAr: 'حشوة باب مطاطية 5 متر', nameEs: 'Empaquetadura de Puerta de Caucho 5m', category: 'Seals, Gaskets & Water Tightness', areaSlug: 'seals-gaskets', systemSlug: 'structure-mounting', productTypeSlug: 'gasket-sealing-strip', moq: '50 rolls', priceRange: '$3.00 – $6.00 / roll', image: '', description: 'Self-adhesive rubber sealing strip for cabinet doors and panels.', longDescription: '5-meter roll of EPDM rubber sealing strip with self-adhesive backing. 10mm x 5mm profile for water-tight sealing around access doors and panels.', compatibility: ['Universal Fit', 'Self-adhesive'], specs: [{ label: 'Material', value: 'EPDM Rubber' }, { label: 'Profile', value: '10x5mm' }, { label: 'Length', value: '5m roll' }], features: [], faqs: [] },
+  { slug: 'fasteners-kit-standard', name: 'Fasteners Kit (Assorted)', nameAr: 'طقم براغي متنوع', nameEs: 'Kit de Surtido de Tornillería', category: 'Fasteners & Installation', areaSlug: 'fasteners-installation', systemSlug: 'structure-mounting', productTypeSlug: 'fasteners-screws', moq: '100 kits', priceRange: '$2.00 – $4.00 / kit', image: '', description: 'Assorted fasteners kit for cooler assembly and repair.', longDescription: 'Assorted stainless steel fastener kit including M4, M5, M6 screws, nuts, washers, and self-tapping screws for cabinet assembly and component mounting.', compatibility: ['Universal', 'Stainless Steel'], specs: [{ label: 'Material', value: 'Stainless Steel' }, { label: 'Contents', value: 'M4/M5/M6 Assorted' }, { label: 'Quantity', value: '50 pcs per kit' }], features: [], faqs: [] },
+  { slug: 'cleaning-kit-standard', name: 'Maintenance Cleaning Kit', nameAr: 'طقم تنظيف وصيانة', nameEs: 'Kit de Limpieza y Mantenimiento', category: 'Cleaning & Maintenance Replacements', areaSlug: 'cleaning-maintenance', systemSlug: 'maintenance-consumables', productTypeSlug: 'cleaning-kit-parts', moq: '50 kits', priceRange: '$5.00 – $10.00 / kit', image: '', description: 'Complete maintenance cleaning kit for evaporative cooler servicing.', longDescription: 'Maintenance kit including descaling solution, cleaning brush set, microfiber cloths, and protective gloves. Suitable for quarterly cooler maintenance.', compatibility: ['Universal', 'All Cooler Types'], specs: [{ label: 'Contents', value: 'Cleaner + Brushes + Cloths' }, { label: 'Frequency', value: 'Quarterly Use' }], features: [], faqs: [] },
+  { slug: 'sealing-strip-replacement-3m', name: 'Panel Sealing Strip Replacement 3m', nameAr: 'شريط عزل لوحة بديل 3 متر', nameEs: 'Tira de Sellado de Panel de Reemplazo 3m', category: 'Wear Parts', areaSlug: 'wear-parts', systemSlug: 'maintenance-consumables', productTypeSlug: 'sealing-strip-replacement', moq: '50 rolls', priceRange: '$2.00 – $4.00 / roll', image: '', description: 'Replacement panel sealing strip for water-tight integrity.', longDescription: 'Standard replacement sealing strip for cooler door and panel edges. 3-meter roll. Prevents water leaks and maintains cooling efficiency.', compatibility: ['Standard Panel Edge', 'Self-adhesive'], specs: [{ label: 'Material', value: 'EPDM Rubber' }, { label: 'Length', value: '3m roll' }], features: [], faqs: [] },
+  { slug: 'drain-plug-replacement-pack', name: 'Drain Plug Replacement Pack (5 pcs)', nameAr: 'طقم سدادات تصريف بديلة (5 قطع)', nameEs: 'Kit de Tapones de Drenaje (5 pzs)', category: 'Wear Parts', areaSlug: 'wear-parts', systemSlug: 'maintenance-consumables', productTypeSlug: 'drain-plug-replacement', moq: '100 packs', priceRange: '$1.50 – $3.00 / pack', image: '', description: 'Common replacement drain plug pack for routine maintenance.', longDescription: 'Pack of 5 standard drain plugs with O-ring seals. Fits most portable and cabinet evaporative cooler drain outlets. Regular replacement prevents leaks.', compatibility: ['1/2" Thread', 'Standard Drain Port'], specs: [{ label: 'Thread', value: '1/2" NPT' }, { label: 'Pack', value: '5 pcs' }, { label: 'Material', value: 'PP + O-ring' }], features: [], faqs: [] },
   // ── Final remaining Content Map types ──
-  { slug: 'overflow-protection-kit', name: 'Anti-Overflow Protection Kit', category: 'Water Distribution & Level Protection', areaSlug: 'water-distribution-level', systemSlug: 'water-system', productTypeSlug: 'overflow-protection', moq: '50 pcs', priceRange: '$2.00 – $4.00 / pc', image: '', description: 'Overflow protection parts to prevent water tank overflow.', longDescription: 'Anti-overflow protection assembly including float switch and overflow pipe. Prevents water damage from tank overfilling.', compatibility: ['Standard Water Tank', 'Universal Fit'], specs: [{ label: 'Type', value: 'Float + Overflow Pipe' }, { label: 'Material', value: 'ABS / PP' }], features: [], faqs: [] },
-  { slug: 'elbow-tee-connector-kit', name: 'Elbow & Tee Connector Kit', category: 'Piping & Connections', areaSlug: 'piping-connections', systemSlug: 'water-system', productTypeSlug: 'elbows-tees-reducers', moq: '300 pcs', priceRange: '$0.30 – $0.60 / pc', image: '', description: '90° elbow and T-connectors for water pipe routing.', longDescription: 'Mixed kit of 90-degree elbows and T-connectors for water pipe routing. Push-fit design compatible with 10mm and 12mm tubing.', compatibility: ['10-12mm Tube', 'Push-fit'], specs: [{ label: 'Types', value: 'Elbow + Tee' }, { label: 'Sizes', value: '10mm / 12mm' }, { label: 'Material', value: 'PP' }], features: [], faqs: [] },
-  { slug: 'thermal-overload-protector', name: 'Thermal Overload Protector', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'thermal-protector', moq: '50 pcs', priceRange: '$1.50 – $3.00 / pc', image: '', description: 'Thermal overload protector for motor safety shutdown.', longDescription: 'Automatic reset thermal overload protector for fan and pump motors. Opens circuit when temperature exceeds safe threshold, auto-resets when cooled.', compatibility: ['Standard Motor Circuit', 'Snap-disc Type'], specs: [{ label: 'Trip Temp', value: '120°C' }, { label: 'Reset', value: 'Automatic' }, { label: 'Rating', value: '10A/250V' }], features: [], faqs: [] },
-  { slug: 'temperature-sensor-ntc-10k', name: 'Temperature Sensor NTC 10K', category: 'Sensors & Water Level Detection', areaSlug: 'sensors-level-detection', systemSlug: 'electrical-controls', productTypeSlug: 'temperature-sensor', moq: '100 pcs', priceRange: '$1.00 – $2.00 / pc', image: '', description: 'NTC thermistor temperature sensor for cooler monitoring.', longDescription: '10K NTC thermistor temperature sensor with 1m cable and connector. For ambient and water temperature monitoring in cooler control systems.', compatibility: ['Standard Control Board', 'NTC 10K Input'], specs: [{ label: 'Type', value: 'NTC 10KΩ' }, { label: 'Range', value: '-40 to 125°C' }, { label: 'Cable', value: '1m' }], features: [], faqs: [] },
-  { slug: 'power-cable-standard', name: 'Power Cable 3-Core 1.5m', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'power-cable', moq: '100 pcs', priceRange: '$2.00 – $4.00 / pc', image: '', description: '3-core power supply cable for cooler electrical connection.', longDescription: 'Standard 3-core power cable with molded plug. 1.5m length, 1.0mm² conductors. Suitable for 110V-240V cooler power supply connections.', compatibility: ['Standard Cooler Inlet', '110V-240V'], specs: [{ label: 'Cores', value: '3 x 1.0mm²' }, { label: 'Length', value: '1.5m' }, { label: 'Rating', value: '10A/250V' }], features: [], faqs: [] },
-  { slug: 'leveling-foot-adjustable', name: 'Leveling Foot Adjustable M8', category: 'Mobile Hardware', areaSlug: 'mobile-hardware', systemSlug: 'structure-mounting', productTypeSlug: 'leveling-foot', moq: '100 pcs', priceRange: '$1.00 – $2.00 / pc', image: '', description: 'Adjustable leveling foot for cooler stability on uneven surfaces.', longDescription: 'Adjustable leveling foot with M8 threaded stem and rubber base pad. Provides stable support on uneven floors and protects surfaces.', compatibility: ['M8 Thread', 'Standard Base Frame'], specs: [{ label: 'Thread', value: 'M8' }, { label: 'Base', value: 'Rubber Pad' }, { label: 'Adjustment', value: '±15mm' }], features: [], faqs: [] },
-  { slug: 'inlet-ring-250mm', name: 'Inlet Ring 250mm Bell-mouth', category: 'Centrifugal Fan System', areaSlug: 'centrifugal-fan-system', systemSlug: 'air-system', productTypeSlug: 'inlet-ring', moq: '20 pcs', priceRange: '$8.00 – $15.00 / pc', image: '', description: 'Air inlet ring for centrifugal fan/blower assembly.', longDescription: 'Precision-formed bell-mouth inlet ring for centrifugal fan. Optimized aerodynamic profile for smooth air entry with minimal turbulence and noise.', compatibility: ['250mm Wheel', 'Standard Housing'], specs: [{ label: 'Diameter', value: '250mm' }, { label: 'Material', value: 'Galvanized Steel' }, { label: 'Profile', value: 'Bell-mouth' }], features: [], faqs: [] },
+  { slug: 'overflow-protection-kit', name: 'Anti-Overflow Protection Kit', nameAr: 'طقم حماية من الفيضان', nameEs: 'Kit de Protección Anti-Desbordamiento', category: 'Water Distribution & Level Protection', areaSlug: 'water-distribution-level', systemSlug: 'water-system', productTypeSlug: 'overflow-protection', moq: '50 pcs', priceRange: '$2.00 – $4.00 / pc', image: '', description: 'Overflow protection parts to prevent water tank overflow.', longDescription: 'Anti-overflow protection assembly including float switch and overflow pipe. Prevents water damage from tank overfilling.', compatibility: ['Standard Water Tank', 'Universal Fit'], specs: [{ label: 'Type', value: 'Float + Overflow Pipe' }, { label: 'Material', value: 'ABS / PP' }], features: [], faqs: [] },
+  { slug: 'elbow-tee-connector-kit', name: 'Elbow & Tee Connector Kit', nameAr: 'طقم وصلات كوع وتي', nameEs: 'Kit de Conectores Codo y T', category: 'Piping & Connections', areaSlug: 'piping-connections', systemSlug: 'water-system', productTypeSlug: 'elbows-tees-reducers', moq: '300 pcs', priceRange: '$0.30 – $0.60 / pc', image: '', description: '90° elbow and T-connectors for water pipe routing.', longDescription: 'Mixed kit of 90-degree elbows and T-connectors for water pipe routing. Push-fit design compatible with 10mm and 12mm tubing.', compatibility: ['10-12mm Tube', 'Push-fit'], specs: [{ label: 'Types', value: 'Elbow + Tee' }, { label: 'Sizes', value: '10mm / 12mm' }, { label: 'Material', value: 'PP' }], features: [], faqs: [] },
+  { slug: 'thermal-overload-protector', name: 'Thermal Overload Protector', nameAr: 'حامي حراري ضد الحمل الزائد', nameEs: 'Protector Térmico de Sobrecarga', category: 'Control Board & Protection', areaSlug: 'control-board-protection', systemSlug: 'electrical-controls', productTypeSlug: 'thermal-protector', moq: '50 pcs', priceRange: '$1.50 – $3.00 / pc', image: '', description: 'Thermal overload protector for motor safety shutdown.', longDescription: 'Automatic reset thermal overload protector for fan and pump motors. Opens circuit when temperature exceeds safe threshold, auto-resets when cooled.', compatibility: ['Standard Motor Circuit', 'Snap-disc Type'], specs: [{ label: 'Trip Temp', value: '120°C' }, { label: 'Reset', value: 'Automatic' }, { label: 'Rating', value: '10A/250V' }], features: [], faqs: [] },
+  { slug: 'temperature-sensor-ntc-10k', name: 'Temperature Sensor NTC 10K', nameAr: 'مستشعر حرارة NTC 10 ك.أ', nameEs: 'Sensor de Temperatura NTC 10K', category: 'Sensors & Water Level Detection', areaSlug: 'sensors-level-detection', systemSlug: 'electrical-controls', productTypeSlug: 'temperature-sensor', moq: '100 pcs', priceRange: '$1.00 – $2.00 / pc', image: '', description: 'NTC thermistor temperature sensor for cooler monitoring.', longDescription: '10K NTC thermistor temperature sensor with 1m cable and connector. For ambient and water temperature monitoring in cooler control systems.', compatibility: ['Standard Control Board', 'NTC 10K Input'], specs: [{ label: 'Type', value: 'NTC 10KΩ' }, { label: 'Range', value: '-40 to 125°C' }, { label: 'Cable', value: '1m' }], features: [], faqs: [] },
+  { slug: 'power-cable-standard', name: 'Power Cable 3-Core 1.5m', nameAr: 'كابل طاقة 3 أسلاك 1.5 متر', nameEs: 'Cable de Alimentación 3 Núcleos 1.5m', category: 'Wiring & Connectors', areaSlug: 'wiring-connectors', systemSlug: 'electrical-controls', productTypeSlug: 'power-cable', moq: '100 pcs', priceRange: '$2.00 – $4.00 / pc', image: '', description: '3-core power supply cable for cooler electrical connection.', longDescription: 'Standard 3-core power cable with molded plug. 1.5m length, 1.0mm² conductors. Suitable for 110V-240V cooler power supply connections.', compatibility: ['Standard Cooler Inlet', '110V-240V'], specs: [{ label: 'Cores', value: '3 x 1.0mm²' }, { label: 'Length', value: '1.5m' }, { label: 'Rating', value: '10A/250V' }], features: [], faqs: [] },
+  { slug: 'leveling-foot-adjustable', name: 'Leveling Foot Adjustable M8', nameAr: 'قدم تسوية قابلة للتعديل M8', nameEs: 'Pata Niveladora Ajustable M8', category: 'Mobile Hardware', areaSlug: 'mobile-hardware', systemSlug: 'structure-mounting', productTypeSlug: 'leveling-foot', moq: '100 pcs', priceRange: '$1.00 – $2.00 / pc', image: '', description: 'Adjustable leveling foot for cooler stability on uneven surfaces.', longDescription: 'Adjustable leveling foot with M8 threaded stem and rubber base pad. Provides stable support on uneven floors and protects surfaces.', compatibility: ['M8 Thread', 'Standard Base Frame'], specs: [{ label: 'Thread', value: 'M8' }, { label: 'Base', value: 'Rubber Pad' }, { label: 'Adjustment', value: '±15mm' }], features: [], faqs: [] },
+  { slug: 'inlet-ring-250mm', name: 'Inlet Ring 250mm Bell-mouth', nameAr: 'حلقة دخول 250 ملم فوهة', nameEs: 'Anillo de Entrada 250mm Boca de Campana', category: 'Centrifugal Fan System', areaSlug: 'centrifugal-fan-system', systemSlug: 'air-system', productTypeSlug: 'inlet-ring', moq: '20 pcs', priceRange: '$8.00 – $15.00 / pc', image: '', description: 'Air inlet ring for centrifugal fan/blower assembly.', longDescription: 'Precision-formed bell-mouth inlet ring for centrifugal fan. Optimized aerodynamic profile for smooth air entry with minimal turbulence and noise.', compatibility: ['250mm Wheel', 'Standard Housing'], specs: [{ label: 'Diameter', value: '250mm' }, { label: 'Material', value: 'Galvanized Steel' }, { label: 'Profile', value: 'Bell-mouth' }], features: [], faqs: [] },
 
 ];
 

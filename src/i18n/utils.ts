@@ -99,6 +99,16 @@ export function getAreaName(slug: string, locale: string = defaultLang): string 
   return t(`area.${slug}`, locale);
 }
 
+/**
+ * Get a product's display name for the given locale.
+ * Falls back to English `name` if the localized version is missing.
+ */
+export function getProductName(product: { name: string; nameAr?: string; nameEs?: string }, locale: string = defaultLang): string {
+  if (locale === 'ar' && product.nameAr) return product.nameAr;
+  if (locale === 'es' && product.nameEs) return product.nameEs;
+  return product.name;
+}
+
 /** Get translated area short description by slug. */
 export function getAreaShortDesc(slug: string, locale: string = defaultLang): string {
   return t(`area.${slug}.short`, locale);

@@ -5,7 +5,7 @@ import { getAllProducts } from '~/data/product-helpers';
 import { systemsData } from '~/data/systems';
 import type { Product } from '~/data/inquiry-types';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductName } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -21,6 +21,7 @@ const area = system?.areas.find((a) => a.slug === product.areaSlug);
 const sysName = system ? getSystemName(system.slug, locale) : '';
 const areaName = area ? getAreaName(area.slug, locale) : '';
 const typeName = product.category;
+const displayName = getProductName(product, locale);
 
 const allProducts = await getAllProducts();
 const relatedProducts = allProducts.filter((p) => p.slug !== product.slug && p.productTypeSlug === product.productTypeSlug).slice(0, 4);
@@ -28,7 +29,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
 ---
 
 <Layout metadata={{
-  title: `${product.name} | Evaporative Air Cooler Replacement Part`,
+  title: `${displayName} | Evaporative Air Cooler Replacement Part`,
   description: `${product.description} Check compatibility, specifications, MOQ and indicative pricing for this evaporative air cooler replacement part, then request a quote.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
@@ -37,10 +38,10 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
     ...(system ? [{ name: sysName, url: L(`/${system.slug}`) }] : []),
     ...(area ? [{ name: areaName, url: L(`/${system.slug}/${area.slug}`) }] : []),
     { name: typeName, url: L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}`) },
-    { name: product.name, url: L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`) },
+    { name: displayName, url: L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`) },
   ]} />
   <StructuredData type="Product" product={{
-    name: product.name,
+    name: displayName,
     description: product.description,
     image: product.image,
     category: product.category,
@@ -53,7 +54,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
       {system && (<><span class="mx-1.5 text-gray-300">/</span><a href={L(`/${system.slug}`)} class="hover:text-teal-600">{sysName}</a></>)}
       {area && (<><span class="mx-1.5 text-gray-300">/</span><a href={L(`/${system!.slug}/${area.slug}`)} class="hover:text-teal-600">{areaName}</a></>)}
       <span class="mx-1.5 text-gray-300">/</span><a href={L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}`)} class="hover:text-teal-600">{typeName}</a>
-      <span class="mx-1.5 text-gray-300">/</span><span class="text-gray-700 dark:text-gray-300">{product.name}</span>
+      <span class="mx-1.5 text-gray-300">/</span><span class="text-gray-700 dark:text-gray-300">{displayName}</span>
     </div>
   </div>
 
@@ -65,7 +66,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
         <div class="flex flex-col gap-3">
           <div class="aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
             {product.image ? (
-              <img id="product-main-img" src={product.image} alt={product.name} class="h-full w-full object-contain p-4" loading="eager" />
+              <img id="product-main-img" src={product.image} alt={displayName} class="h-full w-full object-contain p-4" loading="eager" />
             ) : (
               <Icon name="tabler:package" class="h-24 w-24 text-slate-300 dark:text-slate-600" />
             )}
@@ -76,10 +77,10 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
                 <button
                   class={`gallery-thumb aspect-square w-16 overflow-hidden rounded-lg border-2 transition-colors ${i === 0 ? 'border-teal-500' : 'border-transparent hover:border-teal-300'}`}
                   data-src={img}
-                  data-alt={product.name}
+                  data-alt={displayName}
                   aria-label={`View image ${i + 1}`}
                 >
-                  <img src={img} alt={`${product.name} view ${i + 1}`} class="h-full w-full object-contain p-1" loading="lazy" />
+                  <img src={img} alt={`${displayName} view ${i + 1}`} class="h-full w-full object-contain p-1" loading="lazy" />
                 </button>
               ))}
             </div>
@@ -91,7 +92,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
           <span class="mb-2 inline-flex items-center gap-1.5 rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-400 w-fit">
             {areaName}
           </span>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{product.name} for Evaporative Air Coolers</h1>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl lg:text-3xl">{displayName} for Evaporative Air Coolers</h1>
           <p class="mt-3 text-sm leading-relaxed text-muted">{product.longDescription}</p>
 
           <!-- Compatibility snapshot -->
@@ -111,7 +112,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
             <button
               id="request-quote-btn"
               data-product-slug={product.slug}
-              data-product-name={product.name}
+              data-product-name={displayName}
               data-product-category={product.category}
               data-product-moq={product.moq}
               data-product-price={product.priceRange}
@@ -122,7 +123,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
             <button
               id="add-to-basket-btn"
               data-product-slug={product.slug}
-              data-product-name={product.name}
+              data-product-name={displayName}
               data-product-category={product.category}
               data-product-moq={product.moq}
               data-product-price={product.priceRange}
@@ -255,7 +256,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
               <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-700 mb-2">
                 <Icon name="tabler:components" class="h-5 w-5 text-gray-400" />
               </div>
-              <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{rp.name}</h3>
+              <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{getProductName(rp, locale)}</h3>
               <p class="mt-1 text-xs text-muted line-clamp-2">{rp.description}</p>
               <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">View Details &rarr;</span>
             </a>
@@ -276,7 +277,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
               <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-slate-700 mb-2">
                 <Icon name="tabler:components" class="h-5 w-5 text-gray-400" />
               </div>
-              <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{item.name}</h3>
+              <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white">{getProductName(item, locale)}</h3>
               <p class="mt-1 text-xs text-muted line-clamp-2">{item.description}</p>
               <span class="mt-2 inline-block text-xs text-teal-600 dark:text-teal-400">View Details &rarr;</span>
             </a>
@@ -290,12 +291,12 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   <div class="sticky bottom-0 z-30 border-t border-gray-200 bg-white/95 backdrop-blur dark:border-slate-700 dark:bg-slate-900/95">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
       <div>
-        <p class="text-sm font-semibold text-gray-900 dark:text-white truncate max-w-[200px] sm:max-w-xs">{product.name}</p>
+        <p class="text-sm font-semibold text-gray-900 dark:text-white truncate max-w-[200px] sm:max-w-xs">{displayName}</p>
         <p class="text-xs text-muted">{product.moq}</p>
       </div>
       <button class="sticky-quote-btn inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-500"
         data-product-slug={product.slug}
-        data-product-name={product.name}
+        data-product-name={displayName}
         data-product-category={product.category}
         data-product-moq={product.moq}
         data-product-price={product.priceRange}>
