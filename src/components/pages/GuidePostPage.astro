@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getGuideTitle } from '~/i18n/utils';
 
 export interface Props {
   guide: CollectionEntry<'guide'>;
@@ -16,7 +16,7 @@ const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 const { Content } = await render(guide);
 
-const title = guide.data.title;
+const title = getGuideTitle(guide.id.replace(/\.(md|mdx)$/, ''), guide.data.title, locale);
 const excerpt = guide.data.excerpt || '';
 const isoDate = guide.data.publishDate ? new Date(guide.data.publishDate).toISOString() : '';
 const category = guide.data.category || 'Repair Guide';

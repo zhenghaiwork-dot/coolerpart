@@ -1,7 +1,8 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getProductTypeName } from '~/i18n/utils';
+import { systemsData } from '~/data/systems';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -11,6 +12,16 @@ export interface Props {
 const { locale = defaultLang } = Astro.props;
 const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
+
+// Build a typeSlug → localized name map for client-side basket display
+const productTypeNames: Record<string, string> = {};
+for (const sys of systemsData) {
+  for (const area of sys.areas) {
+    for (const pt of (area as any).productTypes || []) {
+      productTypeNames[pt.slug] = getProductTypeName(pt.slug, locale);
+    }
+  }
+}
 ---
 
 <Layout
@@ -297,6 +308,7 @@ const L = (path: string) => localeLink(path, locale);
       back_home: __('inquiry.back_home'),
       verification: __('inquiry.verification'),
       auto_verified: __('inquiry.auto_verified'),
+      product_type_names: productTypeNames,
     })};
     window.__cpLocale = "${locale}";
     window.__cpLink = function(p) { return window.__cpLocale === 'en' ? p : '/' + window.__cpLocale + p; };
@@ -309,6 +321,7 @@ const L = (path: string) => localeLink(path, locale);
       slug: string;
       name: string;
       category: string;
+      typeSlug?: string;
       moq: string;
       priceRange: string;
       image: string;
@@ -359,7 +372,7 @@ const L = (path: string) => localeLink(path, locale);
           </div>
           <div class="flex-1 min-w-0">
             <p class="text-sm font-medium text-gray-900 dark:text-white truncate">${item.name}</p>
-            <p class="text-xs text-muted truncate">${item.category}</p>
+            <p class="text-xs text-muted truncate">${(t.product_type_names && item.typeSlug && t.product_type_names[item.typeSlug]) || item.category}</p>
             <div class="mt-1 flex items-center gap-2 text-xs text-muted">
               <span>${item.moq}</span>
               ${item.priceRange ? `<span>·</span><span>${item.priceRange}</span>` : ''}

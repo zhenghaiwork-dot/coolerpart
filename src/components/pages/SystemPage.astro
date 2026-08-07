@@ -21,7 +21,7 @@ const sysDesc = getSystemDesc(system.slug, locale);
 ---
 
 <Layout metadata={{
-  title: `${sysName} Parts for Evaporative Air Coolers | EVAPFit`,
+  title: `${sysName} ${__('product.for_evap_coolers')} | EVAPFit`,
   description: `${sysDesc} Browse ${products.length} compatible evaporative air cooler replacement parts and request a bulk RFQ.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
@@ -44,7 +44,7 @@ const sysDesc = getSystemDesc(system.slug, locale);
               <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-teal-300">{sysName}</p>
             </div>
             <h1 class="text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
-              {sysName} Parts for Evaporative Air Coolers
+              {sysName} {__('product.for_evap_coolers')}
             </h1>
             <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{sysDesc}</p>
             <div class="mt-3 flex items-center gap-2.5 text-xs">
@@ -67,7 +67,7 @@ const sysDesc = getSystemDesc(system.slug, locale);
       <div class="flex items-center gap-3">
         <Icon name={system.icon} class="h-7 w-7 text-teal-600 dark:text-teal-400 flex-shrink-0" />
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{sysName} Parts for Evaporative Air Coolers</h1>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{sysName} {__('product.for_evap_coolers')}</h1>
           <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{sysDesc}</p>
           <p class="mt-2 text-xs text-muted">{system.areas.length} {__('system.sub_categories')} · {products.length} {__('system.products_count')}</p>
         </div>

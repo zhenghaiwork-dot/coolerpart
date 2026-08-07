@@ -2,7 +2,7 @@
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { systemsData } from '~/data/systems';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getAreaShortDesc } from '~/i18n/utils';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -32,7 +32,7 @@ const L = (path: string) => localeLink(path, locale);
           <div class="rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden">
             <a href={L(`/${sys.slug}`)} class="flex items-center gap-3 px-6 py-4 bg-gray-50 hover:bg-gray-100 transition-colors dark:bg-slate-800/50 dark:hover:bg-slate-800">
               <Icon name={sys.icon} class="h-5 w-5 text-teal-600 dark:text-teal-400 flex-shrink-0"/>
-              <span class="text-base font-semibold text-gray-900 dark:text-white">{sys.name}</span>
+              <span class="text-base font-semibold text-gray-900 dark:text-white">{getSystemName(sys.slug, locale)}</span>
               <span class="text-xs text-muted ml-auto">{sys.areas.length} {__('identify.sub_categories')}</span>
               <Icon name="tabler:arrow-right" class="h-4 w-4 text-gray-300 dark:text-slate-600"/>
             </a>
@@ -44,8 +44,8 @@ const L = (path: string) => localeLink(path, locale);
                 >
                   <Icon name={area.icon} class="h-4 w-4 text-teal-500 mt-0.5 flex-shrink-0"/>
                   <div>
-                    <span class="text-sm font-medium text-gray-900 dark:text-white">{area.name}</span>
-                    <p class="text-xs text-muted mt-0.5">{area.shortDesc}</p>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">{getAreaName(area.slug, locale)}</span>
+                    <p class="text-xs text-muted mt-0.5">{getAreaShortDesc(area.slug, locale)}</p>
                   </div>
                 </a>
               ))}

@@ -5,7 +5,7 @@ import { systemsData } from '~/data/systems';
 import { getProductsByArea, getProductTypeMeta } from '~/data/product-helpers';
 import ProductCard from '~/components/inquiry/ProductCard.astro';
 import type { System, SystemArea } from '~/data/inquiry-types';
-import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getAreaShortDesc } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getAreaShortDesc, getProductTypeName } from '~/i18n/utils';
 
 export interface Props {
   system: System;
@@ -27,7 +27,7 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
 ---
 
 <Layout metadata={{
-  title: `${areaName} Replacement Parts for Evaporative Air Coolers`,
+  title: `${areaName} ${__('product.for_evap_coolers')}`,
   description: `Find compatible ${areaName.toLowerCase()} replacement parts for evaporative air coolers. ${area.description} Match specifications and request a bulk quote.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
@@ -46,7 +46,7 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
       <p class="text-xs font-medium uppercase tracking-wide text-teal-600 dark:text-teal-400 mb-1">{sysName}</p>
-      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{areaName} Replacement Parts for Evaporative Air Coolers</h1>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{areaName} {__('product.for_evap_coolers')}</h1>
       <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{area.description}</p>
       <p class="mt-3 text-xs text-muted">{allProducts.length} products in {productTypes.length} types</p>
     </div>
@@ -75,9 +75,9 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
             >
               <Icon name={area.icon} class="h-5 w-5 text-teal-500 mt-0.5 flex-shrink-0" />
               <div class="min-w-0">
-                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{type.name}</span>
+                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{getProductTypeName(type.slug, locale)}</span>
                 <p class="text-xs text-muted mt-0.5 line-clamp-2">{type.description}</p>
-                <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{type.productCount} product{type.productCount !== 1 ? 's' : ''}</p>
+                <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{type.productCount !== 1 ? __('area.product_count').replace('{count}', String(type.productCount)) : __('area.product_count_one').replace('{count}', String(type.productCount))}</p>
               </div>
             </a>
           ))}
@@ -121,11 +121,11 @@ const relatedAreas = system.areas.filter((a) => a.slug !== area.slug).slice(0, 4
   <!-- CTA -->
   <section class="bg-slate-950 text-white">
     <div class="mx-auto max-w-3xl px-6 py-12 text-center lg:py-16">
-      <h2 class="text-xl font-semibold">Can't find the exact part?</h2>
-      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">Send us your measurements and photos — we'll identify the correct replacement and provide a quote within 24 hours.</p>
+      <h2 class="text-xl font-semibold">{__('area.cant_find')}</h2>
+      <p class="mt-3 text-sm text-gray-400 max-w-xl mx-auto">{__('area.send_measurements')}</p>
       <div class="mt-6 flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
-        <a href={L('/inquiry')} class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">Submit Inquiry</a>
-        <a href={L('/how-to-identify-part-number')} class="rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/5">How to Identify Parts</a>
+        <a href={L('/inquiry')} class="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500">{__('cta.request_quote')}</a>
+        <a href={L('/how-to-identify-part-number')} class="rounded-lg border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/5">{__('area.how_to_identify')}</a>
       </div>
     </div>
   </section>

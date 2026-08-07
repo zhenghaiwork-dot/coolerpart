@@ -3,7 +3,7 @@ import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getGuideTitle, getGuideDesc } from '~/i18n/utils';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -74,13 +74,13 @@ const iconMap: Record<string, string> = {
                   <Icon name={icon} class="h-8 w-8 text-teal-500 flex-shrink-0" />
                   {difficulty && (
                     <span class={`rounded-full px-2 py-0.5 text-xs font-medium ${difficultyColor}`}>
-                      {difficulty}
+                      {__('guide.difficulty.' + (difficulty || '')) || difficulty}
                     </span>
                   )}
                 </div>
-                <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 leading-snug">{guide.data.title}</h3>
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 leading-snug">{getGuideTitle(slug, guide.data.title, locale)}</h3>
                 {guide.data.excerpt && (
-                  <p class="mt-2 text-sm text-muted line-clamp-3">{guide.data.excerpt}</p>
+                  <p class="mt-2 text-sm text-muted line-clamp-3">{getGuideDesc(slug, guide.data.excerpt || '', locale)}</p>
                 )}
                 {guide.data.category && (
                   <span class="mt-3 inline-block text-xs text-muted">{guide.data.category}</span>

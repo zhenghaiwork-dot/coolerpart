@@ -17,6 +17,7 @@ const STORAGE_KEY = "coolerparts_inquiry_basket";
  * @property {string} slug
  * @property {string} name
  * @property {string} category
+ * @property {string} [typeSlug]
  * @property {string} moq
  * @property {string} priceRange
  * @property {string} image
@@ -86,6 +87,7 @@ export function getProductData(btn) {
     slug: btn.dataset.productSlug,
     name: btn.dataset.productName,
     category: btn.dataset.productCategory,
+    typeSlug: btn.dataset.productTypeSlug || '',
     moq: btn.dataset.productMoq,
     priceRange: btn.dataset.productPrice,
     image: btn.dataset.productImage || '',

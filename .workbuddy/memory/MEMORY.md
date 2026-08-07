@@ -52,6 +52,18 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - 全局工具类: glass, gradient-text, card-lift, shadow-card, shadow-card-hover, shimmer-bg
 - 暗色模式 Primary 提亮为 teal-400 `rgb(45 212 191)`
 
+## i18n 本地化架构（重要）
+- **方式**: ui.ts 字典查找（非 MDX frontmatter 字段）
+- `getProductName(product, locale)` → 查 `product.name.{slug}` in ui.ts
+- `getProductDescription(product, locale)` → 查 `product.desc.{slug}` in ui.ts
+- `getProductTypeName(typeSlug, locale)` → 查 `product.type.{typeSlug}` in ui.ts
+- `getSystemName(slug, locale)` → 查 `sys.{slug}` in ui.ts
+- `getAreaName(slug, locale)` → 查 `area.{slug}` in ui.ts
+- 所有 64 产品名称+描述已翻译为 en/ar/es ✅
+- 模板文字全部用 `__()` 翻译 ✅
+- 仍为英文: spec.label、features title/desc、typeNameMap description、product.category（子分类名）
+- MDX frontmatter 的 `nameAr`/`nameEs` 字段为 vestigial（getter 函数不读它们）
+
 ## 待实现功能（按 Content Map 文档）
 - Faceted Search 筛选器（mounting_type / Voltage / Power / RPM / Lift Grade）
 - 兼容性引擎（Evidence type + Confidence 标签）
@@ -59,3 +71,4 @@ B2B 蒸发式冷风机配件询盘站（非电商）。客户多为懂行采购/
 - SEO landing pages（系统落地页 / 接口兼容落地页）
 - 产品页增强：差异点说明模板、Schema.org 结构化数据
 - 真实产品图片（当前全部为 placeholder icon）
+- 规格标签(spec.label)多语言、子分类名(category)多语言、features 多语言

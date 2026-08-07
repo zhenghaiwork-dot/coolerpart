@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getBlogTitle } from '~/i18n/utils';
 
 export interface Props {
   post: CollectionEntry<'post'>;
@@ -16,7 +16,7 @@ const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 const { Content } = await render(post);
 
-const title = post.data.title;
+const title = getBlogTitle(post.id.replace(/\.(md|mdx)$/, ''), post.data.title, locale);
 const excerpt = post.data.excerpt || '';
 const publishDate = post.data.publishDate
   ? new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })

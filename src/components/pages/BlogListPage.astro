@@ -3,7 +3,7 @@ import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getBlogTitle, getBlogDesc } from '~/i18n/utils';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -76,15 +76,15 @@ const metadata = {
                     {date && <time>{date}</time>}
                     {post.data.category && (
                       <span class="rounded-full bg-teal-50 px-2 py-0.5 text-xs font-medium text-teal-700 dark:bg-teal-900/20 dark:text-teal-400">
-                        {post.data.category}
+                        {__('blog.category.' + (post.data.category || '')) || post.data.category}
                       </span>
                     )}
                   </div>
                   <h2 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-teal-600 leading-snug line-clamp-2">
-                    {post.data.title}
+                    {getBlogTitle(slug, post.data.title, locale)}
                   </h2>
                   {post.data.excerpt && (
-                    <p class="mt-2 text-sm text-muted line-clamp-3 leading-relaxed">{post.data.excerpt}</p>
+                    <p class="mt-2 text-sm text-muted line-clamp-3 leading-relaxed">{getBlogDesc(slug, post.data.excerpt || '', locale)}</p>
                   )}
                   <span class="mt-auto pt-4 inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400">
                     {__('blog.read_more') || 'Read more'} <Icon name="tabler:arrow-right" class="h-3 w-3" />

@@ -27,8 +27,8 @@ const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4)
 ---
 
 <Layout metadata={{
-  title: `${typeName} for Evaporative Air Coolers | Replacement Parts`,
-  description: `Browse compatible ${typeName.toLowerCase()} for evaporative air cooler replacement and repair. Compare interface, dimensions and electrical specifications, then request a bulk RFQ.`,
+  title: `${typeName} ${__('type.meta_title_suffix')}`,
+  description: __('type.meta_desc').replace('{name}', typeName.toLowerCase()),
   ignoreTitleTemplate: true,
 }} locale={locale}>
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
@@ -46,9 +46,9 @@ const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4)
   <section class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
       <p class="text-xs font-medium uppercase tracking-wide text-teal-600 dark:text-teal-400 mb-1">{sysName} › {areaName}</p>
-      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{typeName} for Evaporative Air Coolers</h1>
-      <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{typeMeta?.description || `Browse compatible ${typeName.toLowerCase()} for evaporative cooler systems.`}</p>
-      <p class="mt-3 text-xs text-muted">{products.length} product{products.length !== 1 ? 's' : ''}</p>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">{typeName} {__('type.h1_suffix')}</h1>
+      <p class="mt-2 max-w-2xl text-sm text-muted leading-relaxed">{typeMeta?.description || __('type.fallback_desc').replace('{name}', typeName.toLowerCase())}</p>
+      <p class="mt-3 text-xs text-muted">{products.length !== 1 ? __('type.product_count_multi').replace('{count}', String(products.length)) : __('type.product_count_one').replace('{count}', String(products.length))}</p>
     </div>
   </section>
 
@@ -62,7 +62,7 @@ const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4)
 
   <section class="bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{typeName} Products</h2>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{__('type.products_heading').replace('{name}', typeName)}</h2>
       <p class="text-sm text-muted mb-6">{__('type.click_for_specs')}</p>
       {products.length > 0 ? (
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -82,7 +82,7 @@ const relatedTypes = allAreaTypes.filter((t) => t.slug !== typeSlug).slice(0, 4)
           {relatedTypes.map((rt) => (
             <a href={L(`/${system.slug}/${area.slug}/${rt.slug}`)} class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:border-teal-300 hover:text-teal-600 transition dark:border-slate-700 dark:bg-slate-800/50 dark:text-gray-300">
               <Icon name={area.icon} class="h-4 w-4 text-teal-500 flex-shrink-0" />
-              <span class="truncate">{rt.name}</span>
+              <span class="truncate">{getProductTypeName(rt.slug, locale)}</span>
             </a>
           ))}
         </div>

@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import type { Product } from '~/data/inquiry-types';
-import { getAreaName, getProductName, getProductDescription, localeLink, useTranslations, defaultLang } from '~/i18n/utils';
+import { getAreaName, getProductName, getProductDescription, getSpecLabel, getSpecValue, localeLink, useTranslations, defaultLang } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -52,8 +52,8 @@ const L = (path: string) => localeLink(path, locale);
     <dl class="mt-3 space-y-1 border-t border-gray-100 pt-3 dark:border-slate-700/50">
       {product.specs.slice(0, 3).map((spec) => (
         <div class="flex justify-between text-xs">
-          <dt class="tech-label text-slate-400">{spec.label}</dt>
-          <dd class="font-medium text-gray-800 dark:text-gray-200 tabular-nums" style="font-family: var(--aw-font-mono); font-size: 0.6875rem;">{spec.value}</dd>
+          <dt class="tech-label text-slate-400">{getSpecLabel(spec.label, locale)}</dt>
+          <dd class="font-medium text-gray-800 dark:text-gray-200 tabular-nums" style="font-family: var(--aw-font-mono); font-size: 0.6875rem;">{getSpecValue(spec.value, locale)}</dd>
         </div>
       ))}
     </dl>
@@ -65,6 +65,7 @@ const L = (path: string) => localeLink(path, locale);
         data-product-slug={product.slug}
         data-product-name={getProductName(product, locale)}
         data-product-category={product.category}
+        data-product-type-slug={product.productTypeSlug}
         data-product-moq={product.moq}
         data-product-price={product.priceRange}
         data-product-image={product.image}

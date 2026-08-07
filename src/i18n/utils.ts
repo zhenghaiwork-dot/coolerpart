@@ -150,3 +150,47 @@ export function getProductSpec(slug: string, label: string, value: string, local
 export function getProductTypeName(typeSlug: string, locale: string = defaultLang): string {
   return t(`product.type.${typeSlug}`, locale);
 }
+
+/** Get translated blog post title (falls back to English). */
+export function getBlogTitle(slug: string, defaultTitle: string, locale: string = defaultLang): string {
+  return t(`blog.title.${slug}`, locale) || defaultTitle;
+}
+
+/** Get translated blog post description (falls back to English). */
+export function getBlogDesc(slug: string, defaultDesc: string, locale: string = defaultLang): string {
+  return t(`blog.desc.${slug}`, locale) || defaultDesc;
+}
+
+/** Get translated guide title (falls back to English). */
+export function getGuideTitle(slug: string, defaultTitle: string, locale: string = defaultLang): string {
+  return t(`guide.title.${slug}`, locale) || defaultTitle;
+}
+
+/** Get translated guide description (falls back to English). */
+export function getGuideDesc(slug: string, defaultDesc: string, locale: string = defaultLang): string {
+  return t(`guide.desc.${slug}`, locale) || defaultDesc;
+}
+
+/** Get translated spec label (falls back to English). */
+export function getSpecLabel(label: string, locale: string = defaultLang): string {
+  const key = `spec_label.${label.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return label;
+}
+
+/** Get translated spec value (falls back to English). */
+export function getSpecValue(value: string, locale: string = defaultLang): string {
+  const key = `spec_value.${value.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return value;
+}
+
+/** Get translated compatibility item (falls back to English). */
+export function getCompatItem(item: string, locale: string = defaultLang): string {
+  const key = `compat.${item.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return item;
+}
