@@ -120,6 +120,24 @@ export function getProductDescription(product: { slug: string; description: stri
   return product.description;
 }
 
+/** Get translated feature title for a product (falls back to English). */
+export function getProductFeatureTitle(productSlug: string, featureTitle: string, locale: string = defaultLang): string {
+  const sanitized = featureTitle.replace(/[^a-z0-9]+/gi, '_').toLowerCase();
+  const key = `product.feature.${productSlug}.${sanitized}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return featureTitle;
+}
+
+/** Get translated feature description for a product (falls back to English). */
+export function getProductFeatureDesc(productSlug: string, featureTitle: string, locale: string = defaultLang): string {
+  const sanitized = featureTitle.replace(/[^a-z0-9]+/gi, '_').toLowerCase();
+  const key = `product.feature_desc.${productSlug}.${sanitized}`;
+  const translated = t(key, locale);
+  if (translated && translated !== key) return translated;
+  return '';
+}
+
 /** Get product spec value in the given locale (falls back to English). */
 export function getProductSpec(slug: string, label: string, value: string, locale: string = defaultLang): string {
   const key = `product.spec.${slug}.${label.replace(/[\s\/]+/g, '_').toLowerCase()}`;

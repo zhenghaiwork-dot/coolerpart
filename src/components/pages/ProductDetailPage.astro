@@ -5,7 +5,7 @@ import { getAllProducts } from '~/data/product-helpers';
 import { systemsData } from '~/data/systems';
 import type { Product } from '~/data/inquiry-types';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductName, getProductDescription } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getSystemName, getAreaName, getProductName, getProductDescription, getProductFeatureTitle, getProductFeatureDesc } from '~/i18n/utils';
 
 export interface Props {
   product: Product;
@@ -31,7 +31,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
 
 <Layout metadata={{
   title: `${displayName} | Evaporative Air Cooler Replacement Part`,
-  description: `${product.description} Check compatibility, specifications, MOQ and indicative pricing for this evaporative air cooler replacement part, then request a quote.`,
+  description: `${displayDesc} Check compatibility, specifications, MOQ and indicative pricing for this evaporative air cooler replacement part, then request a quote.`,
   ignoreTitleTemplate: true,
 }} locale={locale}>
   <StructuredData type="BreadcrumbList" items={[
@@ -43,7 +43,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   ]} />
   <StructuredData type="Product" product={{
     name: displayName,
-    description: product.description,
+    description: displayDesc,
     image: product.image,
     category: product.category,
     sku: product.slug,
@@ -177,8 +177,8 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
                 <Icon name="tabler:check" class="h-4 w-4" />
               </div>
               <div>
-                <h3 class="text-sm font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
-                <p class="mt-0.5 text-xs text-muted leading-relaxed">{feature.description}</p>
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-white">{getProductFeatureTitle(product.slug, feature.title, locale)}</h3>
+                <p class="mt-0.5 text-xs text-muted leading-relaxed">{getProductFeatureDesc(product.slug, feature.title, locale)}</p>
               </div>
             </div>
           ))}
