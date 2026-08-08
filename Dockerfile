@@ -3,7 +3,7 @@ WORKDIR /app
 
 FROM base AS deps
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules

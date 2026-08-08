@@ -26,6 +26,12 @@ export default [
         extraFileExtensions: ['.astro'],
       },
     },
+    rules: {
+      // Astro inline browser scripts frequently bridge server-injected globals.
+      // astro check remains the source-of-truth type gate for these files.
+      '@typescript-eslint/no-explicit-any': 'off',
+      'no-empty': 'off',
+    },
   },
   {
     files: ['**/*.{js,jsx,astro}'],
@@ -61,6 +67,13 @@ export default [
     },
   },
   {
-    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro'],
+    files: ['**/*.astro', '**/*.astro/**'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      'no-empty': 'off',
+    },
+  },
+  {
+    ignores: ['dist', 'dist_old_*', 'node_modules', '.github', 'types.generated.d.ts', '.astro'],
   },
 ];

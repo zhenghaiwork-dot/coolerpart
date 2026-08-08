@@ -11,7 +11,7 @@ export interface Props {
   props: { method: string; title: string; icon: string };
 }
 
-const { locale = defaultLang, params, props } = Astro.props;
+const { locale = defaultLang, props } = Astro.props;
 const { method, title, icon } = props;
 const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);

@@ -5,7 +5,7 @@ import { join } from 'path';
 const outDir = join(import.meta.dirname, '..', 'src', 'content', 'products');
 mkdirSync(outDir, { recursive: true });
 
-function toYamlValue(key: string, val: unknown): string {
+function toYamlValue(_key: string, val: unknown): string {
   if (val === undefined || val === null) return '';
   if (typeof val === 'string') {
     // Quote strings that contain special YAML chars
@@ -59,7 +59,7 @@ for (const product of productsData) {
   }
 
   for (const key of fieldOrder) {
-    const val = (product as Record<string, unknown>)[key];
+    const val = (product as unknown as Record<string, unknown>)[key];
     if (val === undefined) continue;
     // Skip longDescription — it becomes the body
     if (key === 'longDescription') continue;

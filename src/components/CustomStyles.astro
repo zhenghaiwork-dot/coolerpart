@@ -175,7 +175,7 @@ import '@fontsource-variable/space-grotesk';
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
         window.dispatchEvent(new CustomEvent('inquiry-basket:update', { detail: items }));
-      } catch (e) { /* noop */ }
+      } catch { /* Storage may be disabled. */ }
     }
 
     function addToBasket(item: Record<string, string>) {

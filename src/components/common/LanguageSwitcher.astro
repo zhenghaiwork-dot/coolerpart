@@ -57,7 +57,7 @@ const flagIcon: Record<string, string> = {
       if (link) {
         const lang = link.getAttribute('lang');
         if (lang) {
-          try { localStorage.setItem('evapfit_lang', lang); } catch (_) { /* ignore */ }
+          try { localStorage.setItem('evapfit_lang', lang); } catch { /* Storage may be disabled. */ }
         }
       }
     });

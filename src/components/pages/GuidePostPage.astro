@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { useTranslations, defaultLang, localeLink, getGuideTitle } from '~/i18n/utils';
@@ -21,8 +21,6 @@ const excerpt = guide.data.excerpt || '';
 const isoDate = guide.data.publishDate ? new Date(guide.data.publishDate).toISOString() : '';
 const category = guide.data.category || 'Repair Guide';
 const difficulty = guide.data.difficulty || '';
-const systemSlug = guide.data.systemSlug || '';
-const areaSlug = guide.data.areaSlug || '';
 const tags = guide.data.tags || [];
 const image = guide.data.image || '';
 ---

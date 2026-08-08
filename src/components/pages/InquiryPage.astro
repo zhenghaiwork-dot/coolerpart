@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { useTranslations, defaultLang, localeLink, getProductTypeName } from '~/i18n/utils';
+import { useTranslations, defaultLang, getProductTypeName } from '~/i18n/utils';
 import { systemsData } from '~/data/systems';
 
 export interface Props {
@@ -11,7 +11,6 @@ export interface Props {
 
 const { locale = defaultLang } = Astro.props;
 const __ = useTranslations(locale);
-const L = (path: string) => localeLink(path, locale);
 
 // Build a typeSlug → localized name map for client-side basket display
 const productTypeNames: Record<string, string> = {};
@@ -166,7 +165,7 @@ for (const sys of systemsData) {
                       id="company"
                       name="company"
                       type="text"
-                      placeholder="Your company"
+                      placeholder={locale === 'ar' ? 'اسم الشركة' : locale === 'es' ? 'Nombre de la empresa' : 'Your company'}
                       class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
                     />
                   </div>
@@ -194,7 +193,7 @@ for (const sys of systemsData) {
                       id="phone"
                       name="phone"
                       type="tel"
-                      placeholder="+86 123 4567 8900"
+                      placeholder={locale === 'ar' ? 'رمز الدولة + رقم الهاتف' : locale === 'es' ? 'Código de país + número de teléfono' : 'Country code + phone number'}
                       class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500 dark:focus:border-teal-400"
                     />
                   </div>
@@ -230,7 +229,7 @@ for (const sys of systemsData) {
 
             <input type="hidden" name="inquiry_basket" id="inquiry_basket_hidden" value="" />
 
-            <div style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+            <div class="pointer-events-none absolute h-px w-px overflow-hidden opacity-0 [clip-path:inset(50%)]" aria-hidden="true">
               <label for="website">Website</label>
               <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
             </div>
@@ -290,7 +289,7 @@ for (const sys of systemsData) {
   </div>
 
   <!-- Pass translations to client-side JS -->
-  <script set:html={`
+  <script is:inline set:html={`
     window.__i18n = ${JSON.stringify({
       basket_empty_title: __('inquiry.basket_empty_title'),
       basket_empty_desc: __('inquiry.basket_empty_desc'),

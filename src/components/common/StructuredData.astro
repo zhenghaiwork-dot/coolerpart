@@ -78,11 +78,6 @@ if (type === 'Product' && product) {
     sku: product.sku,
     category: product.category,
     brand: product.brand ? { '@type': 'Brand', name: product.brand } : undefined,
-    offers: {
-      '@type': 'AggregateOffer',
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'USD',
-    },
     inLanguage: locale === 'en' ? 'en-US' : locale === 'ar' ? 'ar-SA' : 'es-MX',
   });
 }
@@ -107,4 +102,4 @@ if (type === 'Article' && article) {
 }
 ---
 
-{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+{jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}

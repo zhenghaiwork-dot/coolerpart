@@ -42,8 +42,6 @@ const baseSiteUrl = siteUrl(Astro.site);
     <Analytics />
     <StructuredData type="Organization" />
 
-    <link rel="preconnect" href="https://images.unsplash.com" />
-
     <!-- hreflang alternate links for SEO -->
     {supportedLocales.map((loc) => {
       const basePath = Astro.url.pathname.replace(/^\/(ar|es)\//, '/').replace(/^\/(ar|es)$/, '/');
@@ -64,7 +62,7 @@ const baseSiteUrl = siteUrl(Astro.site);
 
     <!-- Browser language detection — auto-redirect to user's preferred locale on first visit -->
     <script is:inline>
-      (function(){try{var s=localStorage.getItem('evapfit_lang');if(s)return;var p=window.location.pathname;if(p.startsWith('/ar/')||p.startsWith('/es/'))return;var n=(navigator.language||'').toLowerCase();var t='';if(n.startsWith('ar'))t='ar';else if(n.startsWith('es'))t='es';if(t){localStorage.setItem('evapfit_lang',t);window.location.href='/'+t+(p==='/'?'':p)}}catch(_){}})();
+      (function(){try{const s=localStorage.getItem('evapfit_lang');if(s)return;const p=window.location.pathname;if(p.startsWith('/ar/')||p.startsWith('/es/'))return;const n=(navigator.language||'').toLowerCase();let t='';if(n.startsWith('ar'))t='ar';else if(n.startsWith('es'))t='es';if(t){localStorage.setItem('evapfit_lang',t);window.location.href='/'+t+(p==='/'?'':p)}}catch{/* Storage may be disabled. */}})();
     </script>
   </body>
 </html>

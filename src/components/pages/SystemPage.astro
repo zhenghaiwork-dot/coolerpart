@@ -18,11 +18,31 @@ const L = (path: string) => localeLink(path, locale);
 const products = await getProductsBySystem(system.slug);
 const sysName = getSystemName(system.slug, locale);
 const sysDesc = getSystemDesc(system.slug, locale);
+
+const systemSearchTerms: Record<string, string> = {
+  'water-system': 'water pumps, float valves, drain parts, hoses and water distribution components',
+  'evaporation-system': 'cooling pads, pad frames, distributors, spray nozzles and water eliminators',
+  'air-system': 'blower motors, fan wheels, bearings, guards and air outlet parts',
+  'electrical-controls': 'replacement motors, capacitors, control boards, relays, sensors and wiring',
+  'structure-mounting': 'cabinet panels, seals, casters, brackets and mounting hardware',
+  'maintenance-consumables': 'filters, cleaning kits, fasteners, gaskets and replacement consumables',
+};
+const searchedParts = systemSearchTerms[system.slug] || 'replacement pumps, motors, valves, pads and controls';
+const metaTitle = locale === 'es'
+  ? `Repuestos de ${sysName} para Enfriadores Evaporativos | EVAPFit`
+  : locale === 'ar'
+    ? `قطع غيار ${sysName} للمبردات الصحراوية | EVAPFit`
+    : `${sysName} Parts for Evaporative & Swamp Coolers | EVAPFit`;
+const metaDescription = locale === 'es'
+  ? `${sysDesc} Encuentre piezas de repuesto compatibles por medidas, conexión y especificaciones eléctricas, y solicite una cotización mayorista.`
+  : locale === 'ar'
+    ? `${sysDesc} ابحث عن قطع غيار متوافقة للمبردات الصحراوية حسب المقاس والتوصيل والمواصفات الكهربائية واطلب عرض سعر بالجملة.`
+    : `${sysDesc} Find ${searchedParts} for evaporative and swamp coolers. Match by dimensions, connection or electrical specs and request a bulk RFQ.`;
 ---
 
 <Layout metadata={{
-  title: `${sysName} ${__('product.for_evap_coolers')} | EVAPFit`,
-  description: `${sysDesc} Browse ${products.length} compatible evaporative air cooler replacement parts and request a bulk RFQ.`,
+  title: metaTitle,
+  description: metaDescription,
   ignoreTitleTemplate: true,
 }} locale={locale}>
   <!-- Hero Banner -->

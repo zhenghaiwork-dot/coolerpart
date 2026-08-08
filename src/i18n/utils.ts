@@ -14,6 +14,13 @@ export function t(key: string, locale: string = defaultLang): string {
   return entry[safeLocale as Locale] ?? entry[defaultLang] ?? key;
 }
 
+/** Translate an optional content token without logging when no translation is defined. */
+function optionalTranslation(key: string, locale: string): string | undefined {
+  const safeLocale = supportedLocales.includes(locale as Locale) ? locale as Locale : defaultLang;
+  const entry = ui[key];
+  return entry?.[safeLocale] ?? entry?.[defaultLang];
+}
+
 /** Return a translation function bound to the given locale. */
 export function useTranslations(locale: string = defaultLang) {
   return (key: string) => t(key, locale);
@@ -140,7 +147,7 @@ export function getProductFeatureDesc(productSlug: string, featureTitle: string,
 
 /** Get product spec value in the given locale (falls back to English). */
 export function getProductSpec(slug: string, label: string, value: string, locale: string = defaultLang): string {
-  const key = `product.spec.${slug}.${label.replace(/[\s\/]+/g, '_').toLowerCase()}`;
+  const key = `product.spec.${slug}.${label.replace(/[\s/]+/g, '_').toLowerCase()}`;
   const translated = t(key, locale);
   if (translated && translated !== key) return translated;
   return value;
@@ -174,23 +181,17 @@ export function getGuideDesc(slug: string, defaultDesc: string, locale: string =
 /** Get translated spec label (falls back to English). */
 export function getSpecLabel(label: string, locale: string = defaultLang): string {
   const key = `spec_label.${label.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
-  const translated = t(key, locale);
-  if (translated && translated !== key) return translated;
-  return label;
+  return optionalTranslation(key, locale) ?? label;
 }
 
 /** Get translated spec value (falls back to English). */
 export function getSpecValue(value: string, locale: string = defaultLang): string {
   const key = `spec_value.${value.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
-  const translated = t(key, locale);
-  if (translated && translated !== key) return translated;
-  return value;
+  return optionalTranslation(key, locale) ?? value;
 }
 
 /** Get translated compatibility item (falls back to English). */
 export function getCompatItem(item: string, locale: string = defaultLang): string {
   const key = `compat.${item.replace(/[^a-z0-9]+/gi, '_').toLowerCase()}`;
-  const translated = t(key, locale);
-  if (translated && translated !== key) return translated;
-  return item;
+  return optionalTranslation(key, locale) ?? item;
 }

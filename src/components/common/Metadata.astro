@@ -51,7 +51,7 @@ function buildOpenGraph(og: MetaDataOpenGraph): SEOProps['openGraph'] | undefine
     basic: {
       title: title || METADATA?.title?.default || '',
       type: og.type || 'website',
-      image: imageUrl || undefined,
+      image: imageUrl,
       url: og.url,
     },
     optional: {

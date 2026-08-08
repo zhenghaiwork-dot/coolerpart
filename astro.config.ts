@@ -36,6 +36,13 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      // Legacy /systems/* URLs are static noindex redirects to the canonical
+      // root-level taxonomy. Redirect URLs and the private CMS shell should
+      // not compete with content pages in the sitemap.
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        return !/^\/(?:ar\/|es\/)?systems\//.test(pathname) && !pathname.startsWith('/decapcms');
+      },
       // Generate hreflang alternate links so search engines know that
       // /about, /ar/about and /es/about are the same page in three
       // languages. Locale keys must match the Astro i18n routing config

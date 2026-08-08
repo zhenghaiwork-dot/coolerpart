@@ -35,7 +35,7 @@ const filtered = productsData.filter((p) => {
     const hasV = norm.some((s) => s.includes(v));
     const hasP = norm.some((s) => s.includes(p));
     const hasR = norm.some((s) => s.includes(r));
-    return hasV || hasP || hasR;
+    return hasV && hasP && hasR;
   }
   if (method === 'cross-reference') {
     const term = key.replace(/-/g, ' ');
@@ -48,7 +48,12 @@ const methodLabels: Record<string, string> = { interface: 'Interface', dimension
 const keyLabel = key.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
 ---
 
-<Layout metadata={{ title: `Compatible by ${methodLabels[method]}: ${keyLabel} — EVAPFit`, ignoreTitleTemplate: true }} locale={locale}>
+<Layout metadata={{
+  title: `Compatible by ${methodLabels[method]}: ${keyLabel} — EVAPFit`,
+  description: filtered.length > 0 ? `Compare ${filtered.length} evaporative cooler replacement parts matching ${keyLabel}. Verify specifications and request a bulk RFQ.` : `No verified evaporative cooler replacement parts currently match ${keyLabel}. Contact EVAPFit for a specification review.`,
+  robots: { index: filtered.length > 0, follow: true },
+  ignoreTitleTemplate: true,
+}} locale={locale}>
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-6 py-3 text-sm text-muted flex items-center breadcrumb-scroll">
       <a href={L('/')} class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{__('breadcrumb.home')}</a>

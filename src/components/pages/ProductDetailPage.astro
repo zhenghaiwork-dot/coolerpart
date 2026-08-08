@@ -37,7 +37,7 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   <StructuredData type="BreadcrumbList" items={[
     { name: __('breadcrumb.home'), url: L('/') },
     ...(system ? [{ name: sysName, url: L(`/${system.slug}`) }] : []),
-    ...(area ? [{ name: areaName, url: L(`/${system.slug}/${area.slug}`) }] : []),
+    ...(system && area ? [{ name: areaName, url: L(`/${system.slug}/${area.slug}`) }] : []),
     { name: typeName, url: L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}`) },
     { name: displayName, url: L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`) },
   ]} />
@@ -311,16 +311,16 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
   <span id="inquiry-list-label" hidden>{__('product.in_your_inquiry')}</span>
 </Layout>
 
-<script set:html={`window.__cpLocale="${locale}";window.__cpLink=function(p){return window.__cpLocale==='en'?p:'/'+window.__cpLocale+p;};`} />
+<script is:inline set:html={`window.__cpLocale="${locale}";window.__cpLink=function(p){return window.__cpLocale==='en'?p:'/'+window.__cpLocale+p;};`} />
 
 <script>
   import { addToBasket, getProductData, isInBasket } from "~/scripts/inquiry-basket";
 
   function initProductPage() {
-    const requestQuoteBtn = document.getElementById("request-quote-btn");
-    const addBtn = document.getElementById("add-to-basket-btn");
+    const requestQuoteBtn = document.getElementById("request-quote-btn") as HTMLElement | null;
+    const addBtn = document.getElementById("add-to-basket-btn") as HTMLElement | null;
     const feedback = document.getElementById("added-feedback");
-    const stickyBtns = document.querySelectorAll(".sticky-quote-btn");
+    const stickyBtns = document.querySelectorAll<HTMLElement>(".sticky-quote-btn");
 
     function updateAddButtonState() {
       if (!addBtn) return;
@@ -348,8 +348,8 @@ const crossSell = allProducts.filter((p) => p.slug !== product.slug && p.areaSlu
     });
 
     // Gallery thumbnails
-    const mainImg = document.getElementById("product-main-img");
-    const thumbs = document.querySelectorAll(".gallery-thumb");
+    const mainImg = document.getElementById("product-main-img") as HTMLImageElement | null;
+    const thumbs = document.querySelectorAll<HTMLButtonElement>(".gallery-thumb");
     thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => {
         if (mainImg && thumb.dataset.src) {

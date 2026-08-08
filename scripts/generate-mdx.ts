@@ -7,6 +7,7 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { pathToFileURL } from 'url';
 
 // Read products.ts directly as text to extract the Product[] array
 const productsPath = path.resolve('src/data/products.ts');
@@ -28,10 +29,10 @@ if (!match) {
 const moduleCode = `module.exports = ${match[1]};`;
 
 // Write to a temp .js file and require it
-const tmpFile = path.resolve('scripts/.tmp-products.js');
+const tmpFile = path.resolve('scripts/.tmp-products.cjs');
 fs.writeFileSync(tmpFile, moduleCode);
 
-const products = require(tmpFile);
+const products = (await import(pathToFileURL(tmpFile).href)).default;
 fs.unlinkSync(tmpFile);
 
 const outDir = path.resolve('src/content/products');

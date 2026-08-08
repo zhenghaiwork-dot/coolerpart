@@ -1,6 +1,5 @@
 ---
 import CompatSpecPage from '~/components/pages/CompatSpecPage.astro';
-import { getAllProducts } from '~/data/product-helpers';
 
 export async function getStaticPaths() {
   const paths: { params: { method: string; key: string } }[] = [];

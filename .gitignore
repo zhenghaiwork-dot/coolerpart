@@ -16,6 +16,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# private inquiry storage (must be backed up outside Git)
+data/
+
 # macOS-specific files
 .DS_Store
 

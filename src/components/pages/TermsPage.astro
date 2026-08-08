@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/InquiryLayout.astro';
-import { useTranslations, defaultLang, localeLink } from '~/i18n/utils';
+import { useTranslations, defaultLang } from '~/i18n/utils';
 
 export interface Props {
   locale?: 'en' | 'ar' | 'es';
@@ -8,7 +8,6 @@ export interface Props {
 
 const { locale = defaultLang } = Astro.props;
 const __ = useTranslations(locale);
-const L = (path: string) => localeLink(path, locale);
 ---
 
 <Layout metadata={{ title: __('terms.title') || 'Terms and Conditions', description: __('terms.desc') }} locale={locale}>
