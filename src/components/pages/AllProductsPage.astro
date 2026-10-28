@@ -28,7 +28,7 @@ const totalSystems = systemGroups.length;
 const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
 ---
 
-<Layout metadata={{ title: __('all_products.title'), ignoreTitleTemplate: true }} locale={locale}>
+<Layout metadata={{ title: __('all_products.title'), description: __('all_products.desc'), ignoreTitleTemplate: true }} locale={locale}>
   <section class="relative overflow-hidden border-b border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="absolute inset-0 tech-grid opacity-40"></div>
     <div class="relative mx-auto max-w-7xl px-6 py-12 lg:py-16">

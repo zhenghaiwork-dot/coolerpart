@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import { render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import StructuredData from '~/components/common/StructuredData.astro';
-import { useTranslations, defaultLang, localeLink, getGuideTitle } from '~/i18n/utils';
+import { useTranslations, defaultLang, localeLink, getGuideTitle, getGuideDesc } from '~/i18n/utils';
 
 export interface Props {
   guide: CollectionEntry<'guide'>;
@@ -16,19 +16,31 @@ const __ = useTranslations(locale);
 const L = (path: string) => localeLink(path, locale);
 const { Content } = await render(guide);
 
-const title = getGuideTitle(guide.id.replace(/\.(md|mdx)$/, ''), guide.data.title, locale);
-const excerpt = guide.data.excerpt || '';
+const guideSlug = guide.id.replace(/\.(md|mdx)$/, '');
+const title = getGuideTitle(guideSlug, guide.data.title, locale);
+const excerpt = getGuideDesc(guideSlug, guide.data.excerpt || '', locale);
 const isoDate = guide.data.publishDate ? new Date(guide.data.publishDate).toISOString() : '';
 const category = guide.data.category || 'Repair Guide';
 const difficulty = guide.data.difficulty || '';
+const categoryLabel = locale === 'es' && category === 'Repair Guide'
+  ? 'Guía de Reparación'
+  : locale === 'ar' && category === 'Repair Guide'
+    ? 'دليل إصلاح'
+    : category;
+const difficultyLabels: Record<string, Record<string, string>> = {
+  Easy: { es: 'Fácil', ar: 'سهل' },
+  Medium: { es: 'Intermedio', ar: 'متوسط' },
+  Hard: { es: 'Difícil', ar: 'صعب' },
+};
+const difficultyLabel = difficultyLabels[difficulty]?.[locale] || difficulty;
 const tags = guide.data.tags || [];
 const image = guide.data.image || '';
 ---
 
 <Layout metadata={{ title: `${title} — EVAPFit Guide`, description: excerpt, ignoreTitleTemplate: true }} locale={locale}>
   <StructuredData type="BreadcrumbList" items={[
-    { name: 'Home', url: L('/') },
-    { name: 'Guides', url: L('/guides') },
+    { name: __('breadcrumb.home'), url: L('/') },
+    { name: __('nav.guides'), url: L('/guides') },
     { name: title, url: L(`/guides/${guide.id.replace(/\.(md|mdx)$/, '')}`) },
   ]} />
   {isoDate && (<StructuredData type="Article" article={{
@@ -40,9 +52,9 @@ const image = guide.data.image || '';
   <!-- Breadcrumb -->
   <div class="border-b border-gray-100 bg-white dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto max-w-3xl px-6 py-2.5 text-sm text-muted">
-      <a href={L('/')} class="hover:text-teal-600">Home</a>
+      <a href={L('/')} class="hover:text-teal-600">{__('breadcrumb.home')}</a>
       <span class="mx-1.5 text-gray-300">/</span>
-      <a href={L('/guides')} class="hover:text-teal-600">Guides</a>
+      <a href={L('/guides')} class="hover:text-teal-600">{__('nav.guides')}</a>
       <span class="mx-1.5 text-gray-300">/</span>
       <span class="text-gray-700 dark:text-gray-300">{title}</span>
     </div>
@@ -53,7 +65,7 @@ const image = guide.data.image || '';
     <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
       <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/30 bg-teal-500/10 px-4 py-1.5 text-sm text-teal-100 backdrop-blur-sm">
         <Icon name="tabler:tools" class="h-4 w-4" />
-        {category}
+        {categoryLabel}
       </div>
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
       {excerpt && <p class="mt-4 text-lg text-gray-300">{excerpt}</p>}
@@ -61,7 +73,7 @@ const image = guide.data.image || '';
         {difficulty && (
           <span class="inline-flex items-center gap-1">
             <Icon name="tabler:gauge" class="h-4 w-4" />
-            {difficulty}
+            {difficultyLabel}
           </span>
         )}
       </div>

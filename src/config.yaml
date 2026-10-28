@@ -7,9 +7,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Evaporative Air Cooler Parts & Replacement Components | EVAPFit
+    default: Evaporative & Swamp Cooler Parts | EVAPFit
     template: '%s — EVAPFit'
-  description: "Source compatible evaporative air cooler parts and replacement components, including pumps, motors, cooling pads, valves and controls. Match by interface, dimensions or electrical specifications and request a bulk RFQ."
+  description: "Source evaporative and swamp cooler parts, including replacement pumps, motors, cooling pads, valves and controls. Match by interface, dimensions or electrical specs and request a bulk RFQ."
   robots:
     index: true
     follow: true

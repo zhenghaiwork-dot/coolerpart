@@ -233,7 +233,7 @@ const ui: TranslationDict = {
 
   // ── Home Page ──
   'home.hero_title_1': {
-    en: 'Evaporative Air Cooler',
+    en: 'Evaporative & Swamp Cooler',
     ar: 'قطع غيار مبردات الهواء',
     es: 'Refacciones para Enfriadores',
   },
@@ -243,7 +243,7 @@ const ui: TranslationDict = {
     es: 'de Aire Evaporativos',
   },
   'home.hero_desc': {
-    en: 'EVAPFit supplies interface-matched replacement parts for portable and cabinet evaporative air coolers. Search by system, electrical specs, or structure & mounting — no model number required.',
+    en: 'Find evaporative and swamp cooler replacement parts for portable, window and cabinet units, including pumps, motors, cooling pads, valves and controls. Match by interface, dimensions or electrical specs — no model number required.',
     ar: 'نوفر قطع غيار متوافقة لمبردات الهواء التبخيرية المحمولة والخزائنية. ابحث حسب النظام أو المواصفات الكهربائية أو الهيكل والتركيب — بدون الحاجة لرقم الموديل.',
     es: 'EVAPFit suministra refacciones compatibles por interfaz para enfriadores de aire evaporativos portátiles y de gabinete. Busque por sistema, especificaciones eléctricas o estructura y montaje — sin necesidad de número de modelo.',
   },
@@ -592,7 +592,7 @@ const ui: TranslationDict = {
 
   // ── All Products Page ──
   'all_products.title': {
-    en: 'All Products — Evaporative Cooler Replacement Parts Catalog',
+    en: 'Evaporative Cooler Parts List & Replacement Components | EVAPFit',
     ar: 'جميع المنتجات — كتالوج قطع غيار مبردات الهواء التبخيرية',
     es: 'Todos los Productos — Catálogo de Refacciones para Enfriadores Evaporativos',
   },
@@ -602,12 +602,12 @@ const ui: TranslationDict = {
     es: 'Catálogo Completo de Piezas',
   },
   'all_products.all_parts': {
-    en: 'All Replacement Parts',
+    en: 'Evaporative Cooler Parts & Components',
     ar: 'جميع قطع الغيار',
     es: 'Todas las Refacciones',
   },
   'all_products.desc': {
-    en: 'Browse the full catalog of evaporative cooler components. Filter by system or search by name, spec, or keyword.',
+    en: 'Browse this evaporative and swamp cooler parts list for pumps, motors, cooling media, valves, controls, fan parts and mounting hardware. Filter by system or search by name, specification or keyword.',
     ar: 'تصفح الكتالوج الكامل لمكونات مبردات الهواء التبخيرية. صفِّ حسب النظام أو ابحث بالاسم أو المواصفات أو الكلمة المفتاحية.',
     es: 'Explore el catálogo completo de componentes para enfriadores evaporativos. Filtre por sistema o busque por nombre, especificación o palabra clave.',
   },
@@ -832,12 +832,12 @@ const ui: TranslationDict = {
 
   // ── SEO / Meta ──
   'seo.default_title': {
-    en: 'Evaporative Air Cooler Parts & Replacement Components | EVAPFit',
+    en: 'Evaporative & Swamp Cooler Parts | EVAPFit',
     ar: 'قطع غيار مبردات الهواء التبخيرية ومكونات الاستبدال | إيفاب فيت',
     es: 'Refacciones y Componentes para Enfriadores de Aire Evaporativos | EVAPFit',
   },
   'seo.default_desc': {
-    en: 'Source compatible evaporative air cooler parts and replacement components, including pumps, motors, cooling pads, valves and controls. Match by interface, dimensions or electrical specifications and request a bulk RFQ.',
+    en: 'Source evaporative and swamp cooler parts, including replacement pumps, motors, cooling pads, valves and controls. Match by interface, dimensions or electrical specs and request a bulk RFQ.',
     ar: 'مصدر قطع غيار متوافقة لمبردات الهواء التبخيرية، بما في ذلك المضخات والمحركات ووسادات التبريد والصمامات ووحدات التحكم. طابق حسب الواجهة أو الأبعاد أو المواصفات الكهربائية واطلب عرض سعر بالجملة.',
     es: 'Obtenga refacciones y componentes compatibles para enfriadores de aire evaporativos, incluyendo bombas, motores, paneles de enfriamiento, válvulas y controles. Haga coincidir por interfaz, dimensiones o especificaciones eléctricas y solicite una cotización al por mayor.',
   },
@@ -2400,17 +2400,17 @@ const ui: TranslationDict = {
 
   // ── Water Pump Replacement Page ──
   'waterpump.title': {
-    en: 'Water Pump Replacement Parts for Evaporative Coolers | Compatible by Interface',
+    en: 'Evaporative & Swamp Cooler Pump Replacement Parts | EVAPFit',
     ar: 'قطع غيار مضخات المياه لمبردات الهواء التبخيرية | متوافقة حسب الواجهة',
     es: 'Refacciones de Bombas de Agua para Enfriadores Evaporativos | Compatibles por Interfaz',
   },
   'waterpump.heading': {
-    en: 'Water Pump Replacement Parts',
+    en: 'Evaporative & Swamp Cooler Pumps',
     ar: 'قطع غيار مضخات المياه',
     es: 'Refacciones de Bombas de Agua',
   },
   'waterpump.desc': {
-    en: 'Find compatible replacement water pumps and accessories for portable and cabinet evaporative air coolers. Threaded, push-fit, and hose barb connections available.',
+    en: 'Find compatible evaporative and swamp cooler replacement pumps for portable, window and cabinet units. Compare voltage, flow, head height and threaded, push-fit or hose-barb connections before requesting a quote.',
     ar: 'اعثر على مضخات مياه بديلة متوافقة وملحقاتها لمبردات الهواء التبخيرية المحمولة والخزائنية. تتوفر توصيلات ملولبة وتركيب بالدفع وخرطوم.',
     es: 'Encuentre bombas de agua de repuesto compatibles y accesorios para enfriadores de aire evaporativos portátiles y de gabinete. Conexiones roscadas, de ajuste a presión y barba de manguera disponibles.',
   },
@@ -3797,11 +3797,11 @@ const ui: TranslationDict = {
   'blog.title.how-to-choose-replacement-water-pump': { en: 'How to Choose the Right Replacement Water Pump for Your Evaporative Cooler', ar: 'كيفية اختيار مضخة المياه البديلة المناسبة لمبرد الهواء التبخيري', es: 'Cómo Elegir la Bomba de Agua de Repuesto Correcta para su Enfriador Evaporativo' },
   'blog.desc.how-to-choose-replacement-water-pump': { en: 'A practical guide to selecting a compatible water pump — match by interface type, power rating, flow rate, and head height to find the exact replacement.', ar: 'دليل عملي لاختيار مضخة مياه متوافقة — طابق حسب نوع الواجهة وتصنيف القدرة ومعدل التدفق وارتفاع الضخ لإيجاد البديل المطابق.', es: 'Una guía práctica para seleccionar una bomba de agua compatible — coincida por tipo de interfaz, potencia nominal, caudal y altura para encontrar el reemplazo exacto.' },
   'guide.title.nozzle-clogging': { en: 'Nozzle Clogging: Causes and How to Fix It', ar: 'انسداد الفوهات: الأسباب وكيفية إصلاحها', es: 'Obstrucción de Boquillas: Causas y Cómo Solucionarlo' },
-  'guide.title.replace-motor': { en: 'How to Replace a Fan Motor', ar: 'كيفية استبدال محرك المروحة', es: 'Cómo Reemplazar un Motor de Ventilador' },
-  'guide.title.replace-water-pump': { en: 'How to Replace a Water Pump in an Evaporative Cooler', ar: 'كيفية استبدال مضخة المياه في مبرد الهواء التبخيري', es: 'Cómo Reemplazar una Bomba de Agua en un Enfriador Evaporativo' },
+  'guide.title.replace-motor': { en: 'How to Replace an Evaporative Cooler Fan Motor', ar: 'كيفية استبدال محرك المروحة', es: 'Cómo Cambiar el Motor del Ventilador de un Enfriador Evaporativo' },
+  'guide.title.replace-water-pump': { en: 'How to Replace an Evaporative or Swamp Cooler Pump', ar: 'كيفية استبدال مضخة المياه في مبرد الهواء التبخيري', es: 'Cómo Reemplazar la Bomba de un Enfriador Evaporativo' },
   'guide.desc.nozzle-clogging': { en: 'Identify and resolve spray nozzle clogging issues — from mineral deposit buildup to debris obstruction.', ar: 'تحديد وحل مشاكل انسداد فوهات الرش — من تراكم الرواسب المعدنية إلى انسداد الحطام.', es: 'Identifique y resuelva problemas de obstrucción de boquillas de rociado — desde acumulación de depósitos minerales hasta obstrucción por residuos.' },
-  'guide.desc.replace-motor': { en: 'A step-by-step guide for replacing a fan/blower motor assembly — safely disconnect, remove, match specs, and install.', ar: 'دليل خطوة بخطوة لاستبدال مجموعة محرك المروحة/المنفاخ — افصل بأمان وأزل وطابق المواصفات وركب.', es: 'Una guía paso a paso para reemplazar un conjunto de motor de ventilador/soplador — desconecte de forma segura, retire, haga coincidir especificaciones e instale.' },
-  'guide.desc.replace-water-pump': { en: 'A step-by-step guide for replacing a faulty water pump — from diagnosis to testing the new installation.', ar: 'دليل خطوة بخطوة لاستبدال مضخة مياه معطلة — من التشخيص إلى اختبار التركيب الجديد.', es: 'Una guía paso a paso para reemplazar una bomba de agua defectuosa — desde el diagnóstico hasta la prueba de la nueva instalación.' },
+  'guide.desc.replace-motor': { en: 'Replace an evaporative cooler fan or blower motor safely by matching voltage, power, RPM, shaft and mounting specifications.', ar: 'دليل خطوة بخطوة لاستبدال مجموعة محرك المروحة/المنفاخ — افصل بأمان وأزل وطابق المواصفات وركب.', es: 'Aprenda a cambiar el motor del ventilador de un enfriador evaporativo comparando voltaje, potencia, RPM, eje y montaje.' },
+  'guide.desc.replace-water-pump': { en: 'Replace an evaporative or swamp cooler pump safely, from checking voltage and connections to testing flow and leaks.', ar: 'دليل خطوة بخطوة لاستبدال مضخة مياه معطلة — من التشخيص إلى اختبار التركيب الجديد.', es: 'Reemplace de forma segura la bomba de un enfriador evaporativo, desde el voltaje y las conexiones hasta las pruebas de caudal y fugas.' },
   'blog.category.Buying Guide': { en: 'Buying Guide', ar: 'دليل الشراء', es: 'Guía de Compra' },
   'guide.difficulty.Easy': { en: 'Easy', ar: 'سهل', es: 'Fácil' },
   'guide.difficulty.Medium': { en: 'Medium', ar: 'متوسط', es: 'Medio' },

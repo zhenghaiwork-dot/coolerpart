@@ -14,7 +14,7 @@ const L = (path: string) => localeLink(path, locale);
 const allProducts = await getAllProducts();
 const pumps = allProducts.filter(p => p.systemSlug === 'water-system' && p.areaSlug === 'water-pump-power');
 ---
-<Layout metadata={{ title: __('waterpump.title'), ignoreTitleTemplate: true }} locale={locale}>
+<Layout metadata={{ title: __('waterpump.title'), description: __('waterpump.desc'), ignoreTitleTemplate: true }} locale={locale}>
   <section class="overflow-hidden bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">
     <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{__('waterpump.heading')}</h1>

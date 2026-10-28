@@ -28,11 +28,26 @@ const systemSearchTerms: Record<string, string> = {
   'maintenance-consumables': 'filters, cleaning kits, fasteners, gaskets and replacement consumables',
 };
 const searchedParts = systemSearchTerms[system.slug] || 'replacement pumps, motors, valves, pads and controls';
+const englishSystemTitles: Record<string, string> = {
+  'water-system': 'Evaporative & Swamp Cooler Pumps and Water System Parts | EVAPFit',
+  'evaporation-system': 'Evaporative & Swamp Cooler Pads and Cooling Media | EVAPFit',
+  'air-system': 'Evaporative Cooler Fan, Blower and Louver Parts | EVAPFit',
+  'electrical-controls': 'Swamp Cooler Motors, Controls and Electrical Parts | EVAPFit',
+};
+const englishSystemHeadings: Record<string, string> = {
+  'water-system': 'Evaporative & Swamp Cooler Water System Parts',
+  'evaporation-system': 'Evaporative & Swamp Cooler Pads & Cooling Media',
+  'air-system': 'Evaporative Cooler Fan, Blower & Louver Parts',
+  'electrical-controls': 'Swamp Cooler Motors, Controls & Electrical Parts',
+};
+const pageHeading = locale === 'en'
+  ? englishSystemHeadings[system.slug] || `${sysName} Parts for Evaporative Coolers`
+  : `${sysName} ${__('product.for_evap_coolers')}`;
 const metaTitle = locale === 'es'
   ? `Repuestos de ${sysName} para Enfriadores Evaporativos | EVAPFit`
   : locale === 'ar'
     ? `قطع غيار ${sysName} للمبردات الصحراوية | EVAPFit`
-    : `${sysName} Parts for Evaporative & Swamp Coolers | EVAPFit`;
+    : englishSystemTitles[system.slug] || `${sysName} Parts for Evaporative & Swamp Coolers | EVAPFit`;
 const metaDescription = locale === 'es'
   ? `${sysDesc} Encuentre piezas de repuesto compatibles por medidas, conexión y especificaciones eléctricas, y solicite una cotización mayorista.`
   : locale === 'ar'
@@ -64,7 +79,7 @@ const metaDescription = locale === 'es'
               <p class="text-[11px] font-medium uppercase tracking-[0.15em] text-teal-300">{sysName}</p>
             </div>
             <h1 class="text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl" style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;">
-              {sysName} {__('product.for_evap_coolers')}
+              {pageHeading}
             </h1>
             <p class="mt-2 max-w-lg text-sm text-slate-400 leading-relaxed">{sysDesc}</p>
             <div class="mt-3 flex items-center gap-2.5 text-xs">
@@ -72,7 +87,7 @@ const metaDescription = locale === 'es'
                 <span class="font-semibold tabular-nums">{system.areas.length}</span> {__('system.sub_categories')}
               </span>
               <span class="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-0.5 text-slate-500 ring-1 ring-white/5">
-                <span class="font-semibold tabular-nums">{products.length}</span> products
+                <span class="font-semibold tabular-nums">{products.length}</span> {__('system.products_count')}
               </span>
             </div>
           </div>
@@ -87,7 +102,7 @@ const metaDescription = locale === 'es'
       <div class="flex items-center gap-3">
         <Icon name={system.icon} class="h-7 w-7 text-teal-600 dark:text-teal-400 flex-shrink-0" />
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{sysName} {__('product.for_evap_coolers')}</h1>
+          <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-2xl">{pageHeading}</h1>
           <p class="mt-1.5 max-w-2xl text-sm text-muted leading-relaxed">{sysDesc}</p>
           <p class="mt-2 text-xs text-muted">{system.areas.length} {__('system.sub_categories')} · {products.length} {__('system.products_count')}</p>
         </div>
@@ -112,7 +127,7 @@ const metaDescription = locale === 'es'
               <div class="min-w-0">
                 <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-teal-600">{getAreaName(area.slug, locale)}</span>
                 <p class="text-xs text-muted mt-0.5 line-clamp-2">{getAreaShortDesc(area.slug, locale)}</p>
-                <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{count} products</p>
+                <p class="text-xs text-teal-600 dark:text-teal-400 mt-1">{count} {__('system.products_count')}</p>
               </div>
             </a>
           );
