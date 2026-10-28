@@ -1,5 +1,4 @@
 ---
-import ProductDetailPage from '~/components/pages/ProductDetailPage.astro';
 import { getAllProducts } from '~/data/product-helpers';
 import type { Product } from '~/data/inquiry-types';
 
@@ -15,6 +14,5 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { product } = Astro.props;
+return Astro.redirect(`/es/products/${Astro.props.product.slug}`, 301);
 ---
-<ProductDetailPage product={product} locale="es" />

@@ -41,7 +41,9 @@ export default defineConfig({
       // not compete with content pages in the sitemap.
       filter: (page) => {
         const pathname = new URL(page).pathname;
-        return !/^\/(?:ar\/|es\/)?systems\//.test(pathname) && !pathname.startsWith('/decapcms');
+        const isLegacySystemPath = /^\/(?:ar\/|es\/)?systems\//.test(pathname);
+        const isLegacyProductPath = /^\/(?:ar\/|es\/)?(?:water-system|evaporation-system|air-system|electrical-controls|structure-mounting|maintenance-consumables)\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
+        return !isLegacySystemPath && !isLegacyProductPath && !pathname.startsWith('/decapcms');
       },
       // Generate hreflang alternate links so search engines know that
       // /about, /ar/about and /es/about are the same page in three

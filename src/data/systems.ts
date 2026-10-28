@@ -27,6 +27,13 @@ export const systemsData: System[] = [
         icon: 'tabler:filter',
       },
       {
+        slug: 'water-hygiene-treatment',
+        name: 'Water Hygiene & Treatment',
+        shortDesc: 'UV-C water modules & hygiene accessories',
+        description: 'Water hygiene components for evaporative cooler reservoirs and recirculation loops, including enclosed UV-C modules designed to support microbial control.',
+        icon: 'tabler:shield-check',
+      },
+      {
         slug: 'valves-water-control',
         name: 'Valves & Water Control',
         shortDesc: 'Solenoid, float, drain & check valves',

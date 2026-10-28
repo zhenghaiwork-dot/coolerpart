@@ -18,7 +18,7 @@ const L = (path: string) => localeLink(path, locale);
 >
   <!-- Product image -->
   <a
-    href={L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`)}
+    href={L(`/products/${product.slug}`)}
     class="product-placeholder relative block aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700"
   >
     <div class="flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-105">
@@ -35,7 +35,7 @@ const L = (path: string) => localeLink(path, locale);
 
   <!-- Content -->
   <div class="flex flex-1 flex-col p-4">
-    <a href={L(`/${product.systemSlug}/${product.areaSlug}/${product.productTypeSlug}/${product.slug}`)}>
+    <a href={L(`/products/${product.slug}`)}>
       <h3
         class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug"
         style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
