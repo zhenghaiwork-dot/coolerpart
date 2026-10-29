@@ -30,24 +30,24 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
 
 <Layout metadata={{ title: __('all_products.title'), description: __('all_products.desc'), ignoreTitleTemplate: true }} locale={locale}>
   <section class="relative overflow-hidden border-b border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-    <div class="absolute inset-0 tech-grid opacity-40"></div>
-    <div class="relative mx-auto max-w-7xl px-6 py-12 lg:py-16">
+    <div class="absolute inset-0 hidden tech-grid opacity-40 sm:block"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-12 lg:py-16">
       <div class="max-w-2xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400">
+        <p class="hidden text-xs font-semibold uppercase tracking-[0.18em] text-teal-600 dark:text-teal-400 sm:block">
           {__('all_products.heading')}
         </p>
         <h1
-          class="mt-3 text-4xl font-bold leading-[1.1] text-gray-900 dark:text-white sm:text-5xl text-balance"
+          class="text-2xl font-bold leading-[1.1] text-gray-900 dark:text-white sm:mt-3 sm:text-5xl text-balance"
           style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.03em;"
         >
           {__('all_products.all_parts')}
         </h1>
-        <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+        <p class="mt-4 hidden text-lg leading-relaxed text-gray-600 dark:text-gray-300 sm:block">
           {__('all_products.desc')}
         </p>
       </div>
 
-      <div class="mt-8 max-w-2xl">
+      <div class="mt-4 max-w-2xl sm:mt-8">
         <label for="product-search" class="sr-only">Search products by name, spec, or keyword</label>
         <div class="relative">
           <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
@@ -58,7 +58,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
             type="text"
             placeholder={__('all_products.search_placeholder')}
             aria-label={__('all_products.search_placeholder')}
-            class="w-full rounded-xl border border-gray-300 bg-white py-3.5 pl-12 pr-12 text-sm text-gray-900 shadow-sm transition-all placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-teal-400"
+            class="w-full rounded-lg border border-gray-300 bg-white py-3.5 pl-12 pr-12 text-base text-gray-900 shadow-sm transition-all placeholder:text-gray-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-teal-400 sm:rounded-xl sm:text-sm"
           />
           <button
             id="search-clear"
@@ -71,7 +71,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
         </div>
       </div>
 
-      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
+      <div class="mt-6 hidden flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400 sm:flex">
         <span><span class="font-semibold text-gray-900 dark:text-white tabular-nums">{totalParts}</span> {__('home.stats_parts')}</span>
         <span class="h-3 w-px bg-gray-300 dark:bg-slate-700"></span>
         <span><span class="font-semibold text-gray-900 dark:text-white tabular-nums">{totalTypes}</span> {__('home.stats_types')}</span>
@@ -84,7 +84,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
   </section>
 
   <section class="bg-gray-50 dark:bg-slate-800/30">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-12 lg:py-16">
       <div id="search-meta" class="mb-6 hidden">
         <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-2.5 dark:border-slate-700 dark:bg-slate-900">
           <p id="search-results-count" class="text-sm text-gray-600 dark:text-gray-300"></p>
@@ -100,7 +100,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
 
       <div id="catalog-wrapper">
         {systemGroups.map(({ system, products }) => (
-          <div data-system-group class="mb-10 last:mb-0">
+          <div data-system-group class="mb-7 last:mb-0 sm:mb-10">
             <div class="mb-4 flex items-center gap-3">
               <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600 dark:bg-teal-500/10 dark:text-teal-400">
                 <Icon name={system.icon} class="h-4 w-4" />
@@ -124,7 +124,7 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
               </span>
             </div>
 
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="grid gap-2.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
               {products.map((product) => (
                 <ProductCard product={product} locale={locale} />
               ))}
@@ -218,6 +218,12 @@ const totalTypes = new Set(productsData.map((p) => p.productTypeSlug)).size;
       }
       if (searchMeta) searchMeta.classList.toggle('hidden', visible === 0);
       if (noResults) noResults.classList.toggle('hidden', visible > 0);
+    }
+
+    const initialQuery = new URLSearchParams(window.location.search).get('q')?.trim() || '';
+    if (initialQuery) {
+      input.value = initialQuery;
+      performSearch();
     }
 
     input.addEventListener('input', performSearch);
