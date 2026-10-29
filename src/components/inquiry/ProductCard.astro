@@ -40,7 +40,7 @@ const L = (path: string) => localeLink(path, locale);
   <div class="min-w-0 flex flex-1 flex-col p-3 sm:p-4">
     <a href={L(`/products/${product.slug}`)}>
       <h3
-        class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug"
+        class="text-[15px] font-semibold text-gray-900 group-hover:text-teal-600 dark:text-white dark:group-hover:text-teal-400 transition-colors leading-snug sm:text-sm"
         style="font-family: 'Space Grotesk Variable', sans-serif; letter-spacing: -0.02em;"
       >
         {getProductName(product, locale)}
